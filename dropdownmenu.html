@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html>  
+
+.dropdown .show, .dropdown .hide {-moz-transform-origin:50% 0%;-ms-transform-origin: 50% 0%;-webkit-transform-origin: 50% 0%;
+transform-origin: 50% 0%; }
+.dropdown .show {display: block; max-height: 9999px;
+  -moz-transform:scaleY(1);-ms-transform: scaleY(1);-webkit-transform: scaleY(1);
+transform: scaleY(1);
+animation: showAnimation 0.5s ease-in-out;
+  -moz-animation: showAnimation 0.5s ease-in-out;-webkit-animation: showAnimation 0.5s ease-in-out;
+  -moz-transition: max-height 1s ease-in-out;-o-transition: max-height 1s ease-in-out;-webkit-transition: max-height 1s ease-in-out;
+transition: max-height 1s ease-in-out;}
+.dropdown .hide {max-height: 0;
+  -moz-transform:scaleY(0);-ms-transform:scaleY(0);-webkit-transform:scaleY(0);
+transform:scaleY(0);
+animation: hideAnimation 0.1s ease-out;
+  -moz-animation: hideAnimation 0.1s ease-out;-webkit-animation: hideAnimation 0.1s ease-out;
+  -moz-transition: max-height 0.1s ease-out;-o-transition: max-height 0.1s ease-out;-webkit-transition: max-height 0.1s ease-out;
+transition: max-height 0.1s ease-out;}
+@keyframes showAnimation{100%{-moz-transform:scaleY(1);-ms-transform:scaleY(1);-webkit-transform:scaleY(1);transform:scaleY(1);}}
+@-moz-keyframes showAnimation{100%{-moz-transform:scaleY(1);-ms-transform:scaleY(1);-webkit-transform:scaleY(1);transform:scaleY(1);}}
+@-webkit-keyframes showAnimation{100%{-moz-transform:scaleY(1);-ms-transform:scaleY(1);-webkit-transform:scaleY(1);transform:scaleY(1);}}
+@keyframes hideAnimation{100%{-moz-transform:scaleY(0);-ms-transform:scaleY(0);-webkit-transform:scaleY(0);transform:scaleY(0);}}
+@-moz-keyframes hideAnimation{100%{-moz-transform:scaleY(0);-ms-transform:scaleY(0);-webkit-transform:scaleY(0);transform:scaleY(0);}}
+@-webkit-keyframes hideAnimation{100%{-moz-transform:scaleY(0);-ms-transform:scaleY(0);-webkit-transform:scaleY(0);transform:scaleY(0);}}
+
+  
 <div class="header">                       <!-- BEGIN header -->
   <h1><em> NoetherLand</em></h1>
   <ul>
