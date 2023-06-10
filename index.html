@@ -180,7 +180,7 @@ MathJax = {loader: { load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] }
 <!--  INVOKE W3.JS FOR INCLUDE FUNCTION FOR MENUES -->
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <!--  END INVOCATION OF W3.JS FOR INCLUDE FUNCTION FOR MENUES -->
-	
+
 </head>
 
 <body>
@@ -291,14 +291,24 @@ MathJax = {loader: { load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] }
 <br>
 <br>
 <br>
+
 <div id="main">                      <!-- BEGIN main -->
-<div class="titlebar">             <!-- BEGIN titlebar -->
+<!--CHECKING THAT THIS DOES NOT BREAK ANYTHING ELSE-->
+<p w3-include-html="https://noetherland.org/titlebar.html"></p> 
+<script>
+w3.includeHTML();
+</script>
+<!--END CHECKING THAT THIS DOES NOT BREAK ANYTHING ELSE-->
+
+<!--REMOVING OLD TITLEBAR IN FAVOR OF INCLUDE CODE-->
+<!--<div class="titlebar">
   <ul>
     <li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
     <li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
     <p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 1</strong></p>
   </ul>
-</div>                             <!-- END titlebar -->
+</div> -->
+<!--REMOVED OLD TITLEBAR IN FAVOR OF INCLUDE CODE-->
 
 <br>
 
