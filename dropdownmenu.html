@@ -1,5 +1,71 @@
 <!DOCTYPE html>
 <html>    
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+// BEGIN -- JavaScript that opens and closes the sidebar //
+// Set the width of the sidebar to 300px and the left margin of the page content to 300px //
+function openNav() {
+  document.getElementById("ourSidebar").style.width = "300px";
+  document.getElementById("main").style.marginLeft = "300px";
+}
+// Set the width of the sidebar to 0 and the left margin of the page content to 0 //
+function closeNav() {
+  document.getElementById("ourSidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+} 
+// END -- JavaScript that opens and closes the sidebar //
+</script>
+<script>
+// BEGIN - JavaScript that implements the Automation Dropdown Menus //
+var dropdown = document.querySelectorAll('.dropdown');
+var dropdownArray = Array.prototype.slice.call(dropdown,0);
+dropdownArray.forEach(function(el){
+	var button = el.querySelector('a[data-toggle="dropdown"]'),
+			menu = el.querySelector('.dropdown-menu'),
+			arrow = button.querySelector('i.icon-arrow');
+	button.onclick = function(event) {
+		if(!menu.hasClass('show')) {
+			menu.classList.add('show');
+			menu.classList.remove('hide');
+			arrow.classList.add('open');
+			arrow.classList.remove('close');
+			event.preventDefault();
+		}
+		else {
+			menu.classList.remove('show');
+			menu.classList.add('hide');
+			arrow.classList.remove('open');
+			arrow.classList.add('close');
+			event.preventDefault();
+		}
+	};
+})
+Element.prototype.hasClass = function(className) {
+    return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
+};
+// END JavaScript automation dropdown menus //
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+	
 <div class="header">                       <!-- BEGIN header -->
   <h1><em> NoetherLand</em></h1>
   <ul>
@@ -130,70 +196,5 @@
   </div>                                  <!-- END container with dropdown-dropup MENUs -->
  </div>                                   <!-- END sidebar with container of dropdown-dropup MENUs -->
 </div>                                    <!-- END header -->
-  <!-- ************************************BEGIN JavaScripts***************************************** -->
-<script>
-// BEGIN -- JavaScript that opens and closes the sidebar //
-// Set the width of the sidebar to 300px and the left margin of the page content to 300px //
-function openNav() {
-  document.getElementById("ourSidebar").style.width = "300px";
-  document.getElementById("main").style.marginLeft = "300px";
-}
-// Set the width of the sidebar to 0 and the left margin of the page content to 0 //
-function closeNav() {
-  document.getElementById("ourSidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-} 
-// END -- JavaScript that opens and closes the sidebar //
-</script>
-<script>
-// BEGIN - JavaScript that implements the Automation Dropdown Menus //
-var dropdown = document.querySelectorAll('.dropdown');
-var dropdownArray = Array.prototype.slice.call(dropdown,0);
-dropdownArray.forEach(function(el){
-	var button = el.querySelector('a[data-toggle="dropdown"]'),
-			menu = el.querySelector('.dropdown-menu'),
-			arrow = button.querySelector('i.icon-arrow');
-	button.onclick = function(event) {
-		if(!menu.hasClass('show')) {
-			menu.classList.add('show');
-			menu.classList.remove('hide');
-			arrow.classList.add('open');
-			arrow.classList.remove('close');
-			event.preventDefault();
-		}
-		else {
-			menu.classList.remove('show');
-			menu.classList.add('hide');
-			arrow.classList.remove('open');
-			arrow.classList.add('close');
-			event.preventDefault();
-		}
-	};
-})
-Element.prototype.hasClass = function(className) {
-    return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
-};
-// END JavaScript automation dropdown menus //
-</script>
-<script>
-// BEGIN JavaScript for accordion open and close //
-var acc = document.getElementsByClassName("accordion");
-var i;
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
-    this.classList.toggle("active");
-    // Toggle between hiding and showing the active panel //
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-// END JavaScript for accordion open and close //
-</script>
-<!-- ************************************END JavaScripts***************************************** -->
 </html>
  
