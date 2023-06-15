@@ -4,7 +4,7 @@ var navigation  = new Array();  // This is for the navigation.
 // ==================== Navigation ==================== //
 navigation[0]   = '<div id="tab_navigation">';
 navigation[1]='<ul id="nav">';
-navigation[2]='<li><a href="#">Percoidei</a>';
+navigation[2]='<li><a href="#">NewPercoidei</a>';
 navigation[3]='<ul>';
 navigation[4]='<li><a href="#">Remoras</a>';
 navigation[5]='<ul>';
