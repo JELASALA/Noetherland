@@ -14,8 +14,8 @@ chap0[7]   = '<a href="#">0.3.1 Calculus of Variations</a>';
 chap0[8]   = '<a href="#">0.3.2 Ordinary and Partial Differetial Equations</a>';
 chap0[9]   = '<a href="#">0.3.3 Method of Characteristics</a>';
 chap0[10]   = '</div>';
-chap0[11]   = '<a href="#">0.4 How to Study this E-torial</a>';
-chap0[12]   = '<a href="#">0.5 Sources and References</a></a>';
+chap0[11]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.4 How to Study this e-torial</pre></a>';
+chap0[12]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.5 Sources and References</pre></a></a>';
 chap0[13]   = '</div>';
 chap0[14]   = '</div><!-- Close CHAP0 -->';
 
