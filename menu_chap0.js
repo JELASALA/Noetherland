@@ -8,7 +8,7 @@ chap0[1]   = '<button class="dropdown-btn">  HOME <i class="fa fa-caret-down"></
 chap0[2]   = '<div class="dropdown-container">';
 chap0[3]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.1 Intro A B C D E F G H</pre></a>';
 chap0[4]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.2 Teaching Philosophies</pre></a>';
-chap0[5]   = '<button class="dropdown-btn"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.3 Math You Need</pre><i class="fa fa-caret-down"></i></button>';
+chap0[5]   = '<button class="dropdown-btn"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.3 Math You Need<i class="fa fa-caret-down"></i></pre></button>';
 chap0[6]   = '<div class="dropdown-container">';
 chap0[7]   = '<a href="#">0.3.1 Calculus of Variations</a>';
 chap0[8]   = '<a href="#">0.3.2 Ordinary and Partial Differetial Equations</a>';
