@@ -12,7 +12,7 @@ chap0[5]   = '<button class="dropdown-btn">Math You Need<i class="fa fa-caret-do
 chap0[6]   = '<div class="dropdown-container">';
 chap0[7]   = '<a href="#">Calculus of Variations</a>';
 chap0[8]   = '<a href="#">Ordinary and Partial Differetial Equations</a>';
-chap0[9]   = '<a href="#">0Method of Characteristics</a>';
+chap0[9]   = '<a href="#">Method of Characteristics</a>';
 chap0[10]   = '</div>';
 chap0[11]   = '<a href="#">How to Study this E-tutorial</a>';
 chap0[12]   = '<a href="#">Sources and References</a></a>';
