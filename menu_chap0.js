@@ -8,14 +8,14 @@ chap0[1]   = '<button class="dropdown-btn">  HOME <i class="fa fa-caret-down"></
 chap0[2]   = '<div class="dropdown-container">';
 chap0[3]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.1 Intro A B C D E F G H</pre></a>';
 chap0[4]   = '<a href="#"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.2 Teaching Philosophies</pre></a>';
-chap0[5]   = '<button class="dropdown-btn"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.3 Math You Need to Know</pre><i class="fa fa-caret-down"></i></button>';
+chap0[5]   = '<button class="dropdown-btn"><pre style="font-family: Helvetica; font-size: 14px;margin: 0px; padding: 0px;">0.3 Math You Need</pre><i class="fa fa-caret-down"></i></button>';
 chap0[6]   = '<div class="dropdown-container">';
 chap0[7]   = '<a href="#">0.3.1 Calculus of Variations</a>';
 chap0[8]   = '<a href="#">0.3.2 Ordinary and Partial Differetial Equations</a>';
 chap0[9]   = '<a href="#">0.3.3 Method of Characteristics</a>';
 chap0[10]   = '</div>';
-chap0[11]   = '<a href="#">0.3 How to Study this E-torial</a>';
-chap0[12]   = '<a href="#">0.4 Sources and References</a></a>';
+chap0[11]   = '<a href="#">0.4 How to Study this E-torial</a>';
+chap0[12]   = '<a href="#">0.5 Sources and References</a></a>';
 chap0[13]   = '</div>';
 chap0[14]   = '</div><!-- Close CHAP0 -->';
 
