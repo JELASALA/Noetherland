@@ -4,7 +4,7 @@ var chap3  = new Array();  // This is for the Chap3 Dropdown Menu lists.
 
 // ==================== These HTML lines will be written ==================== //
 chap3[0]   = '<div id="chap3">';
-chap3[1]   = '<button class="dropdown-btn">3 Exterior Differential   Systems <i class="fa fa-caret-down"></i></button>';
+chap3[1]   = '<button class="dropdown-btn">3 Exterior Differential Systems <i class="fa fa-caret-down"></i></button>';
 chap3[2]   = '<div class="dropdown-container">';
 chap3[3]   = '<a href="#">3.1 Intro</a>';
 chap3[4]   = '<a href="#">3.2 The Ideal</a>';
