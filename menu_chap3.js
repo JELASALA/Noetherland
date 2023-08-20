@@ -3,19 +3,28 @@
 var chap3  = new Array();  // This is for the Chap3 Dropdown Menu lists.
 
 // ==================== These HTML lines will be written ==================== //
-chap3[0]   = '<div id="chap3">';
-chap3[1]   = '<button class="dropdown-btn">3 Exterior Differential Systems <i class="fa fa-caret-down"></i></button>';
-chap3[2]   = '<div class="dropdown-container">';
-chap3[3]   = '<a href="#">3.1 Intro</a>';
-chap3[4]   = '<a href="#">3.2 The Ideal</a>';
-chap3[5]   = '<button class="dropdown-btn">3.3 Lie Derivatives<i class="fa fa-caret-down"></i></button>';
-chap3[6]   = '<div class="dropdown-container">';
-chap3[7]   = '<a href="#">3.3.1 Definition</a>';
-chap3[8]   = '<a href="#">3.3.2 Geometrical Picture</a>';
-chap3[9]   = '<a href="#">3.3.3 Examples</a>';
-chap3[10]   = '</div>';
-chap3[11]   = '</div>';
-chap3[12]   = '</div><!-- Close chap3 -->';
+chap3[0] = '<div id="chap3">';
+chap3[1] = '<button class="dropdown-btn">3 Exterior Differential Systems <i class="fa fa-caret-down"></i></button>';
+chap3[2] = '<div class="dropdown-container">';
+chap3[3] = '<a href="#">3.1 Introduction</a>';
+chap3[4] = '<a href="#">3.2 The Ideal</a>';
+chap3[5] = '<button class="dropdown-btn">3.3 Lie Derivatives<i class="fa fa-caret-down"></i></button>';
+chap3[6] = '<div class="dropdown-container">';
+chap3[7] = '<a href="#">3.3.1 Definition</a>';
+chap3[8] = '<a href="#">3.3.2 Geometrical Picture</a>';
+chap3[9] = '<a href="#">3.3.3 Examples</a>';
+chap3[10] = '</div>';
+chap3[11] = '<button class="dropdown-btn">3.4 Isovectors<i class="fa fa-caret-down"></i></button>';
+chap3[12] = '<div class="dropdown-container">';
+chap3[13] = '<a href="#">3.4.1 Definition</a>';
+chap3[14] = '<a href="#">3.4.2 Contact Manifold</a>';
+chap3[15] = '<a href="#">3.4.3 Fundamental Ideal</a>';
+chap3[16] = '<a href="#">3.4.4 PDE Balance Form</a>';
+chap3[17] = '</div>';
+chap3[18] = '<a href="#">3.5 Similarity Solutions</a>';
+chap3[19] = '</div>';
+chap3[20] = '</div><!-- Close chap3 -->'
+
 
 function show(i)
  {
@@ -24,7 +33,7 @@ function show(i)
    document.write(i[x]+'\n')
   }
  }
-// CREATED FROM:
+// [OBE] CREATED FROM:
 //	<button class="dropdown-btn">3 Differential Forms <i class="fa fa-caret-down"></i></button>
 //	<div class="dropdown-container">
 //		<a href="#">3.1 Intro</a>
