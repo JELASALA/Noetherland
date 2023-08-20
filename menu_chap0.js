@@ -1,12 +1,12 @@
 // JavaScript Document
 
-var chap0  = new Array();  // This is for the Chap1 Dropdown Menu lists.
+var chap0  = new Array();  // This is for the Chap0 Dropdown Menu lists.
 
 // ==================== These HTML lines will be written ==================== //
 chap0[0]   = '<div id="chap0">';
 chap0[1]   = '<button class="dropdown-btn"><pre style="font-family: Times New Roman; font-size: 14px; margin: 0px; padding: 0px;">                     HOME<i class="fa fa-caret-down"></i></pre></button>';
 chap0[2]   = '<div class="dropdown-container">';
-chap0[3]   = '<a href="#">Introduction</a>';
+chap0[3]   = '<a href="Chapter0/Dummy0.html">Introduction</a>';
 chap0[4]   = '<a href="#">Teaching Philosophies</a>';
 chap0[5]   = '<button class="dropdown-btn">Math You Need<i class="fa fa-caret-down"></i></button>';
 chap0[6]   = '<div class="dropdown-container">';
