@@ -1,0 +1,161 @@
+/* CSS for TEMPLATE 13.0 - dated 22 Aug 2023 */
+/* CSS Menu*/
+/* Line 20 - major blocks */
+/* Line 50 - sidenav */
+/* Line 90 - horizontal bars in header and footer */
+/* Line 110 - title bars */
+/* Line 130 - bulleted lists */
+/* Line 140 - image centering */
+/* Line 150 - accordion */
+
+
+
+
+
+
+
+
+
+/***************************************************************************************/
+/* BEGIN styling declarations for the major blocks of
+	the body = ( sidenav + flex container)
+	the flex container = (header + content + footer) stacked in a column */
+	html, body		{height: 100%; margin: 0;
+					 font-family:  Cambria, Helvetica, sans-serif;} 
+	.container		{height: 100%;
+					 display: flex; flex-direction: column; 	/* the footer is inside the content to permit
+																them to scroll together */
+					 margin-left: 210px; }						/* margin-left SHOULD equal the sidenav width */
+																/* any container border conflicts with scroll bar */
+	.header			{margin: 0px; padding: 0px;
+					 background-image: url(HeaderBackgroundFaded.png);
+					 color: firebrick; font-size: 20px; text-align: center; vertical-align: top;
+					 font-weight:400;							/* if font-weight is declared after the border the
+					 											the box is recalculated with random results */
+					 border: 3px inset #194a8d; }				/* #194a8d is a dark blue */
+	.content		{flex: 1; overflow: scroll;
+					 padding: 10px 10px;
+					 font-size: 20px;
+					 border: 3px inset #194a8d;}				/* #194a8d is a dark blue */
+	.footer			{background-image: url(FooterBackgroundFaded.png); 
+					 border: 3px inset #194a8d;}				/* #194a8d is a dark blue */
+/* END styling declarations for the major blocks */
+/***************************************************************************************/
+
+
+
+
+
+/***************************************************************************************/
+/* BEGIN styling for the FIXED SIDENAV menus full height 100%, 210px width, */
+	.sidenav 		{position: fixed; margin-top: 0; margin-left: 0; padding-top: 10px;
+					height: 100%; width: 210px; 				/* width SHOULD equal the container margin-left */
+					border: 3px inset #194a8d;					/* #194a8d is a dark blue */
+					background-color: #d3e2f7;					/* #d3e2f7 is light/sky blue */
+					overflow-x: hidden;							/* this disables a horizontal scroll */
+					z-index: 1000; }							/* this large z-index keeps the sidenav visible */
+/* styling for the sidenav links and the dropdown button */
+	.sidenav a,
+	.dropdown-btn 	{display: block; outline: none; border: none; 
+					margin: 0; padding: 6px 0px 6px 10px;
+					width: 100%; background: #2670d8;			/* #2670d8 is a dark blue */
+					cursor: pointer;font-family: Times New Roman;
+					color: #eeeeee; 							/* #eeeeee is an off-white */
+					font-size: 16px; text-align: left; text-decoration: none; }	
+/* on mouse-over change text color to white*/
+	.sidenav a:hover,.dropdown-btn:hover {color: white; }
+/* change the background color and text color of the active dropdown button */
+	.active 		{background-color: #7ca9e8;					/* #7ca9e8 is a greyish blue */
+					color: black; }
+/* styling for the dropdown containers (hidden by default) */
+	.dropdown-container 	{display: none; padding-left: 8px; background-color: black; }
+/* styling for the caret down icon */
+	.fa-caret-down 			{float: right; padding-right: 8px; color:white;}
+/* on smaller screens, where height is less than 450px, change the style of the sidenav
+(less padding and a smaller font size) */
+@media screen and (max-height: 450px) {.sidenav {padding-top: 15px;}.sidenav a {font-size: 18px;} }
+/* END styling the FIXED SIDENAV menus */
+/***************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+/***************************************************************************************/
+/* BEGIN styling for the HORIZONTAL BARs in the header and footer */
+	ul 				{list-style-type: none;					/* this removes the default bullets of <ul> tags */
+					width: 100%; margin: 0; padding: 0; overflow: hidden;
+					background-color: #38444d; }			/* #38444d is a very dark grey almost black
+															by adding the background color to <ul> instead of
+															each element this creates a black bar across the entire
+															width of the page */
+	li				{float: left; }
+	li a 			{display: block;						/* allows us to style the hyperlinks <a href=" "> */
+					float:left; padding-left: 10px;  padding-right: 10px;
+					text-decoration: none; }
+/* END styling for the HORIZONTAL BARs in the header and footer */
+/***************************************************************************************/
+
+
+
+
+
+
+/***************************************************************************************/
+/* BEGIN styling TITLE BARs top and bottom of content */
+	.titlebar ul	{list-style-type: none;					/* this removes the default bullets of <ul> tags */
+					height: 30px; margin: 0; padding-bot: 2px; width: 100%;
+					background-color: #dddddd;				/* #dddddd is a light grey */
+					text-align: center;}
+	.titlebar li 	{border: 1px solid #bbbbbb}					/* #bbbbbb is a dark grey */
+	.titlebar li a	{display: block;							/* allows us to style the hyperlinks <a href=" "> */
+					font-family: Times; font-size: 20px;
+					color: firebrick; }							/* firebrick is #b22222 */
+	.titlebar li a:hover {background-color: #dddddd; }			/* #dddddd is a light grey */
+/* END styling TITLE BARs top and bottom of content */
+/***************************************************************************************/
+
+
+
+
+
+
+
+/***************************************************************************************/
+/* BEGIN necessary styling for a bulleted list in content */
+	#block1			{float:left; width: 10px; }					/* this styles the bullet */
+	#block2			{padding: 0 0 0 16px; }						/* make left padding larger than width of block1 */
+/* END necessary styling to create a bulleted list in content */
+/***************************************************************************************/
+
+
+
+
+/***************************************************************************************/
+/* BEGIN styling for FIGURE centering and captioning */
+	figcaption 		{padding: 2px;
+					color: black; font-style: italic; text-align: center; }
+	.imgcenter 		{display: block;
+					margin-left: auto; margin-right: auto; } 	/* margin = auto centers the image on the page */
+/* END styling for FIGURE centering and captioning */
+/***************************************************************************************/
+
+
+/***************************************************************************************/
+/*  BEGIN styling for the/an ACCORDION */
+	.accordion 		{padding: 2px;  width: 100%;
+					border:1px solid #bbbbbb;					/* #bbbbbb is a dark grey */
+					background-color: #eeeeee; 					/* #eeeeee is an off white */
+					cursor: pointer;
+					color: #444444; 							/* #444444 is a very dark gray */
+					text-align: left; outline: none; font-size: 15px; }
+.accordion:active,
+ .accordion:hover 	{ background-color: #cccccc; }				/* #cccccc is grey */
+.panel 				{display: none; padding: 0 18px; background-color: white; overflow: hidden; }
+/*  END styling for the/an ACCORDION  */
+/***************************************************************************************/
