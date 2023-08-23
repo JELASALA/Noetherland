@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TEMPLATE Ver 13.0</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 4; const SS = 3;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS for TEMPLATE 13.0.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS for TEMPLATE 13.0.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="file:///NOETHERLAND/25 Software and Hardware/PROCESSING Tests/32 Ver12 TEMPLATE - menu writes JEL colors scrolling/Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="file:///NOETHERLAND/25 Software and Hardware/PROCESSING Tests/32 Ver12 TEMPLATE - menu writes JEL colors scrolling/Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3 - Section 4: Isovectors of PDE Systems</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+			<p align="center"><strong>3.4.3. The Fundamental Ideal</strong></p>
+
+			<p>The astute observer will note that the contact manifold ${C_m}$ containing the variables of the PDE system will not actually represent the PDE system until ${F^a}$ is employed to connect them together properly, forming a sub-manifold.  We have abstracted the relevant variables into EDS space ${T^*}\left( {{C_m}} \right)$ via the set of contact 1-forms.  It remains to embody the PDE system in an EDS construct as well.  Including it in some form of an ideal along with the contact 1-forms and possibly their differentials (to “close” the ideal) will set us up to apply the isovector formalism introduced earlier to “solve” for the symmetries of the PDE system represented by those isovectors.  Suhubi takes us through a long tortuous path to two candidates for such a “fundamental” ideal.  These are so-called ${m^{th}}$-order (closed) ideal candidates:</p>
+
+			<p>\begin{equation}{\mathcal{F}_m} = \bar {\mathcal{F}}\left( {{\sigma ^\alpha },\sigma _{{i_1}}^\alpha ,\sigma _{{i_1}{i_2}}^\alpha , \ldots ,\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;d\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;d{F^a}} \right)\notag\end{equation}</p>
+
+			<p>and</p>
+
+			<p>\begin{equation}{\mathcal{F}_m} = \bar {\mathcal{F}}\left( {{\sigma ^\alpha },\sigma _{{i_1}}^\alpha ,\sigma _{{i_1}{i_2}}^\alpha , \ldots ,\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;d\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;{\omega ^a}} \right)\notag\end{equation}</p>
+
+			<p>where</p>
+
+			<p>\begin{equation}{\omega ^a} \equiv {F^a}\mu  \equiv {F^a}d{x^1} \wedge d{x^2} \wedge  \ldots  \wedge d{x^n}\notag\end{equation}</p>
+
+			<strong>Comments:</strong>
+				<div>
+					<div id="block1">•</div>
+					<div id="block2">The overbar on both of these ideals indicates they are closed.  Closing an ideal is the insertion of differentials of the generators such that for all forms ${\sigma ^i}$ in the original ideal $I\left\{ {{\sigma ^i}} \right\}$ it is true that $d{\sigma ^i} \subset I$.  Both of these ideals include the exterior derivative of (only) the last contact 1-form $d\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha $ as a generator.  Suhubi shows this to be the only differential of the contact 1-forms one needs to close the ideal, since the exterior derivatives of all the others can be expressed as linear combinations of each other.</div>
+					<div id="block1">•</div>
+					<div id="block2">The inclusion of the 1-form $d{F^a}$ in the first case and n-form ${\omega ^a} \equiv {F^a}\mu $ in the second are ways to incorporate the essential information for the PDE itself into the ideal.  These ideals remain closed as taking the differential of either of these additional forms yields zero.</div>
+				</div>
+<br>
+			<img src="Spaces projections and mappings.jpg" alt="Spaces" class="imgcenter" width="30%">
+			<figcaption>Spaces projections and mappings</figcaption>
+
+			<p>We are going to jump to a restatement (with symbol substitutions) of Suhubi <strong>Theorem 5.12.5</strong> as it applies to development in his section 9.4: </p>
+			<p><strong>Theorem 5.12.5</strong> <strong>(restated)</strong>  A vector V is an isovector of the ideal ${\mathcal{I}}\left( {{\sigma ^\alpha },{\omega ^a}} \right),\;$ where ${\text{deg}}\left( {{\sigma ^\alpha }} \right) < k$ and ${\text{deg}}\left( {{\omega ^a}} \right) \geqslant k$, <em>iff</em> </p>
+			<p style="padding: 0 20px 0 20px"> (i)  it is an isovector of $\bar {\mathcal{I}}\left( {{\sigma ^\alpha }} \right)$, and <br> (ii)  ${\mathcal{L}_V}{\omega ^a} \in \;\bar {\mathcal{I}}\left( {{\sigma ^\alpha },{\omega ^a}} \right)$.</p>
+			<p>We will apply this theorem to the second of our fundamental ideals.  A great deal of progress can be made by breaking the process into two steps suggested by the above theorem.</p>
+			<p><strong>Part (i)</strong>.  First, we take ${\text{deg}}\left( {{\sigma ^\alpha }} \right) = 1$ and note that finding the isovectors of such an ideal is equivalent to finding the isovectors of its closure by Suhubi’s Theorem 5.12.4:  If an ideal ${\mathcal{I}}$ is generated by forms of the same degree, then isovectors of the ideals ${\mathcal{I}}$ and $\bar {\mathcal{I}}$ are coincident.</p>
+			<p>We apply the first part of the theorem to the contact ideal ${\mathcal{I}_m}\left( {{\sigma ^\alpha },\sigma _{{i_1}}^\alpha ,\sigma _{{i_1}{i_2}}^\alpha , \ldots ,\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha } \right)$ and define a “generic” isovector as follows:</p>
+
+			<p>\begin{equation}V = {X^i}\frac{\partial }{{\partial {x^i}}} + \mathop \sum \limits_{r = 0}^m V_{{i_1}{i_2} \ldots {i_r}}^\alpha \frac{\partial }{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\alpha }}\label{Vir}\end{equation}</p>
+
+			<p>This symbolism is used throughout the Suhubi process.  Note the use of the summation symbol rather than relying on the Einstein summation convention due to the differing index runs.  We then require the Lie derivative of all generators of the ideal with respect to this vector be expressible as a linear combination of the generators:    </p>
+
+			<p>\begin{equation}{\mathcal{L}_V}\sigma _{{i_1}{i_2} \ldots {i_k}}^\alpha  = \mathop \sum \limits_{r = 0}^m \lambda _{\beta \;{i_1} \ldots {i_k}}^{\alpha \;{j_1} \ldots {j_r}}\sigma _{{j_1} \ldots {j_r}}^\beta ,\;k = 0, \ldots ,m - 1\notag\end{equation}</p>
+
+			<p> where the $\lambda _{\beta \;{i_1} \ldots {i_k}}^{\alpha \;{j_1} \ldots {j_r}}$coefficients are functions since the result of the LHS is 1-forms. He proceeds over the course of 10 pages to insert the generic form for V into this operation, match sides of the equality, determine solution modes based on values of N (number of dependent variables) and finally expresses the result as Theorem 9.3.1, the first part of which is shown next.</p>
+
+			<p><strong>Theorem 9.3.1(first part)</strong>. The isovector coefficients $V_{{i_1}{i_2} \ldots {i_r}}^\alpha $  in \eqref{Vir} satisfy the recursion relation</p>
+
+			<p>\begin{equation}V_{{i_1}{i_2} \ldots {i_k},i}^\alpha  = D_i^{\left( k \right)}\left( {V_{{i_1}{i_2} \ldots {i_k}}^\alpha  - v_{{i_1}{i_2} \ldots {i_k},j}^\alpha {X^j}} \right),\;0 \leqslant k \leqslant m - 1\label{Viki}\end{equation}</p>
+
+			<p>\begin{equation}D_i^{\left( k \right)} = \frac{\partial }{{\partial {x^i}}} + v_i^\alpha \frac{\partial }{{\partial {u^\alpha }}} + \mathop \sum \limits_{r = 1}^k v_{{i_1}{i_2} \ldots {i_r},i}^\alpha \frac{\partial }{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\alpha }}\notag\end{equation}</p>
+
+			<p>This differential operator also has a recursion relation    </p><p>\begin{equation}D_i^{\left( 0 \right)} = \frac{\partial }{{\partial {x^i}}} + v_i^\alpha \frac{\partial }{{\partial {u^\alpha }}},\;\;D_i^{\left( {k + 1} \right)} = D_i^{\left( k \right)} + v_{{i_1}{i_2} \ldots {i_{k + 1}},i}^\alpha \frac{\partial }{{\partial v_{{i_1}{i_2} \ldots {i_{k + 1}}}^\alpha }}\notag\end{equation}</p>
+
+			<p>Incidentally, these can be written more compactly using the multi-index $J\left( k \right) \equiv {i_1}{i_2} \ldots {i_k}$ from Chapter 2:    </p><p>\begin{equation}V_{J\left( k \right),i}^\alpha  = D_i^{\left( k \right)}\left( {V_{J\left( k \right)}^\alpha  - v_{J\left( k \right),j}^\alpha {X^j}} \right),\;0 \leqslant k \leqslant m - 1\notag\end{equation}</p>
+
+			<p>\begin{equation}D_i^{\left( k \right)} = \frac{\partial }{{\partial {x^i}}} + v_i^\alpha \frac{\partial }{{\partial {u^\alpha }}} + \mathop \sum \limits_{r = 1}^k v_{J\left( r \right),i}^\alpha \frac{\partial }{{\partial v_{J\left( r \right)}^\alpha }}\notag\end{equation}</p><p>\begin{equation}D_i^{\left( 0 \right)} = \frac{\partial }{{\partial {x^i}}} + v_i^\alpha \frac{\partial }{{\partial {u^\alpha }}},\;\;D_i^{\left( {k + 1} \right)} = D_i^{\left( k \right)} + v_{J\left( {k + 1} \right),j}^\alpha \frac{\partial }{{\partial v_{J\left( {k + 1} \right)}^\alpha }}\notag\end{equation}</p>
+
+<p>Let us compute $V$ for $m = 2$.
+
+			<p>\begin{equation}V = {X^i}\frac{\partial }{{\partial {x^i}}} + V_0^\alpha \frac{\partial }{{\partial v_0^\alpha }} + V_{{i_1}}^\alpha \frac{\partial }{{\partial v_{{i_1}}^\alpha }} + V_{{i_1}{i_2}}^\alpha \frac{\partial }{{\partial v_{{i_1}{i_2}}^\alpha }} = {X^i}\frac{\partial }{{\partial {x^i}}} + {U^\alpha }\frac{\partial }{{\partial {u^\alpha }}} + V_{{i_1}}^\alpha \frac{\partial }{{\partial v_{{i_1}}^\alpha }} + V_{{i_1}{i_2}}^\alpha \frac{\partial }{{\partial v_{{i_1}{i_2}}^\alpha }}\label{V0}\end{equation}</p>
+
+			<p>where the $r = 0$ term has the indicated interpretation.  Now the next term is</p>
+
+			<p>\begin{equation}V_i^\alpha  \equiv V_{0,i}^\alpha  = D_i^{\left( 0 \right)}\left( {V_0^\alpha  - v_{0,j}^\alpha {X^j}} \right) = \left( {\frac{\partial }{{\partial {x^i}}} + v_i^\beta \frac{\partial }{{\partial {u^\beta }}}} \right)\left( {{U^\alpha } - v_j^\alpha {X^j}} \right) = \frac{{\partial {U^\alpha }}}{{\partial {x^i}}} - v_j^\alpha \frac{{\partial {X^j}}}{{\partial {x^i}}} + v_i^\beta \frac{{\partial {U^\alpha }}}{{\partial {u^\beta }}} - v_i^\beta v_j^\alpha \frac{{\partial {X^j}}}{{\partial {u^\beta }}}\label{Vi}\end{equation}</p>
+
+			<p>in agreement with Suhubi (9.3.21).  Note how we move the operation $\partial /\partial {x^i}$ past the “independent variable” $v_j^\alpha $ as we are in the contact manifold.  Note also the replacement of dummy variable $\alpha $ with $\beta $ to avoid confusion.  The next (last) term starts to get complicated:</p>
+
+			<p>\begin{equation}V_{{i_1}{i_2}}^\alpha  = D_{{i_2}}^{\left( 1 \right)}\left( {V_{{i_1}}^\alpha  - v_{{i_1},j}^\alpha {X^j}} \right)\notag\end{equation}</p><p>\begin{equation}D_{{i_2}}^{\left( 1 \right)} = D_{{i_2}}^{\left( 0 \right)} + v_{{i_1},{i_2}}^\alpha \frac{\partial }{{\partial v_{{i_1}}^\alpha }} = \frac{\partial }{{\partial {x^{{i_2}}}}} + v_{{i_2}}^\beta \frac{\partial }{{\partial {u^\beta }}} + v_{{i_1},{i_2}}^\beta \frac{\partial }{{\partial v_{{i_1}}^\beta }}\notag\end{equation}</p>
+
+			<p>having replaced dummy variable $i$ with ${i_2}$.  Then</p>
+
+			<p>\begin{equation}V_{{i_1}{i_2}}^\alpha  = \left( {\frac{\partial }{{\partial {x^{{i_2}}}}} + v_{{i_2}}^\beta \frac{\partial }{{\partial {u^\beta }}} + v_{{i_1}{i_2}}^\beta \frac{\partial }{{\partial v_{{i_1}}^\beta }}} \right)\left( {\frac{{\partial {U^\alpha }}}{{\partial {x^i}}} - v_j^\alpha \frac{{\partial {X^j}}}{{\partial {x^i}}} + v_i^\beta \frac{{\partial {U^\alpha }}}{{\partial {u^\beta }}} - v_i^\beta v_j^\alpha \frac{{\partial {X^j}}}{{\partial {u^\beta }}} - v_{{i_1}j}^\alpha {X^j}} \right)\label{Vii}\end{equation}</p>
+
+			<p>Note that we have replaced $v_{{i_1},{i_2}}^\alpha $, for example, with $v_{{i_1}{i_2}}^\alpha $ to make explicit their roles as “independent variables” in contact space per Suhubi (9.26).  We will not expand this term, but pause to reflect on the remaining vector coefficients for such an $m = 2$ case.  Equations \eqref{V0}, \eqref{Vi} and \eqref{Vii} give the form of the isovector of the contact ideal in terms of functions ${X^j}$ and ${U^\alpha }$.  The second part of Suhubi’s Theorem 9.3.1 addresses these functions for the case of a single or multiple dependent variables in the original PDE system.</p>
+
+			<p><strong>Theorem 9.3.1(second part)</strong>  For $N > 1$, the coefficients ${X^i}$ and ${U^\alpha }$ are arbitrary functions of $\left( {{x^i},{u^\alpha }} \right)$.  For $N = 1$ (dropping the $\alpha $ superscript here) these functions are connected by a single “universal” function $F\left( {{x^i},u,{v_j}} \right)$, from which both ${X^i}$ and $U$ can be computed thusly:    </p><p>\begin{equation}{X^i} =  - \frac{{\partial F}}{{\partial {v_i}}}\;{\text{and}}\;U = F - {v_i}\frac{{\partial F}}{{\partial {v_i}}},\;m = 1\notag\end{equation}</p>
+
+			<p>In Suhubi equations (9.3.25) and (9.3.26) he provides extensions of the above for higher  ($m > 1$) components of the isovectors, with the first (for $m = 2$) as follows:    </p><p>\begin{equation}{V_i} = \frac{{\partial F}}{{\partial {x^i}}} + {v_i}\frac{{\partial F}}{{\partial u}}\notag\end{equation}</p>
+
+			<p>So far the results are quite sterile in that we have found the isovector of the contact ideal without any information about the PDE system itself per condition (i) of Theorem 5.12.5 (restated), and repeated here:</p>
+
+			<p><strong>Theorem 5.12.5 (restated)</strong> A vector V is an isovector of the ideal ${\mathcal{I}}\left( {{\sigma ^\alpha },{\omega ^a}} \right),\;$where ${\text{deg}}\left( {{\sigma ^\alpha }} \right) < k$ and ${\text{deg}}\left( {{\omega ^a}} \right) \geqslant k$, iff</p>
+
+			<p style="padding: 0 20px 0 20px">(i)  it is an isovector of $\bar {\mathcal{I}}\left( {{\sigma ^\alpha }} \right)$, and <br>(ii)  ${\mathcal{L}_V}{\omega ^a} \in \;\bar {\mathcal{I}}\left( {{\sigma ^\alpha },{\omega ^a}} \right)$</p>
+
+			<p>We now turn to the second part of the theorem.  The full ideal for which we seek isovectors is the fundamental ideal introduced earlier:    </p><p>\begin{equation}{\mathcal{F}_m} = \bar {\mathcal{F}}\left( {{\sigma ^\alpha },\sigma _{{i_1}}^\alpha ,\sigma _{{i_1}{i_2}}^\alpha , \ldots ,\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;d\sigma _{{i_1}{i_2} \ldots {i_{m - 1}}}^\alpha ;{\omega ^a}} \right)\notag\end{equation}</p>
+			where
+
+			<p>\begin{equation}{\omega ^a} \equiv {F^a}\mu  \equiv {F^a}d{x^1} \wedge d{x^2} \wedge  \ldots  \wedge d{x^n},\;a = 1, \ldots ,A\notag\end{equation}</p>
+
+			<p>You many notice that part (i) of Theorem 5.12.5 (restated) has ignored the closure of the contact ideal belabored above.  Suhubi explains (by his Theorem 5.12.4) that since that ideal is generated by forms of the same degree its isovectors will be the same as those of its closure $\bar {\mathcal{I}}$ so the results above will still apply as we move to the next step. Proceeding, let us now compute </p>
+
+			<p>\begin{equation}{\mathcal{L}_V}\left( {{\omega ^a}} \right) = \left\langle {V,d{\omega ^a}} \right\rangle  + d\left\langle {V,{\omega ^a}} \right\rangle \;\notag\end{equation}</p>
+
+			<p>Expanding the LHS this becomes
+
+				<p>\begin{equation}{\mathcal{L}_V}\left( {{\omega ^a}} \right) = V\left( {{F^a}} \right)\mu  + {F^a}d{X^i} \wedge {\mu _i}\label{Vexp}\end{equation}</p>
+
+				where
+
+				<p>\begin{equation}{\mu _i}\left\langle {\frac{\partial }{{\partial {x^i}}},\mu } \right\rangle  = {\left( { - 1} \right)^{i + 1}}d{x^1} \wedge  \ldots  \wedge d{x^{i - 1}} \wedge d{x^{i + 1}} \wedge  \ldots  \wedge d{x^n}\notag\end{equation}</p>
+
+			</p>
+
+			<button class="accordion"><strong>EXERCISE: Prove \eqref{Vexp}</strong></button>
+			<div class="panel"> 										<!-- BEGIN accordion panel--> 
+				<p style="padding: 10px; border: 1px solid black;">		<!-- BEGIN panel paragraph styling --> 
+				First term:  we start with
+
+				\begin{equation}d{\omega ^a} = d\left( {{F^a}\mu } \right) = d{F^a} \wedge d{x^1} \wedge d{x^2} \wedge  \ldots  \wedge d{x^n}\notag\end{equation}
+
+				since $d\mu  = 0$.  Then
+
+				\begin{equation}\left\langle {V,d{\omega ^a}} \right\rangle  = \left\langle {V,d{F^a} \wedge \mu } \right\rangle  = \left\langle {V,d{F^a}} \right\rangle  \wedge \mu  - d{F^a} \wedge \left\langle {V,\mu } \right\rangle  = V\left( {{F^a}} \right)\mu  - {X^i}d{F^a} \wedge {\mu _i}\notag\end{equation}
+
+				Note the last term introduces the symbol ${\mu _i}$ which comes from
+
+				\begin{equation}\left\langle {\frac{\partial }{{\partial {x^i}}},d{x^1} \wedge d{x^2} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = {\left( { - 1} \right)^{i + 1}}d{x^1} \wedge d{x^2} \wedge d{x^{i - 1}} \wedge d{x^{i + 1}} \wedge  \ldots  \wedge d{x^n} \equiv {\mu _i}\notag\end{equation}
+
+				Replacement of $\left\langle {V,d{F^a}} \right\rangle $ with $V\left( {{F^a}} \right)$ (vector operating on a function) is demonstrated as follows:
+
+				\begin{equation}\left\langle {V,d{F^a}} \right\rangle  = \left\langle {{X^i}\frac{\partial }{{\partial {x^i}}} + {U^\alpha }\frac{\partial }{{\partial {u^\alpha }}} + \mathop \sum \limits_{r = 1}^m V_{{i_1}{i_2} \ldots {i_r}}^\alpha \frac{{\partial {F^a}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\alpha }},\frac{{\partial {F^a}}}{{\partial {x^i}}}d{x^i} + \frac{{\partial {F^a}}}{{\partial {u^\alpha }}}d{u^\alpha } + \mathop \sum \limits_{r = 1}^m \frac{{\partial {F^a}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\alpha }}dv_{{i_1}{i_2} \ldots {i_r}}^\alpha } \right\rangle \notag\end{equation}
+
+				\begin{equation}\left\langle {V,d{F^a}} \right\rangle  = \left\langle {{X^i}\frac{{\partial {F^a}}}{{\partial {x^i}}} + {U^\alpha }\frac{{\partial {F^a}}}{{\partial {u^\alpha }}} + \mathop \sum \limits_{r = 1}^k V_{{i_1}{i_2} \ldots {i_r}}^\alpha \frac{{\partial {F^a}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\alpha }}} \right\rangle  = V\left( {{F^a}} \right)\notag\end{equation}
+
+				The second term
+
+				\begin{equation}d\left\langle {V,{\omega ^a}} \right\rangle  = d\left\langle {V,{F^a}\mu } \right\rangle  = d\left( {{F^a}\left\langle {V,\mu } \right\rangle \;} \right) = d\left( {{F^a}{X^i}{\mu _i}\;} \right) = {F^a}d{X^i} \wedge {\mu _i} + {X^i}d{F^a} \wedge {\mu _i}\;\notag\end{equation}
+
+				Combining these results: 
+
+				\begin{equation}{\mathcal{L}_V}\left( {{\omega ^a}} \right) = V\left( {{F^a}} \right)\mu  - {X^i}d{F^a} \wedge {\mu _i} + {F^a}d{X^i} \wedge {\mu _i} + {X^i}d{F^a} \wedge {\mu _i} = V\left( {{F^a}} \right)\mu  + {F^a}d{X^i} \wedge {\mu _i}\;\color{blue}\blacksquare \notag\end{equation}
+
+			</p>														<!-- END panel paragraph styling -->
+	</div>										 						<!-- END ACCORDION panel--> 
+
+			<p>To satisfy the second part <strong>Theorem 5.12.5</strong> (restated) we require ${\mathcal{L}_V}{\omega ^a} \in \;{\bar {\mathcal{I}}_m}$: </p>
+
+<!-- <p>-->
+			<p>\begin{equation}V\left( {{F^a}} \right)\mu  + {F^a}d{X^i} \wedge {\mu _i} = \mathop \sum \limits_{r = 0}^{m - 1} \lambda _\beta ^{a\;{i_1} \ldots {i_r}} \wedge \sigma _{{i_1} \ldots {i_r}}^\beta  + \Lambda _\beta ^{a\;{i_1} \ldots {i_{m - 1}}} \wedge d\sigma _{{i_1} \ldots {i_{m - 1}}}^\beta  + \lambda _\beta ^a{\omega ^\beta }\notag\end{equation}</p>
+
+			<p>The coefficient forms on the RHS are of appropriate degree to match the LHS.  Note Suhubi uses both “a” and “$\alpha $” on the same symbols so be careful.  Recall the indices above run as follows:  $a = 1, \ldots ,A,\;\;\;i = 1, \ldots ,n\;\;{\text{and}}\;\alpha  = 1, \ldots ,N$.  [At some point Suhubi’s development assumes $A = N$; that is, the problem is sufficiently defined with the same number of PDEs as dependent variables, so his choice of similar looking indices may not have been accidental.]</p>
+
+			<p>The program has us then substituting the explicit function ${F^a}$ in the LHS, expanding everything to the index running limits and equating coefficients of matching forms on either side.  This results in a set of determining equations (DEs) for the components of V (after eliminating the coefficients on the RHS), expressible in terms of ${X^i}$ and ${U^\alpha }$ for the $N > 1$ case, and the universal function $F\left( {{x^i},u,{v_j}} \right)$ for $N = 1$.</p>
+
+			<p>In the case of the 1D heat equation the relationships are:</p>
+
+			<p>\begin{equation}U = F - {v_1}\frac{{\partial F}}{{\partial {v_1}}} - {v_2}\frac{{\partial F}}{{\partial {v_2}}}\notag\end{equation}</p>
+
+			<p>\begin{equation}{X^1} =  - \frac{{\partial F}}{{\partial {v_1}}},\;\;{X^2} =  - \frac{{\partial F}}{{\partial {v_2}}}\notag\end{equation}</p><p>\begin{equation}{V_1} = \frac{{\partial F}}{{\partial x}} + {v_1}\frac{{\partial F}}{{\partial u}},\;\;\;\;\;\;\;{V_2} = \frac{{\partial F}}{{\partial t}} + {v_2}\frac{{\partial F}}{{\partial u}}\notag\end{equation}</p>
+
+			<p>where the universal function is found by solving the determining equations (DEs). In the APPENDIX 3.4B (HeatNonBalance) we apply this process to the heat equation, whose symmetry vectors (isovectors) we have found before.</p>
+
+	</div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="file:///NOETHERLAND/25 Software and Hardware/PROCESSING Tests/32 Ver12 TEMPLATE - menu writes JEL colors scrolling/Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="file:///NOETHERLAND/25 Software and Hardware/PROCESSING Tests/32 Ver12 TEMPLATE - menu writes JEL colors scrolling/Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Chapter 3, Section 4, Sub-section 3</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
