@@ -1,6 +1,6 @@
 // JavaScript Document
 
-var chap6  = new Array();  // This is for the Chap6 Dropdown Menu lists.
+var chap7  = new Array();  // This is for the Chap7 Dropdown Menu lists.
 
 // ==================== These HTML lines will be written ==================== //
 chap7[0]   = '<div id="chap6">';
