@@ -14,13 +14,13 @@ chap3[7] = '<a href="#">3.3.1 Definition</a>';
 chap3[8] = '<a href="#">3.3.2 Geometrical Picture</a>';
 chap3[9] = '<a href="#">3.3.3 Examples</a>';
 chap3[10] = '</div>';
-chap3[11] = '<button class="dropdown-btn">3.4 Isovectors<i class="fa fa-caret-down"></i></button>';
+chap3[11] = '<button class="dropdown-btn">3.4 Isovectors<i class="fa fa-caret-down"></i></button>';// begin 3.4
 chap3[12] = '<div class="dropdown-container">';
 chap3[13] = '<a href="#">3.4.1 Definition</a>';
 chap3[14] = '<a href="#">3.4.2 Contact Manifold</a>';
 chap3[15] = '<a href="#">3.4.3 Fundamental Ideal</a>';
 chap3[16] = '<a href="#">3.4.4 PDE Balance Form</a>';
-chap3[17] = '</div>';
+chap3[17] = '</div>'; // end 3.4
 chap3[18] = '<a href="#">3.5 Similarity Solutions</a>';
 chap3[19] = '</div>';
 chap3[20] = '</div><!-- Close chap3 -->'
