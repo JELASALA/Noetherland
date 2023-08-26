@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 3.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 2; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+    <p align="center"><strong>3.2. The Ideal and Characteristic Vectors </strong></p>
+    <p><b>Ideal.</b>  This brings us to the concept of the ideal.   Symbolically we can represent an ideal $I\left\{ {{\alpha _1},{\alpha _2}, \ldots ,{\alpha _k}} \right\}$ as follows:
+      \begin{equation}\gamma  \wedge {\alpha _i} \in \;I\end{equation}
+      
+      where $I\left\{ {{\alpha _1},{\alpha _2}, \ldots ,{\alpha _k}} \right\}$ is a subset of a larger “graded” space $\Lambda \left( M \right)$ and where $\gamma$ is any differential form in $\Lambda \left( M \right)$.  The ${\alpha _i}$ are referred to as generators of the ideal.  According to Edelen:  “an ideal I is said to be generated by ${\alpha _1},{\alpha _2}, \ldots ,{\alpha _k}$ iff every element of I is the sum of terms, each of which contains at least one of the elements ${\alpha _i}$ as a factor.”  For example (Edelen p. 105), in $M = {E_4}$ let
+      
+      \begin{equation}{\alpha _1} = 2dx - 3ydz\notag\end{equation}\begin{equation}{\alpha _2} = xdy - zdt\notag\end{equation}\begin{equation}{\alpha _3} = {x^2}tdx \wedge dt - tdy \wedge dz\notag\end{equation}
+      Then any 1-form in $I\left\{ {{\alpha _1},{\alpha _2},{\alpha _3}} \right\}$ must look like
+      \begin{equation}\omega \left( 1 \right) = f{\alpha _1} + g{\alpha _2}\notag\end{equation}and any 2-form must look like
+      \begin{equation}\sigma \left( 2 \right) = \beta \left( 1 \right) \wedge {\alpha _1} + \gamma \left( 1 \right) \wedge {\alpha _2} + h{\alpha _3}\notag\end{equation}
+      where I have used parentheses to indicate the degree of the form where it may be ambiguous.  Note there is nothing magic here; this is simply a definition.  Arbitrary forms $\gamma $ in $\Lambda \left( M \right)$ are not “in the club” by themselves.  A specialized ideal is the closed ideal, which we will address further below.  
+      
+  <br>
+  <br>
+  <b>
+    Characteristic Vectors.</b>  Before introducing closed ideals we will discuss the dual vector space to an ideal generated by 1-forms, called the characteristic subspace, containing the characteristic vectors of that ideal.  They are defined by the contraction:
+      
+      \begin{equation}\left\langle {{V_j},{\omega ^i}} \right\rangle  = 0;i = 1, \ldots ,r;\;j = r + 1, \ldots ,m;{\omega ^i} \in {\Lambda ^1}\left( M \right)\end{equation}
+      where the r different ${\omega ^i}$ generate the ideal and the ${V_j}$ are the characteristic vectors for the manifold of dimension m.  Note the requirement that the number of 1-forms plus the number of characteristic vectors totals to the dimension of the manifold holds only for ideals generated by 1-forms. <br><br>
+      
+      From Suhubi Example 5.6.2, consider an ideal in $M = {E_4}$ generated by
+      
+      \begin{equation}{\omega ^1} = dx - ydz\notag\end{equation}\begin{equation}{\omega ^2} = dx - xdy + tdz\notag\end{equation}
+      Then a characteristic vector of that ideal
+      
+      \begin{equation}V = {v^x}{\partial _x} + {v^y}{\partial _y} + {v^z}{\partial _z} + {v^t}{\partial _t}\notag\end{equation}must satisfy
+      \begin{equation}\left\langle {V,{\omega ^i}} \right\rangle  = 0,\;i = 1,2\notag\end{equation}This generates two equations:
+      \begin{equation}{v^x} - y{v^z} = 0\notag\end{equation}\begin{equation}{v^x} - x{v^y} + t{v^z} = 0\notag\end{equation}Together these imply
+      \begin{equation}{v^x} = y{v^z}\notag\end{equation}\begin{equation}{v^y} = \frac{{y + t}}{x}{v^z}\notag\end{equation}
+      We can choose  ${v^z} = 1$, yielding the first characteristic vector:
+      
+      \begin{equation}{V_1} = y{\partial _x} + \frac{{y + t}}{x}{\partial _y} + {\partial _z}\notag\end{equation}
+      The second vector (there must be $4 - 2 = 2$) is found by realizing there were no conditions on ${v^t}$, so we can set it to 1 yielding 
+      \begin{equation}{V_2} = {\partial _t}\;\;\color{blue}\blacksquare \notag\end{equation}
+      An extension of this idea applies to ideal generated by forms of diverse degrees.  Then the condition for characteristic vectors is the existence of $\lambda _b^a$ — forms in $\Lambda \left( M \right)$ of suitable degrees — such that:
+      
+      \begin{equation}\left\langle {{V_j},{\omega ^a}} \right\rangle  = \lambda _b^a \wedge {\omega ^b},a,b = 1, \ldots ,r;\;j = r + 1, \ldots ,m;\;{\omega ^a} \in \Lambda \left( M \right);\;\lambda _b^a \in \Lambda \left( M \right)\end{equation}
+  <b><br>
+    Note:</b>  the RHS of this relation produces forms that, by definition, are in the ideal we started with, since for an ideal $I\left\{ {{\omega ^1}, \ldots ,{\omega ^r}} \right\}$ its members satisfy $\gamma  \wedge {\omega ^a} \in \;I$ for $\gamma  \in \Lambda \left( M \right)$. <br><br>
+      
+      In Suhubi Example 5.6.3 (and Edelen page 108), consider an ideal $I\left\{ {{\omega ^1},{\omega ^2}} \right\}$ in $M = {E_4}$ generated by
+      
+      \begin{equation}{\omega ^1} = dx - ydz\notag\end{equation}\begin{equation}{\omega ^2} = tdx \wedge dz - xdy \wedge dt\notag\end{equation}
+      Then a vector 
+      \begin{equation}V = {v^x}{\partial _x} + {v^y}{\partial _y} + {v^z}{\partial _z} + {v^t}{\partial _t}\notag\end{equation}must satisfy
+      \begin{equation}\left\langle {V,{\omega ^1}} \right\rangle  = 0\notag\end{equation}
+      as contraction reduces the degree of the form by one and there are no zero-forms in the ideal, and
+      
+      \begin{equation}\left\langle {V,{\omega ^2}} \right\rangle  = \lambda {\omega ^1}\notag\end{equation}for $\lambda $ a function.  These conditions lead to:
+      \begin{equation}{v^x} - y{v^z} = 0\notag\end{equation}and
+      \begin{equation}t{v^x}dz - t{v^z}dx - x{v^y}dt + x{v^t}dy = \lambda dx - \lambda ydz\notag\end{equation}So 
+      \begin{equation} - t{v^z} = \lambda \notag\end{equation}\begin{equation}t{v^x} =  - \lambda y\notag\end{equation}\begin{equation} - x{v^y} = 0\notag\end{equation}\begin{equation}x{v^t} = 0\notag\end{equation}Solving the first two together gives us:
+      \begin{equation}{v^z}/{v^x} = 1/y\notag\end{equation}
+      We can choose, say, ${v^z} = 1$ so ${v^x} = y$, giving us
+      
+      \begin{equation}V = y{\partial _x} + {\partial _y}\;\color{blue}\blacksquare \notag\end{equation}
+      Now we might expect there to be another characteristic vector of the ideal since $m = 4$ and $r = 2$.  As Edelen points out, for ideals generated by anything but 1-forms, we do not reach such a conclusion.  Suhubi’s version of this example includes three more “characteristic vectors” of the generator forms themselves which seem not relevant if we are focusing on the ideal.<br>
+  <br>
+  <b>Closed Ideal.</b>  A closed ideal satisfies $d\omega  \in I$ for all $\omega  \in I$.  What could be simpler?  We can start with an arbitrary ideal and close it by extending the list of its generators.  For example, if
+      \begin{equation}I\left\{ {{\omega _1}, \ldots ,{\omega _r}} \right\}\notag\end{equation}then we can provisionally add to it:
+      \begin{equation}I\left\{ {{\omega _1}, \ldots ,{\omega _r},d{\omega _1}, \ldots ,d{\omega _r}} \right\}\notag\end{equation}
+      Now it may be that one or more of the exterior derivatives generate a redundant member (a linear combination some of the ${\omega _i}$), in which case we remove that exterior derivative from the list of generators. <br>
+  <br>
+      
+  <b>Suhubi Example 5.10.1.</b>  Return to the ideal generated by
+      
+      \begin{equation}{\omega ^1} = dx - ydz\notag\end{equation}\begin{equation}{\omega ^2} = tdx \wedge dz - xdy \wedge dt\notag\end{equation}Now 
+      \begin{equation}d{\omega ^1} =  - dy \wedge dz\notag\end{equation}
+      Can $d{\omega ^1}$ be written as a linear combination of basis forms?
+      
+      \begin{equation}d{\omega ^1} =  - dy \wedge dz = ? = \Gamma _1^1 \wedge \left( {dx - ydz} \right) + \Gamma _1^2 \wedge \left( {tdx \wedge dz - xdy \wedge dt} \right)\notag\end{equation}
+      where the Gammas are forms of appropriate degree.  In this case $\Gamma _1^1$ must be a 1-form and $\Gamma _1^2$ a zero-form (function).  To check we assume a general form $\Gamma _1^1 = gdx + hdy + pdz + qdt$, substitute it in and match coefficients of the (independent) basis 1-forms.  A little algebra tells us that there are no self-consistent solutions for the coefficients of $\Gamma _1^1$ and the function $\Gamma _1^2$, so $d{\omega ^1}$ is an independent member of the ideal.  What about $d{\omega ^2}$?
+      \begin{equation}d{\omega ^2} = dt \wedge dx \wedge dz - dx \wedge dy \wedge dt = \left( {\frac{1}{x}dx + \frac{1}{t}dt} \right) \wedge {\omega ^2}\notag\end{equation}
+      so this is redundant.  The full generator list for this closed ideal is$\;I\left\{ {{\omega ^1},{\omega ^2},dy \wedge dz} \right\}\;\color{blue}\blacksquare $.
+      
+      
+      
+    </p>
+
+      </div> 														<!-- END MJ-rendering--> 
+<br>
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Chapter 3 Section 1</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
