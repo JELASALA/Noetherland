@@ -7,7 +7,7 @@ chap3[0] = '<div id="chap3">';
 chap3[1] = '<button class="dropdown-btn">3 Exterior Differential Systems <i class="fa fa-caret-down"></i></button>';
 chap3[2] = '<div class="dropdown-container">';
 chap3[3] = '<a href="#">3.1 Introduction</a>';
-chap3[4] = '<a href="#">3.2 The Ideal</a>';
+chap3[4] = '<a href="3-2 Final Template.html">3.2 The Ideal</a>';
 chap3[5] = '<button class="dropdown-btn">3.3 Lie Derivatives<i class="fa fa-caret-down"></i></button>';
 chap3[6] = '<div class="dropdown-container">';
 chap3[7] = '<a href="#">3.3.1 Definition</a>';
