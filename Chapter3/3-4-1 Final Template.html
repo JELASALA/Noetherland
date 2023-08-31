@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 3.4.1</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 4; const SS = 1; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+					tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//						tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>3.4 Isovectors of PDE Systems</strong></p>
+  <p align="center"><strong>3.4.1 Introduction </strong></p>
+      Before jumping with both feet into full featured Suhubi/Edelen approach we provide baby steps by showing one way to encode a PDE in EDS using something like the “Harrison/Burke process”.  We will treat the ever-popular 1D heat equation. 
+      \begin{equation}{u_{xx}} = {u_t}\end{equation}
+       First we change this second order PDE into a system of two FOPDEs by redefining variables.  This is in the same spirit as the full Suhubi process. Let
+      \begin{equation}{u_x} = w\notag\end{equation}
+
+then the PDE reads
+
+      \begin{equation}{w_x} = {u_t}\notag\end{equation}
+Our two coupled FOPDEs are
+      \begin{equation}
+      \begin{split}
+      {u_x} - w = 0\\
+      {u_t} - {w_x} = 0\\
+      \end{split}
+      \label{e1}\end{equation}
+      
+      At this (early) stage Harrison (1997 - Harrison - Differential Form Symmetry Analysis of Two Equations) invokes two forms “by inspection” that when “pulled back” and “annulled” yield these coupled FOPDEs.  Instead we will follow a more direct process, with a step that may seem non-obvious but it at least enables a more prescriptive process. <br><br>
+      
+      Multiply each FOPDE by the volume form $dx \wedge dt$ for the $n = 2$ manifold covered by $\left( {x,t} \right)$:
+      
+      \begin{equation}\left( {{u_x} - w} \right)dx \wedge dt = 0\notag\end{equation}
+      \begin{equation}\left( {{u_t} - {w_x}} \right)dx \wedge dt = 0\notag\end{equation}
+      Distribute and form total differentials of dependent variables where possible:
+      
+      \begin{equation}{u_x}dx \wedge dt - wdx \wedge dt = \left( {du - {u_t}dt} \right) \wedge dt - wdx \wedge dt = du \wedge dt - wdx \wedge dt = 0\notag\end{equation}
+      \begin{equation}{u_t}dx \wedge dt - {w_x}dx \wedge dt =  - \left( {du - {u_x}dx} \right) \wedge dx - \left( {dw - {w_t}dt} \right) \wedge dt =  - du \wedge dx - dw \wedge dt = 0\notag\end{equation}
+      
+      where we have utilized the chain rule and exploited the fact that some elements will vanish from a form wedging with itself (grayed out).  Rearranging some of the wedge products:
+      
+      \begin{equation}du \wedge dt - wdx \wedge dt = 0 \equiv {\omega ^1}\notag\end{equation}\begin{equation}dx \wedge du + dt \wedge dw = 0 \equiv {\omega ^2}\notag\end{equation}
+      
+      This encodes the 1D heat equation in the language of exterior differential forms; the two 2-forms form an ideal $I\left\{ {{\omega ^1},{\omega ^2}} \right\}$ (but not a closed ideal).   These forms live in a higher level jet space, where all 4 variables $\left( {x,t,u,w} \right)$ are treated as independent and which, when pulled back to the base manifold, yield the original FOPDEs. <br><br>
+      
+      We now “solve” the EDS system by applying the requirement for isovectors using <em><strong>Cartan’s Magic Formula</strong></em> (3.3.1): <!--Find way to reference this equation!!! -->
+
+
+      \begin{equation}{\mathcal{L}_V}\left( {{\omega ^1}} \right) = \left\langle {V,d{\omega ^1}} \right\rangle  + d\left\langle {V,{\omega ^1}} \right\rangle  = \Lambda _\beta ^1 \wedge {\omega ^\beta }\tag{A}\label{eqA}\end{equation}
+      \begin{equation}{\mathcal{L}_V}\left( {{\omega ^2}} \right) = \left\langle {V,d{\omega ^2}}\right\rangle + d\left\langle{V,{\omega ^2}}\right\rangle = \Lambda _\beta ^2 \wedge {\omega ^\beta }\tag{B}\label{eqB}\end{equation}
+
+
+      with $\beta  = 1,2$.  Our challenge is to find vectors V that satisfy this system of equations.  In the process we will find the coupling “constants” $\Lambda _\beta ^\alpha $ that make this true but otherwise have no significance.  The real prize is finding the coefficients of the isovector, symbolically expressed as
+      
+      \begin{equation}V = T{\partial _t} + X{\partial _x} + U{\partial _u} + W{\partial _w}\notag\end{equation}
+      where the coefficients are functions of the independent and dependent variables.  Starting with \eqref{eqA} we will need
+      
+      \begin{equation}\left\langle{V,{\omega ^1}}\right\rangle =\left\langle {X{\partial _x} + T{\partial _t} + U{\partial _u} + W{\partial _w},du \wedge dt - wdx \wedge dt}\right\rangle =  - Xwdt - Tdu + wTdx + Udt\notag\end{equation}
+      \begin{equation}\left\langle{dV,{\omega ^1}}\right\rangle =  - Xdw \wedge dt - wdX \wedge dt - dT \wedge du + wdT \wedge dx + Tdw \wedge dx + dU \wedge dt\notag\end{equation}
+      \begin{equation}\left\langle{V,d{\omega ^1}}\right\rangle = \left\langle{X{\partial _x} + T{\partial _t} + U{\partial _u} + W{\partial _w}, - dw \wedge dx \wedge dt}\right\rangle =  + Xdw \wedge dt - Tdw \wedge dx - Wdx \wedge dt\notag\end{equation}
+      
+      Summing
+      
+      \begin{equation}{\mathcal{L}_V}\left( {{\omega ^1}} \right) =  - Xdw \wedge dt - wdX \wedge dt - dT \wedge du + wdT \wedge dx + Tdw \wedge dx + dU \wedge dt + Xdw \wedge dt - Tdw \wedge dx - Wdx \wedge dt\notag\end{equation}So the left hand side of equation \eqref{eqA} is a degree-2 sum of terms:
+      \begin{equation}LHS\left( A \right) =  - wdX \wedge dt - dT \wedge du + wdT \wedge dx + dU \wedge dt - Wdx \wedge dt\notag\end{equation}
+      The right hand side can be expressed:
+      
+      \begin{equation}RHS\left( A \right) = \Lambda _1^1{\omega ^1} + \Lambda _2^1{\omega ^2} = \Lambda _1^1du \wedge dt - \Lambda _1^1wdx \wedge dt + \Lambda _2^1dx \wedge du + \Lambda _2^1dt \wedge dw\notag\end{equation}
+      where the coefficients must be zero-forms (functions) to match the degree from the LHS.  Repeating with equation \eqref{eqB} we find:
+      
+      \begin{equation}LHS\left( B \right) = dT \wedge dw + dX \wedge du - dU \wedge dx - dW \wedge dt\notag\end{equation}\begin{equation}RHS\left( B \right) = \Lambda _1^2du \wedge dt - \Lambda _1^2wdx \wedge dt + \Lambda _2^2dx \wedge du + \Lambda _2^2dt \wedge dw\notag\end{equation}
+      The full solution entails expanding the total differentials of the isovector coefficients using the chain rule, converting them into a sum of basis forms, resulting in a set of coupled determining equations, much as the vector approach does.  The full solution can be seen at <strong>Appendix 3.4A</strong>. 
+      
+      Here we will test one of the discovered isovectors for self-consistency: 
+      
+      \begin{equation}{V_7} = 2t{\partial _t} + x{\partial _x} + u{\partial _u}\notag\end{equation}or
+      \begin{equation}T = 2t,\;\;X = x,\;\;U = u\notag\end{equation}so
+      \begin{equation}dT = 2dt,\;\;dX = dx,\;\;dU = du\notag\end{equation}
+    <p>Apply to equation \eqref{eqA}:
+      
+    \begin{equation}{\text{LHS(A)}} =  - wdx \wedge dt - 2dt \wedge du + 2wdt \wedge dx + du \wedge dt =  - 3wdx \wedge dt + 3du \wedge dt\notag\end{equation}</p>
+    <p>\begin{equation}RHS\left( A \right) = \Lambda _1^1du \wedge dt - \Lambda _1^1wdx \wedge dt + \Lambda _2^1dx \wedge du + \Lambda _2^1dt \wedge dw\notag\end{equation}    </p>
+    <p>This is satisfied by $\Lambda _1^1 = 3\;{\text{and}}\;\Lambda _2^1 = 0$, so
+      
+    ${\mathcal{L}_V}\left( {{\omega ^1}} \right) = 3{\omega ^1}$. Apply to equation \eqref{eqB}:    </p>
+    <p>\begin{equation}LHS\left( B \right) = 2dt \wedge dw + dx \wedge du - du \wedge dx = 2{\color{blue}dt \wedge dw} + 2{\color{blue}dx \wedge du}\notag\end{equation}    </p>
+    <p>\begin{equation}RHS\left( B \right) = \Lambda _1^2{\color{blue}du \wedge dt }- \Lambda _1^2w{\color{blue}dx \wedge dt }+ \Lambda _2^2{\color{blue}dx \wedge du} + \Lambda _2^2{\color{blue}dt \wedge dw}\notag\end{equation}      </p>
+    <p>This is satisfied for Thus $\Lambda _1^2 = 0\;{\text{and}}\;\Lambda _2^2 = 2$: </p>
+    <p>\begin{equation}{\mathcal{L}_V}\left( {{\omega ^2}} \right) = 2{\omega ^2}\notag\end{equation} </p>
+    <p>As you can glean from the above, the various blue highlighted form combinations are used to define the “monomials” in the determining equation process. 
+  </p>
+
+      </div> 														<!-- END MJ-rendering--> 
+<br>
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Chapter 3 Section 1</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

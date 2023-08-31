@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 3.4.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 4; const SS = 2; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+					tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//						tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>3.4 Isovectors of PDE Systems</strong>  </p>
+  <p align="center"><strong>3.4.2. Contact Manifold</strong></p>
+  <p>Suhubi&rsquo;s process provides a more systematic approach to encoding the PDE system into differential forms, following by applying the Lie derivative to the collection of such forms.  It begins by considering what are called &ldquo;contact&rdquo; 1-forms and the space they inhabit.  There is a vast history behind this concept but we will try to boil it down to relevancy.  </p>
+  
+<br>
+  <img src="Spaces projections and mappings.jpg" alt="Spaces" class="imgcenter" width="30%">
+  <figcaption>Figure 3a. Spaces, projections and mappings</figcaption>
+  
+  <p>Back in the Chapter 1 we introduced various &ldquo;spaces&rdquo; used by authors and alluded to what Suhubi calls ${m^{th}}$-<em>order</em> <em>contact space</em> and what Olver calls a <em>jet bundle</em>, which are expansions of Edelen's <em>Kinematic space</em> to include all derivatives of the dependent variable(s) represented by a proliferation of manifold &ldquo;independent&rdquo; variables, referred to as ${C_m}$ (see diagram).</p>
+  <p>We pass from the base manifold ${\mathcal{D}_n}$ to ${C_m}$ via the intermediate <em>Graph space</em> $\mathcal{G}$ that contains independent and dependent variable(s).  We have simplified and re-labeled the graph from the introduction to conform more or less to Suhubi&rsquo;s notation.  One significant difference from the introductory graph <span style="color:red;font-weight:bold">[GRAPHNUMBER]</span> is the use of the $\left\{ {{x^i}} \right\}$ all the way up, rather than potential mappings of the independent coordinates, something Suhubi justifies in section 9.2.  We have redundantly labeled the upper space as <em>Kinematic space</em> $K\left\{ {{x^i},{u^\alpha },v_j^\alpha } \right\}$ and <em>Contact space</em> ${C_m}$ explained below.  Note superscripts in Greek indices run from 1 to <em>N</em>, numbering all the possible dependent variables in a system of PDEs.  When absent, we are considering only a single dependent variable.  </p>
+  <p>The problem at hand is we are given a PDE system of the form:</p>
+  <p>\begin{equation}{F^a}\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha ,u_{,{i_1}{i_2}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right) = 0\end{equation} </p>
+  <p> where <em>m</em> is the order of the PDE, $a = 1, \ldots ,A,\;\;\;i = 1, \ldots ,n\;\;{\text{and}}\;\;\alpha  = 1, \ldots ,N$ for a PDE system of <em>A</em> equations, <em>n</em> independent variables and <em>N</em> dependent variables.  The presence of the multi-index in the general PDE system representation will remind you of Olver&rsquo;s prolongation process, a timely reminder these &ldquo;technologies&rdquo; are addressing the same problem.  </p>
+  <p>Our $A = 1$ heat equation example earlier would be written as:</p>
+  <p>\begin{equation}0 = {u_{xx}} - {u_t} = F\left( {x,t,{u_t},{u_{xx}}} \right) \to F\left( {{x^1},{x^2},{u_{{x^2}}},{u_{{x^1}{x^1}}}} \right) = 0\notag\end{equation} 
+    where $m = 2,\;n = 2,\;N = 1$.   </p>
+  <p>Suhubi defines a mapping $\Phi $ that maps <em>u</em> to $\phi $ in <em>Graph space</em> $\mathcal{G}$, but as there is no functional change in the coordinates used to define $\Phi $ (in general there is) we can simply write $\phi \left( {{x^i}} \right) = u\left( {{x^i}} \right)$ there.  Now <em>Graph space</em> does not accommodate derivatives as <u>independent</u> variables.  We need to map these other PDE variables to appropriate coordinates in the overlying <em>Contact manifold</em> or ${C_m}$ space (an extension of Edelen&rsquo;s <em>Kinematic space</em>).  We demand $\Phi $ take us up there as well.  It turns out the easiest way to infer $\Phi $ is by defining <em>contact forms</em> in the ${T^*}\left( {{C_m}} \right)$ space of ${C_m}$ and demanding that pulling them back to base space ${\mathcal{D}_n}$ with ${\Phi ^*}$ makes the correct connections.  </p>
+  <p>We propose to replace all derivatives of the dependent variable(s) with auxiliary variables that we may treat as independent variables in the very large <em>Contact manifold.  </em>As a system of first order derivatives <em>Kinematic space </em>suffices, where the first derivatives of the dependent variable are encoded in a new &ldquo;independent&rdquo; variable, shown as $v_i^\alpha $ in the figure.  But in general we will need to encode higher derivatives as first order derivatives of variables one order smaller.  Suhubi does this in his (9.2.6) as follows:</p>
+  <p align="center">\begin{equation}{F^a}\left( {{x^i},{u^\alpha },v_{{i_1}}^\alpha , \ldots ,v_{{i_1}{i_2} \ldots {i_m}}^\alpha } \right) = 0\label{S926}\end{equation}</p>
+
+  <p>by assigning    </p>
+  <p>\begin{equation}u_{,{i_1}{i_2} \ldots {i_r}}^\alpha  = v_{{i_1}{i_2} \ldots {i_r}}^\alpha  = v_{{i_1}{i_2} \ldots {i_{r - 1}}{i_r}}^\alpha \label{S924}\end{equation}</p>
+
+  <p>Note indices range as follows:  $0 \leqslant r \leqslant m$, $1 \leqslant {i_1}, \ldots ,{i_r} \leqslant n$ and by convention $v_{{i_0}}^\alpha  \equiv {u^\alpha }$.  Suhubi points out that this process converts an ${m^{th}}$-order PDE in base-space into a FOPDE algebraic system defining a sub-manifold in the contact manifold ${C_m}$ or K-space.  </p>
+  <p>Now we use ${u^\alpha }$ for the dependent variable(s) and a set of new, auxiliary variables to represent its derivatives.  Note the absence of commas in the subscripts.  A comma generally indicates derivatives follow, indexed by various Latin indices.  Now those indices, <em>sans</em> commas, simply distinguish different &ldquo;independent&rdquo; variables from each other.  The space in which all the variables in the argument list for $F$ live in is Suhubi&rsquo;s ${m^{th}}$-<em>order</em> <em>contact space</em> (<em>aka</em> Olver&rsquo;s jet space) – a space of dimension $n + N\frac{{\left( {n + m} \right)!}}{{n!m!}}$, a number that grows rapidly with order and base dimension.  For the 1D heat equation examined earlier we have $N = 1,\;n = 2,\;m = 2$, yielding an 8 dimensional contact manifold:  $\left\{ {x,t,u,{u_x},{u_t},{u_{xx}},{u_{xt}},{u_{tt}}} \right\}$ becoming $\left\{ {{x^1}{x^2},u,{v_1},{v_2},{v_{11}},{v_{12}},{v_{22}}} \right\}$.  Of course not all of this space is &ldquo;used&rdquo; by the heat equation example.</p>
+  <p>Suhubi concludes that \eqref{S926} represents an encoding of the PDE systems as a set of <u>algebraic</u> equations in the contact manifold, and since he retains the notion that \eqref{S924} implies a 1st order set of differential equations, the problem is now first order.  We see directly the need to maintain first order derivatives in the definition of the contact 1-forms, as follows.  </p>
+  <p>Through great insight Cartan found the following &ldquo;works,&rdquo; though it is may not be the only way to accomplish this feat.  This entails defining <strong><em>contact 1-forms</em></strong> and demanding their pullback mapping generate the appropriate derivatives in the base space.  Suhubi makes an interesting comment on rationale for using 1-forms:  </p>
+  <p style="padding: 0 20px 0 20px;">&ldquo;In order to study a system of partial differential equations via exterior forms we have to [greatly] enlarge this system to that of first order partial differential equations by introducing auxiliary variables because of the fact that only the first order exterior derivatives are not identically nil.&rdquo; (p. 489).</p>
+  
+  <p>Proceeding, we define <em>contact 1-forms</em>:    </p>
+  <p>\begin{equation}\sigma _{{i_1}{i_2} \ldots {i_r}}^\alpha  = dv_{{i_1}{i_2} \ldots {i_r}}^\alpha  - v_{{i_1}{i_2} \ldots {i_r},i}^\alpha d{x^i},\;\;0 \leqslant r \leqslant m - 1\end{equation}</p>
+  <p>and by convention </p>
+  <p>\begin{equation}\sigma _{{i_0}}^\alpha  \equiv {\sigma ^\alpha } = d{u^\alpha } - v_i^\alpha d{x^i},\;{\text{for}}\;r = 0\end{equation} </p>
+  <p>For example, for the 1D heat equation $m = 2,\;n = 2$ so</p>
+  <p>\begin{equation}{\sigma ^\alpha } = d{u^\alpha } - v_i^\alpha d{x^i}\;\;\;\notag\end{equation}\begin{equation}\sigma _1^\alpha  = dv_1^\alpha  - v_{1,i}^\alpha d{x^i}\;\;\notag\end{equation}\begin{equation}\sigma _2^\alpha  = dv_2^\alpha  - v_{2,i}^\alpha d{x^i}\;\;\notag\end{equation} 
+    The proposition is that pulling back such contact 1-forms causes them to vanish, the utility of which will be extended to an ideal formed by them that represents the PDE we are encoding.  Let us demonstrate.  </p>
+  <p>We pull back the general contact form with ${\phi ^*}$.  We will use the properties of the pullback operation described in<strong> Section  1.7</strong> (based on <span style="color:red;font-weight:bold">Pushing and pulling between mappings-Final2.docx)</span>:</p>
+  <p>\begin{equation}{\phi ^*}f = f \circ \phi \;\;{\text{[inverion of}}\;f\left( {{x^i}} \right) \to \bar f\left( {{u^i}}\right){\text{]}} \notag\end{equation}</p>
+  <p>\begin{equation}{\phi ^*}\left( {\alpha  + \beta } \right) = {\phi ^*}\alpha  + {\phi ^*}\beta \notag\end{equation}\begin{equation}{\phi ^*}\left( {\alpha  \wedge \beta } \right) = {\phi ^*}\alpha  \wedge {\phi ^*}\beta \notag\end{equation}\begin{equation}{\phi ^*}\left( {d\alpha } \right) = d\left( {{\phi ^*}\alpha } \right)\notag\end{equation} 
+    Start with the $r = 0$ equation:
+    \begin{equation}{\phi ^*}{\sigma ^\alpha } = {\phi ^*}d{u^\alpha } - {\phi ^*}\left( {v_i^\alpha d{x^i}} \right)\notag\end{equation} 
+    The first term becomes, via property <em>(d)</em>:</p>
+  <p>\begin{equation}{\phi ^*}d{u^\alpha } = d\left( {{\phi ^*}{u^\alpha }} \right) = d{u^\alpha }\notag\end{equation} 
+    by design, as $\phi \left( {{x^i}} \right) = u\left( {{x^i}} \right)$.  The second term is found using properties <em>(a)</em> and <em>(c)</em>:</p>
+  <p>\begin{equation}{\phi ^*}\left( {v_i^\alpha d{x^i}} \right) = \left( {{\phi ^*}v_i^\alpha } \right)\left( {{\phi ^*}d{x^i}} \right) = \left( {{\phi ^*}v_i^\alpha } \right)d{x^i}\notag\end{equation} 
+    since ${\phi ^*}d{x^i} = d{x^i}$ by design.  Now</p>
+  <p>\begin{equation}{\phi ^*}v_i^\alpha  = u_{,i}^\alpha \notag\end{equation}So by the chain rule the pull-back of ${\sigma ^\alpha }$ yields
+    \begin{equation}{\phi ^*}{\sigma ^\alpha } = d{u^\alpha } - u_{,i}^\alpha d{x^i} = d{u^\alpha } - \frac{{\partial {u^\alpha }}}{{\partial {x^i}}}d{x^i} = 0\;\;\emptyset \notag\end{equation}Next level $r = 1$:
+    \begin{equation}{\phi ^*}\sigma _{{i_1}}^\alpha  = {\phi ^*}dv_{{i_1}}^\alpha  - {\phi ^*}\left( {v_{{i_1},i}^\alpha d{x^i}} \right)\notag\end{equation} 
+    \begin{equation}{\phi ^*}\sigma _{{i_1}}^\alpha  = d\left( {{\phi ^*}v_{{i_1}}^\alpha } \right) - \left( {{\phi ^*}v_{{i_1},i}^\alpha } \right)d{x^i}\notag\end{equation} 
+    \begin{equation}{\phi ^*}\sigma _{{i_1}}^\alpha  = d\left( {u_{,{i_1}}^\alpha } \right) - u_{,{i_1}i}^\alpha d{x^i}\notag\end{equation} 
+    \begin{equation}{\phi ^*}\sigma _{{i_1}}^\alpha  = du_{,{i_1}}^\alpha  - \frac{{\partial u_{,{i_1}}^\alpha }}{{\partial {x^i}}}d{x^i} = 0\;\;\emptyset \notag\end{equation} 
+    which is just the chain rule at the next level.  In general, the pull back produces:</p>
+  <p>\begin{equation}{\phi ^*}\sigma _{{i_1}{i_2} \ldots {i_r}}^\alpha  = du_{,{i_1}{i_2} \ldots {i_r}}^\alpha  - \frac{{\partial u_{,{i_1}{i_2} \ldots {i_r}}^\alpha }}{{\partial {x^i}}}d{x^i} = 0;\;\;\;0 \leqslant r \leqslant m - 1\notag\end{equation} 
+    So these contact 1-forms embody the correct identification (via a pullback) of the <em>contact manifold</em> &ldquo;coordinates&rdquo; with the appropriate partial derivatives of the dependent variable(s).  The other requirement is that the pull-back of the PDE function(s) must also vanish, turning the algebraic relationship among K-space coordinates defined by ${F^a}\left( {{x^i},{u^\alpha },v_{{i_1}}^\alpha , \ldots ,v_{{i_1}{i_2} \ldots {i_m}}^\alpha } \right) = 0$  back to those of the original PDE. 
+    \begin{equation}{\phi ^*}{F^a} = {F^a}\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right) = 0\notag\end{equation} 
+    In reflection, we showed that the variables and their relationships in the <em>contact manifold</em> are correct representations of the original problem in base space.  In reality the identification of the mapping function $\Phi $ and its pull-back to the original PDE problem seems unremarkable and just a simple matter of definitions; indeed we never explicitly write out that mapping but only its effect on the variables of the problem.  But its real value is to confirm we have the &ldquo;right&rdquo; EDS representation of the problem as cast in the ${T^*}\left( {{C_m}} \right)$ space.  </p>
+
+      </div> 														<!-- END MJ-rendering--> 
+<br>
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 3.4.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
