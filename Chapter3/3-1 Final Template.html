@@ -101,71 +101,81 @@ MathJax = 	{
 		</div>														<!-- END TOP titlebar -->
 
 		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
-        
-    <p align="center"><strong>3.1. Introduction to Differential Forms and Their Operations </strong></p>
-    <p>Exterior Differential System (EDS) calculus is in many ways dual to the vector approach in discovering symmetries.  Indeed, every tangent vector field has a dual differential form field.  And the Lie group algebra among vector fields has a dual in EDS <em>ideals</em>.  Just as commutation among members of a Lie group results in vectors in the Lie group (or linear combinations), exterior products of members of an ideal <u>with any other form in the manifold</u> always produce other members of the ideal.  Like Lie algebra, a member of an ideal cannot escape the club by fundamental operations among members of the club. </p>
+ <p align="center"><strong>3.1. Introduction to Differential Forms and Their Operations </strong></p>
+<p>Exterior Differential System (EDS) calculus is in many ways dual to the vector approach in discovering symmetries.  Indeed, every tangent vector field has a dual differential form field.  And the Lie group algebra among vector fields has a dual in EDS <em>ideals</em>.  Just as commutation among members of a Lie group results in vectors in the Lie group (or linear combinations), exterior products of members of an ideal <u>with any other form in the manifold</u> always produce other members of the ideal.  Like Lie algebra, a member of an ideal cannot escape the club by fundamental operations among members of the club. </p>
     <p>In this brief introduction we learn the properties of differential forms and their manipulation.  It is focused around the <em>interior product</em> or <em>contraction</em> of forms with their dual partners: tangent vectors. </p>
     <p>Differential forms can be defined in terms their action on tangent vectors, or as Olver puts it, in terms of their &ldquo;evaluations on the tangent vector.&rdquo; <span style="color:red;font-weight:bold">[IN INTRO USE THE PAC-MAN TO DEMONSTRATE THE RELATIONSHIP]</span>. We can represent a 1-form (there are different degrees of forms) in the basis coordinates in which tangent vectors are represented as:</p>
-    <p>\begin{equation}\omega  = adx + bdy + cdz\notag\end{equation}
-    in 3 dimensions, or more compactly in n-dimensions (using the Einstein summation convention):</p>
-    <p>\begin{equation}\omega  = {\omega _i}d{x^i},\;i = 1 \ldots n\notag\end{equation} 
-    where the ${\omega _i}$ are functions and the $d{x^i}$ are appropriate differential elements, or basis 1-forms.  To &ldquo;evaluate&rdquo; a 1-form on a vector we compute the <strong><em>interior product</em></strong> or <strong><em>contraction</em></strong> of a 1-form with a vector in that space</p>
-<p>\begin{equation}V = {v^j}\frac{\partial }{{\partial {x^j}}}\notag\end{equation}as
+\begin{equation}\omega  = adx + bdy + cdz\notag\end{equation}
+
+in 3 dimensions, or more compactly in n-dimensions (using the Einstein summation convention):
+\begin{equation}\omega  = {\omega _i}d{x^i},\;i = 1 \ldots n\notag\end{equation} 
+
+where the ${\omega _i}$ are functions and the $d{x^i}$ are appropriate differential elements, or basis 1-forms.  To &ldquo;evaluate&rdquo; a 1-form on a vector we compute the <strong><em>interior product</em></strong> or <strong><em>contraction</em></strong> of a 1-form with a vector in that space
+
+\begin{equation}V = {v^j}\frac{\partial }{{\partial {x^j}}}\notag\end{equation}as
 \begin{equation}\left\langle {\omega ,V} \right\rangle  \equiv \left\langle {V,\omega } \right\rangle  = \left\langle {{\omega _i}d{x^i},{v^j}\frac{\partial }{{\partial {x^j}}}} \right\rangle  = {\omega _i}{v^j}\delta _j^i = {\omega _i}{v^i}\notag\end{equation}
 \begin{equation}\left\langle {\omega ,V} \right\rangle  \equiv \left\langle {V,\omega } \right\rangle  = \left\langle {{\omega _i}d{x^i},{v^j}\frac{\partial }{{\partial {x^j}}}} \right\rangle  = {\omega _i}{v^j}\delta _j^i = {\omega _i}{v^i}\notag\end{equation} 
+
 The Kroneker delta represents the &ldquo;orthonormality&rdquo; of the basis 1-forms and the vector components.  That is
 \begin{equation}\left\langle {dx,\frac{\partial }{{\partial x}}} \right\rangle  = \left\langle {dy,\frac{\partial }{{\partial y}}} \right\rangle  = \left\langle {dz,\frac{\partial }{{\partial z}}} \right\rangle  = 1\notag\end{equation}
-and &ldquo;cross&rdquo; contractions are zero.  Contraction produces a form one-degree lower than the input form.  A 1-form contracted with a vector results in a function, which may be thought of as a zero-form. The importance of the contraction operation will be evident when we discuss the <em>Lie derivative</em> later, in connection with <em>isovectors</em>.  Contractions of a vector with higher degree forms is explained further below after a discussion of how one generates forms of higher degrees. </p>
+and &ldquo;cross&rdquo; contractions are zero.  Contraction produces a form one-degree lower than the input form.  A 1-form contracted with a vector results in a function, which may be thought of as a zero-form. The importance of the contraction operation will be evident when we discuss the <em>Lie derivative</em> later, in connection with <em>isovectors</em>.  Contractions of a vector with higher degree forms is explained further below after a discussion of how one generates forms of higher degrees.
+
 <p>We can create a 2-form (differential form of degree 2) as an <strong><em>exterior product </em></strong>or <strong><em>wedge product</em></strong> of two <strong><em>basis 1-forms</em></strong>:</p>
-<p>\begin{equation}\sigma  = {\sigma _{ij}}d{x^i} \wedge d{x^j},\;i \ne j\notag\end{equation} 
-  The reason for the restriction $i \ne j$ is that the wedge product of a 1-form with itself vanishes, owing to the anti-symmetry property of the exterior product of 1-forms.  For 1-forms $\alpha \;{\text{and}}\;\beta $:</p>
-<p>\begin{equation}\beta  \wedge \alpha  =  - \alpha  \wedge \beta \notag\end{equation}
-  The reason for this anti-symmetry property is related to the cross-product of vectors, which gives the <u>signed</u> area of the parallelogram formed by two such vectors and figures into Stokes Theorem.  This is well described in Chapter 1 of Flanders [<strong>ref</strong>].  If we replace $\beta $ by $\alpha $ in the above equation we see the wedge product of $\alpha $ with itself must be zero.  The wedge product is fully defined by the following properties, based on Suhubi equations (5.2.2):</p>
-<p>
-\begin{equation}\alpha  \wedge \left( {\beta  + \gamma } \right) = \alpha  \wedge \beta  + \alpha  \wedge \gamma \tag{Wedge-a}\label{Wa}\end{equation}</p>
-<p> \begin{equation}\left( {\alpha  + \beta } \right) \wedge \gamma  = \alpha  \wedge \gamma  + \beta  \wedge \gamma \tag{Wedge-b}\label{Wb}\end{equation}  </p>
-<p>\begin{equation}\alpha  \wedge \left( {\beta  \wedge \gamma } \right) = \left( {\alpha  \wedge \beta } \right) \wedge \gamma  = \alpha  \wedge \beta  \wedge \gamma \tag{Wedge-c}\label{Wc}\end{equation}</p>
+
+\begin{equation}\sigma  = {\sigma _{ij}}d{x^i} \wedge d{x^j},\;i \ne j\notag\end{equation} 
+
+The reason for the restriction $i \ne j$ is that the wedge product of a 1-form with itself vanishes, owing to the anti-symmetry property of the exterior product of 1-forms.  For 1-forms $\alpha \;{\text{and}}\;\beta $:
+
+
+\begin{equation}\beta  \wedge \alpha  =  - \alpha  \wedge \beta \notag\end{equation}
+  The reason for this anti-symmetry property is related to the cross-product of vectors, which gives the <u>signed</u> area of the parallelogram formed by two such vectors and figures into Stokes Theorem.  This is well described in Chapter 1 of Flanders [<strong>ref</strong>].  If we replace $\beta $ by $\alpha $ in the above equation we see the wedge product of $\alpha $ with itself must be zero.  The wedge product is fully defined by the following properties, based on Suhubi equations (5.2.2):
+
+\begin{equation}\alpha  \wedge \left( {\beta  + \gamma } \right) = \alpha  \wedge \beta  + \alpha  \wedge \gamma \tag{Wedge-a}\label{Wa}\end{equation}
+ \begin{equation}\left( {\alpha  + \beta } \right) \wedge \gamma  = \alpha  \wedge \gamma  + \beta  \wedge \gamma \tag{Wedge-b}\label{Wb}\end{equation}  
+\begin{equation}\alpha  \wedge \left( {\beta  \wedge \gamma } \right) = \left( {\alpha  \wedge \beta } \right) \wedge \gamma  = \alpha  \wedge \beta  \wedge \gamma \tag{Wedge-c}\label{Wc}\end{equation}
 
 
   
-<p>\begin{equation}\beta  \wedge \alpha  = {\left( { - 1} \right)^{kl}}\alpha  \wedge \beta ;\;\alpha  \in {\Lambda ^k}\left( M \right);\;\beta  \in {\Lambda ^l}\left( M \right)\tag{Wedge-d}\label{Wd}\end{equation}  </p>
-<p>Now this set of relations applies to forms of any degree, indicated by the symbols $\alpha  \in {\Lambda ^k}\left( M \right)$ and $\beta  \in {\Lambda ^l}\left( M \right)$, where ${\Lambda ^k}\left( M \right)$ represents all $k$ -forms in the manifold $M$.  Note the first relation implies $\beta $ and $\gamma $ are of the same degree, since they must be to be added together.  The fourth property is a generalization of the consequence 
+\begin{equation}\beta  \wedge \alpha  = {\left( { - 1} \right)^{kl}}\alpha  \wedge \beta ;\;\alpha  \in {\Lambda ^k}\left( M \right);\;\beta  \in {\Lambda ^l}\left( M \right)\tag{Wedge-d}\label{Wd}\end{equation}  
+Now this set of relations applies to forms of any degree, indicated by the symbols $\alpha  \in {\Lambda ^k}\left( M \right)$ and $\beta  \in {\Lambda ^l}\left( M \right)$, where ${\Lambda ^k}\left( M \right)$ represents all $k$ -forms in the manifold $M$.  Note the first relation implies $\beta $ and $\gamma $ are of the same degree, since they must be to be added together.  The fourth property is a generalization of the consequence 
   \begin{equation}\omega  \wedge \omega  = 0;\;\omega  \in {\Lambda ^1}\left( M \right)\notag\end{equation}
-  which is true for all odd degree forms.</p>
-
+  which is true for all odd degree forms.
+<br><br>
 <button class="accordion"><strong>What about even-degree forms?</strong></button>
   <div class="panel">
      <p style="padding: 10px; border: 1px solid black;">
      One might expect that wedge products of even-degree forms with themselves would not vanish, but in many cases they do, which can be seen easily by computing, say, $\omega  = dx \wedge dy$ with itself – it does indeed vanish.  For a counterexample compute the product of the following 2-form in ${E_4}$ with itself:
-\begin{equation}\omega  = dx \wedge dy + dz \wedge dw\notag\end{equation} </p>
+\begin{equation}\omega  = dx \wedge dy + dz \wedge dw\notag\end{equation} 
 </div>
-  
+<br><br>
+
 <div>
 
-<p>Whereas <em>contractions</em> reduce the degree of forms, <strong><em>differentiation</em></strong> of forms (or <em>exterior differential</em> <em>operation</em>) produces a form one degree higher (or vanishes).  The differential operation on forms obeys the following properties:
+Whereas <em>contractions</em> reduce the degree of forms, <strong><em>differentiation</em></strong> of forms (or <em>exterior differential</em> <em>operation</em>) produces a form one degree higher (or vanishes).  The differential operation on forms obeys the following properties:
   \begin{equation}d\left( {\alpha  + \beta } \right) = d\alpha  + d\beta \tag{Diff-a}\label{Da}\end{equation}
   \begin{equation}d\left( {a\beta } \right) = a\;d\beta ,\;a \in \mathbb{R}\tag{Diff-b}\label{Db}\end{equation}
   \begin{equation}d\left( {\alpha  \wedge \beta } \right) = d\alpha  \wedge \beta  + {\left( { - 1} \right)^{{\text{deg}}\left( \alpha  \right)}}\alpha  \wedge d\beta \tag{Diff-c}\label{Dc}\end{equation}
   \begin{equation}d\left( {d\alpha } \right) = {d^2}\alpha  = 0;\;\alpha  \in \Lambda \left( M \right)\tag{Diff-d}\label{Dd}\end{equation}
   \begin{equation}df = {f_{,i}}\;d{x^i};\;f \in {\Lambda ^0}\left( M \right)\tag{Diff-e}\label{De}\end{equation}
   
-  provided by Suhubi in Section 5.8 (and others). Thus the differential operation on forms behaves as one might expect, except for the possible need to alternate signs moving through a wedge product and that repeated operations on the same form vanish. So if $\omega  = fdx$, then</p>
-<p>\begin{equation}d\omega  = df \wedge dx + f \wedge \left( {\color{silver}ddx} \right) = df \wedge dx\notag\end{equation}
-  as the exterior derivative of an &ldquo;exact&rdquo; differential form is zero.  In ${E_3}$ for $f = f\left( {x,y,z} \right)$ we have:</p>
-<p>\begin{equation}d\omega  = df \wedge dx = \frac{{\partial f}}{{\partial x}}{\color{silver}dx \wedge dx} + \frac{{\partial f}}{{\partial y}}dy \wedge dx + \frac{{\partial f}}{{\partial z}}dz \wedge dx =  - \frac{{\partial f}}{{\partial y}}dx \wedge dy - \frac{{\partial f}}{{\partial z}}dx \wedge dz\notag\end{equation} 
-  where we reordered the surviving terms, inserting negative signs for each reversal of 1-forms. </p>
-<p>Returning now to contractions, we are ready to compute the interior product (contraction) of a 2-form with a vector:
+  provided by Suhubi in Section 5.8 (and others). Thus the differential operation on forms behaves as one might expect, except for the possible need to alternate signs moving through a wedge product and that repeated operations on the same form vanish. So if $\omega  = fdx$, then
+\begin{equation}d\omega  = df \wedge dx + f \wedge \left( {\color{silver}ddx} \right) = df \wedge dx\notag\end{equation}
+  as the exterior derivative of an &ldquo;exact&rdquo; differential form is zero.  In ${E_3}$ for $f = f\left( {x,y,z} \right)$ we have:
+\begin{equation}d\omega  = df \wedge dx = \frac{{\partial f}}{{\partial x}}{\color{silver}dx \wedge dx} + \frac{{\partial f}}{{\partial y}}dy \wedge dx + \frac{{\partial f}}{{\partial z}}dz \wedge dx =  - \frac{{\partial f}}{{\partial y}}dx \wedge dy - \frac{{\partial f}}{{\partial z}}dx \wedge dz\notag\end{equation} 
+  where we reordered the surviving terms, inserting negative signs for each reversal of 1-forms. 
+Returning now to contractions, we are ready to compute the interior product (contraction) of a 2-form with a vector:
   \begin{equation}\left\langle {\sigma ,V} \right\rangle  = \left\langle {{\sigma _{ij}}d{x^i} \wedge d{x^j},{v^k}\frac{\partial }{{\partial {x^k}}}} \right\rangle \notag\end{equation}\begin{equation} = {\sigma _{ij}}{v^k}\left\langle {d{x^i},\frac{\partial }{{\partial {x^k}}}} \right\rangle  \wedge d{x^j} - {\sigma _{ij}}{v^k}d{x^i} \wedge \left\langle {d{x^j},\frac{\partial }{{\partial {x^k}}}} \right\rangle \notag\end{equation}\begin{equation} = {\sigma _{ij}}{v^k}\delta _k^id{x^j} - {\sigma _{ij}}{v^k}\delta _k^jd{x^i} = {\sigma _{kj}}{v^k}d{x^j} - {\sigma _{ik}}{v^k}d{x^i} \equiv \alpha \notag\end{equation} 
-  Note we have used the property that $f \wedge \sigma  = f\sigma $ for $f$ a function and $\sigma $ a form.  The contraction operation produces a form one degree lower than the form contracted with the vector. The negative sign in the second term is due to the anti-symmetric nature of the wedge product, seen in the last operation in (5.2.2).  Essentially, we needed to move the $d{x^j}$ ahead of the $d{x^i}$ before contracting it with the vector operator. </p>
-<p>The complete properties for contractions are given by Suhubi (5.4.1), where he uses the symbol ${{\text{i}}_V}\left( \omega  \right)$ for the contraction $\left\langle {\omega ,V} \right\rangle $ or equivalently $\left\langle {V,\omega } \right\rangle $, repeated here with our notation.</p>
-<p>\begin{equation}\left\langle {\omega ,f} \right\rangle  = 0;\;\;V \in {T^0}\left( M \right);\;f \in {\Lambda ^0}\left( M \right)\tag{Con-a}\label{Ca}\end{equation}</p>
-<p>\begin{equation}\left\langle {\omega ,V} \right\rangle  \equiv \left\langle {V,\omega } \right\rangle  \equiv \omega \left( V \right) = {\omega _i}{v^i} \in {\Lambda ^0}\left( M \right);\;\omega  \in {\Lambda ^1}\left( M \right)\tag{Con-b}\label{Cb}\end{equation}</p>
-<p>\begin{equation}\left\langle {\alpha  + \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  + \left\langle {\beta ,V} \right\rangle \tag{Con-c}\label{Cc}\end{equation}</p>
-<p>\begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  \wedge \beta  + {\left( { - 1} \right)^{{\text{deg}}\left( \alpha  \right)}}\alpha  \wedge \left\langle {\beta ,V} \right\rangle \tag{Con-d}\label{Cd}\end{equation}</p>
-<p>There are no surprises here; the properties of contraction follow from the properties of the wedge product.  The last expression, employed in the 2-form example above, can be motivated with an example. </p>
-		<button class="accordion"><strong>Contraction Example</strong></button>
-			<div class="panel"> 									<!-- BEGIN accordion panel--> 
-				<p style="padding: 10px; border: 1px solid black;">		<!-- BEGIN panel paragraph styling -->
+  Note we have used the property that $f \wedge \sigma  = f\sigma $ for $f$ a function and $\sigma $ a form.  The contraction operation produces a form one degree lower than the form contracted with the vector. The negative sign in the second term is due to the anti-symmetric nature of the wedge product, seen in the last operation in (5.2.2).  Essentially, we needed to move the $d{x^j}$ ahead of the $d{x^i}$ before contracting it with the vector operator. 
+The complete properties for contractions are given by Suhubi (5.4.1), where he uses the symbol ${{\text{i}}_V}\left( \omega  \right)$ for the contraction $\left\langle {\omega ,V} \right\rangle $ or equivalently $\left\langle {V,\omega } \right\rangle $, repeated here with our notation.
+\begin{equation}\left\langle {\omega ,f} \right\rangle  = 0;\;\;V \in {T^0}\left( M \right);\;f \in {\Lambda ^0}\left( M \right)\tag{Con-a}\label{Ca}\end{equation}
+\begin{equation}\left\langle {\omega ,V} \right\rangle  \equiv \left\langle {V,\omega } \right\rangle  \equiv \omega \left( V \right) = {\omega _i}{v^i} \in {\Lambda ^0}\left( M \right);\;\omega  \in {\Lambda ^1}\left( M \right)\tag{Con-b}\label{Cb}\end{equation}
+\begin{equation}\left\langle {\alpha  + \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  + \left\langle {\beta ,V} \right\rangle \tag{Con-c}\label{Cc}\end{equation}
+\begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  \wedge \beta  + {\left( { - 1} \right)^{{\text{deg}}\left( \alpha  \right)}}\alpha  \wedge \left\langle {\beta ,V} \right\rangle \tag{Con-d}\label{Cd}\end{equation}
+There are no surprises here; the properties of contraction follow from the properties of the wedge product.  The last expression, employed in the 2-form example above, can be motivated with an example. 
+<br><br>
+<button class="accordion"><strong>Contraction Example</strong></button>
+<div class="panel"> 									<!-- BEGIN accordion panel--> 
+	<p style="padding: 10px; border: 1px solid black;">		<!-- BEGIN panel paragraph styling -->
 Let   
   \begin{equation}\alpha  = {a_k}d{x^k}\notag\end{equation}
   \begin{equation}\beta  = {b_{ij}}d{x^i} \wedge d{x^j}\notag\end{equation}
@@ -177,22 +187,24 @@ Let
   \begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = {a_k}{b_{ij}}{v^k}d{x^i} \wedge d{x^j} + {b_{ij}}{v^j}d{x^i} \wedge \alpha  - {b_{ij}}{v^i}\alpha  \wedge d{x^j}\notag\end{equation}
   \begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = {a_k}{v^k}\beta  - \left( {{b_{ij}}{v^j}\alpha  \wedge d{x^i} + {b_{ij}}{v^i}\alpha  \wedge d{x^j}} \right)\notag\end{equation}
   \begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = {a_k}{v^k}\beta  - \alpha  \wedge {b_{ij}}\left( {{v^j}d{x^i} + {v^i}d{x^j}} \right)\notag\end{equation}
-  Reconstituting the contractions:
-  \begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  \wedge \beta  - \alpha  \wedge \left\langle {\beta ,V} \right\rangle \;\;\color{blue}\blacksquare \notag\end{equation} </p></div>
-     </p>														<!-- END panel paragraph styling -->
-	</div>										 						<!-- END ACCORDION panel--> 
 
+Reconstituting the contractions:
+\begin{equation}\left\langle {\alpha  \wedge \beta ,V} \right\rangle  = \left\langle {\alpha ,V} \right\rangle  \wedge \beta  - \alpha  \wedge \left\langle {\beta ,V} \right\rangle \;\;\color{blue}\blacksquare \notag\end{equation} </p></div>
+     														<!-- END panel paragraph styling -->
+									 						<!-- END ACCORDION panel--> 
 
-<p>In the 2-form example above both basis forms were first degree, so carrying the second vector past the first in the wedge product to operate on it with the vector entailed using a negative sign.  Had it been a 3-form we would pick up a negative sign on the first &ldquo;hop&rdquo; but have a net positive sign on the second &ldquo;hop.&rdquo;  For example:</p>
-<p>\begin{equation}\left\langle {\sigma ,v} \right\rangle  = \left\langle {adx \wedge bdy \wedge cdz,p\frac{\partial }{{\partial x}} + q\frac{\partial }{{\partial y}} + r\frac{\partial }{{\partial z}}} \right\rangle \notag\end{equation}
+<br><br>
+In the 2-form example above both basis forms were first degree, so carrying the second vector past the first in the wedge product to operate on it with the vector entailed using a negative sign.  Had it been a 3-form we would pick up a negative sign on the first &ldquo;hop&rdquo; but have a net positive sign on the second &ldquo;hop.&rdquo;  For example:
+\begin{equation}\left\langle {\sigma ,v} \right\rangle  = \left\langle {adx \wedge bdy \wedge cdz,p\frac{\partial }{{\partial x}} + q\frac{\partial }{{\partial y}} + r\frac{\partial }{{\partial z}}} \right\rangle \notag\end{equation}
 \begin{equation}\color{blue} = pabc\left\langle {dx \wedge dy \wedge dz,\frac{\partial }{{\partial x}}} \right\rangle  + qabc\left\langle {dx \wedge dy \wedge dz,\frac{\partial }{{\partial y}}} \right\rangle  + rabc\left\langle {dx \wedge dy \wedge dz,\frac{\partial }{{\partial z}}} \right\rangle \notag\end{equation}
 \begin{equation}\color{blue} = pabc\left\langle {\frac{\partial }{{\partial x}},dx \wedge dy \wedge dz} \right\rangle  + qabc\left\langle {\frac{\partial }{{\partial y}},dx \wedge dy \wedge dz} \right\rangle  + rabc\left\langle {\frac{\partial }{{\partial z}},dx \wedge dy \wedge dz} \right\rangle \notag\end{equation} 
   \begin{equation} = p\left( {abc} \right)dy \wedge dz - q\left( {abc} \right)dx \wedge dz + r\left( {abc} \right)dx \wedge dy\notag\end{equation} 
   resulting in a 2-form.
-  We added intermediate lines (in blue) to emphasize three things:  first, we can break this into three individual contractions by property \eqref{Cc}.  Second, functions (a, b, c, p, q, r) move &ldquo;through&rdquo; the operation by property \eqref{Cb}.  Third, we can reverse the form and vector in the contraction symbology without changing its meaning, facilitating an imaginary rightward &ldquo;hopping&rdquo; of the vector component over any 1-forms until we get to one that results in a non-zero evaluation.  An odd number of hops generates a negative sign. </p>
-<p>It will serve you well to practice n-form contractions as we will be computing them heavily in the section on <em>Isovectors</em> in conjunction with the <em>Lie Derivative</em>.</p>
+  We added intermediate lines (in blue) to emphasize three things:  first, we can break this into three individual contractions by property \eqref{Cc}.  Second, functions (a, b, c, p, q, r) move &ldquo;through&rdquo; the operation by property \eqref{Cb}.  Third, we can reverse the form and vector in the contraction symbology without changing its meaning, facilitating an imaginary rightward &ldquo;hopping&rdquo; of the vector component over any 1-forms until we get to one that results in a non-zero evaluation.  An odd number of hops generates a negative sign. 
+It will serve you well to practice n-form contractions as we will be computing them heavily in the section on <em>Isovectors</em> in conjunction with the <em>Lie Derivative</em>.
 
-	</div> 														<!-- END MJ-rendering--> 
+<br><br>
+	</div>												<!-- END MJ-rendering--> 
 
 	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
 		<ul>
