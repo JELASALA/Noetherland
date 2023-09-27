@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 2; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+        
+<p align="center"><strong>2.2 – Infinitesimal Vector Generators</strong></p>
+
+Why infinitesimal generators?  This is something discovered long ago by Sophus Lie and we will get there after discussing the idea of <em>invariant functions</em>.  
+
+A vector (field) acting at a point in a manifold might be represented as
+\begin{equation}v = {\xi ^i}\frac{\partial }{{\partial {x^i}}}\notag\end{equation}
+where the $\partial /\partial {x^i}$ are the basis vectors.  This might be the tangent vector to a curve, as suggested in the diagram below.
+<br><br>
+  <img src="Fig 2a Vector Field and Integral Curve.jpg" alt="Vector field and integral curve" class="imgcenter" width="40%">
+  <figcaption>Fig 2a. Vector field and an integral curve</figcaption>
+<br>
+More generally, it might be a vector field representing a point-by-point transformation. For example, consider a rotation, which looks like this in two dimensions:
+\begin{equation}v =  - y\frac{\partial }{{\partial x}} + x\frac{\partial }{{\partial y}}\notag\end{equation}
+Consider the result of applying this vector to a function $f = f\left( {x,y} \right)$ and demanding the result vanish:
+\begin{equation}v\left( f \right) =  - y\frac{{\partial f}}{{\partial x}} + x\frac{{\partial f}}{{\partial y}} = 0\notag\end{equation}
+We say this function <em>f</em> is an <strong><em>invariant</em></strong> <strong><em>of the vector field</em></strong> since the operation is required to vanish.  Let us solve for the function that satisfies this relationship.  <strong>We can use the MOC, explained in our section on Method of Characteristics [section number]</strong>.  We use the non-parameterized form of MOC:<br>
+  \begin{equation}\frac{{dx}}{{ - y}} = \frac{{dy}}{x}\notag\end{equation}<br>
+  This solves easily:<br>
+  \begin{equation}xdx =  - ydy \to {x^2} =  - {y^2} + C\notag\end{equation}
+We assign the function to the &ldquo;constant&rdquo; C, or better described &ldquo;invariant&rdquo;, meaning <em>f</em> satisfies the invariance condition when <br>
+  \begin{equation}f = {x^2} + {y^2} = C\left( {x,y} \right) \equiv {r^2}\left( {x,y} \right) = constant\notag\end{equation}<br>
+  Testing:<br>
+  \begin{equation}v\left( f \right) =  - y\frac{{\partial f}}{{\partial x}} + x\frac{{\partial f}}{{\partial y}} =  - 2yx + 2xy = 0\;\;\emptyset \notag\end{equation}
+Thus this rotation-inducing vector transformation defines invariant curves – circles in the x-y plane of radii $r$.  We can parameterize this curve (treating $r$ as a constant) as 
+\begin{equation}\gamma \left( \theta  \right) = \left( {x\left( \theta  \right),y\left( \theta  \right)} \right) = \left( {r\cos \theta ,r\sin \theta } \right)\notag\end{equation}
+We can compute the tangent vector, or LLA, of this curve using, for example Burke&rsquo;s notation (Burke p.__): [Tag LLA formula]<br>
+  \begin{equation}\dot \gamma \left( \theta  \right) = \frac{{d{\gamma ^j}}}{{d\theta }}\frac{\partial }{{\partial {x^j}}}\notag\end{equation}
+So in this example:<br>
+  \begin{equation}\dot \gamma \left( \theta  \right) = \left( { - r\sin \theta ,r\cos \theta } \right) = \left( { - y,x} \right) =  - y\frac{\partial }{{\partial x}} + x\frac{\partial }{{\partial y}} = v\notag\end{equation}
+<strong>Main Point</strong>:  We see that a vector (field) acting on a function <em>f </em>defines an &ldquo;invariant&rdquo; curve that satisfies $v\left( f \right) = 0$ and the tangent vector to the curve so defined is that generating vector.  Seems circular but it is, in fact, a nice tight self-consistent result.
+A simple additional example is given by <br>
+  \begin{equation}v = a\frac{\partial }{{\partial x}} + b\frac{\partial }{{\partial y}}\notag\end{equation}
+\begin{equation}v\left( f \right) = a\frac{{\partial f}}{{\partial x}} + b\frac{{\partial f}}{{\partial y}} = 0\notag\end{equation}<br>
+  MOC:<br>
+  \begin{equation}\frac{{dx}}{a} = \frac{{dy}}{b}\notag\end{equation}<br>
+  This solves easily:<br>
+  \begin{equation}bdx = ady \to bx = ay - C\notag\end{equation}
+We assign the function to the &ldquo;constant&rdquo; C, or better described &ldquo;invariant&rdquo;, meaning <em>f</em> satisfies the invariance condition when <br>
+  \begin{equation}f = y - \frac{b}{a}x = C\notag\end{equation}
+Thus the vector generates straight lines with slope $b/a$ and various intercepts.  We can represent the lines as a curve (aka trajectory) parameterized by a real number <em>s</em>:
+\begin{equation}\gamma \left( s \right) = \left( {x\left( s \right),y\left( s \right)} \right) = \left( {as,bs + C} \right)\notag\end{equation}
+whose tangent vector takes us back to where we started:
+\begin{equation}\dot \gamma \left( s \right) = \left( {a,b} \right) = a\frac{\partial }{{\partial x}} + b\frac{\partial }{{\partial y}}\notag\end{equation}
+<!--
+<br><br>
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  <br><br>
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
