@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 3.4.4</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 4; const SS = 4; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+					tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//						tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css"> <!--Use this link if working globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>3.4 Isovectors of PDE Systems</strong>  </p>
+  <p align="center"><strong>3.4.4  PDE Balance Form</strong></p>
+
+  <p>A visit to <strong>Appendix 3.4B</strong> should give you a sense of how complex the EDS process can be for the general PDE case.  There is a special structure of PDEs called balance equations by both Suhubi and Edelen, which when a PDE is so structured enables a direct passage from the messy Lie derivative expansions demonstrated in APPENDIX 3.4B to a more or less compact, formula driven template for finding the determining equations in terms of the vector components.  In the $N = 1$ case one then inserts the universal function to obtain a coupled set of determining equations for $F$.  The student then applies his/her ingenuity to tease out the form of F in terms of other functions whose dependencies eventually lead to integration constants that distinguish different isovectors of the group.  There is also a rather longer process for the $N > 1$ case. 
+    
+</p>
+<p>In defense of this specialization he says "The reduced determining equations for isovector components are explicitly obtained for balance equations which play an important part in physical and engineering sciences … [T]his approach proves to be quite fruitful as far as the analytical procedures are concerned in balance equations derived from conservation laws. Since natural laws are generally of this form, many field equations encountered in physics and engineering fall naturally into this category. Thus, we can say that balance equations are come across most frequently in practical applications.”
+    
+    The basic form of balance equations of $m + 1$ order (Suhubi clarifies the apparent symbolic order redefinition on page 522) is
+    
+    \begin{equation}\frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^i}}} + {\Sigma ^\alpha } = 0\notag\end{equation}
+    
+    with
+    
+    \begin{equation}{\Sigma ^\alpha } = {\Sigma ^\alpha }\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right)\notag\end{equation}
+    
+    
+    and
+    
+    \begin{equation}{\Sigma ^{\alpha i}} = {\Sigma ^{\alpha i}}\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right)\notag\end{equation}
+    
+    where at least one of the functions ${\Sigma ^{\alpha i}}\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right)$ contains an $m^{th}$ order derivative $u_{,{i_1}{i_2} \ldots {i_m}}^\alpha $.  Here, as earlier, $\alpha $ runs from 1 to $N$, the number of dependent variables (he has dropped the distinction between $A$ and $N$).   In terms of the auxiliary variables in the contact manifold:
+    
+    \begin{equation}{\Sigma ^\alpha } = {\Sigma ^\alpha }\left( {{x^i},{u^\alpha },v_{{i_1}}^\alpha , \ldots ,v_{{i_1}{i_2} \ldots {i_m}}^\alpha } \right)\notag\end{equation}
+    
+    and
+    
+    \begin{equation}{\Sigma ^{\alpha i}} = {\Sigma ^{\alpha i}}\left( {{x^i},{u^\alpha },v_{{i_1}}^\alpha , \ldots ,v_{{i_1}{i_2} \ldots {i_m}}^\alpha } \right)\notag\end{equation}
+    
+    We can also recast the fundamental $n$-form
+    
+    \begin{equation}{\omega ^a} = {F^a}\mu \notag\end{equation}
+    
+    as the balance $n$-form:
+    
+    \begin{equation}{\omega ^\alpha } = d{\Sigma ^{\alpha i}} \wedge {\mu _i} + {\Sigma ^\alpha }\mu \notag\end{equation}
+    
+  </p>
+  <p><strong>EXERCISE</strong>:  Show ${\omega ^\alpha } = d{\Sigma ^{\alpha i}} \wedge {\mu _i} + {\Sigma ^\alpha }\mu $ is equivalent to ${\omega ^\alpha } \equiv {F^a}\mu $ with </p>
+  <p>\begin{equation}{F^a} = \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^i}}} + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},i}^\beta  + {\Sigma ^\alpha }\notag\end{equation}</p>
+  <p>fully expressed based on  Suhubi&rsquo;s assertion that ${\Sigma ^{\alpha i}}\left( {{x^i},{u^\alpha },u_{,{i_1}}^\alpha , \ldots ,u_{,{i_1}{i_2} \ldots {i_m}}^\alpha } \right)$ must contain an ${m^{th}}$-order derivative.  Hint:  work from $d{\Sigma ^{\alpha i}} \wedge {\mu _i}$</p>
+
+
+  <button class="accordion"><strong>Solution</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+  Consider
+    \begin{equation}d{\Sigma ^{\alpha i}} \wedge {\mu _i} = \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^j}}}d{x^j} \wedge {\mu _i} + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},j}^\beta d{x^j} \wedge {\mu _i}\notag\end{equation}
+    Now
+    \begin{equation}{\mu _i} = \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle \notag\end{equation}
+    so
+    \begin{equation}d{x^j} \wedge {\mu _i} = d{x^j} \wedge \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle \notag\end{equation}
+
+    We may use (Con-d) from <strong>Section 3.1</strong> with $\alpha  = d{x^j},\;\beta  = d{x^1} \wedge  \ldots  \wedge d{x^n},\;V = \partial {x^i}$: 
+    \begin{equation}\left\langle {\partial {x^i},d{x^j} \wedge d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = \left\langle {\partial {x^i},d{x^j}} \right\rangle  \wedge d{x^1} \wedge  \ldots  \wedge d{x^n} + {\left( { - 1} \right)^{\deg \left( {d{x^j}} \right)}}d{x^j} \wedge \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle \notag\end{equation}
+    Rearranging
+    \begin{equation}{\left( { - 1} \right)^1}d{x^j} \wedge \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = \left\langle {\partial {x^i},d{x^j} \wedge d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  - \left\langle {\partial {x^i},d{x^j}} \right\rangle  \wedge d{x^1} \wedge  \ldots  \wedge d{x^n}\notag\end{equation}
+
+    \begin{equation} - d{x^j} \wedge \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = 0 - \delta _i^jd{x^1} \wedge  \ldots  \wedge d{x^n}\notag\end{equation}
+    So
+    \begin{equation}d{x^j} \wedge {\mu _i} = d{x^j} \wedge \left\langle {\partial {x^i},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = \delta _i^j\mu \notag\end{equation}
+    Then
+    \begin{equation}d{\Sigma ^{\alpha i}} \wedge {\mu _i} = \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^j}}}\delta _i^j\mu  + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},j}^\beta \delta _i^j\mu \notag\end{equation}
+    \begin{equation}d{\Sigma ^{\alpha i}} \wedge {\mu _i} = \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^i}}}\mu  + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},i}^\beta \mu \notag\end{equation}
+    \begin{equation}d{\Sigma ^{\alpha i}} \wedge {\mu _i} = \left( {\frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^i}}} + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},i}^\beta } \right)\mu \notag\end{equation}
+    So
+    \begin{equation}{\omega ^\alpha } = \left( {\frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial {x^i}}} + \mathop \sum \limits_{r = 0}^m \frac{{\partial {\Sigma ^{\alpha i}}}}{{\partial v_{{i_1}{i_2} \ldots {i_r}}^\beta }}dv_{{i_1}{i_2} \ldots {i_r},i}^\beta  + {\Sigma ^\alpha }} \right)\mu  = {F^a}\mu \;\;\color{blue}\blacksquare \notag\end{equation}
+
+    </p>
+  </div> 
+<!-- end panel -->
+<br>
+  <p>Suhubi proceeds to implement the program of demanding the Lie derivative of this <strong><em>balance n-form</em></strong> generate forms that are members of the <em>fundamental</em> (now referred to as <em>balance</em>) <em>ideal</em>:</p>
+  <p>\begin{equation}{\mathcal{L}_V}\left( {{\omega ^a}} \right) = \lambda _\beta ^a{\omega ^\beta } + \mathop \sum \limits_{r = 0}^{m - 1} \gamma _\beta ^{a\;{i_1} \ldots {i_r}} \wedge \sigma _{{i_1} \ldots {i_r}}^\beta  + \Gamma _\beta ^{a\;{i_1} \ldots {i_{m - 1}}} \wedge d\sigma _{{i_1} \ldots {i_{m - 1}}}^{\;\beta }\;\notag\end{equation}</p>
+  <p>and for the $N = 1$ case:</p>
+  \begin{equation}{\mathcal{L}_V}\left( \omega  \right) = \lambda \omega  + \mathop \sum \limits_{r = 0}^{m - 1} {\gamma ^{\;{i_1} \ldots {i_r}}} \wedge \sigma _{{i_1} \ldots {i_r}}^\; + {\Gamma ^{{i_1} \ldots {i_{m - 1}}}} \wedge d\sigma _{{i_1} \ldots {i_{m - 1}}}^\;\label{ivN1}\end{equation}
+  <p>with the Lie derivative expressed as </p>
+  <p>\begin{equation}{\mathcal{L}_V}\left( \omega  \right) = V\left( \Sigma  \right)\mu  + \left[ {dV\left( {{\Sigma ^i}} \right) + \Sigma d{X^i}} \right] \wedge {\mu _i} - d{X^j} \wedge d{\Sigma ^i} \wedge {\mu _{ji}}\notag\end{equation}</p>
+
+  <p>where ${\mu _{ji}}$ is &ldquo;missing&rdquo; $d{x^i}$ and $d{x^j}$ (when expressed explicitly one must take care of the overall sign, which depends on the location of these 1-forms in the volume one-form).</p>
+  <p><strong>EXERCISE</strong>.  Demonstrate the last equation.</p>
+  <p>HINT:  Start with </p>
+  <p>\begin{equation}\omega  = d{\Sigma ^i} \wedge {\mu _i} + \Sigma \mu \notag\end{equation}</p>
+  <p>and utilize <strong>Cartan&rsquo;s Magic Formula</strong>.</p>
+  
+    <button class="accordion"><strong>Solution</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+    \begin{equation}{\mathcal{L}_V}\left( \omega  \right) = \left\langle {V,d\omega } \right\rangle  + d\left\langle {V,\omega } \right\rangle \notag\end{equation}
+    First term:
+    \begin{equation}\left\langle {V,d\omega } \right\rangle  = \left\langle {V,d\Sigma  \wedge \mu } \right\rangle  = \left\langle {V,d\Sigma } \right\rangle  \wedge \mu  - d\Sigma  \wedge \left\langle {V,\mu } \right\rangle \notag\end{equation}
+
+    from property (Con-d).  Now
+    \begin{equation} \left\langle{V,d\Sigma}\right\rangle=\left\langle {{X^i}\frac{\partial }{{\partial {x^i}}} + U\frac{\partial }{{\partial u}} + {V^i}\frac{\partial }{{\partial {v_i}}} +  \ldots ,\frac{{\partial \Sigma }}{{\partial {x^j}}}d{x^j} + \frac{{\partial \Sigma }}{{\partial u}}du + \frac{{\partial \Sigma }}{{\partial {v_j}}}d{v_j} +  \ldots } \right\rangle \notag\end{equation}
+    
+    \begin{equation} = {{X^i}\frac{{\partial \Sigma }}{{\partial {x^i}}} + U\frac{{\partial \Sigma }}{{\partial u}} + {V^i}\frac{{\partial \Sigma }}{{\partial {v_i}}} +  \ldots } = V\left( \Sigma  \right)\notag\end{equation}
+    Also
+    \begin{equation}\left\langle {V,\mu } \right\rangle  = \left\langle {{X^i}\frac{\partial }{{\partial {x^i}}},d{x^1} \wedge  \ldots  \wedge d{x^n}} \right\rangle  = {X^i}{\mu _i}\notag\end{equation}
+    So the first term becomes
+    \begin{equation}\left\langle {V,d\omega } \right\rangle  = V\left( \Sigma  \right)\mu  - {X^i}d\Sigma  \wedge {\mu _i}\notag\end{equation}
+    Next
+    \begin{equation}\left\langle {V,\omega } \right\rangle  = \left\langle {V,d{\Sigma ^i} \wedge {\mu _i} + \Sigma \mu } \right\rangle  = \left\langle {V,d{\Sigma ^i} \wedge {\mu _i}} \right\rangle  + \left\langle {V,\Sigma \mu } \right\rangle \notag\end{equation}
+
+    The first term becomes from property (Con-d):
+    \begin{equation}\left\langle {V,d{\Sigma ^i} \wedge {\mu _i}} \right\rangle  = \left\langle {V,d{\Sigma ^i}} \right\rangle  \wedge {\mu _i} - d{\Sigma ^i} \wedge \left\langle {V,{\mu _i}} \right\rangle \notag\end{equation}
+    \begin{equation} = V\left( {{\Sigma ^i}} \right){\mu _i} - d{\Sigma ^i} \wedge \left\langle {{X^j}\frac{\partial }{{\partial {x^j}}},{\mu _i}} \right\rangle \notag\end{equation}
+    \begin{equation} = V\left( {{\Sigma ^i}} \right){\mu _i} - d{\Sigma ^i} \wedge {X^j}{\mu _{ji}}\notag\end{equation}
+    The second terms evaluates 
+    \begin{equation}\left\langle {V,\Sigma \mu } \right\rangle  = \Sigma \left\langle {V,\mu } \right\rangle  = \Sigma {X^i}{\mu _i}\notag\end{equation}
+
+    \begin{equation}d\left\langle {V,\omega } \right\rangle  = d\left( {V\left( {{\Sigma ^i}} \right){\mu _i} - d{\Sigma ^i} \wedge {X^j}{\mu _{ji}}} \right) + d\left( {\Sigma {X^i}{\mu _i}} \right)\notag\end{equation}
+    \begin{equation}{\mathcal{L}_V}\left( \omega  \right) = \;V\left( \Sigma  \right)\mu  - {X^i}d\Sigma  \wedge {\mu _i} + d\left[ {V\left( {{\Sigma ^i}} \right){\mu _i} - d{\Sigma ^i} \wedge {X^j}{\mu _{ji}}} \right] + d\left( {\Sigma {X^i}{\mu _i}} \right)\notag\end{equation}
+    \begin{equation}{\mathcal{L}_V}\left( \omega  \right) = \;V\left( \Sigma  \right)\mu  - {X^i}d\Sigma  \wedge {\mu _i} + dV\left( {{\Sigma ^i}} \right){\mu _i} + d{\Sigma ^i} \wedge d{X^j}{\mu _{ji}} + \Sigma d{X^i} \wedge {\mu _i} + {X^i}d\Sigma  \wedge {\mu _i}\notag\end{equation}
+    \begin{equation}{\mathcal{L}_V}\left( \omega  \right) = \;V\left( \Sigma  \right)\mu  + dV\left( {{\Sigma ^i}} \right){\mu _i} + \Sigma d{X^i} \wedge {\mu _i} - d{X^j} \wedge d{\Sigma ^i}{\mu _{ji}}\notag\end{equation}
+    in agreement with Suhubi (9.4.6).
+
+    </p>
+  </div> 
+<!-- end panel -->
+  <br><br>
+    The process of equating coefficients of like forms on both sides of the equation delivers a set of determining equations (9.4.18) that look like this for the case $N = m = 1$:
+    
+    \begin{equation}
+    \begin{gathered}
+    \lambda \left( {\Sigma  + \frac{{\partial {\Sigma ^i}}}{{\partial {x^i}}} + \frac{{\partial {\Sigma ^i}}}{{\partial u}}{v_i}} \right) = A + {A^i}{v_i}   \\
+    {\lambda \left( {\frac{{\partial {\Sigma ^i}}}{{\partial {v_j}}} + \frac{{\partial {\Sigma ^j}}}{{\partial {v_i}}}} \right) = {A^{ij}} + {A^{ji}} - 2\left( {{B^{kij}} + {B^{kji}}} \right){v_k}}\\
+    {C^{ijkl}} + {C^{ikjl}} = 0
+    \end{gathered}
+    \tag{Suhubi(9.4.18)}\label{eq1}\end{equation}
+    
+    
+    where the <strong>ABC</strong> coefficients are given in Suhubi (9.4.14) (see <strong>Appendix 3.5C</strong> for the complete $N = 1$ case); note the first generates one equation, the second ${n^2}$ equations and the last apparently ${n^4}$ equations but the anti-symmetry properties of ${C^{ijkl}}$ seen below dramatically reduces the surviving terms, in the case of $n = 2$, to a single meaningful equation.  
+    
+    Note also the $LHS$ as written by Suhubi and reflected by us comes from the $RHS$ of \eqref{ivN1} and the $RHS$ comes from the $LHS$ evaluation of ${\mathcal{L}_V}\left( \omega  \right)$.  The subset of the $RHS$ coefficients for the $N = m = 1$ case is
+    
+    \begin{equation}A = V\left( \Sigma  \right) + \frac{{\partial V\left( {{\Sigma ^i}} \right)}}{{\partial {x^i}}} + \Sigma \frac{{\partial {X^i}}}{{\partial {x^i}}} + \frac{{\partial {\Sigma ^i}}}{{\partial {x^i}}}\frac{{\partial {X^j}}}{{\partial {x^j}}} - \frac{{\partial {\Sigma ^i}}}{{\partial {x^j}}}\frac{{\partial {X^j}}}{{\partial {x^i}}}\notag\end{equation}
+    
+    
+    \begin{equation}{A^i} = \frac{{\partial V\left( {{\Sigma ^i}} \right)}}{{\partial u}} + \Sigma \frac{{\partial {X^i}}}{{\partial u}} + \frac{{\partial {\Sigma ^j}}}{{\partial {x^j}}}\frac{{\partial {X^i}}}{{\partial u}} - \frac{{\partial {\Sigma ^i}}}{{\partial {x^j}}}\frac{{\partial {X^j}}}{{\partial u}} + \frac{{\partial {\Sigma ^i}}}{{\partial u}}\frac{{\partial {X^j}}}{{\partial {x^j}}} - \frac{{\partial {\Sigma ^j}}}{{\partial u}}\frac{{\partial {X^i}}}{{\partial {x^j}}}\notag\end{equation}
+    
+    
+    \begin{equation}{A^{ij}} = \frac{{\partial V\left( {{\Sigma ^i}} \right)}}{{\partial {v_j}}} + \Sigma \frac{{\partial {X^i}}}{{\partial {v_j}}} + \frac{{\partial {\Sigma ^k}}}{{\partial {x^k}}}\frac{{\partial {X^i}}}{{\partial {v_j}}} - \frac{{\partial {\Sigma ^i}}}{{\partial {x^k}}}\frac{{\partial {X^k}}}{{\partial {v_j}}} + \frac{{\partial {\Sigma ^i}}}{{\partial {v_j}}}\frac{{\partial {X^k}}}{{\partial {x^k}}} - \frac{{\partial {\Sigma ^k}}}{{\partial {v_j}}}\frac{{\partial {X^i}}}{{\partial {x^k}}}\notag\end{equation}
+    
+    
+    \begin{equation}{B^{ijk}} =  - {B^{jik}} = \frac{1}{2}\left[ {\frac{{\partial {\Sigma ^i}}}{{\partial {v_k}}}\frac{{\partial {X^j}}}{{\partial u}} - \frac{{\partial {\Sigma ^j}}}{{\partial {v_k}}}\frac{{\partial {X^i}}}{{\partial u}} + \frac{{\partial {\Sigma ^j}}}{{\partial u}}\frac{{\partial {X^i}}}{{\partial {v_k}}} - \frac{{\partial {\Sigma ^i}}}{{\partial u}}\frac{{\partial {X^j}}}{{\partial {v_k}}}} \right]\notag\end{equation}
+    
+    
+    \begin{equation}{C^{ijkl}} =  - {C^{jikl}} =  - {C^{ijlk}} = \frac{1}{4}\left[ {\frac{{\partial {\Sigma ^i}}}{{\partial {v_l}}}\frac{{\partial {X^j}}}{{\partial {v_k}}} - \frac{{\partial {\Sigma ^j}}}{{\partial {v_l}}}\frac{{\partial {X^i}}}{{\partial {v_k}}} + \frac{{\partial {\Sigma ^j}}}{{\partial {v_k}}}\frac{{\partial {X^i}}}{{\partial {v_l}}} - \frac{{\partial {\Sigma ^i}}}{{\partial {v_k}}}\frac{{\partial {X^j}}}{{\partial {v_l}}}} \right]\notag\end{equation}
+    
+    
+    Consider an $m = 1,\;n = 2,\;N = 1$ problem (e.g., the 1D heat equation).  We seek the coefficients of the isovector 
+    
+    \begin{equation}V = {X^1}\frac{\partial }{{\partial {x^1}}} + {X^2}\frac{\partial }{{\partial {x^2}}} + U\frac{\partial }{{\partial u}} + {V^1}\frac{\partial }{{\partial {v_1}}} + {V^2}\frac{\partial }{{\partial {v_2}}}\notag\end{equation}
+    
+    for the PDE defined in terms of
+    
+    \begin{equation}\Sigma  = \Sigma \left( {{x^1},{x^2},u,{v_1},{v_2}} \right)\notag\end{equation}
+    
+    and
+    
+    \begin{equation}{\Sigma ^i} = {\Sigma ^i}\left( {{x^1},{x^2},u,{v_1},{v_2}} \right)\notag\end{equation}
+    
+<br>
+<p align="center"><strong>The Heat Equation</strong></p>
+
+We put the 1D heat equation 
+
+\begin{equation}\frac{{\partial {u_x}}}{{\partial x}} - \frac{{\partial u}}{{\partial t}} = 0\notag\end{equation}
+    
+into the form
+    
+\begin{equation}\frac{{\partial {\Sigma ^1}}}{{\partial {x^1}}} + \frac{{\partial {\Sigma ^2}}}{{\partial {x^2}}} + \Sigma  = 0\notag\end{equation}
+    
+with identifications
+    
+\begin{equation}{x^1} = x,\;\;\;{x^2} = t,\;\notag\end{equation}
+    
+and
+    
+\begin{equation}{\Sigma ^1}\left( {{x^1},{x^2},u,{v_1},{v_2}} \right) = {u_x} = {v_1},\;\;{\Sigma ^2}\left( {{x^1},{x^2},u,{v_1},{v_2}} \right) =  - u,\;\;\;\;\;\;\;\Sigma  = 0\notag\end{equation}
+    and then 
+
+\begin{equation}V\left( {{\Sigma ^1}} \right) = {V_1}\;\;\;\;\;\;\;V\left( {{\Sigma ^2}} \right) =  - U\notag\end{equation}
+    
+In the contact manifold the 1D heat equation is the simple algebraic relation:
+    
+\begin{equation}{v_{11}} - {v_2} = 0\notag\end{equation}
+    
+The original six DEs (9.4.18) for this situation expand to 	
+    
+\begin{equation}\lambda \left( {\Sigma  + \frac{{\partial {\Sigma ^1}}}{{\partial {x^1}}} + \frac{{\partial {\Sigma ^2}}}{{\partial {x^2}}} + \frac{{\partial {\Sigma ^1}}}{{\partial u}}{v_1} + \frac{{\partial {\Sigma ^2}}}{{\partial u}}{v_2}} \right) = A + {A^1}{v_1} + {A^2}{v_2}\tag{A}\end{equation}
+    
+\begin{equation}\lambda \left( {\frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}} \right) = {A^{11}} + {A^{11}} - 2{B^{k11}}{v_k} - 2{B^{k11}}{v_k}\tag{B}\end{equation}
+    
+\begin{equation}\lambda \left( {\frac{{\partial {\Sigma ^1}}}{{\partial {v_2}}} + \frac{{\partial {\Sigma ^2}}}{{\partial {v_1}}}} \right) = {A^{12}} + {A^{21}} - 2{B^{k12}}{v_k} - 2{B^{k21}}{v_k}\tag{C}\end{equation}
+    
+\begin{equation}\lambda \left( {\frac{{\partial {\Sigma ^2}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^1}}}{{\partial {v_2}}}} \right) = {A^{21}} + {A^{12}} - 2{B^{k21}}{v_k} - 2{B^{k12}}{v_k}\notag\end{equation}
+    
+\begin{equation}\lambda \left( {\frac{{\partial {\Sigma ^2}}}{{\partial {v_2}}} + \frac{{\partial {\Sigma ^2}}}{{\partial {v_2}}}} \right) = {A^{22}} + {A^{22}} - 2{B^{k22}}{v_k} - 2{B^{k22}}{v_k}\tag{D}\end{equation}
+
+and
+
+\begin{equation}{C^{1221}} = 0\tag{E}\end{equation}
+
+with all of its permutations as the only distinct, non-trivially vanishing C-coefficient.  Note Suhubi ignores this DE, which is, after all, inconsequential as we find it is redundant with conclusions we will reach with the others. <BR><BR>
+
+Let us evaluate the first:
+    
+\begin{equation}LHS = \lambda \left( {\Sigma  + \frac{{\partial {\Sigma ^1}}}{{\partial {x^1}}} + \frac{{\partial {\Sigma ^2}}}{{\partial {x^2}}} + \frac{{\partial {\Sigma ^1}}}{{\partial u}}{v_1} + \frac{{\partial {\Sigma ^2}}}{{\partial u}}{v_2}} \right) = \lambda \left( {0 + {\color{silver}\frac{{\partial {v_1}}}{{\partial x}}} - {\color{silver}\frac{{\partial u}}{{\partial t}}} + {\color{silver}\frac{{\partial {v_1}}}{{\partial u}}}{v_1} - \frac{{\partial \left( u \right)}}{{\partial u}}{v_2}} \right) =  - \lambda {v_2}\notag\end{equation}
+    
+
+Note that in the contact manifold $\left( {x,t,u,{v_1},{v_2}} \right)$ are treated as independent variables, resulting in the zeroed derivatives above.  For the $RHS$ we compute
+    
+    \begin{equation}A 
+    = {\color{silver}V\left( \Sigma  \right)} 
+    + \frac{{\partial V\left( {{\Sigma ^i}} \right)}}{{\partial {x^i}}} 
+    + {\color{silver}\Sigma }\frac{{\partial {X^i}}}{{\partial {x^i}}} 
+    + {\color{silver}\frac{{\partial {\Sigma ^i}}}{{\partial {x^i}}}}\frac{{\partial {X^j}}}{{\partial {x^j}}} 
+    - {\color{silver}\frac{{\partial {\Sigma ^i}}}{{\partial {x^j}}}}\frac{{\partial {X^j}}}{{\partial {x^i}}} 
+    = \frac{{\partial V\left( {{v_1}} \right)}}{{\partial {x^1}}} + \frac{{\partial V\left( { - u} \right)}}{{\partial {x^2}}} = \frac{{\partial {V^1}}}{{\partial x}} - \frac{{\partial U}}{{\partial t}}\notag\end{equation}
+    
+    \begin{equation}{A^1} 
+    = \frac{{\partial V\left( {{\Sigma ^1}} \right)}}{{\partial u}} 
+    + {\color{silver}\Sigma} \frac{{\partial {X^1}}}{{\partial u}} 
+    + {\color{silver}\frac{{\partial {\Sigma ^j}}}{{\partial {x^j}}}}\frac{{\partial {X^1}}}{{\partial u}} 
+    - \frac{{\partial {\Sigma ^1}}}{{\partial {x^j}}}\frac{{\partial {X^j}}}{{\partial u}} 
+    + {\color{silver}\frac{{\partial {\Sigma ^1}}}{{\partial u}}}\frac{{\partial {X^j}}}{{\partial {x^j}}} 
+    - \frac{{\partial {\Sigma ^j}}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {x^j}}}\notag\end{equation}
+    
+    \begin{equation} = \frac{{\partial V\left( {{v_1}} \right)}}{{\partial u}} - \frac{{\partial \left( { - u} \right)}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {x^2}}} = \frac{{\partial {V^1}}}{{\partial u}} + \frac{{\partial {X^1}}}{{\partial t}}\notag\end{equation}
+    
+    \begin{equation}{A^2} 
+    = \frac{{\partial V\left( {{\Sigma ^2}} \right)}}{{\partial u}} 
+    + {\color{silver}\Sigma }\frac{{\partial {X^2}}}{{\partial u}} 
+    + {\color{silver}\frac{{\partial {\Sigma ^j}}}{{\partial {x^j}}}}\frac{{\partial {X^2}}}{{\partial u}} 
+    - {\color{silver}\frac{{\partial {\Sigma ^2}}}{{\partial {x^j}}}}\frac{{\partial {X^j}}}{{\partial u}} + \frac{{\partial {\Sigma ^2}}}{{\partial u}}\frac{{\partial {X^j}}}{{\partial {x^j}}} 
+    - \frac{{\partial {\Sigma ^j}}}{{\partial u}}\frac{{\partial {X^2}}}{{\partial {x^j}}}\notag\end{equation}
+    
+    \begin{equation} = \frac{{\partial V\left( { - u} \right)}}{{\partial u}} + \frac{{\partial \left( { - u} \right)}}{{\partial u}}\frac{{\partial {X^j}}}{{\partial {x^j}}} - \frac{{\partial \left( { - u} \right)}}{{\partial u}}\frac{{\partial {X^2}}}{{\partial {x^2}}} =  - \frac{{\partial U}}{{\partial u}} - \frac{{\partial {X^1}}}{{\partial x}} - \frac{{\partial {X^2}}}{{\partial t}} + \frac{{\partial {X^2}}}{{\partial t}}\notag\end{equation}
+    
+    Then
+    
+    \begin{equation}RHS = \left( {{\partial _x}{V^1} - {\partial _t}U} \right) + \left( {{\partial _u}{V^1} + {\partial _t}{X^1}} \right){v_1} + \left( { - {\partial _u}U - {\partial _x}{X^1}} \right){v_2}\notag\end{equation}
+    
+    Equating sides 
+    
+    \begin{equation}\lambda {v_2} + \left( {{\partial _x}{V^1} - {\partial _t}U} \right) + \left( {{\partial _u}{V^1} + {\partial _t}{X^1}} \right){v_1} + \left( { - {\partial _u}U - {\partial _x}{X^1}} \right){v_2} = 0\tag{A'}\end{equation}
+
+<strong>EXERCISE:</strong> Evaluate (B) to the same extent.
+
+<br><br>
+<button class="accordion"><strong>Solution</strong></button>
+  <div class="panel">
+    <p style="padding: 10px; border: 1px solid black;">
+  
+\begin{equation}\lambda \left( {\frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}} \right) = 2{A^{11}} - 4{B^{i11}}{v_i}\notag\end{equation}
+
+Then
+
+\begin{equation}LHS = \lambda \left( {\frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}} \right) = 2\lambda \notag\end{equation}
+For the RHS we need
+
+\begin{equation}{A^{11}} = \frac{{\partial V\left( {{\Sigma ^1}} \right)}}{{\partial {v_1}}} + \Sigma \frac{{\partial {X^1}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^k}}}{{\partial {x^k}}}\frac{{\partial {X^1}}}{{\partial {v_1}}} - \frac{{\partial {\Sigma ^1}}}{{\partial {x^k}}}\frac{{\partial {X^k}}}{{\partial {v_1}}} + \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}\frac{{\partial {X^k}}}{{\partial {x^k}}} - \frac{{\partial {\Sigma ^k}}}{{\partial {v_1}}}\frac{{\partial {X^1}}}{{\partial {x^k}}}\notag\end{equation}
+
+\begin{equation}{A^{11}} = \frac{{\partial {V_1}}}{{\partial {v_1}}} + 0 + 0\frac{{\partial {X^1}}}{{\partial {v_1}}} - 0\frac{{\partial {X^k}}}{{\partial {v_1}}} + 1\frac{{\partial {X^k}}}{{\partial {x^k}}} - 1\frac{{\partial {X^1}}}{{\partial {x^1}}}-0\frac{{\partial {X^1}}}{{\partial {x^2}}}\notag\end{equation}
+
+\begin{equation}{A^{11}} = {\partial _{{v_1}}}{V^1} + {\partial _t}{X^2}\notag\end{equation}
+
+\begin{equation}{B^{i11}} = \frac{1}{2}\left[ {\frac{{\partial {\Sigma ^i}}}{{\partial {v_1}}}\frac{{\partial {X^1}}}{{\partial u}} - \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}\frac{{\partial {X^i}}}{{\partial u}} + \frac{{\partial {\Sigma ^1}}}{{\partial u}}\frac{{\partial {X^i}}}{{\partial {v_1}}} - \frac{{\partial {\Sigma ^i}}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {v_1}}}} \right]\notag\end{equation}
+
+\begin{equation}{B^{111}} = \frac{1}{2}\left[ {\frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}\frac{{\partial {X^1}}}{{\partial u}} - \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}\frac{{\partial {X^1}}}{{\partial u}} + \frac{{\partial {\Sigma ^1}}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {v_1}}} - \frac{{\partial {\Sigma ^1}}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {v_1}}}} \right]\notag\end{equation}
+
+\begin{equation}{B^{111}} = 0\notag\end{equation}
+
+\begin{equation}{B^{211}} = \frac{1}{2}\left[ {\frac{{\partial {\Sigma ^2}}}{{\partial {v_1}}}\frac{{\partial {X^1}}}{{\partial u}} - \frac{{\partial {\Sigma ^1}}}{{\partial {v_1}}}\frac{{\partial {X^2}}}{{\partial u}} + \frac{{\partial {\Sigma ^1}}}{{\partial u}}\frac{{\partial {X^2}}}{{\partial {v_1}}} - \frac{{\partial {\Sigma ^2}}}{{\partial u}}\frac{{\partial {X^1}}}{{\partial {v_1}}}} \right]\notag\end{equation}
+
+\begin{equation}{B^{211}} = \frac{1}{2}\left[ { - {\partial _u}{X^2} + {\partial _{{v_1}}}{X^1}} \right]\notag\end{equation}
+
+Collecting
+
+\begin{equation}RHS = 2{\partial _{{v_1}}}{V^1} + 2{\partial _t}{X^2} + 2{v_2}{\partial _u}{X^2} - 2{v_2}{\partial _{{v_1}}}{X^1}\notag\end{equation}
+
+Equating sides 
+
+\begin{equation}\lambda  = {\partial _{{v_1}}}{V^1} + {\partial _t}{X^2} + {v_2}{\partial _u}{X^2} - {v_2}{\partial _{{v_1}}}{X^1}\tag{B'}\end{equation}
+
+    </p>
+  </div> 
+  <p>
+  <!-- end panel -->
+    
+  <br>
+    We substitute for the vector components 
+    
+\begin{equation} 
+\begin{gathered}   
+	U = F - {v_1}\frac{{\partial F}}{{\partial {v_1}}} - {v_2}\frac{{\partial F}}{{\partial {v_2}}}\\
+
+	{X^1} =  - \frac{{\partial F}}{{\partial {v_1}}},\;\;{X^2} =  - \frac{{\partial F}}{{\partial {v_2}}}\\
+
+	{V_1} = \frac{{\partial F}}{{\partial x}} + {v_1}\frac{{\partial F}}{{\partial u}},\;\;\;\;\;\;\;{V_2} = \frac{{\partial F}}{{\partial t}} + {v_2}\frac{{\partial F}}{{\partial u}}
+
+\end{gathered}
+\label{Feqs}\end{equation}
+
+  <p>or using a shorthand notation for partial derivatives of the function $F$:</p>
+  <p>\begin{equation}U = F - {v_1}{F_{{v_1}}} - {v_2}{F_{{v_2}}}\notag\end{equation}</p>
+  <p>\begin{equation}{X^1} =  - {F_{{v_1}}},\;\;\;{X^2} =  - {F_{{v_2}}}\notag\end{equation}</p>
+  <p>\begin{equation}{V^1} = {F_x} + {v_1}{F_u},\;\;\;{V^2} = {F_t} + {v_2}{F_u}\notag\end{equation}</p>
+
+  <p> to express the DEs in terms of the “universal” function $F\left( {x,t,u,{v_1},{v_2}} \right)$ and its derivatives.  
+    
+    \begin{equation} - \lambda {v_2} = \left( {{F_{xx}} + {v_1}{F_{ux}} - {F_t} + {v_1}{F_{t{v_1}}} + {v_2}{F_{t{v_2}}}} \right) + {v_1}\left( {{F_{ux}} - {F_{t{v_1}}}} \right) + {v_2}\left( { - {F_u} + {v_1}{F_{u{v_1}}} + {v_2}{F_{u{v_2}}} + {F_{x{v_1}}}} \right) = 0\notag\end{equation}
+    
+    Rearranging and replacing ${v_1}$ and ${v_2}$ with w and v, respectively
+    
+    \begin{equation} - \lambda v = \left( {{F_{xx}} + w{F_{ux}} - {F_t} + w{F_{tw}} + v{F_{tv}}} \right) + w\left( {{F_{ux}} + w{F_{uu}} - {F_{tw}}} \right) + v\left( { - {F_u} + w{F_{uw}} + v{F_{uv}} + {F_{xw}}} \right) = 0\notag\end{equation}
+    
+    Consolidating and grouping by independent variable multipliers (monomials):
+    
+    \begin{equation} - \lambda v = {F_{xx}} - {F_t} + 2w{F_{ux}} + {w^2}{F_{uu}} + v\left( {{F_{tv}} + {F_{xw}} - {F_u}} \right) + {v^2}{F_{uv}} + vw{F_{uw}} = 0\tag{A''}\end{equation}
+    
+    The others become:
+    
+    \begin{equation}v{F_{ww}} - \lambda  + {F_u} + {F_{xw}} - {F_{tv}} + w{F_{uw}} - v{F_{uv}} = 0\tag{B''}\end{equation}
+    
+    \begin{equation}v{F_{vv}} = 0\tag{C''}\end{equation}
+    
+    \begin{equation}v{F_{vw}} + {F_{xv}} + w{F_{uv}} = 0\tag{D''}\end{equation}
+    
+    \begin{equation}{F_{vv}} = 0\tag{E''}\end{equation}
+    
+    The first four DEs (with (E'') being redundant) are solved together, eliminating $\lambda $ between them.  Monomials in powers of the “independent” variables are found and solved together.   We note that these four DEs are identical to those labeled (b')-(g') in <strong>Appendix 3.4B</strong> after combining of (d’) and (e’).  The utility of the balance equation methodology in arriving at the DEs more directly than an error-prone non-balance approach detailed in in <strong>Appendix 3.4B</strong> should be evident.  
+    
+    Eventually we find this expression for $F$:
+    
+    \begin{equation}F = \left( {4{c_1}{t^2} + 2{c_2}t + {c_3}} \right)v + \left( {4{c_1}tx + {c_2}x + 2{c_4}t + {c_5}} \right)w + \left( {{c_1}{x^2} + {c_4}x + 2{c_1}t + {c_6}} \right)u + {\mu _H}\notag\end{equation}
+    
+    where ${\mu _H}$ is a solution to the heat equation.  The vector components are then found from \eqref{Feqs}:
+    
+    \begin{equation}{X^1} =  - \left( {4{c_1}tx + {c_2}x + 2{c_4}t + {c_5}} \right)\notag\end{equation}
+    
+    \begin{equation}{X^2} =  - \left( {4{c_1}{t^2} + 2{c_2}t + {c_3}} \right)\notag\end{equation}
+    
+    \begin{equation}U = \left( {{c_1}{x^2} + {c_4}x + 2{c_1}t + {c_6}} \right)u + {\mu _H}\notag\end{equation}
+    
+    \begin{equation}{V^1} = \frac{{\partial {\mu _H}}}{{\partial x}} + \left( {2{c_1}x + {c_4}} \right)u + w\left( {{c_1}{x^2} + {c_4}x + 6{c_1}t + {c_6} + {c_2}} \right)\notag\end{equation}
+    
+    \begin{equation}{V_2} = \frac{{\partial {\mu _H}}}{{\partial t}} + 2{c_1}u + w\left( {4{c_1}x + 2{c_4}} \right) + v\left( {{c_1}{x^2} + {c_4}x + 10{c_1}t + 2{c_2} + {c_6}} \right)\notag\end{equation}
+    
+    The first three components are consistent with those found using the vector approach (apart for overall signs and redefined constants):
+    
+    \begin{equation}\xi  = 4{c_6}tx + {c_4}x + 2{c_5}t + {c_1}\notag\end{equation}
+    
+    \begin{equation}\tau  = 4{c_6}{t^2} + 2{c_4}t + {c_2}\notag\end{equation}
+    
+    \begin{equation}\phi  = \left( { - {c_6}{x^2} - {c_5}x + {c_3} - 2{c_6}t} \right)u + {\beta _{heat}}\left( {x,t} \right)\notag\end{equation}
+    
+    Now the EDS process also produces isovector components ${V_1}$ and ${V_2}$ which Olver’s vector approach does not produce.  This begs the question about their role and the need to carry them on to the next stage, finding similarity solutions.  In fact, Suhubi seems to ignore those components completely.  
+    
+    In appendixes we consider other examples.    
+    </p>
+  </p>
+  <p><strong>Appendix 3.4C:</strong> &nbsp;the 1D heat equation with source term (giving us a finite $\Sigma$)</p>
+	<p><strong>Appendix 3.4D:</strong> &nbsp;the 2D wave equation</p>
+	<p><strong>Appendix 3.4E:</strong> &nbsp;the KdV equation</p>
+
+    </div> 														<!-- END MJ-rendering--> 
+      
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 3.4.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
