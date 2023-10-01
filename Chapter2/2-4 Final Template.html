@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.4</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 3; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.4 – Invariant Algebraic Functions</strong></p>
+<p>The key operation that unlocks the potential of Lie groups in finding symmetries and conserved quantities begins on page 79 of [Olver 1986]:</p>
+
+So far we have sought algebraic transforms on polynomial functions to find their invariant curves (orbits), but the real payoff is finding such “orbits” for PDEs.   We have been operating in a simple compound Euclidean manifold of $X\times U$= ${E^p}\times {E^q}$ representing the $p$ independent variables and the $q$ function(s), with examples of up to ${E^3}\times{E^1}$.  To address PDEs we have to expand the space to include partial derivatives of the dependent variables in a jet space of $X\times{U^{\left( n \right)}}$ where $n$ is the order of the PDE.  In this larger space we consider $u$ and all its partial derivatives to be independent “dimensions” with the PDE itself merely an algebraically constructed “surface” in this jet space.  
+
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Proposition 2.6 </strong>Let $G$ be a connected group of transformations acting on the manifold $M$. A smooth, real-valued function $\zeta :M \mapsto \mathbb{R}$ <strong>is an invariant</strong> <strong>function</strong> <strong>for $G$</strong> <em>if and only if</em>
+\begin{equation}\pmb{v}\left( \zeta  \right) = 0 \text{ for all } x\; \in \;M\tag{Olver (2.1)}\label{O21}\end{equation}
+and every infinitesimal generator $\pmb{v}$ of $G$.
+</p>
+
+You may recall from <strong>Chapter 1</strong> this is also a special case of a Lie derivative.  Let's unpack this.  We posit (multiple) generators $\pmb{v}$ of a group of transformations <em>G</em> and the existence of a function $\zeta $ that vanishes when operated on by the generators $\pmb{v}$.  What does this have to do with the integral curve?  Spoiler alert:  the function $\zeta $ is found by requiring its composition with the integral curve to be independent of the parameter $\varepsilon $ that parameterizes that integral curve!  That is, $\zeta $ is invariant along the curve.
+<br><br>
+We actually explored this property in our introduction with examples of straight lines and the SO(2) rotation group, where we found the latter &ldquo;discovered&rdquo; circles.  We now unleash the exponentiation process to enable a proof of this proposition.
+
+Recall \eqref{O11'}, which we have exhaustively tested in our examples:
+
+\begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] = \pmb{v}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] \equiv \pmb{v}{|_{\Psi \left( {\varepsilon ,x} \right)}}\label{O11'}\tag{Olver (1.11')}\end{equation}
+
+\begin{equation}{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x \equiv \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
+
+Olver now constructs a <em>function of the flow:</em> $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$, which is the composition of the integral curve $\Psi \left( {\varepsilon ,x} \right)$ with the purported invariant function:  Symbolically we propose a function $\zeta $ exists which we compose with the integral curve $\Psi \left( {\varepsilon ,x} \right)$:
+
+\begin{equation}\zeta  \circ \Psi \left( {\varepsilon ,x} \right) = \zeta \left( {\Psi \left( {\varepsilon ,x} \right)} \right) = \zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \zeta \left( {{x^1}\left( \varepsilon  \right),{x^2}\left( \varepsilon  \right), \ldots } \right) \equiv \zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\label{A}\end{equation}
+
+where we have elaborated the meaning in the last expression, with the ${x^i}\left( \varepsilon  \right)$ describing the integral curve in local coordinates.  So we are defining a function $\zeta $ along the flow and will demand it vanish.  We compute the variation of the function with respect to the $\varepsilon $ parameter along the curve symbolically:
+
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = v\left( \zeta  \right)\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] \equiv \pmb{v}\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x}} = 0\tag{Olver (1.17)}\label{B}\end{equation}
+
+We can demonstrate \eqref{B} quite easily using the chain rule.  First we express the LHS using \eqref{A}:
+
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\notag\end{equation}
+
+whose derivative is given by:
+
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right) = \frac{{\partial \zeta }}{{\partial {x^i}\left( \varepsilon  \right)}}\frac{{d{x^i}\left( \varepsilon  \right)}}{{d\varepsilon }} = {\xi ^i}\left( x \right)\frac{{\partial \zeta \left( {x\left( \varepsilon  \right)} \right)}}{{\partial {x^i}\left( \varepsilon  \right)}} = \left[ {{\xi ^i}\left( x \right)\frac{\partial }{{\partial {x^i}\left( \varepsilon  \right)}}} \right]\zeta \left( {x\left( \varepsilon  \right)} \right) = \pmb{v}\left( {\zeta \left( {x\left( \varepsilon  \right)} \right)} \right)\notag\end{equation}
+
+where we have used \eqref{O17}:
+
+\begin{equation}\frac{{d{x^i}}}{{d\varepsilon }} = {\xi ^i}\left( x \right)\tag{Olver (1.7)}\label{O17}\end{equation}
+
+and
+
+\begin{equation}\pmb{v}{|_x} = {\xi ^i}\left( x \right){\partial _{{x^i}}} \equiv \xi \left( x \right){\partial _x}\notag\end{equation}
+
+So
+
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \pmb{v}\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x}}\;\color{blue}\blacksquare\notag\end{equation}
+
+[Caution, don't confuse $\zeta $ (the invariant function) with the ${\xi ^i}$ (vector coefficient functions).]<br><br>
+
+Applying \eqref{O21}, vanishing of the RHS of the above means the ostensible invariant function $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$ must be independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes.<br><br>
+
+In words, we claim that if the operation of $\pmb{v}$ on a function vanishes for all values of the parameter, at least in some neighborhood, that function must be an invariant function on <em>G</em>.  Insertion of ${\text{exp}}\left( {\varepsilon \pmb{v}} \right)x$ in the argument $x\left( \varepsilon  \right)$ of $\zeta $ makes it a function of the flow generated by the generator $\pmb{v}$ of the group operation $G$, so vanishing of the RHS means the function $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$ is independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes. 
+
+
+<p style="padding: 15px; border: 2px solid black;">
+For example, recall the SO(2) rotation group, parameterized now by $\varepsilon $.  The flow was found in the <strong>Section 2.3</strong> (Example 4) by the exponentiation process to be
+
+\begin{equation}\Psi \left( {\varepsilon ,\left( {x,y} \right)} \right) = \left( {{\Psi ^1}\left( {\varepsilon ,\left( x \right)} \right),{\Psi ^2}\left( {\varepsilon ,\left( y \right)} \right)} \right) = \left( {x\cos \varepsilon  - y\sin \varepsilon ,y\cos \varepsilon  + x\sin \varepsilon } \right)\notag\end{equation}
+
+The function 
+
+\begin{equation}\zeta \left( {x\left( \varepsilon  \right),y\left( \varepsilon  \right)} \right) = {\left( {{\Psi ^1}} \right)^2} + {\left( {{\Psi ^2}} \right)^2} = {\left( {x\cos \varepsilon  - y\sin \varepsilon } \right)^2} + {\left( {y\cos \varepsilon  + x\sin \varepsilon } \right)^2} = \;{x^2} + {y^2}\notag\end{equation}
+
+certainly satisfies the requirement:
+
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {\varepsilon ,\left( {x,y} \right)} \right) = 0\notag\end{equation}
+</p>
+
+In <strong>Section 2.3</strong> we also demonstrated that $\pmb{v}\left( {{x^2} + {y^2}} \right) = 0$, closing the loop.  That is, we found the flow "curve" in Example 4 and we have shown here that a function of that curve <strong></strong> is an invariant function under that group of transforms. 
+<br>
+<br>
+<strong>Summarizing where we stand</strong>: if we are given a vector representing a symmetry (like SO(2)) we can use <strong>Prop 2.6</strong> to find invariant functions (like ${x^2} + {y^2} = f = const$) whose orbits are invariant curves.  The tangent vectors to those curves are the very symmetry vectors that generated them.  We have not yet found a way to go the other way:  given a curve (trajectory) defined algebraically (like ${x^2} + {y^2} = const$) <u>what are the symmetry vectors that generate it</u>?  Let's take our SO(2) again to explore this question.
+<br><br>
+<strong>Closing the Loop:  </strong>Given an algebraic function 
+
+\begin{equation} f = {x^2} + {y^2} = const\notag\end{equation}
+
+or better,
+
+\begin{equation}\zeta \left( {x,y} \right) \equiv {x^2} + {y^2} - C = 0\notag\end{equation}
+
+find the vector that satisfies
+
+\begin{equation}\pmb{v}\left( \zeta  \right) = 0\notag\end{equation}
+
+We start with generic coefficients that are to be determined: 
+
+\begin{equation}\pmb{v} = {\xi ^1}\left( {x,y} \right){\partial _x} + {\xi ^2}\left( {x,y} \right){\partial _y}\notag\end{equation}
+
+Operate
+
+\begin{equation}\pmb{v}\left( \zeta  \right) = 0 = 2x{\xi ^1}\left( {x,y} \right) + 2y{\xi ^2}\left( {x,y} \right)\notag\end{equation}
+
+so
+
+\begin{equation}x{\xi ^1} + y{\xi ^2} = 0\notag\end{equation}
+
+We have one equation and two unknown functions, but we can at least find their ratio:
+\begin{equation}{\xi ^1}/{\xi ^2} =  - y/x\notag\end{equation}
+
+Apart from an overall scale factor we can declare:$\;{\xi ^1} =  - y$ and ${\xi ^2} = x$, yielding
+\begin{equation}\pmb{v} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+
+Overall scale factors are irrelevant, so we may declare victory here.  We have just demonstrated the use of elementary form of <strong><em>determining equations</em></strong>. That is, the equation (where $\zeta $ may represent a set of coupled equations):
+
+\begin{equation}\pmb{v}\left( \zeta  \right) = 0\notag\end{equation}
+
+yielding in this case
+
+\begin{equation}x{\xi ^1} + y{\xi ^2} = 0\notag\end{equation}
+
+will generate equation(s) whose solution(s), consistent with the original algebraic equation, will yield the coefficients of the symmetry-generating vector(s).
+
+Before we leave this section we want to introduce/reinforce the group nature of symmetry transforms.  Let us continue our exploration of SO(2) but extend it to 3 dimensions. We can guess that there can be rotations about the x, y and z-axes, which can be represented as
+
+\begin{equation}{R_{xy}} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+
+\begin{equation}{R_{xz}} =  - z{\partial _x} + x{\partial _z}\notag\end{equation}
+
+\begin{equation}{R_{yz}} =  - z{\partial _y} + y{\partial _z}\notag\end{equation}
+
+It turns out these span SO(3) the 3-dimensional version of SO(2), meaning any other rotation about the origin can be represented as a linear combination of them.  Further, as you can easily demonstrate:
+
+\begin{equation}\left[ {{R_{xy}},{R_{xz}}} \right] = {R_{yz}}\notag\end{equation}
+and so forth, cyclically permuting the vectors.  This is the Lie commutator bracket.  These vectors form a <strong>Lie sub-algebra</strong>.  In a sense this is analogous to what we will call an <strong>Ideal</strong> in the EDS formalism.  That is, operations among the elements can never take you outside the set or group.
+<br><br>
+In principle these SO(3) vectors can be found by applying the invariance condition to a function possessing the expected symmetry
+
+\begin{equation}\zeta \left( {x,y,z} \right) \equiv {x^2} + {y^2} + {z^2} - C = 0\notag\end{equation}
+
+With
+
+\begin{equation}R = {\xi ^1}\left( {x,y,z} \right){\partial _x} + {\xi ^2}\left( {x,y,z} \right){\partial _y} + {\xi ^3}\left( {x,y,z} \right){\partial _z}\notag\end{equation}
+  we apply
+  \begin{equation}R\left( \zeta  \right) = 0\notag\end{equation}
+  yielding the determining equation:
+  \begin{equation}x{\xi ^1} + y{\xi ^2} + z{\xi ^3} = 0\notag\end{equation}
+We can see that alternately setting one of the coefficients to zero we generate the three rotation vectors.  A linear combination will also satisfy this equation, for example
+\begin{equation}a{R_{xy}} + b{R_{xz}} =  - \left( {ay - bz} \right){\partial _x} + ax{\partial _y} + bx{\partial _z}\notag\end{equation}
+  Then
+  \begin{equation} - x\left( {ay - bz} \right) + axy + bxz = 0\;\color{blue}\blacksquare \notag\end{equation}
+<strong>Note</strong>:  although the term "infinitesimal vector generator" is used to describe <strong><em>v</em></strong>, we have seen no requirement so far that the resulting curve (or "orbit" as Olver calls it) is confined to infinitesimal values of the parameter.  Yet in a sense we are always talking about the infinitesimal nature of the vector when we treat is as the tangent to some curve, since the tangent gives us the first order approximation of the function as we move away from some starting point $\varepsilon  = 0$.  <strong>What is remarkable is that knowing only the tangent vector to an &ldquo;invariant curve&rdquo; at some point <em>x</em> is sufficient to generate the rest of the curve </strong>(at least within a neighborhood, barring singularities) when it also qualifies as an <em>invariant</em> curve.  Burke points out that many different curves could pass through a point and at that point have identical tangent vector values <strong>[need reference].</strong>  Yet the exponentiation process picks out that one curve that is an orbit of the transformation group generated by the vector.  
+<br><br>
+Next we move onto finding invariant generators and accompanying solutions for PDE systems, the focus of this chapter.
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.4</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
