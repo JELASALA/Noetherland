@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.7.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 6; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.7.2 – Translation in space and dilation</strong></p>
+
+<strong>Example 1</strong>:  <u>Spatial translation</u> in $x$ and $y$ and the <u>dilation</u> vector applied together:
+Recall this is the original EOM or PDE:
+\begin{equation}{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+or in units of $c = 1$:
+\begin{equation}{u_{tt}} - \left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+These are the symmetry vectors we will employ:
+\begin{equation}\pmb{v} = \frac{1}{{{k_x}}}{\partial _x} + \frac{1}{{{k_y}}}{\partial _y}\notag\end{equation}
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+We have reason to believe a solution to this combination of symmetry vectors is possible based on the commutator of the two generating vectors.
+<br><br>
+<strong>Level 1:</strong>  
+<br><br>
+We first apply the displacement vector to a representative G-invariant solution $\zeta $ which requires: 
+
+\begin{equation}v\left( \zeta  \right) = \frac{1}{{{k_x}}}\frac{{\partial \zeta }}{{\partial x}} + \frac{1}{{{k_y}}}\frac{{\partial \zeta }}{{\partial y}} = 0\notag\end{equation}
+MOC procedure:
+\begin{equation}{k_x}dx = {k_y}dy\;\;\notag\end{equation}
+
+\begin{equation} \to {k_x}x = {k_y}y + {c_1} \to {c_1} = {k_x}x - {k_y}y \equiv {y^1}\notag\end{equation}
+
+<strong>Note on symbols used:</strong>
+<div>
+  <div id="block1">•</div>
+  <div id="block2">
+Careful not to confuse the superscripted $y$-symbols with the spatial variable $y$.
+  </div>
+  <div id="block1">•</div>
+  <div id="block2">
+With MOC we use subscripted ${c_i}$ as integration constants, which are not to be confused with the constants used to express the symmetry vector generator coefficients in <strong>Appendix 2A</strong>
+  </div>
+</div>
+<br>
+We are free to select either $x$ or $y$ as the parametric variable and we choose $\hat x = y$ making $x$ and the invariant ${c_2} = t \equiv {y^2}$ the principal variables, of which we now have two.  The third invariant is the uncoupled dependent variable ${c_3} = u \equiv v$.
+
+\begin{equation}{\tilde x^i} \equiv {\gamma ^i}\left( {\hat y;{y^1},{y^2}} \right),\;\;\;i = 1,\;2\notag\end{equation}
+
+\begin{equation}{\tilde x^1} = x \equiv {\gamma ^1}\left( {y;{y^1},t} \right) = \frac{{{y^1} + {k_y}y}}{{{k_x}}}\notag\end{equation}
+
+\begin{equation}{\tilde x^2} = t \equiv {\gamma ^2}\left( {y;{y^1},t} \right)\notag\end{equation}
+
+\begin{equation}u = v = \delta \left( {y;{y^1},t,v} \right)\notag\end{equation}
+
+To simplify the following computations, replace ${y^1}$ with $z$. 
+
+\begin{equation}u = \delta \left( {y;z,t,v} \right) = v\notag\end{equation}
+where
+\begin{equation}{k_x}x - {k_y}y = z\notag\end{equation}
+
+We now express the original PDE in the new variables.  Detail is found in the drop box below.
+
+<br><br>
+
+
+<button class="accordion"><strong>Apply the chain rule to re-express the variables:</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+\begin{equation}{u_x} = {\partial _x}\delta \left( {y;z,t,v} \right) = \frac{{\partial \delta }}{{\partial y}}\color{red}\frac{{\partial y}}{{\partial x}}\color{black} + \frac{{\partial \delta }}{{\partial z}}\frac{{\partial z}}{{\partial x}} + \frac{{\partial \delta }}{{\partial t}}\color{red}\frac{{\partial t}}{{\partial x}}\color{black} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial t}}\color{red}\frac{{\partial t}}{{\partial x}}\notag\end{equation}
+
+\begin{equation}{u_x} = \frac{{\partial \delta }}{{\partial y}}\color{red}0\color{black} + \frac{{\partial v}}{{\partial z}}{k_x} + \frac{{\partial \delta }}{{\partial t}}\color{red}0\color{black} + \frac{{\partial v}}{{\partial v}}\frac{{\partial v}}{{\partial z}}{k_x} + \frac{{\partial v}}{{\partial v}}\frac{{\partial v}}{{\partial t}}\color{red}0\color{black}\notag\end{equation}
+
+Note:  the <span style="color:red">red zero</span> is taken because $x$, $y$ and $t$ are independent variables.
+
+\begin{equation}{u_x} = {k_x}{v_z} + {k_x}{v_z} = 2{k_x}{v_z}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = {\partial _x}{u_x}\left( {y;z,t,v} \right) = \frac{{\partial {u_x}}}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial z}}\frac{{\partial z}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial t}}\frac{{\partial t}}{{\partial x}}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = \frac{{\partial {u_x}}}{{\partial y}}0 + \frac{{\partial 2{k_x}{v_z}}}{{\partial z}}\left( {{k_x}} \right) + \frac{{\partial 2{k_x}{v_z}}}{{\partial t}}0 + 0\frac{{\partial v}}{{\partial z}}\left( {{k_x}} \right) + 0\frac{{\partial v}}{{\partial t}}0\notag\end{equation}
+
+\begin{equation}{u_{xx}} = 2{k_x}^2{v_{zz}}\notag\end{equation}
+
+\begin{equation}{u_y} = {\partial _y}\delta \left( {y;z,t,v} \right) = \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial y}} + \frac{{\partial \delta }}{{\partial z}}\frac{{\partial z}}{{\partial y}} + \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial y}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial y}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial t}}\frac{{\partial t}}{{\partial y}}\notag\end{equation}
+
+\begin{equation}{u_y} = 0 - {v_z}{k_y} + \frac{{\partial v}}{{\partial t}}0 - 1{v_z}{k_y} + \frac{{\partial v}}{{\partial v}}\frac{{\partial v}}{{\partial t}}0\notag\end{equation}
+
+\begin{equation}{u_y} =  - 2{k_y}{v_z}\notag\end{equation}
+
+\begin{equation}{u_{yy}} = {\partial _y}{u_y}\left( {y;z,t,v} \right) = \frac{{\partial {u_y}}}{{\partial y}}\frac{{\partial y}}{{\partial y}} + \frac{{\partial {u_y}}}{{\partial z}}\frac{{\partial z}}{{\partial y}} + \frac{{\partial {u_y}}}{{\partial t}}\frac{{\partial t}}{{\partial y}} + \frac{{\partial {u_y}}}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial y}} + \frac{{\partial {u_y}}}{{\partial v}}\frac{{\partial v}}{{\partial t}}\frac{{\partial t}}{{\partial y}}\notag\end{equation}
+
+\begin{equation}{u_{yy}} = \frac{{\partial \left( { - 2{k_y}{v_z}} \right)}}{{\partial y}}1 + \frac{{\partial \left( { - 2{k_y}{v_z}} \right)}}{{\partial z}}\left( { - {k_y}} \right) + \frac{{\partial \left( { - 2{k_y}{v_z}} \right)}}{{\partial t}}0 + \frac{{\partial \left( { - 2{k_y}{v_z}} \right)}}{{\partial v}}\frac{{\partial v}}{{\partial z}}\left( { - {k_y}} \right) + \frac{{\partial {u_y}}}{{\partial v}}\frac{{\partial v}}{{\partial t}}0\notag\end{equation}
+
+\begin{equation}{u_{yy}} = 0 + \frac{{\partial \left( { - 2{k_y}{v_z}} \right)}}{{\partial z}}\left( { - {k_y}} \right) + 0 + 0\frac{{\partial v}}{{\partial z}}\left( { - {k_y}} \right) + 0\notag\end{equation}
+
+\begin{equation}{u_{yy}} = 2{k_y}^2{v_{zz}}\notag\end{equation}
+
+We evaluate ${u_{tt}}$ in the same manner, even though time was not involved in the coupling:
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {y;z,t,v} \right) = \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial \delta }}{{\partial z}}\frac{{\partial z}}{{\partial t}} + \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial t}}\frac{{\partial t}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {y;z,t,v} \right) = \frac{{\partial \delta }}{{\partial y}}0 + {v_z}0 + {v_t}1 + 1{v_z}0 + 1{v_t}1\notag\end{equation}
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {y;z,t,v} \right) = {v_t} + {v_t} = 2{v_t}\notag\end{equation}
+
+\begin{equation}{u_{tt}} = {\partial _t}{u_t} = \frac{{\partial {u_t}}}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial z}}\frac{{\partial z}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial t}}\frac{{\partial t}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial v}}\frac{{\partial v}}{{\partial z}}\frac{{\partial z}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial v}}\frac{{\partial v}}{{\partial t}}\frac{{\partial t}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{u_{tt}} = \frac{{\partial 2{v_t}}}{{\partial y}}0 + \frac{{\partial 2{v_t}}}{{\partial z}}0 + \frac{{\partial 2{v_t}}}{{\partial t}}1 + \frac{{\partial 2{v_t}}}{{\partial v}}\frac{{\partial v}}{{\partial z}}0 + 0\frac{{\partial v}}{{\partial t}}1\notag\end{equation}
+
+\begin{equation}{u_{tt}} = 2{v_{tt}}\notag\end{equation}
+So
+\begin{equation}{u_{tt}} - \left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+becomes
+\begin{equation}2{v_{tt}} - \left( {2{k_x}^2{v_{zz}} + 2{k_y}^2{v_{zz}}} \right) = 0\notag\end{equation}
+</p>
+</div><!--end accordion-->
+<br><br>
+
+The new PDE is then
+\begin{equation}{v_{tt}} - \left( {{k_x}^2 + {k_y}^2} \right){v_{zz}} = 0\notag\end{equation}
+
+<!-- Start box-->
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Aside:</strong>  
+Before going to the next level, let’s see if the solution makes sense.  Let
+
+\begin{equation}v = T\left( t \right)Z\left( z \right)\notag\end{equation}
+Then
+\begin{equation}\frac{{T''}}{T} = \left( {{k_x}^2 + {k_y}^2} \right)\frac{{Z''}}{Z} \equiv  - {\omega ^2} = constant\notag\end{equation}
+
+ (The negative sign is for convenience, can consider positive as well which gives exponential solutions).  So
+\begin{equation}T'' =  - {\omega ^2}T \to T = A\exp \left( {i\omega t} \right)\notag\end{equation}
+and
+\begin{equation}Z'' =  - \frac{{{\omega ^2}}}{{\left( {{k_x}^2 + {k_y}^2} \right)}}Z \equiv  - {\eta ^2}Z \to Z = B\exp \left( {i\eta z} \right)\notag\end{equation}
+So
+\begin{equation}v = u = ABexp\left( {i\eta z + i\omega t} \right)\notag\end{equation}
+Substituting for z:
+\begin{equation}u = ABexp\left( {i\eta \left( {{k_x}x - {k_y}y} \right) + i\omega t} \right)\notag\end{equation}
+
+Does this satisfy the original EOM?
+\begin{equation}{u_{tt}} = {u_{xx}} + {u_{yy}}\notag\end{equation}
+
+\begin{equation} - {\omega ^2}u =  - {\eta ^2}{k_x}^2u - {\eta ^2}{k_y}^2u\notag\end{equation}
+Requires
+\begin{equation}{\omega ^2} = {\eta ^2}\left( {{k_x}^2 + {k_y}^2} \right)\notag\end{equation}
+So the solution is
+\begin{equation}u = ABexp\left( {i\eta \left( {{k_x}x - {k_y}y} \right) + i\omega t} \right)\;\color{blue}\blacksquare \notag\end{equation}
+
+So we have the canonical wave-like solution with a sign difference that could be absorbed into ${k_y}$.  
+</p><!-- end box-->
+
+<strong>Level 2:</strong>  The next step is to couple z and t using another (different) vector generator.  We will use the dilation or scaling vector as the commutator of this vector and the translation vector returns the translation vector forming a sub-group.   
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+We first have to express this vector generator in terms of z and t.  Operate on a placeholder function $f$:
+
+\begin{equation}\pmb{d}f = x{\partial _x}f + y{\partial _y}f + t{\partial _t}f\notag\end{equation}
+Apply
+\begin{equation}z = {k_x}x - {k_y}y\notag\end{equation}
+so
+\begin{equation}x = \frac{{z + {k_y}y}}{{{k_x}}};\;\;y =  - \frac{{z - {k_x}x}}{{{k_y}}}\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \left( {\frac{{z + {k_y}y}}{{{k_x}}}} \right){\partial _z}f\frac{{dz}}{{dx}} - \left( {\frac{{z - {k_x}x}}{{{k_y}}}} \right){\partial _z}f\frac{{dz}}{{dy}} + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \left( {\frac{{z + {k_y}y}}{{{k_x}}}} \right){\partial _z}f{k_x} + \left( {\frac{{z - {k_x}x}}{{{k_y}}}} \right){\partial _z}f{k_y} + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \left( {z + {k_y}y} \right){\partial _z}f + \left( {z - {k_x}x} \right){\partial _z}f + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \left( {2z + {k_y}y - {k_x}x} \right){\partial _z}f + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \left( {2z - z} \right){\partial _z}f + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d} = z{\partial _z} + t{\partial _t}\notag\end{equation}
+
+We need a solution now for the invariance condition:
+
+\begin{equation}\pmb{d}\left( \zeta  \right) = z\frac{{\partial \zeta }}{{\partial z}} + t\frac{{\partial \zeta }}{{\partial t}} = 0\notag\end{equation}
+
+MOC gives us a very simple solution with ${c_4}$ is the integration “constant”:
+
+\begin{equation}\frac{{dz}}{z} = \frac{{dt}}{t} \to \ln \left( z \right) = \ln \left( t \right) + \ln \left( {{c_4}} \right)\notag\end{equation}
+
+\begin{equation}{\text{z}} = {c_4}t\notag\end{equation}
+so
+\begin{equation}{c_4} = \frac{z}{t} \equiv w\notag\end{equation}
+
+for symbolic simplicity.  This is easily shown to satisfy the invariance condition. We select $\hat x = t$ to be the parametric variable call $z$ the principal variable.
+
+\begin{equation}\tilde x = z \equiv \gamma \left( {t;w} \right) = wt\notag\end{equation}
+and still have
+\begin{equation}u = \delta \left( {t;w,\tilde v} \right) = \tilde v\notag\end{equation}
+
+since we have still not coupled $u$ into the “orbit.”  Now Re-express the PDE:
+
+\begin{equation}{v_{tt}} - \left( {{k_x}^2 + {k_y}^2} \right){v_{zz}} = 0\notag\end{equation}
+in the new variables.  
+<br><br>
+
+<button class="accordion"><strong>Apply the chain rule to re-express the variables:</strong></button
+><div class="panel">
+<p style="padding: 10px; border: 1px solid black;">
+\begin{equation}{v_z} = {\partial _z}\delta \left( {t;w,\tilde v} \right) = \frac{{\partial \delta }}{{\partial t}}\color{red}\frac{{\partial t}}{{\partial z}}\color{black} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial z}} + \frac{{\partial \delta }}{{\partial \tilde v}}\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial z}}\notag\end{equation}
+
+\begin{equation}{v_z} = 0\color{red}0\color{black} + \frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial z}} + \frac{{\partial \tilde v}}{{\partial \tilde v}}\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial z}}\notag\end{equation}
+
+\begin{equation}{v_z} = {\tilde v_w}\left( {\frac{1}{t}} \right) + 1{\tilde v_w}\left( {\frac{1}{t}} \right) = 2{\tilde v_w}\left( {\frac{1}{t}} \right)\notag\end{equation}
+
+\begin{equation}{v_{zz}} = {\partial _z}{v_z}\left( {t;w,\tilde v} \right) = \frac{{\partial {v_z}}}{{\partial t}}\frac{{\partial t}}{{\partial z}} + \frac{{\partial {v_z}}}{{\partial w}}\frac{{\partial w}}{{\partial z}} + \frac{{\partial {v_z}}}{{\partial \tilde v}}\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial z}}\notag\end{equation}
+
+\begin{equation}{v_{zz}} = \frac{\partial }{{\partial t}}\left[ {2{{\tilde v}_w}\left( {\frac{1}{t}} \right)} \right]0 + \frac{\partial }{{\partial w}}\left[ {2{{\tilde v}_w}\left( {\frac{1}{t}} \right)} \right]\frac{{\partial w}}{{\partial z}} + \frac{\partial }{{\partial \tilde v}}\left[ {2{{\tilde v}_w}\left( {\frac{1}{t}} \right)} \right]\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial z}}\notag\end{equation}
+
+Note:  the <span style="color:red">red zero</span> is taken because $t$ and $z$ are independent variables.
+
+\begin{equation}{v_{zz}} = 0 + 2{\tilde v_{ww}}\left( {\frac{1}{t}} \right)\left( {\frac{1}{t}} \right) + 0\notag\end{equation}
+
+\begin{equation}{v_{zz}} = 2{\tilde v_{ww}}\left( {\frac{1}{{{t^2}}}} \right) + 0\notag\end{equation}
+
+\begin{equation}{v_t} = {\partial _t}\delta \left( {t;w,\tilde v} \right) = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial t}} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial t}} + \frac{{\partial \delta }}{{\partial \tilde v}}\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{v_t} = 0 + {\tilde v_w}\left( { - \frac{z}{{{t^2}}}} \right) + 1{\tilde v_w}\left( { - \frac{z}{{{t^2}}}} \right)\notag\end{equation}
+
+\begin{equation}{v_t} =  - 2\frac{z}{{{t^2}}}{\tilde v_w} =  - 2w{\tilde v_w}\left( {\frac{1}{t}} \right)\notag\end{equation}
+
+\begin{equation}{v_{tt}} = {\partial _t}{v_t} = \frac{{\partial {v_t}}}{{\partial t}}\frac{{\partial t}}{{\partial t}} + \frac{{\partial {v_t}}}{{\partial w}}\frac{{\partial w}}{{\partial t}} + \frac{{\partial {v_t}}}{{\partial \tilde v}}\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{v_{tt}} =  - \frac{\partial }{{\partial t}}\left[ {2\frac{z}{{{t^2}}}{{\tilde v}_w}} \right]\frac{{\partial t}}{{\partial t}} - \frac{\partial }{{\partial w}}\left[ {2\frac{z}{{{t^2}}}{{\tilde v}_w}} \right]\frac{{\partial w}}{{\partial t}} - \frac{\partial }{{\partial \tilde v}}\left[ {2\frac{z}{{{t^2}}}{{\tilde v}_w}} \right]\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{v_{tt}} =  - \left[ { - 4\frac{z}{{{t^3}}}{{\tilde v}_w}} \right]1 - \left[ {2\frac{z}{{{t^2}}}{{\tilde v}_{ww}}} \right]\left( { - \frac{z}{{{t^2}}}} \right) - 0\frac{{\partial \tilde v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{v_{tt}} = 4\frac{z}{{{t^3}}}{\tilde v_w} + 2\frac{{{z^2}}}{{{t^4}}}{\tilde v_{ww}}\notag\end{equation}
+
+\begin{equation}{v_{tt}} = 4w\frac{1}{{{t^2}}}{\tilde v_w} + 2{w^2}\frac{1}{{{t^2}}}{\tilde v_{ww}}\notag\end{equation}
+The PDE:
+\begin{equation}{v_{tt}} - \left( {{k_x}^2 + {k_y}^2} \right){v_{zz}} = 0\notag\end{equation}
+becomes
+\begin{equation}4w\frac{1}{{{t^2}}}{\tilde v_w} + 2{w^2}\frac{1}{{{t^2}}}{\tilde v_{ww}} - \left( {{k_x}^2 + {k_y}^2} \right)\left[ {2{{\tilde v}_{ww}}\left( {\frac{1}{{{t^2}}}} \right)} \right] = 0\notag\end{equation}
+We see the parametric variable $t$ clears, as it should.  
+  </p>
+</div> <!--end accordion-->
+
+<br><br>
+
+Letting ${\omega ^2} \equiv {k_x}^2 + {k_y}^2$ we arrive at our final ODE:
+
+\begin{equation}\left( {{w^2} - {\omega ^2}} \right){\tilde v_{ww}} + 2w{\tilde v_w} = 0\notag\end{equation}
+Is this solvable?  Let
+\begin{equation}q = {\tilde v_w}\notag\end{equation}
+
+\begin{equation}{q_w} + \frac{{2w}}{{\left( {{w^2} - {\omega ^2}} \right)}}q = 0\notag\end{equation}
+Integrating factor:
+
+\begin{equation}\mu \left( w \right) = \exp \left( {\mathop \int \nolimits \frac{{2w}}{{\left( {{w^2} - {\omega ^2}} \right)}}dw} \right) = \exp \left( {\mathop \int \nolimits \frac{{d\left( {{w^2}} \right)}}{{\left( {{w^2} - {\omega ^2}} \right)}}} \right) = \exp \left( {\mathop \int \nolimits \frac{{d\left( {{w^2} - {\omega ^2}} \right)}}{{\left( {{w^2} - {\omega ^2}} \right)}}} \right) = \exp \left( {\ln \left( {{w^2} - {\omega ^2}} \right)} \right)\notag\end{equation}
+
+\begin{equation}\mu \left( w \right) = \left( {{w^2} - {\omega ^2}} \right)\notag\end{equation}
+Insert into ODE:
+\begin{equation}\left( {{w^2} - {\omega ^2}} \right){q_w} + 2wq = 0 = \frac{d}{{dw}}\left( {\left( {{w^2} - {\omega ^2}} \right)q} \right)\notag\end{equation}
+so
+\begin{equation}\left( {{w^2} - {\omega ^2}} \right)q = {K_1} = \left( {{w^2} - {\omega ^2}} \right){\tilde v_w}\notag\end{equation}
+
+\begin{equation}{\tilde v_w} = \frac{K}{{\left( {{w^2} - {\omega ^2}} \right)}} \to \tilde v = {K_1}\mathop \smallint \nolimits^ \frac{1}{{\left( {{w^2} - {\omega ^2}} \right)}}dw + {K_2}\notag\end{equation}
+
+\begin{equation}\mathop \int \nolimits \frac{1}{{\left( {{w^2} - {\omega ^2}} \right)}}dw = \mathop \int \nolimits \frac{1}{{\left( {w + \omega } \right)\left( {w - \omega } \right)}}dw = \frac{1}{{ - 2\omega }}\ln \left( {\frac{{\left( {w + \omega } \right)}}{{\left( {w - \omega } \right)}}} \right)\notag\end{equation}
+
+
+So our final solution to this ODE is
+\begin{equation}u = \tilde v =  - \frac{{{K_1}}}{{2\omega }}\ln \left( {\frac{{\left( {w + \omega } \right)}}{{\left( {w - \omega } \right)}}} \right) + {K_2}\notag\end{equation}
+or in original variables using:
+\begin{equation}w = \frac{z}{t}\notag\end{equation}
+and
+\begin{equation}z = {k_x}x - {k_y}y\notag\end{equation}
+
+we get (dropping the extraneous constant)
+
+\begin{equation}u =  - \frac{{{K_1}}}{{2\omega }}\ln \left( {\frac{{\left( {{k_x}x - {k_y}y} \right)/t + \omega }}{{\left( {{k_x}x - {k_y}y} \right)/t - \omega }}} \right)\notag\end{equation}
+
+\begin{equation}u = \frac{{{K_1}}}{{2\omega }}\ln \left( {\frac{{\left( {{k_x}x - {k_y}y} \right) - \omega t}}{{\left( {{k_x}x - {k_y}y} \right) + \omega t}}} \right) = \frac{{{K_1}}}{{2\omega }}\ln \left( {\left( {{k_x}x - {k_y}y} \right) - \omega t} \right) - \frac{{{K_1}}}{{2\omega }}\ln \left( {\left( {{k_x}x - {k_y}y} \right) + \omega t} \right)\;\color{blue}\blacksquare\notag\end{equation}
+
+where
+\begin{equation}{\omega ^2} = {k_x}^2 + {k_y}^2\notag\end{equation}
+
+The terms individually solve the original PDE.  Application of the invariants (${c_1},\;{c_2}\;{\text{and}}\;{c_4}$)
+
+\begin{equation}{c_1} = {k_x}x - {k_y}y\notag\end{equation}
+
+\begin{equation}{c_2} = t\notag\end{equation}
+
+involving the independent variables to the solution show $u$ to be constant on the “orbital” plane defined by
+
+\begin{equation}{c_4} = \frac{{{k_x}x - {k_y}y}}{t}\notag\end{equation}
+
+
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.7.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

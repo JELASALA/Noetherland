@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.7.1</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 6; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.7  G-Invariant Solutions for the 2D Wave Equation</strong></p>
+
+<p align="center"><strong>2.7.1 - Introduction</strong></p> 
+
+In <strong>Section 2.6</strong> we found <em>G-invariant</em> solutions for the case of $p = 2,\;q = 1$, which were found using a single symmetry vector, constraining two of the variables on the solution manifold to generate an ODE that was directly solvable.  That solution represents the behavior of the original EOM in the sub-manifold specified by the invariants of the invariance condition.
+<br><br>
+The purpose of this section is to use the Olver process to find invariant solutions for a PDE with three independent variables, requiring two “levels” of variable coupling via two different symmetry vectors.  We will treat the well-studied 2D wave equation:
+
+\begin{equation}{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+or in units of $c = 1$:
+\begin{equation}{u_{tt}} - \left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+
+which is an example of $p = 3,\;q = 1$.  The complete set of vector generators of infinitesimal symmetries for the 2D wave equation are listed in Olver and at the end of <strong>Appendix 2A</strong>.  We consider several of them pairwise, which reduces the PDE to an ODE.
+<br><br>
+We will discover that solutions are only possible when the two symmetry vectors employed are “compatible,” meaning they form a sub-group under commutation; that is, they either commute or their commutator is produces one of vectors.   This is illustrated in <strong>Appendix 2B</strong>.
+<br><br>
+The vectors we will use include the following 
+
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Translations</strong> or “boosts” are defined when we set all constants to zero except ${c_1},\;{c_2},\;{\text{and}}/{\text{or}}\;{c_3}$ 
+
+\begin{equation}{\partial _x}\;\;\;\;\;{\partial _y}\;\;\;\;{\partial _t}\;\notag\end{equation}
+
+which shift the origin of the independent variables in space/time:
+
+\begin{equation}{G_{1x}}:\;\;\;\left( {x,y,t,u} \right)\mapsto \left( {\bar x = x + \varepsilon ,\bar y = y,\bar t = t,\bar u = u} \right)\notag\end{equation}
+
+with analogous transformations for $y$ and $t$.  
+</p>
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Dilations</strong> or scalings obtained by setting all constants to zero except ${c_4}:$ 
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+\begin{equation}{G_4}:\;\;\;\left( {x,y,t,u} \right)\mapsto \left( {\bar x = \lambda x,\bar y = \lambda y,\bar t = \lambda t,\bar u = u} \right)\notag\end{equation}
+
+There is a related vector seemingly plucked out of air by Olver but subsequently shown (by us in the Chapter 5 Noether’s Theorem) to be a consequence of RTI-like determining equations:
+
+\begin{equation}\pmb{m} \equiv \pmb{d} - \frac{1}{2}u{\partial _u} = x{\partial _x} + y{\partial _y} + t{\partial _t} - \frac{1}{2}u{\partial _u}\notag\end{equation}
+The last term can be seen to arise from 
+
+\begin{equation}\phi \left( {x,y,t,u} \right) = \beta u + \alpha \notag\end{equation}
+
+\begin{equation}\beta  = {c_{11}} - {c_8}x - {c_9}y - {c_{10}}t\notag\end{equation}
+with ${c_{11}} =  - \frac{1}{2}{c_4}$.
+</p>
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Rotations</strong> (hyperbolic or Lorentz transformations for the latter two) are generated by taking ${c_5} \ne 0$, then ${c_6} \ne 0$, then ${c_7} \ne 0$ with the rest zero:
+
+\begin{equation}{\pmb{r}_{xy}} =  - y{\partial _x} + x{\partial _y}\;\notag\end{equation}
+\begin{equation}{\pmb{r}_{xt}} = t{\partial _x} + \frac{x}{{{c^2}}}{\partial _t}\notag\end{equation}
+\begin{equation}{\pmb{r}_{yt}} = t{\partial _y} + \frac{y}{{{c^2}}}{\partial _t}\notag\end{equation}
+
+with corresponding transformations
+
+\begin{equation}
+\begin{split}
+{G_{5xy}}:\left( {x,y,t,u} \right)&\;\mapsto \;\left( {\bar x = x - \theta y,\bar y = \theta x + y,\bar t = t,\bar u = u} \right)\;\;\mapsto \;\left( {\bar x = \cos \theta x - \sin \theta y,\bar y = \sin \theta x + \cos \theta y,\bar t = t,\bar u = u} \right)\\
+
+{G_{6xt}}:\left( {x,y,t,u} \right)&\;\mapsto \;\left( {\bar x = x + \theta t,\bar y = y,\bar t = \theta t + x,\bar u = u} \right)\;\;\mapsto \;\left( {\bar x = \cosh \theta x + \sinh \theta t,\bar y = y,\bar t = \sinh \theta t + \cosh \theta x,\bar u = u} \right)
+\end{split}
+\notag\end{equation}
+</p>
+
+In the next few sections we appy different pairs of symmetry vectors to reduce the 2D Wave Equation to an ODE.
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.7.1</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.5.1</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 5; const SS = 1;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Section 2.5 – Prolongation into Jet Space</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.5.1 – Introduction</strong></p>
+
+<p>So far we have sought algebraic transforms on polynomial functions to find their invariant curves (orbits), but the real payoff is finding such “orbits” for PDEs.   We have been operating in a simple compound Euclidean manifold of $X \times U$ = ${E^p} \times {E^q}$ representing the $p$ independent variables and the $q$ function(s), with examples of up to ${E^3}\times{E^1}$.  To address PDEs we have to expand the space to include partial derivatives of the dependent variables in a jet space of $X\times{U^{\left( n \right)}}$ where $n$ is the order of the PDE.  In this larger space we consider $u$ and all its partial derivatives to be independent “dimensions” with the PDE itself merely an algebraically constructed “surface” in this jet space. <br><br>
+  
+  Just as we demanded an algebraic function like $\zeta \left( {x,y} \right) = {x^2} + {y^2} - C = 0$ satisfy the invariance condition under the operation of the symmetry-inducing vector acting on the function in $X \times U$ space, now we demand the PDE be invariant under a (larger) symmetry-inducing vector field acting on the PDE (represented as ${\Delta _\nu }\left( {x,{u^{\left( n \right)}}} \right) = 0$) in the $X\times{U^{\left( n \right)}}$ space.  Now our vector must be extended or “prolonged” to act in the higher dimensional jet space.  
+  
+  
+  We start with the base vector represented as 
+  
+  \begin{equation}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\label{1}\end{equation}
+  
+  We then extend it symbolically
+  
+  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}\pmb{v}\left[ {{\Delta _\nu }\left( {x,{u^{\left( n \right)}}} \right)} \right] = 0\label{2}\end{equation}
+  
+  with the PDE represented as
+  
+  \begin{equation}{\Delta _\nu }\left( {x,{u^{\left( n \right)}}} \right) = 0\end{equation}
+
+
+Note that Latin indices run over independent variables and Greek indices run over dependent variables.  Here is the formal expression for the prolongation:
+  
+  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( k \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( k \right)}^\alpha }}\label{3}\end{equation}
+  where
+  \begin{equation}\phi _\alpha ^{J\left( k \right)}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( k \right)}}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{J\left( k \right),i}^\alpha \tag{Olver(2.39)}\label{O239}\end{equation}
+  
+  and the total differential ${D_{J\left( k \right)}}$ symbolizes a sequence of derivative: 
+  
+  \begin{equation}{D_{J\left( k \right)}} \equiv {D_{{j_1}}}{D_{{j_2}}} \ldots {D_{{j_k}}}\notag\end{equation}
+  
+  where ${D_j} = d/d{x^j}$.  The “multi-index” subscript $J\left( k \right)$ bears explanation.  
+  Briefly, any given $j$ runs over the $p$ independent variables. $\;J\left( k \right) \equiv \left( {{j_1}, \ldots ,{j_k}} \right);\;1 \leqslant {j_k} \leqslant p$.  We also have $k$ running from $0, \ldots ,\;n$.  Olver does not use the sub-index $k$, but we found using it to number the ${j_k}$ very convenient in clarifying calculations. 
+  
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Note</strong> zeroeth order entities require special definitions since the ${j_k}$ start at ${j_1}$.  So
+    
+    \begin{equation}{D_{J\left( 0 \right)}} \equiv 1\;and\;u_{J\left( 0 \right),i}^\alpha  = u_i^\alpha \notag\end{equation}
+
+Then
+    \begin{equation}\phi _\alpha ^{J\left( 0 \right)}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( 0 \right)}}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{J\left( 0 \right),i}^\alpha  = \left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_i^\alpha  = {\phi _\alpha }\notag\end{equation}
+    
+    \begin{equation}{\text{p}}{{\text{r}}^{\left( 0 \right)}}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( 0 \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( 0 \right)}^\alpha }} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\notag\end{equation}
+    
+<strong>Note</strong> also we allow the coefficients to depend on both the independent and dependent variables.  Recall two of the symmetries explored in our teaser introduction in <strong>Section 2.1</strong> with the heat equation:
+  
+\begin{equation}
+\begin{split}
+{G_1}:\;\;\;\left( {x,t,u} \right)&\mapsto \left( {\bar x = x + \varepsilon ,\bar t = t,\bar u = u} \right)\\
+{G_5}:\;\;\;\left( {x,t,u} \right)&\mapsto \left( {\bar x = x + 2\varepsilon t,\bar t = t,\bar u = u\cdot exp\left( { - \varepsilon x - {\varepsilon ^2}t} \right)} \right)
+\end{split}
+\notag\end{equation}
+
+  The vectors inducing these transforms are:
+  
+  \begin{equation}\pmb{v_1} = {\partial _x} \to {\xi ^1} = 1,{\xi ^2} = 0,\;\phi  = 0\notag\end{equation}
+  and
+  \begin{equation}\pmb{v_5} = 2t{\partial _x} - xu{\partial _u} \to {\xi ^1} = 2t,{\xi ^2} = 0,\;\phi  =  - xu\notag\end{equation}
+  
+</p>
+<p>
+  <!-- End Block-->
+  
+  Back to the "multi-index" subscript. Let's consider an example of $p = 2$ and $q = 1$ and $n = 2$ (i.e., the PDE is second order).  So we need to compute the terms up to ${\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}$.    Look at
+  
+  \begin{equation}{D_{J\left( k \right)}} \equiv {D_{{j_1}}}{D_{{j_2}}} \ldots {D_{{j_k}}},\;1 \leqslant {j_k} \leqslant 2\notag\end{equation}
+  
+  So we have
+  
+  \begin{equation}k = 1:\;\;{D_{J\left( 1 \right)}} = {D_{{j_1}}} = \left\{ {{D_1},{D_2}} \right\}\notag\end{equation}
+  
+  \begin{equation}k = 2:\;\;{D_{J\left( 2 \right)}} = {D_{{j_1}}}{D_{{j_2}}} = \left\{ {{D_1}{D_1},{D_1}{D_2},{D_2}{D_2}} \right\}\notag\end{equation}
+  
+  Note we do not include permutations of the indices since the order of differentiation does not matter.  For any given $\left\{ {p,k} \right\}$ we have
+  \begin{equation}{m_k} = \left( {\begin{array}{*{20}{c}}
+    {p + k - 1} \\ 
+    k 
+  \end{array}} \right)\notag\end{equation}
+  
+  terms.  In the case $\left\{ {2,2} \right\}$ we have <br>
+  \begin{equation}{m_2} = \left( {\begin{array}{*{20}{c}}
+    {2 + 2 - 1} \\ 
+    2 
+  \end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+    3 \\ 
+    2 
+  \end{array}} \right) = 3\notag\end{equation}
+  distinct combinations.  Then for $k = 1$:
+  
+  \begin{equation}\phi _\alpha ^{J\left( 1 \right)}\left( {x,{u^{\left( 2 \right)}}} \right) \equiv \left\{ {\begin{array}{*{20}{c}}
+    {\phi _\alpha ^1} \\ 
+    {\phi _\alpha ^2} 
+  \end{array}} \right. = \left\{ {\begin{array}{*{20}{c}}
+    {{D_1}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{1,i}^\alpha } \\ 
+    {{D_2}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{2,i}^\alpha } 
+  \end{array}} \right.\notag\end{equation}
+  as $\phi _\alpha ^{J\left( 1 \right)}$ has two components for each value of $\alpha $.
+  
+  \begin{equation}\phi _\alpha ^{J\left( 1 \right)}\left( {x,{u^{\left( n \right)}}} \right) = \left\{ {\begin{array}{*{20}{c}}
+    {\frac{d}{{d{x^1}}}\left( {{\phi _\alpha } - {\xi ^1}u_1^\alpha  - {\xi ^2}u_2^\alpha } \right) + {\xi ^1}u_{11}^\alpha  + {\xi ^2}u_{12}^\alpha } \\ 
+    {\frac{d}{{d{x^2}}}\left( {{\phi _\alpha } - {\xi ^1}u_1^\alpha  - {\xi ^2}u_2^\alpha } \right) + {\xi ^1}u_{21}^\alpha  + {\xi ^2}u_{22}^\alpha } 
+  \end{array}} \right.\notag\end{equation}
+  
+  Now this gets a lot messier because we have to apply total derivatives.  Since most of our examples will be for a single PDE with a single dependent variable $u$, from now on we will drop the Greek indices
+  
+  \begin{equation}\phi _{}^{J\left( 1 \right)}\left( {x,{u^{\left( n \right)}}} \right) = \left\{ {\begin{array}{*{20}{c}}
+    {\frac{d}{{d{x^1}}}\left( {{\phi _{}} - {\xi ^1}u_1^{} - {\xi ^2}u_2^{}} \right) + {\xi ^1}u_{11}^{} + {\xi ^2}u_{12}^{}} \\ 
+    {\frac{d}{{d{x^2}}}\left( {{\phi _{}} - {\xi ^1}u_1^{} - {\xi ^2}u_2^{}} \right) + {\xi ^1}u_{21}^{} + {\xi ^2}u_{22}^{}} 
+  \end{array}} \right.\notag\end{equation}
+  
+  Computing the total derivatives:
+  
+  \begin{equation}{\phi ^{J\left( 1 \right)}} = \left\{ {\begin{array}{*{20}{c}}
+    {\left( {{\phi _1} + {\phi _u}{u_1} - \left( {{\xi ^1}_x + {\xi ^1}_u{u_1}} \right){u_1} - {\xi ^1}{u_{11}} - \left( {{\xi ^2}_1 + {\xi ^2}_u{u_1}} \right){u_2} - {\xi ^2}{u_{12}}} \right) + {\xi ^1}{u_{11}} + {\xi ^2}{u_{12}}} \\ 
+    {\left( {{\phi _2} + {\phi _u}{u_2} - \left( {{\xi ^1}_t + {\xi ^1}_u{u_2}} \right){u_1} - {\xi ^1}{u_{12}} - \left( {{\xi ^2}_2 + {\xi ^2}_u{u_2}} \right){u_2} - {\xi ^2}{u_{22}}} \right) + {\xi ^1}{u_{21}} + {\xi ^2}{u_{22}}} 
+  \end{array}} \right.\notag\end{equation}
+  
+  Notice that the $k + 1$<em>st</em> order (second order in this case) derivatives always cancel.  This is a nice check on your work.
+  
+  \begin{equation}{\phi ^{J\left( 1 \right)}} = \left\{ {\;\begin{array}{*{20}{c}}
+    {{\phi _1} + \left( {{\phi _u} - {\xi ^1}_x} \right){u_1} - {\xi ^2}_1{u_2} - {\xi ^1}_u{u_1}{u_1} - {\xi ^2}_u{u_1}{u_2}} \\ 
+    {{\phi _2} + \left( {{\phi _u} - {\xi ^2}_2} \right){u_2} - {\xi ^1}_t{u_1} - {\xi ^1}_u{u_2}{u_1} - {\xi ^2}_u{u_2}{u_2}} 
+  \end{array}} \right. \equiv \left\{ {\;\begin{array}{*{20}{c}}
+    {{\phi ^1}} \\ 
+    {{\phi ^2}} 
+  \end{array}} \right. \label{A}\end{equation}
+  
+  We can now express the first order prolongation for the $p = 2,\;q = 1,\;n = 2$ case:
+
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 1 \right)}}v = {\text{p}}{{\text{r}}^{\left( 0 \right)}}v + \phi _{}^{J\left( 1 \right)}\left( {x,{u^{\left( 1 \right)}}} \right)\frac{\partial }{{\partial u_{J\left( 1 \right)}^{}}} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _{}}\left( {x,u} \right)\frac{\partial }{{\partial {u^{}}}} + {\phi ^1}\left( {x,{u^{\left( 1 \right)}}} \right)\frac{\partial }{{\partial {u_1}}} + {\phi ^2}\left( {x,{u^{\left( 1 \right)}}} \right)\frac{\partial }{{\partial {u_2}}}\notag\end{equation}
+
+The next level of prolongation will yield many more terms.  Here is one:
+
+\begin{equation}{\phi ^{11}} = {D_1}{D_1}\left( {\phi  - {\xi ^1}{u_1} - {\xi ^2}{u_2}} \right) + {\xi ^1}{u_{111}} + {\xi ^2}{u_{112}}\notag\end{equation}
+
+\begin{equation} = {\phi _{11}} + \left( {2{\phi _{1u}} - {\xi ^1}_{11}} \right){u_1} - {\xi ^2}_{11}{u_2} + \left( {{\phi _{uu}} - 2{\xi ^1}_{1u}} \right)u_1^2 - 2{\xi ^2}_{u1}{u_1}{u_2} - {\xi ^1}_{uu}u_1^3 - {\xi ^2}_{uu}u_1^2{u_2}\notag\end{equation}
+
+\begin{equation} + \left( {{\phi _u} - 2{\xi ^1}_1} \right){u_{11}} - 2\tau {\xi ^2}_1{u_{21}} - 3{\xi _u}{u_{11}}{u_1} - {\xi ^2}_u{u_{11}}{u_2} - 2{\xi ^2}_u{u_1}{u_{21}}\label{B}\end{equation}
+
+where the possibly confusing symbol ${\phi _{11}} = {\phi _{{x^1}{x^1}}} = {\partial ^2}/\partial {x^1}\partial {x^1}$. This is <strong>Olver (2.46)</strong>, with $\left( {x,t} \right) = \left( {{x^1},{x^2}} \right)$ and $\left( {\xi ,\tau } \right) = \left( {{\xi ^1},{\xi ^2}} \right)$.  He also produces the other two coefficients for this case.  There is also a recursion formula that may make such calculations a bit easier.  Our expression for prolongation through $n = 2$ for the case $p = 2$ and $q = 1$ is then:
+  
+  \begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}v = {\xi ^1}\frac{\partial }{{\partial {x^1}}} + {\xi ^2}\frac{\partial }{{\partial {x^2}}} + \phi \frac{\partial }{{\partial u}} + {\phi ^1}\frac{\partial }{{\partial {u_1}}} + {\phi ^2}\frac{\partial }{{\partial {u_2}}} + {\phi ^{11}}\frac{\partial }{{\partial {u_{11}}}} + {\phi ^{12}}\frac{\partial }{{\partial {u_{12}}}} + {\phi ^{22}}\frac{\partial }{{\partial {u_{22}}}}\;\notag\end{equation}
+  
+  Incidentally, the multi-index symbology is also used in the <strong>EDS approach</strong>, so it bears mastering.
+  <br><br>
+With the prolonged vector in hand we can then apply it to the invariance condition \eqref{2} to find the determining equations that yield the vector coefficients for the symmetry group of the relevant PDE.
+</div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.4</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

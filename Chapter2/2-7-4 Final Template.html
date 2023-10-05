@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.7.4</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 7; const SS = 4;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//						tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.7.4 – Rotation with dilation vectors</strong></p>
+
+<strong>Example 3:</strong>  Rotation with dilation vectors:
+\begin{equation}{\pmb{r}_{xy}} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+We demonstrate here a process in which we combine both vectors at the outset.  The rotation vector
+
+\begin{equation}{\pmb{r}_{xy}}\left( \zeta  \right) =  - y{\partial _x}\zeta  + x{\partial _y}\zeta  = 0\notag\end{equation}
+
+invariant has been found earlier with the MOC:
+
+\begin{equation}{x^2} + {y^2} = {z^2}\notag\end{equation}
+
+We use this relationship to rewrite the dilation vector
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\;\notag\end{equation}
+
+\begin{equation}\pmb{d}f = x{\partial _z}f\frac{{\partial z}}{{\partial x}} + y{\partial _z}f\frac{{\partial z}}{{\partial y}} + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d}f = \frac{{{x^2}}}{z}{\partial _z}f + \frac{{{y^2}}}{z}{\partial _z}f + t{\partial _t}f\notag\end{equation}
+
+\begin{equation}\pmb{d} = \frac{1}{z}\left( {{x^2} + {y^2}} \right){\partial _z} + t{\partial _t} = z{\partial _z} + t{\partial _t}\notag\end{equation}
+MOC solves this easily: 
+\begin{equation}\frac{{dz}}{z} = \frac{{dt}}{t}\notag\end{equation}
+
+\begin{equation}\ln \left( z \right) = \ln \left( t \right) + \ln \left( w \right) \to \ln \left( w \right) = \ln \left( {\frac{z}{t}} \right)\notag\end{equation}
+with $w$ as the combined invariant: 
+\begin{equation}w = \frac{z}{t} = \frac{{{{\left( {{x^2} + {y^2}} \right)}^{1/2\;}}}}{t}\notag\end{equation}
+
+We treat $t$ as principle variable, $x,y$ as parametric variables and $u = v$.  Expressing the PDE in these terms using the chain rule as usual:
+
+\begin{equation}{u_x} = {\partial _x}\delta \left( {x,y;w,v} \right) = \frac{{\partial \delta }}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial x}}\notag\end{equation}
+use
+\begin{equation}\frac{{\partial w}}{{\partial x}} = \frac{1}{t}\frac{1}{2}{\left( {{x^2} + {y^2}} \right)^{ - 1/2\;}}2x = \frac{x}{t}{\left( {{x^2} + {y^2}} \right)^{ - 1/2\;}} = \frac{x}{{w{t^2}}}\notag\end{equation}
+
+\begin{equation}{u_x} = 2\frac{x}{{w{t^2}}}{v_w}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = {\partial _x}{u_x}\left( {x,y;w,v} \right) = \frac{{\partial {u_x}}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial w}}\frac{{\partial w}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial x}}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = 2\frac{1}{{w{t^2}}}{v_w} + \left( { - 2\frac{x}{{{w^2}{t^2}}}{v_w} + 2\frac{x}{{w{t^2}}}{v_{ww}}} \right)\frac{x}{{w{t^2}}}\notag\end{equation}
+Similarly
+\begin{equation}{u_{yy}} = 2\frac{1}{{w{t^2}}}{v_w} + \left( { - 2\frac{y}{{{w^2}{t^2}}}{v_w} + 2\frac{y}{{w{t^2}}}{v_{ww}}} \right)\frac{y}{{w{t^2}}}\notag\end{equation}
+Note:
+\begin{equation}{u_{xx}} + {u_{yy}} = 4\frac{1}{{w{t^2}}}{v_w} + \left( { - 2\frac{{{x^2}}}{{{w^2}{t^2}}}{v_w} - 2\frac{{{y^2}}}{{{w^2}{t^2}}}{v_w} + 2\frac{{{x^2}}}{{w{t^2}}}{v_{ww}} + 2\frac{{{y^2}}}{{w{t^2}}}{v_{ww}}} \right)\frac{1}{{w{t^2}}}\notag\end{equation}
+
+\begin{equation}{u_{xx}} + {u_{yy}} = 2\frac{1}{{w{t^2}}}{v_w} + 2w{v_{ww}}\frac{1}{{w{t^2}}}\notag\end{equation}
+having used
+\begin{equation}{w^2} = \frac{{{x^2} + {y^2}}}{{{t^2}}}\notag\end{equation}
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {x,y;w,v} \right) = \frac{{\partial \delta }}{{\partial t}} + \frac{{\partial \delta }}{{\partial x}}\frac{{\partial x}}{{\partial t}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}\frac{{\partial w}}{{\partial t}} =  - \frac{{{{\left( {{x^2} + {y^2}} \right)}^{\frac{1}{2}}}}}{{{t^2}}} =  - \frac{w}{t}\notag\end{equation}
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {x,y;w,v} \right) =  - 2\frac{w}{t}{v_w}\notag\end{equation}
+
+
+\begin{equation}{u_{tt}} = {\partial _t}{u_t}\left( {x,y;w,v} \right) = \frac{{\partial {u_t}}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial x}}\frac{{\partial x}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial w}}\frac{{\partial w}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{u_{tt}} = {\partial _t}{u_t}\left( {x,y;w,v} \right) =  + 2\frac{w}{{{t^2}}}{v_w} + \left( { - 2\frac{1}{t}{v_w} - 2\frac{w}{t}{v_{ww}}} \right)\left( { - \frac{w}{t}} \right) = 4\frac{w}{{{t^2}}}{v_w} + 2\frac{{{w^2}}}{{{t^2}}}{v_{ww}}\notag\end{equation}
+
+Altogether in our PDE:
+
+\begin{equation}{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+we obtain:
+\begin{equation}4\frac{w}{{{t^2}}}{v_w} + 2\frac{{{w^2}}}{{{t^2}}}{v_{ww}} - {c^2}\left( {2\frac{1}{{w{t^2}}}{v_w} + 2w{v_{ww}}\frac{1}{{w{t^2}}}} \right) = 0\notag\end{equation}
+
+\begin{equation}2w{v_w} - {c^2}\left( {\frac{1}{w}{v_w}} \right) + {w^2}{v_{ww}} - {c^2}\left( {{v_{ww}}} \right) = 0\notag\end{equation}
+
+\begin{equation}\left( {{w^2} - {c^2}} \right){v_{ww}} + \left( {2w - \frac{{{c^2}}}{w}} \right){v_w} = 0\notag\end{equation}
+Producing the ODE:
+\begin{equation}{v_{ww}} + \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}{v_w} = 0\notag\end{equation}
+
+Solve using an integrating factor:
+
+\begin{equation}\mu \left( w \right) = \exp \left( {\mathop \int \nolimits \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw} \right)\notag\end{equation}
+Computing:
+\begin{equation}\mathop \int \nolimits \frac{{2{w^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw - \mathop \int \nolimits \frac{{{c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw\notag\end{equation}
+\begin{equation} = \mathop \int \nolimits \frac{{{w^2}}}{{{w^2}\left( {{w^2} - {c^2}} \right)}}d{w^2} - \frac{1}{2}{c^2}\mathop \int \nolimits \frac{1}{{{w^2}\left( {{w^2} - {c^2}} \right)}}d{w^2}\notag\end{equation}
+
+\begin{equation}\mathop \int \nolimits \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw = \mathop \int \nolimits \frac{{{w^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw + \mathop \int \nolimits \frac{{{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw = \mathop \int \nolimits \frac{w}{{\left( {{w^2} - {c^2}} \right)}}dw + \mathop \int \nolimits \frac{1}{w}dw\notag\end{equation}
+
+\begin{equation} = \frac{1}{2}\mathop \int \nolimits \frac{1}{{\left( {{w^2} - {c^2}} \right)}}d{w^2} + \mathop \int \nolimits \frac{1}{w}dw\notag\end{equation}
+Let ${w^2} = q$ in the first integral:
+\begin{equation} = \frac{1}{2}\mathop \int \nolimits \frac{1}{{\left( {q - {c^2}} \right)}}dq + \ln \left( {\left| w \right|} \right)\notag\end{equation}
+
+\begin{equation} = \frac{1}{2}\mathop \int \nolimits \frac{1}{{\left( {q - {c^2}} \right)}}d\left( {q - {c^2}} \right) + {\text{ln}}\left| w \right| = \frac{1}{2}\ln \left( {\left| {q - {c^2}} \right|} \right) + \ln \left( {\left| w \right|} \right)\notag\end{equation}
+
+\begin{equation} = \ln \left| w \right|{\left| {{w^2} - {c^2}} \right|^{1/2}}\notag\end{equation}
+Then
+\begin{equation}\mu \left( w \right) = \exp \left( {\mathop \int \nolimits \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}dw} \right) = \left| w \right|{\left| {{w^2} - {c^2}} \right|^{1/2}}\notag\end{equation}
+
+<button class="accordion"><strong>Check your work</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Test the integrating factor:
+
+\begin{equation}\mu \left( w \right)\left[ {{v_{ww}} + \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}{v_w}} \right] = ? = \frac{d}{{dw}}\left[ {{v_w}\mu \left( w \right)} \right]\tag{A}\end{equation}
+
+\begin{equation}RHS(A) = \mu \left( w \right){v_{ww}} + {v_w}\frac{d}{{dw}}\left[ {\mu \left( w \right)} \right] \notag\end{equation}
+Second term contains:
+
+\begin{equation}\frac{d}{{dw}}\mu \left( w \right) = \frac{d}{{dw}}\left( {\left| w \right|{{\left| {{w^2} - {c^2}} \right|}^{\frac{1}{2}}}} \right) = {\left| {{w^2} - {c^2}} \right|^{\frac{1}{2}}} + \frac{1}{2}\left| w \right|{\left| {{w^2} - {c^2}} \right|^{ - \frac{1}{2}}}2w\notag\end{equation}
+
+	\begin{equation} = {\left( {{w^2} - {c^2}} \right)^{\frac{1}{2}}} + {w^2}{\left( {{w^2} - {c^2}} \right)^{ - \frac{1}{2}}} = \left( {2{w^2} - {c^2}} \right){\left| {{w^2} - {c^2}} \right|^{ - \frac{1}{2}}}\notag\end{equation}
+Then
+\begin{equation}RHS(A) = {v_{ww}}\left| w \right|{\left| {{w^2} - {c^2}} \right|^{1/2}} + {v_w}\left( {2{w^2} - {c^2}} \right){\left| {{w^2} - {c^2}} \right|^{ - \frac{1}{2}}}\notag\end{equation}
+
+Reconfiguring, factoring and dropping absolute value signs:
+
+\begin{equation} RHS(A)  = {v_{ww}}w{\left( {{w^2} - {c^2}} \right)^{\frac{1}{2}}} + {v_w}\frac{{\left( {2{w^2} - {c^2}} \right)}}{{{{\left( {{w^2} - {c^2}} \right)}^{\frac{1}{2}}}}} = \left[ {{v_{ww}} + {v_w}\frac{{\left( {2{w^2} - {c^2}} \right)}}{{w\left( {{w^2} - {c^2}} \right)}}} \right]w{\left( {{w^2} - {c^2}} \right)^{\frac{1}{2}}} = LHS(A) \;\;\color{blue}\blacksquare \notag\end{equation}
+
+	</p>
+</div><!--End accordion-->
+<br><br>
+So we have the ODE
+\begin{equation}{v_{ww}} + \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}{v_w} = 0\notag\end{equation}
+
+to which we apply the integrating factor to produce a perfect differential:
+
+\begin{equation}\mu \left( w \right)\left[ {{v_{ww}} + \frac{{2{w^2} - {c^2}}}{{w\left( {{w^2} - {c^2}} \right)}}{v_w}} \right] = \frac{d}{{dw}}\left[ {{v_w}\mu \left( w \right)} \right] = 0\notag\end{equation}
+Then
+\begin{equation}\left[ {{v_w}\mu \left( w \right)} \right] = \frac{{dv}}{{dw}}\left( {\left| w \right|{{\left| {{w^2} - {c^2}} \right|}^{1/2}}} \right) \equiv A\notag\end{equation}
+
+\begin{equation}dv = \frac{{Adw}}{{\left| w \right|{{\left| {{w^2} - {c^2}} \right|}^{\frac{1}{2}}}}} \to v = A\mathop \int \nolimits \frac{{dw}}{{\left| w \right|{{\left| {{w^2} - {c^2}} \right|}^{\frac{1}{2}}}}}\notag\end{equation}
+
+This can be directly integrated 
+\begin{equation}v = \frac{A}{c}{\sec ^{ - 1}}\left( {\frac{{\left| w \right|}}{c}} \right)\notag\end{equation}
+where
+\begin{equation}w = z/t\notag\end{equation}
+
+having ignored the integration constant.  So
+
+\begin{equation}u = \frac{A}{c}{\sec ^{ - 1}}\left( {\frac{{\sqrt {{x^2} + {y^2}} }}{{ct}}} \right),\;\;\left| {\sqrt {{x^2} + {y^2}} } \right| \geqslant c\left| t \right|\notag\end{equation}
+
+The condition on the argument is based on the properties of the arcsecant:
+<br><br>
+<img src="Arcsecant plot.png" alt="Arcsecant plot" class="imgcenter" width="30%">
+<br><br>
+Here is a short sequence of 3D images of the solution for $t > 0\;$time steps:
+<br><br>
+<img src="2D Wave Expand.gif" alt="2D Wave Expand" class="imgcenter" width="30%">
+<br><br>
+The physical possibility of such a solution is dubious, as it implies a fixed amplitude beyond the growing "hole" centered on the origin and stretching to infinity.  Nonetheless, it is a valid solution to the 2D Wave Equation found by demanding it embody two forms of symmetry, rotational and dilational. 
+<br><br>
+
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.6</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

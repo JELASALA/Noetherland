@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.6</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 6; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.6 – G-Invariant Solutions</strong></p>
+
+The invariance condition and resulting symmetry transforms can be useful constructing solutions to the original PDE.  The collection of the symmetry vector generators “span” the solution space, generating “connected” symmetry transforms.  We saw in the Section 2.1 teaser that with an assumed simple solution to a PDE (there the trivial solution $u = constant$) we can find other solutions by applying the transforms.  But that is a very limited process, starting only with trivial solutions.  There is actually a more powerful process explained in Olver Chapter 3 called G-invariant solutions that more fully leverages the symmetry group solutions.  These are also called Similarity solutions.
+
+The idea is that if we have a PDE whose direct solution is difficult or even impossible, it may be possible to reduce it ultimately to an ODE by using the symmetries we found earlier to “collapse” on some of the independent variables in favor of a smaller number of new independent variables, ultimately one.  If we have $p$ independent variables then we can use a symmetry vector (or combination of vectors) whose flow produces a solution orbit of $s$ dimensions; that is, for $s = 1$ we expect straight lines, $s = 2$ we expect planes, etc. 
+
+For example, suppose we have a $p = 2$ situation, say $x$ and $y$ are the independent variables.  And suppose the invariance condition applied to our PDE yields this as one of the symmetry vectors:
+
+\begin{equation}\pmb{v} = c\frac{\partial }{{\partial x}} + \frac{\partial }{{\partial y}}\notag\end{equation}
+associated with the “translation” transformation:
+
+\begin{equation}\left( {x,y} \right) \to \left( {x + c\varepsilon ,y + \varepsilon } \right)\notag\end{equation}
+The invariance condition
+\begin{equation}\pmb{v} \left( \zeta  \right) = c\frac{{\partial \zeta }}{{\partial x}} + \frac{{\partial \zeta }}{{\partial y}} = 0\notag\end{equation}
+
+will be satisfied by a function $\zeta $, an invariant function of this vector field.  We can use the MOC to solve for this function:
+
+\begin{equation}\frac{{dx}}{c} = \frac{{dy}}{1}\notag\end{equation}
+Integrating
+\begin{equation}x = cy + r\notag\end{equation}
+
+with $r$ a “constant” or "invariant."  By assigning $r$ to the function $\zeta $ we have found the solution to the invariance condition for this simple generator; that is, $\zeta  = x - cy$ is an invariant function generated by the symmetry vector in question.  As a series of straight lines this is an $m = 1$ function.
+
+The easiest way to explain Olver’s process is by example. Here are his six steps, first with the formal description, then reduced to our canonical example of the 1D heat equation.  These steps are found on page 189 of his 1986 book.
+<br><br>
+<strong>(I):</strong> Find all infinitesimal generators $\pmb{v}$.  For our example ${u_t} = {u_{xx}}$ we have the full list at (Olver 2.56).
+<br><br>
+<strong>(II):</strong> Decide on the degree of symmetry $1 \leqslant s \leqslant p$ of the invariant solution, where $s$ is the dimension of the orbit in sub-manifold of solutions; for $s = 1$ we expect straight lines.  In this example we will be reducing the dimension from 2 to 1 by coupling $x$ and $t$ into the newly defined “independent” variable $y$.  Looking at Olver’s solutions (2.56) for the 1D heat equation groups ${G_i}$ it seem this is an example of combining ${G_1}$ and ${G_2}$ to create exactly the $s = p - 1$ condition, as in the example above. So $s = 1$.
+<br><br>
+<strong>(III):</strong> Find all s-dimensional subgroups among the full symmetry group from part I.  I will proceed with this simple $s = 1$ example and follow up with others in the subsequent section.
+
+\begin{equation}\left( {x,t,u} \right) \to \left( {x + c\varepsilon ,t + \varepsilon ,u} \right)\notag\end{equation}
+which corresponds to
+\begin{equation}\pmb{v} = c\pmb{v_1} +\pmb{v_2} = c\frac{\partial }{{\partial x}} + \frac{\partial }{{\partial t}}\notag\end{equation}
+
+<strong>(IV):</strong> Fixing the symmetry (presumably the dimension of the orbits of the) group G, construct a complete set of functionally independent variables, divided into two classes:
+
+\begin{equation}{y^i} \equiv {\eta ^i}\left( x \right)\;\;{\text{for}}\;i = 1, \ldots ,p - s\notag\end{equation}
+(Olver 3.6)
+\begin{equation}{v^\alpha } = {v^\alpha }\left( {x,u} \right)\;{\text{for}}\;\alpha  = 1, \ldots ,q\notag\end{equation}
+
+where we have assumed G is projectable by limiting the new independent variables ${y^i} = {\eta ^i}$ to be functions of only the old independent variables; these are called principle variables.  The balance of the s independent variables not accounted for among the ${y^i}$ are treated as parametric variables.  
+<br><br>
+<strong>Note also:</strong>
+<div>
+  <div id="block1">•</div>
+  <div id="block2">
+We employ Olver’s condensed notation where x stands for all the independent variables and u for all the dependent variables when it should not be confusing.
+  </div>
+  <div id="block1">•</div>
+  <div id="block2">
+We use Olver’s symbol ${v^\alpha }$ for the possibly transformed dependent variable(s), risking confusion with the symmetry vectors $\pmb{v}$, which we will always show in boldface
+  </div>
+  <div id="block1">•</div>
+  <div id="block2">
+We avoid identifying the new dependent variable with ${\zeta ^\alpha }$ as done by Olver to avoid confusing it with the generic invariant “constant” solution $\zeta $ to the invariance condition $\pmb{v}\left( \zeta  \right) = 0$.  
+  </div>
+</div>
+<br>
+With our continuing example we apply the vector generator to a representative G-invariant solution $\zeta $ which requires:
+\begin{equation}\pmb{v}\left( \zeta  \right) = c\frac{{\partial \zeta }}{{\partial x}} + \frac{{\partial \zeta }}{{\partial t}} = 0\notag\end{equation}
+Solving as above with the MOC:
+\begin{equation}{c_1} = x - ct\notag\end{equation}
+
+With $\zeta  = {c_1} = x - ct$ we see it satisfies the invariance condition, by design.  Also, since the dependent variable $u$ is not coupled into the solution surface it is the second invariant for this symmetry: ${c_2} = u$.  We set call ${c_1} \equiv y$ to form the new (invariant) independent variable for the 1D heat equation
+
+\begin{equation}{c_1} = y = x - ct\notag\end{equation}
+and
+\begin{equation}{c_2} = v = u\notag\end{equation}
+
+In our example we have reduced the number of independent variables from 2 to 1 by coupling them using the symmetry vector.  We then choose $x$ or $t$ as the parametric variable, leaving the other as the principal variable.
+<br><br>
+<strong>(Va):</strong>  Solve for the $p - s$ remaining independent variables (collectively called the $\tilde x$) and u in terms of y and v and the remaining s “parametric” variable(s) called $\hat x$:
+
+\begin{equation}
+\begin{gathered}
+\tilde x \equiv \gamma \left( {\hat x,y} \right)\\
+u \equiv \delta \left( {\hat x,y,v} \right)
+\end{gathered}
+\tag{Olver(3.7)}\end{equation}
+
+Specializing to our $p = 2,\;s = 1$ case, we have chosen
+
+\begin{equation}\tilde x = t\left( {\hat x,y} \right) \text{ as the } principal \text{ variable, and}\notag\end{equation}
+\begin{equation}\hat x = x \text{ as the } paramentric \text{ variable}\notag\end{equation}
+
+Be careful to note the distinction between the tilde and the hat over $x$.  So we have 
+
+\begin{equation}t\left( {\hat x,y} \right) = \frac{{x - y}}{c} \equiv \gamma \left( {x;y} \right)\notag\end{equation}
+and
+\begin{equation}u = v \equiv \delta \left( {x;y,v} \right)\notag\end{equation}
+
+where the last symbol definitions are used to be consistent with Olver’s notation.  Note we inserted a semicolon to separate the parametric from the principal variables, a practice we recommend.  Note also it is very important to include the arguments explicitly for later application of the chain rule. 
+<br><br>
+<strong>(Vb):</strong>  We use the above redefinitions and the chain rule (more generally the Jacobian) to express the ${u^{\left( n \right)}}$ in terms of the new variables:
+\begin{equation}{u_x} = {\partial _x}\delta \left( {x;y,v} \right) = \frac{{\partial \delta }}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial x}}\notag\end{equation}
+
+But $y = x - ct$ so $\partial y/\partial x = 1$:
+
+\begin{equation}{u_x} = 0 + \left( 1 \right) 0 \left( 1 \right) + 1{v_y}\left( 1 \right) = {v_y}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = \frac{{\partial {u_x}}}{{\partial x}} = \frac{{\partial {v_y}}}{{\partial x}} = \frac{{\partial {v_y}}}{{\partial y}}\frac{{\partial y}}{{\partial x}} = \frac{{\partial {v_y}}}{{\partial y}}\left( 1 \right) = {v_{yy}}\notag\end{equation}
+
+\begin{equation}{u_t} = {\partial _t}\delta \left( {x;y,v} \right) = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{u_t} = 0 + 0\left( { - 1} \right) + 1{v_y}\left( { - c} \right) =  - c{v_y}\notag\end{equation}
+
+<strong>(VI):</strong>  Solve the reduced PDE.  In our example this:
+
+\begin{equation}{u_t} = {u_{xx}}\notag\end{equation}
+becomes
+\begin{equation} - c{v_y} = {v_{yy}}\notag\end{equation}
+This can be integrated:
+\begin{equation} - c{v_y} = \frac{{d{v_y}}}{{dy}} \to \frac{{d{v_y}}}{{{v_y}}} =  - cdy \to {v_y} = A{e^{ - cy}} \to v =  - \frac{A}{c}{e^{ - cy}} + B\notag\end{equation}
+
+Convert to back to $u$ and our original independent variables and redefine a constant:
+
+\begin{equation}v = u = K{e^{ - c\left( {x - ct} \right)}}\;\;\color{blue}\blacksquare \notag\end{equation}
+
+dropping the extraneous integration constant.  This is a “travelling wave” solution to the heat equation.  It is clear this satisfies the PDE.  
+<br><br>
+<strong>Interpretation:</strong>  recall the variables were coupled according to ${c_1} = x - ct$.  The idea of invariance means that with the variables coupled this way, the solution will be constant on this “orbit.”  We can see that inserting this condition into our solution for $u$ does indeed show it is constant along this curve (actually a straight line in the $x - t$ plane).
+<br><br>
+Let us apply the process to a more challenging symmetry of the heat equation.
+<br><br>
+<strong>Heat Equation Scaling Transforms.</strong>  We seek another symmetry that couples our two independent variables, but may also transform the dependent variable.  ${G_4}$ and ${G_6}$ are certainly candidates.  Olver decides to combine ${G_4}$ with ${G_3}$:
+\begin{equation}\pmb{v_3} = u{\partial _u}\;\;{\text{and}}\;\;\pmb{v_4} = x{\partial _x} + 2t{\partial _t}\notag\end{equation}
+Define
+\begin{equation} \pmb{v} = 2a\pmb {v_3} +\pmb{v_4} = x{\partial _x} + 2t{\partial _t} + 2au{\partial _u}\notag\end{equation}
+giving
+\begin{equation}\left( {x,t,u} \right) \to \left( {\lambda x,2\lambda t,{\lambda ^{2a}}u} \right)\notag\end{equation}
+
+Note the arbitrary constant $2a$ is inserted by Olver, presumably for convenience.  These are so-called “scaling” transforms.  The invariant condition is then
+
+\begin{equation}\pmb{v}\left( \zeta  \right) = x{\partial _x}\zeta  + 2t{\partial _t}\zeta  + 2au{\partial _u}\zeta  = 0\notag\end{equation}
+
+We solve the invariance condition to learn the coupling this symmetry affects.  Again using the MOC:
+
+\begin{equation}\frac{{dx}}{x} = \frac{{dt}}{{2t}} = \frac{{du}}{{2au}}\notag\end{equation}
+First two:
+\begin{equation}\frac{{dx}}{x} = \frac{{dt}}{{2t}} \to \ln \left( x \right) - \frac{1}{2}\ln \left( t \right) = \ln \left( {{c_1}} \right) = \ln \left( x \right) - \ln \left( {{t^{\frac{1}{2}}}} \right) = \ln \left( {\frac{x}{{{t^{\frac{1}{2}}}}}} \right)\notag\end{equation}
+\begin{equation} \to {c_1} = x{t^{ - \frac{1}{2}}}\notag\end{equation}
+
+Last two (with a “clever” choice of defining the integration constant to facilitate the algebra):
+
+\begin{equation}\frac{{dt}}{t} = \frac{1}{a}\frac{{du}}{u} \to \ln \left( t \right) = \frac{1}{a}\ln \left( u \right) - \frac{1}{a}\ln \left( {{c_2}} \right)\notag\end{equation}
+
+\begin{equation} \to \ln \left( {\frac{t}{{{u^{\frac{1}{a}}}}}} \right) = \ln \left( {\frac{1}{{{c_2}^{\frac{1}{a}}}}} \right) \to \frac{1}{{{c_2}^{\frac{1}{a}}}} = \frac{t}{{{u^{\frac{1}{a}}}}} \to \frac{{{u^{\frac{1}{a}}}}}{{{c_2}^{\frac{1}{a}}}} = t \to \frac{u}{{{c_2}}} = {t^a}\notag\end{equation}
+
+\begin{equation} \to {c_2} = u{t^{ - a}}\notag\end{equation}
+
+which are consistent with Olver’s result (Example 3.3).  
+
+
+
+
+<p style="padding: 15px; border: 2px solid black;">
+
+<strong>ASIDE:</strong>  Let us check that the MOC solution(s) deliver the invariant function.  Let
+
+\begin{equation}\zeta  = f\left( {{c_1},{c_2}} \right) = f\left( {x{t^{ - \frac{1}{2}}},u{t^{ - a}}} \right)\notag\end{equation}
+Then
+\begin{equation}x{\partial _x}f + 2t{\partial _t}f + 2au{\partial _u}f = 0\notag\end{equation}
+\begin{equation}{\partial _x}f = {\partial _x}{c_1}{\partial _{{c_1}}}f + {\partial _x}{c_2}{\partial _{{c_2}}}f = {t^{ - \frac{1}{2}}}{\partial _{{c_1}}}f\notag\end{equation}
+\begin{equation}{\partial _t}f = {\partial _t}{c_1}{\partial _{{c_1}}}f + {\partial _t}{c_2}{\partial _{{c_2}}}f =  - \frac{1}{2}x{t^{ - \frac{3}{2}}}{\partial _{{c_1}}}f - au{t^{ - a - 1}}{\partial _{{c_2}}}f\notag\end{equation}
+\begin{equation}{\partial _u}f = {\partial _u}{c_1}{\partial _{{c_1}}}f + {\partial _u}{c_2}{\partial _{{c_2}}}f = {t^{ - a}}{\partial _{{c_2}}}f\notag\end{equation}
+
+\begin{equation}x\left( {{t^{ - \frac{1}{2}}}{\partial _{{c_1}}}f} \right) + 2t\left( { - \frac{1}{2}x{t^{ - \frac{3}{2}}}{\partial _{{c_1}}}f - au{t^{ - a - 1}}{\partial _{{c_2}}}f} \right) + 2au\left( {{t^{ - a}}{\partial _{{c_2}}}f} \right) = 0\;\color{blue}\blacksquare \notag\end{equation}
+
+which vanishes as required.
+</p> <!-- End box-->
+
+We now choose our principal and parametric variables.  We are free to choose either $x$ or $t$ as the principal so to be consistent with Olver:
+
+\begin{equation}\tilde x = x:\;principal\notag\end{equation}
+\begin{equation}\hat x = t:\;paramentric\notag\end{equation}
+
+Defining our invariants respectively as 
+\begin{equation}{c_1} = x{t^{ - \frac{1}{2}}} \equiv y\notag\end{equation}
+
+\begin{equation}{c_2} = u{t^{ - a}} \equiv v\notag\end{equation}
+we have
+\begin{equation}x \equiv \gamma \left( {t;y} \right) = y{t^{\frac{1}{2}}}\notag\end{equation}
+and
+\begin{equation}u \equiv \delta \left( {t;y,v} \right) = v{t^a}\notag\end{equation}
+Then
+\begin{equation}y = x{t^{ - \frac{1}{2}}}\;{\text{and}}\;v = u{t^{ - a}}\notag\end{equation}
+
+<p style="padding: 15px; border: 2px solid black;">
+<strong>Apply the chain rule:</strong> We use the above and the chain rule to express ${u_t}$ and ${u_{xx}}$ in terms of $y$, $v$, and $y$-derivatives of $v$ and the $\hat x = t$:
+\begin{equation}{u_x} = {\partial _x}\delta \left( {t;y,v} \right) = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial x}}\notag\end{equation}
+
+\begin{equation}{u_x} = {\partial _x}\delta \left( {t;y,v} \right) = av{t^{a - 1}}\left( 0 \right) + \left( 0 \right){t^{ - \frac{1}{2}}} + {t^a}{v_y}{t^{ - \frac{1}{2}}} = {t^{a - \frac{1}{2}}}{v_y}\notag\end{equation}
+
+\begin{equation}\color{blue}{u_{xx}}\color{black} = \frac{{\partial {u_x}}}{{\partial x}} = {t^{a - \frac{1}{2}}}\frac{{\partial {v_y}}}{{\partial x}} = {t^{a - \frac{1}{2}}}\frac{{\partial {v_y}}}{{\partial y}}\frac{{\partial y}}{{\partial x}} = {t^{a - \frac{1}{2}}}{v_{yy}}{t^{ - \frac{1}{2}}} = \color{blue}{v_{yy}}{t^{a - 1}}\notag\end{equation}
+
+\begin{equation}{u_t} = \frac{{\partial \delta \left( {t;y,v} \right)}}{{\partial t}} = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial t}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}{u_t} = av{t^{a - 1}} + \left( 0 \right)\left( { - \frac{1}{2}x{t^{ - \frac{3}{2}}}} \right) + {t^a}{v_y}\left( { - \frac{1}{2}x{t^{ - \frac{3}{2}}}} \right)\notag\end{equation}
+
+\begin{equation}{u_t} = av{t^{a - 1}} + {t^a}{v_y}\left( { - \frac{1}{2}y{t^{\frac{1}{2}}}{t^{ - \frac{3}{2}}}} \right)\notag\end{equation}
+
+\begin{equation}\color{blue}{u_t} = {t^{a - 1}}\left( { - \frac{1}{2}{v_y}y + av} \right)\notag\end{equation}
+Inserting into ${u_t} = {u_{xx}}$:
+\begin{equation}{t^{a - 1}}\left( { - \frac{1}{2}{v_y}y + av} \right) = {v_{yy}}{t^{a - 1}}\notag\end{equation}
+
+Notice factors of the parameter $t$ cancel out completely, a necessity according to Olver.
+
+\begin{equation}{v_{yy}} + \frac{1}{2}{v_y}y - av = 0\notag\end{equation}
+
+</p><!-- End box-->
+
+We now have reduced the PDE to an ODE, though one entailing “parabolic cylinder” functions, with Olver referring us to Abramowitz and Stegun (not to be treaded lightly).  A special solution is available if we set $a = 0$ (removing the transform of the dependent variable):
+\begin{equation}{v_{yy}} + \frac{1}{2}{v_y}y = 0\notag\end{equation}
+This has the solution
+\begin{equation}v = \frac{u}{{{t^0}}} = u\left( {x,t} \right) = {k_1}{\text{erf}}\left( {\frac{x}{{2\sqrt t }}} \right) + {k_2}\notag\end{equation}
+
+[Note Olver’s solution erroneously replaces 2 with $\sqrt 2 $.]   Olver refers to this as a “probability distribution” for the dependent variable $u$, which may be thought of as temperature.
+<br><br>
+<strong>Interpretation:</strong>  The “orbit” for this solution is a parabolic curve $x = {c_1}\sqrt t $ in the $x - t$ plane (with $t > 0$).  Inserting this condition into the solution shows $u$ to be constant in this orbit.
+<br><br>
+It is enough to have demonstrated the path to the first order ODE with this symmetry.  We consider one more example.
+<br><br>
+<strong>Heat Equation Galilean Boost</strong>.  One final example is illustrative of another twist in the process.  Consider another heat equation symmetry:
+
+\begin{equation}{G_5}:\;\;\;\left( {x,t,u} \right) \to \left( {x + 2\varepsilon t,t,u\exp \left( { - \varepsilon x - {\varepsilon ^2}t} \right)} \right)\notag\end{equation}
+
+and the associated vector generator:
+\begin{equation}{v_5} = 2t{\partial _x} - xu{\partial _u}\notag\end{equation}
+
+We apply the vector generator to a representative G-invariant solution $\zeta $ which requires:
+
+\begin{equation}{v_5}\left( \zeta  \right) = 2t\frac{{\partial \zeta }}{{\partial x}} - xu\frac{{\partial \zeta }}{{\partial u}} = 0\notag\end{equation}
+Using MOC
+\begin{equation}x\frac{{dx}}{{2t}} =  - \frac{{du}}{u} \to  - \frac{{{x^2}}}{{4t}} = \ln u - \ln {c_2} \to u = {c_2}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right) \to {c_2} = u\exp \left( {\frac{{{x^2}}}{{4t}}} \right)\notag\end{equation}
+
+With this coupling by the symmetry vector time $t$ is treated as an invariant on the solution surface so we write
+\begin{equation}{c_1} = t\notag\end{equation}
+
+
+We can easily test our solution with $\zeta  = {c_2}$:
+
+\begin{equation}2t\frac{{\partial \zeta }}{{\partial x}} - xu\frac{{\partial \zeta }}{{\partial u}} = 2t\left( {\frac{{2x}}{{4t}}} \right)u\exp \left( {\frac{{{x^2}}}{{4t}}} \right) - xu\exp \left( {\frac{{{x^2}}}{{4t}}} \right) = 0\;\color{blue}\blacksquare \notag\end{equation}
+
+and we find the invariant function $\zeta  = {c_2}$ does indeed satisfy the invariance condition.  
+
+We now choose our principal and parametric variables.  It seems essential to select $t$ as the principal independent variable, though we get no specific guidance from Olver in this regard, except for his loaded sentence that this symmetry “has global invariants $y = t$ and $v = u\exp \left( {{x^2}/4t} \right)$ on the upper half space $\left\{ {t > 0} \right\}$.” This is consistent with the prescription employed in the earlier examples in which we assign the integration “constants” aka “invariants” to the reduced independent variable(s) and “invariant” dependent variable.   
+
+\begin{equation}\tilde x = t:\;principal\notag\end{equation}
+\begin{equation}\hat x = x:\;paramentric\notag\end{equation}
+driven by
+\begin{equation}{c_1} = t \equiv y\notag\end{equation}
+and
+\begin{equation}{c_2} = u\exp \left( {\frac{{{x^2}}}{{4t}}} \right) \equiv v\notag\end{equation}
+Formally we have
+\begin{equation}t \equiv \gamma \left( {x;y} \right) = y\notag\end{equation}
+and
+\begin{equation}u \equiv \delta \left( {x;y,v} \right) = v\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)\notag\end{equation}
+<p style="padding: 15px; border: 2px solid black;">
+
+<strong>Applying the chain rule:</strong>
+
+\begin{equation}{u_x}\left( {x;y,v} \right) = \frac{{\partial \delta }}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial x}} =  - \frac{x}{{2y}}v\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) + \frac{{\partial \delta }}{{\partial y}}\left( 0 \right) + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\left( 0 \right)\notag\end{equation}
+
+\begin{equation}{u_{xx}} = \frac{{\partial {u_x}}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial y}}\frac{{\partial y}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial x}} = \frac{\partial }{{\partial x}}\left[ { - \frac{x}{{2y}}v\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)} \right] + 0 + 0\notag\end{equation}
+
+\begin{equation}{u_{xx}} =  - v\frac{1}{{2y}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) + v\frac{{{x^2}}}{{4{y^2}}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)\notag\end{equation}
+
+\begin{equation}{u_t}\left( {x;y,v} \right) = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial \delta }}{{\partial y}}\frac{{\partial y}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial y}}\frac{{\partial y}}{{\partial t}} = 0 + \frac{\partial }{{\partial y}}\left[ {v\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)} \right]\left( 1 \right) + \exp \left( { - \frac{{{x^2}}}{{4y}}} \right){v_y}\left( 1 \right)\notag\end{equation}
+
+\begin{equation}{u_t} = v\frac{{{x^2}}}{{4{y^2}}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) + {v_y}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)\notag\end{equation}
+
+\begin{equation}{u_{xx}} - {u_t} = 0\notag\end{equation}
+
+\begin{equation} - v\frac{1}{{2y}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) + v\frac{x}{{2y}}\frac{x}{{2y}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) = v\frac{{{x^2}}}{{4{y^2}}}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) + {v_y}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)\notag\end{equation}
+
+\begin{equation}\left( { - v\frac{1}{{2y}} + \color{red}v\frac{{{x^2}}}{{4{y^2}}}} \right)\color{blue}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) = \color{black}\left( \color{red}{v\frac{{{x^2}}}{{4{y^2}}} \color{black}+ {v_y}}\color{black} \right)\color{blue}\exp \left( { - \frac{{{x^2}}}{{4y}}} \right)\notag\end{equation}
+
+\begin{equation}2y{v_y} + v = 0\notag\end{equation}
+
+</p> <!-- End box-->
+
+This first order ODE can be integrated to:
+\begin{equation}v = \frac{k}{{\sqrt y }}\notag\end{equation}
+so
+\begin{equation}u = v\exp \left( { - \frac{{{x^2}}}{{4y}}} \right) = \frac{k}{{\sqrt t }}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right)\;\color{blue}\blacksquare\notag\end{equation}
+
+We will see in Chapter 3 that this Galilean boost-invariant solution for the 1D heat equation can be found far more easily and with less confusion, in about one page, by using differential geometry.
+<br><br>
+<strong>Interpretation</strong>:  here we coupled the dependent variable to one of the independent variables under this symmetry to generate the invariants:
+\begin{equation}{c_1} = t\notag\end{equation}
+and 
+\begin{equation}{c_2} = u\exp \left( {\frac{{{x^2}}}{{4t}}} \right)\notag\end{equation}
+
+Applying our solution to the latter and combining with the former we find
+
+\begin{equation}{c_2} = \frac{k}{{\sqrt {{c_1}} }}\notag\end{equation}
+
+which we believe shows a reasonable and self-consistent connection of invariants on the “orbit” generated by that symmetry via the PDE solution found under that symmetry.
+<br><br>
+We have demonstrated the use of symmetry to reduce the order of a PDE providing the opportunity to find a solution on a sub-manifold of the full solution set.  We began with a PDE in two dimensions ($p = 2,\;q = 1,\;n = 2$) whose reduction resulted in an ODE easily solved.  
+<br><br>
+In the following sub-section we treat a $p = 3$ situation (via the 2D Wave Equation), which, after application of a symmetry condition, leaves us with a (possibly solvable) PDE in two independent variables.  We will show how application of a second, compatible, symmetry condition can reduce the problem again to solution of an ODE.
+
+
+
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.6</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

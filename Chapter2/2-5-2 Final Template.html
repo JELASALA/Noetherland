@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.5.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 5; const SS = 2;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Section 2.5 – Prolongation into Jet Space</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>2.5.2 – Example of 1D Heat Equation</strong></p>
+
+Let us return to the venerable 1D heat equation to demonstrate this procedure, pointing out some of the challenges along the way.
+
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\;v\left[ {\Delta \left( {x,t,{u^{\left( 2 \right)}}} \right)} \right] = 0\notag\end{equation}
+
+for
+
+\begin{equation}\Delta  = {u_t} - {u_{xx}} = 0\notag\end{equation}
+
+Note the explicit replacement of $\left( {x,t} \right) = \left( {{x^1},{x^2}} \right)$ and $\left( {\xi ,\tau } \right) = \left( {{\xi ^1},{\xi ^2}} \right)$ in the forgoing equations for this example. Proceeding:
+
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}v\left[ {{u_t} - {u_{xx}}} \right] = \left( {\xi \frac{\partial }{{\partial x}} + \tau \frac{\partial }{{\partial t}} + \phi \frac{\partial }{{\partial u}} + {\phi ^x}\frac{\partial }{{\partial {u_x}}} + {\phi ^t}\frac{\partial }{{\partial {u_t}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{xt}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}}} \right)\left[ {{u_t} - {u_{xx}}} \right] = 0\notag\end{equation}
+
+Most of these terms vanish after operating on the PDE, leaving:
+
+\begin{equation}{\phi ^t} - {\phi ^{xx}} = 0\notag\end{equation}
+  
+  Substituting in the results (2.5.1.5) and (2.5.1.6): with ${\phi ^2} \to {\phi ^t}$ and ${\phi ^{11}} \to {\phi ^{xx}}$:
+  
+  \begin{multline*}
+  \left( {{\phi _t} + \left( {{\phi _u} - {\tau _t}} \right){u_t} - {\xi _t}{u_x} - {\xi _u}{u_t}{u_x} - {\tau _u}{u_t}{u_t}} \right) \\
+  - \left[ {{\phi _{xx}} + \left( {2{\phi _{xu}} - {\xi _{xx}}} \right){u_x} - {\tau _{xx}}{u_t} + \left( {{\phi _{uu}} - 2{\xi _{xu}}} \right)u_x^2 - 2{\tau _{ux}}{u_x}{u_t} - {\xi _{uu}}u_x^3 - {\tau _{uu}}u_x^2{u_t} + \left( {{\phi _u} - 2{\xi _x}} \right){u_{xx}} - 2{\tau _x}{u_{tx}} - 3{\xi _u}{u_{xx}}{u_x} - {\tau _u}{u_{xx}}{u_t} - 2{\tau _u}{u_x}{u_{tx}}} \right] = 0
+  \notag\end{multline*}
+  <!-- won't break between square brackets -->
+  
+  Recall the prolongation to jet space, where we are operating now, allows us to treat the dependent variable(s), all of its derivatives and the base manifold independent variables as independent of each other.  This means that we may organize this equation into quantities whose coefficients must vanish due to their independence from each other, forming so-called <em>monomials</em>.    We also note that Olver's <strong>Theorem 2.31 </strong>reminds us $\Delta  = {u_t} - {u_{xx}} = 0$, so this "algebraic" relationship defines a sub-manifold in jet space, and must be implemented before we isolate independent terms.  We (and Olver) choose to replace ${u_t}$ with ${u_{xx}}$, after which we group like terms (roughly in ascending order of orders of derivatives and their products):
+  
+  \begin{multline*}
+  {\phi _t} - {\phi _{xx}} + \left( { - {\xi _t} - 2{\phi _{xu}} + {\xi _{xx}}} \right){u_x} + 2{\tau _x}{u_{tx}} + \left( {{\phi _u} - {\tau _t} + {\tau _{xx}} - {\phi _u} + 2{\xi _x}} \right){u_{xx}} + 2{\tau _u}{u_x}{u_{tx}}\\
+  + \left( {2{\tau _{ux}} + 2{\xi _u}} \right){u_{xx}}{u_x} + \left( { - {\tau _u} + {\tau _u}} \right){u_{xx}}{u_{xx}} + {\tau _{uu}}u_x^2{u_{xx}} - \left( {{\phi _{uu}} - 2{\xi _{xu}}} \right)u_x^2 + {\xi _{uu}}u_x^3 = 0
+  \notag\end{multline*}
+  
+  Note some of the monomials vanish on their own.  For the sake of organization and accuracy it is useful to create a table of these <em>monomials</em>:
+  
+  \begin{align*}
+  \text{Mon}&\text{omial}& \text{Coeffic}&\text{ient} &\text{  }&\\
+  &1& {\phi _t} - {\phi _{xx}} &=0& &\text{(a)  }&\\
+  &u^m& &=& &\text{(b)  }&\\
+  &{u_x}&  - {\xi _t} - 2{\phi _{xu}} + {\xi _{xx}} &=0& &\text{(c)  }&\\
+  &{u_{tx}}& 2{\tau _x} &=0& &\text{(d) }&\\
+  &{u_{xx}}&  - {\tau _t} + {\tau _{xx}} + 2{\xi _x} &=0& &\text{(e)  }&\\
+  &{u_x}{u_{tx}}& 2{\tau _u} &=0& &\text{(f) }&\\
+  &{u_{xx}}{u_x}& 2{\tau _{ux}} + 2{\xi _u} &=0& &\text{(g) }&\\
+  &{u_{xx}}{u_{xx}}& 0&=0& &\text{(h) }&\\
+  &u_x^2{u_{xx}}& {\tau _{uu}} &=0& &\text{(i)  }&\\
+  &u_x^2& {\phi _{uu}} - 2{\xi _{xu}} &=0& &\text{(j) }&\\
+  &u_x^3& {\xi _{uu}} &=0& &\text{(k) }&
+  \end{align*}
+
+This is an over-determined set of "<strong><em>determining equations</em></strong>" (DEs). It is generally profitable to work from the highest to lowest order terms.  We can immediately draw some conclusions about the functional dependencies of some of the coefficients.  Equations (d), (f) and (i) are consumed telling us $\tau  = \tau \left( t \right)$ at most.  Eliminate &ldquo;consumed&rdquo; monomials and apply $\tau  = \tau \left( t \right)$.
+
+\begin{align*}
+  \text{Mon}&\text{omial}& \text{Coeffic}&\text{ient} &\text{  }&\\
+  &	1	&	{\phi _t} - {\phi _{xx}} 	&	=	0	&	&\text{	(a)	}&\\
+  &	{u_x} 	&	 - {\xi _t} - 2{\phi _{xu}} + {\xi _{xx}} 	&	=	0	&	&\text{	(c)	}&\\
+  &	{u_{xx}} 	&	 - {\tau _t} + 2{\xi _x} 	&	=	0	&	&\text{	(e)	}&\\
+  &	{u_{xx}}{u_x} 	&	{\xi _u} 	&	=	0	&	&\text{	(g)	}&\\
+  &	u_x^2 	&	{\phi _{uu}} - 2{\xi _{xu}} 	&	=	0	&	&\text{	(j)	}&\\
+  &	u_x^3 	&	{\xi _{uu}} 	&	=	0	&	&\text{	(k)	}&
+  \end{align*}
+
+(g) and (k) tell us $\xi $ =$\;\xi  (x,t)$, then (j) tells us ${\phi _{uu}} = 0$. Taking the derivative of (e) wrt $x$ tells us ${\xi _{{\text{xx}}}} = 0$.  It is useful now to express these dependencies explicitly:
+
+\begin{equation}\xi  = f\left( t \right)x + g\left( t \right)\notag\end{equation}
+\begin{equation}\tau  = h\left( t \right)\notag\end{equation}
+\begin{equation}\phi  = \alpha \left( {x,t} \right)u + \beta \left( {x,t} \right)\notag\end{equation}
+
+where the various functions may contain integration constants. Our slightly refined DEs are
+
+\begin{align*}
+  \text{Mon}&\text{omial}& \text{Coeffic}&\text{ient} &\text{  }&\\
+&	1	&	{\phi _t} - {\phi _{xx}} 	&	=	0	&	&\text{	(a)	}&\\
+&	{u_x} 	&	 - {\xi _t} - 2{\phi _{xu}} 	&	=	0	&	&\text{	(c)	}&\\
+&	{u_{xx}} 	&	 - {\tau _t} + 2{\xi _x} 	&	=	0	&	&\text{	(e)	}&
+\end{align*}
+
+Apply our functional form of $\phi $ to (a):
+
+\begin{equation}{\alpha _t}\left( {x,t} \right)u + {\beta _t}\left( {x,t} \right) - {\alpha _{xx}}\left( {x,t} \right)u + {\beta _{xx}}\left( {x,t} \right) = 0\notag\end{equation}
+
+Since all of the u-dependence is exhibited we can conclude:
+
+\begin{equation}{\alpha _t}\left( {x,t} \right) - {\alpha _{xx}}\left( {x,t} \right) = 0\notag\end{equation}
+
+and 
+
+\begin{equation}{\beta _t}\left( {x,t} \right) - {\beta _{xx}}\left( {x,t} \right) = 0\notag\end{equation}
+
+both of which then satisfy our PDE.  Now (e) tells us:
+
+\begin{equation} - h' + 2f = 0 \to f = \frac{1}{2}h'\notag\end{equation}
+
+Next (c):
+
+\begin{equation} - {\xi _{\text{t}}} = 2{\phi _{{\text{xu}}}}\notag\end{equation}
+\begin{equation} - \left( {f'x + g'} \right) = 2{\alpha _{\text{x}}}\notag\end{equation}
+\begin{equation} - f' = 2{\alpha _{{\text{xx}}}}\notag\end{equation}
+
+So
+
+\begin{equation}{\alpha _{{\text{xxx}}}} = 0 \to {\alpha _{tx}} = 0 \to f''x + g'' = 0\notag\end{equation}
+
+We can now set
+
+\begin{equation}f'' = 0 \to f = 4{c_6}t + {c_4}\notag\end{equation}
+\begin{equation}g'' = 0 \to g = 2{c_5}t + {c_1}\notag\end{equation}
+
+and
+
+\begin{equation} - \frac{1}{2}\left( {f'x + g'} \right) = {\alpha _{\text{x}}} =  - \left( {2{c_6}x + {c_5}} \right) \to \alpha  =  - \left( {{c_6}{x^2} + {c_5}x - {c_3} + r\left( t \right)} \right)\notag\end{equation}
+
+Note we chose the constant number system to be ultimately consistent with Olver.  Then
+
+\begin{equation}{\alpha _t} = {\alpha _{xx}} =  - 2{c_6} \to \alpha  =  - 2{c_6}t + s\left( x \right)\notag\end{equation}
+
+Collecting
+
+\begin{equation}\alpha  =  - {c_6}{x^2} - {c_5}x + {c_3} - 2{c_6}t\notag\end{equation}
+
+Finally
+
+\begin{equation}f = \frac{1}{2}h' = 4{c_6}t + {c_4} \to h = 4{c_6}{t^2} + 2{c_4}t + {c_2}\notag\end{equation}
+
+So our symmetry vector coefficients are:
+
+\begin{equation}\xi  = 4{c_6}tx + {c_4}x + 2{c_5}t + {c_1}\notag\end{equation}
+
+\begin{equation}\tau  = 4{c_6}{t^2} + 2{c_4}t + {c_2}\notag\end{equation}
+
+\begin{equation}\phi  = \left( { - {c_6}{x^2} - {c_5}x + {c_3} - 2{c_6}t} \right)u + {\beta _{heat}}\left( {x,t} \right)\notag\end{equation}
+
+Notice the $ϕ$ coefficient depends on $u$, reinforcing the restriction on monomial identifications above.  By setting all but one constant to zero at a time we can generate all the vectors in (Olver 2.55) – though Olver chose $\alpha \left( {x,t} \right)$ to represent the heat equation solution ${\beta _{heat}}$.  I particular, related to our ongoing example from the original teaser in section 2.1:
+
+\begin{equation}\pmb{v_1} = {\partial _x}\text{ (setting all but }{c_1}\text{ to zero)}\notag\end{equation}
+and
+\begin{equation}\pmb{v_5} = 2t{\partial _x} - xu{\partial _u}\text{ (setting all but }{c_5}\text{ to zero)}\notag\end{equation}
+
+Recapping the procedure, we applied the prolonged vector operation to the PDE, generating a single, long equation of coefficients multiplying various derivatives of the dependent variable u, here standing for the “independent variables” of the appropriately sized jet space. The coefficients contained various derivatives of our unknown symmetry vector components.  We then implemented the PDE “algebraic” connection between the “independent variables” of jet space by choosing to express one in terms of another (we replaced all instances of ${u_t}$ with ${u_{xx}}$ based on the heat equation).  This needs to be done carefully and thoroughly.  Note one should not replace, for example ${u_{tx}}$ with ${u_{xxx}}$, as ${u_t}$ and ${u_{tx}}$ are different “independent coordinates” in jet space.  There is also an arbitrariness here in that we could have reversed the replacement and ultimately gotten the same result but with different combinations of terms in our DEs.  Finally, we identified “monomials” as factors of the various $u$-derivatives (but not $u$ itself which may be implicitly contained in the vector coefficient functions) and demanded they vanish individually, generating a set of DEs, which we solve using “creative” techniques.
+<br><br>
+<!-- Start bordered box
+<p style="padding: 15px; border: 2px solid black;">
+  <strong>Note:</strong> boxed content goes here.
+</p>
+End bordered box-->
+
+</div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.4</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.7.3</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 7; const SS = 3;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+
+<p align="center"><strong>2.7.3 – Translation in space/time and dilation</strong></p>
+<strong>Example 2</strong>. <u>Translation</u> in $x$, $y$ and $t$ combined with the <u>dilation</u> vector:
+<br><br>
+Recall this is the original EOM or PDE:
+\begin{equation}{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+or in units of $c = 1$:
+\begin{equation}{u_{tt}} - \left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+These are the symmetry vectors we will employ:
+\begin{equation}\pmb{v} = \frac{1}{k}{\partial _x} + \frac{1}{k}{\partial _y} + \frac{1}{\omega }{\partial _t}\notag\end{equation}
+
+\begin{equation}\pmb{d}  = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+These form a Lie sub-algebra.  By Frobenius the sub-manifold they define is integrable. Note the need to set the wavenumber constants equal for a solution.  We will find it also necessary to couple the wavenumber and radial frequency constants as well.  
+
+<br><br>
+<strong>Level 1:</strong>  
+
+We apply the translation vector generator to a representative <em>G-invariant</em> solution $\zeta $ which requires:
+
+\begin{equation}\pmb{v}\left( \zeta  \right) = \frac{1}{{{k_x}}}\frac{{\partial \zeta }}{{\partial x}} + \frac{1}{{{k_y}}}{\partial _y} + \frac{1}{{{k_t}}}\frac{{\partial \zeta }}{{\partial t}} = 0\notag\end{equation}
+MOC:
+\begin{equation}{k_x}dx = {k_y}dy = {k_t}dt\notag\end{equation}
+
+\begin{equation}{k_x}dx = {k_t}dt \to {k_x}x = {k_t}t + {c_1} \to {c_1} = {k_x}x - {k_t}t\notag\end{equation}
+
+
+\begin{equation}{k_y}dy = {k_t}dt \to {k_y}y = {k_t}t + {c_2} \to {c_2} = {k_y}y - {k_t}t\notag\end{equation}
+
+We can easily verify any function of ${c_1}$ and ${c_2}$ satisfies the invariance condition.  At this point, based on experience, we set 
+
+\begin{equation}{k_x}={k_y}\equiv {k} \;\;and\;\;{k_t} \equiv \omega \notag\end{equation}
+
+\begin{equation}{c_1} = kx - \omega t \to x = \frac{{{c_1} + \omega t}}{k}\notag\end{equation}
+\begin{equation}{c_2} = ky - \omega t \to y = \frac{{{c_2} + \omega t}}{k}\notag\end{equation}
+	
+Since $u$ was not coupled we also set 
+\begin{equation}u = {c_3}\notag\end{equation}
+
+Let us pick $t$ as the parametric variable since we are free to choose it, and also rename our invariants for symbolic simplicity ($g,\;h,\;v$ respectively).
+
+\begin{equation}{\tilde x^1} = x \equiv {\gamma ^1}\left( {t;g,h} \right) = \frac{{g + \omega t}}{k} \to g = kx - \omega t\notag\end{equation}
+
+\begin{equation}{\tilde x^2} = y \equiv {\gamma ^2}\left( {t;g,h} \right) = \frac{{h + \omega t}}{k} \to h = ky - \omega t\notag\end{equation}
+
+\begin{equation}u = v = \delta \left( {t;g,h,v} \right)\notag\end{equation}
+
+We now express the original PDE in the new variables:
+
+\begin{equation}{u_x} = {\partial _x}\delta \left( {t;g,h,v} \right) = \frac{{\partial \delta }}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial \delta }}{{\partial g}}\frac{{\partial g}}{{\partial x}} + \frac{{\partial \delta }}{{\partial h}}\frac{{\partial h}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial g}}\frac{{\partial g}}{{\partial x}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial h}}\frac{{\partial h}}{{\partial x}} = k{v_g}\notag\end{equation}
+
+\begin{equation}{u_{xx}} = {\partial _x}{u_x}\left( {t;g,h,v} \right) = \frac{{\partial {u_x}}}{{\partial t}}\frac{{\partial t}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial g}}\frac{{\partial g}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial h}}\frac{{\partial h}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial g}}\frac{{\partial g}}{{\partial x}} + \frac{{\partial {u_x}}}{{\partial v}}\frac{{\partial v}}{{\partial h}}\frac{{\partial h}}{{\partial x}} = {k^2}{v_{gg}}\notag\end{equation}
+
+Similarly, we can simply write down the analogous express for $u_{yy}$: 
+
+\begin{equation}{u_{yy}} = {k^2}{v_{hh}}\notag\end{equation}
+
+Finally we attack $u_{tt}$:
+\begin{equation}{u_t} = {\partial _t}\delta \left( {t;g,h,v} \right) = \frac{{\partial \delta }}{{\partial t}} + \frac{{\partial \delta }}{{\partial g}}\frac{{\partial g}}{{\partial t}} + \frac{{\partial \delta }}{{\partial h}}\frac{{\partial h}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial g}}\frac{{\partial g}}{{\partial t}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial h}}\frac{{\partial h}}{{\partial t}} =  - \omega {v_g} - \omega {v_h}\notag\end{equation}
+
+\begin{equation}{u_{tt}} = {\partial _t}{u_t}\left( {t;g,h,v} \right) = \frac{{\partial {u_t}}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial g}}\frac{{\partial g}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial h}}\frac{{\partial h}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial v}}\frac{{\partial v}}{{\partial g}}\frac{{\partial g}}{{\partial t}} + \frac{{\partial {u_t}}}{{\partial v}}\frac{{\partial v}}{{\partial h}}\frac{{\partial h}}{{\partial t}} =  - \omega \left( { - \omega {v_{gg}} - \omega {v_{hg}}} \right) - \omega \left( { - \omega {v_{gh}} - \omega {v_{hh}}} \right)\notag\end{equation}
+
+\begin{equation}{u_{tt}} = {\omega ^2}\left( {{v_{gg}} + 2{v_{hg}} + {v_{hh}}} \right)\notag\end{equation}
+Our PDE becomes:
+\begin{equation}{u_{tt}} - \left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+
+\begin{equation}{\omega ^2}\left( {{v_{gg}} + 2{v_{hg}} + {v_{hh}}} \right) - \left( {{k^2}{v_{gg}} + {k^2}{v_{hh}}} \right) = 0\notag\end{equation}
+
+\begin{equation}\left( {{\omega ^2} - {k^2}} \right){v_{gg}} + \left( {{\omega ^2} - {k^2}} \right){v_{hh}} + 2{\omega ^2}{v_{hg}}\;\; = 0\end{equation}
+
+Let us go now to Level 2 naively:
+
+Level 2.  To apply the dilation vector we need to recast it in terms of the two invariants $g$ and $h$.  
+\begin{equation}g = kx - \omega t\notag\end{equation}
+
+\begin{equation}h = ky - \omega t\notag\end{equation}
+
+We need to be able to find a single “invariant” constant from MOC with which to proceed.
+
+\begin{equation}\pmb{d} f = x{\partial _g}f\frac{{\partial g}}{{\partial x}} + y{\partial _h}f\frac{{\partial h}}{{\partial y}} + t{\partial _g}f\frac{{\partial g}}{{\partial t}} + t{\partial _h}f\frac{{\partial h}}{{\partial t}}\notag\end{equation}
+
+\begin{equation}\pmb{d}  = \left( {kx - \omega t} \right){\partial _g} + \left( {ky - \omega t} \right){\partial _h}\notag\end{equation}
+
+\begin{equation}\pmb{d}  = g{\partial _g} + h{\partial _h}\notag\end{equation}
+MOC:
+\begin{equation}\frac{{dg}}{g} = \frac{{dh}}{h}\notag\end{equation}
+So
+\begin{equation}\ln \left( g \right) = \ln \left( h \right) + \ln \left( {{c_4}} \right) \to {c_4} \equiv w = \frac{g}{h}\notag\end{equation}
+So w is our new independent variable.  We choose $h$ to be the parametric variable (arbitrary).  Again $u$ is not transformed, so:
+\begin{equation}u = \delta \left( {h;w,v} \right) = v\notag\end{equation}
+
+To apply to the above to our <strong>Level 1</strong> PDE 
+
+\begin{equation}\left( {{\omega ^2} - {k^2}} \right){v_{gg}} + \left( {{\omega ^2} - {k^2}} \right){v_{hh}} + 2{\omega ^2}{v_{hg}}\;\; = 0\notag\end{equation}
+we need to evaluate:
+
+
+\begin{equation}{u_g} = {\partial _g}\delta \left( {h;w,v} \right) = \frac{{\partial \delta }}{{\partial h}}\frac{{\partial h}}{{\partial g}} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial g}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial g}} = \frac{1}{h}{v_w}\notag\end{equation}
+
+\begin{equation}{u_{gg}} = {\partial _g}{u_g} = \frac{{\partial {u_g}}}{{\partial h}}\frac{{\partial h}}{{\partial g}} + \frac{{\partial {u_g}}}{{\partial w}}\frac{{\partial w}}{{\partial g}} + \frac{{\partial {u_g}}}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial g}} = \frac{1}{{{h^2}}}{v_{ww}}\notag\end{equation}
+
+\begin{equation}{u_h} = {\partial _h}\delta \left( {h;w,v} \right) = \frac{{\partial \delta }}{{\partial h}} + \frac{{\partial \delta }}{{\partial w}}\frac{{\partial w}}{{\partial h}} + \frac{{\partial \delta }}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial h}} =  - \frac{w}{h}{v_w}\notag\end{equation}
+
+\begin{equation}{u_{hh}} = {\partial _h}{u_h} = \frac{{\partial {u_h}}}{{\partial h}} + \frac{{\partial {u_h}}}{{\partial w}}\frac{{\partial w}}{{\partial h}} + \frac{{\partial {u_h}}}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial h}} = \frac{w}{{{h^2}}}{v_w} - \left( {\frac{1}{h}{v_w} + \frac{w}{h}{v_{ww}}} \right)\left( { - \frac{w}{h}} \right)\notag\end{equation}
+
+\begin{equation}{u_{hh}} = 2\frac{w}{{{h^2}}}{v_w} + \frac{{{w^2}}}{{{h^2}}}{v_{ww}}\notag\end{equation}
+
+\begin{equation}{u_{hg}} = {\partial _g}{u_h} = \frac{{\partial {u_h}}}{{\partial h}}\frac{{\partial h}}{{\partial g}} + \frac{{\partial {u_h}}}{{\partial w}}\frac{{\partial w}}{{\partial g}} + \frac{{\partial {u_h}}}{{\partial v}}\frac{{\partial v}}{{\partial w}}\frac{{\partial w}}{{\partial g}} =  - \left( {\frac{1}{h}{v_w} + \frac{w}{h}{v_{ww}}} \right)\frac{1}{h}\notag\end{equation}
+
+\begin{equation}{u_{hg}} =  - \frac{1}{{{h^2}}}{v_w} - \frac{w}{{{h^2}}}{v_{ww}}\notag\end{equation}
+
+Our PDE becomes an ODE:
+\begin{equation}\left( {{\omega ^2} - {k^2}} \right)\frac{1}{{{h^2}}}{v_{ww}} + \left( {{\omega ^2} - {k^2}} \right)\left( {2\frac{w}{{{h^2}}}{v_w} + \frac{{{w^2}}}{{{h^2}}}{v_{ww}}} \right) + 2{\omega ^2}\left( { - \frac{1}{{{h^2}}}{v_w} - \frac{w}{{{h^2}}}{v_{ww}}} \right)\;\; = 0\notag\end{equation}
+
+The parametric variable cancels as it should:
+
+\begin{equation}\left( {{\omega ^2} - {k^2}} \right){v_{ww}} + \left( {{\omega ^2} - {k^2}} \right)\left( {2w{v_w} + {w^2}{v_{ww}}} \right) + 2{\omega ^2}\left( { - {v_w} - w{v_{ww}}} \right)\;\; = 0\notag\end{equation}
+
+\begin{equation}\left( {{\omega ^2} - {k^2}} \right){v_{ww}} + \left( {{\omega ^2} - {k^2}} \right)\left( {2w{v_w}} \right) + \left( {{\omega ^2} - {k^2}} \right)\left( {{w^2}{v_{ww}}} \right) - 2{\omega ^2}\left( {{v_w}} \right) - 2{\omega ^2}\left( {w{v_{ww}}} \right)\;\; = 0\notag\end{equation}
+
+\begin{equation}\left[ {\left( {{\omega ^2} - {k^2}} \right) + \left( {{\omega ^2} - {k^2}} \right)\left( {{w^2}} \right) - 2{\omega ^2}\left( w \right)} \right]{v_{ww}} + \left[ {\left( {{\omega ^2} - {k^2}} \right)2w - 2{\omega ^2}} \right]{v_w}\;\; = 0\notag\end{equation}
+
+Recast
+\begin{equation}{v_{ww}} + \frac{{\left( {{\omega ^2} - {k^2}} \right)2w - 2{\omega ^2}}}{{\left( {{\omega ^2} - {k^2}} \right) + \left( {{\omega ^2} - {k^2}} \right)\left( {{w^2}} \right) - 2{\omega ^2}\left( w \right)}}{v_w}\;\; = 0\notag\end{equation}
+
+We attempt to solve using an integrating factor:
+\begin{equation}\mu \left( w \right) = \exp \left( {\mathop \int \nolimits \frac{{\left( {{\omega ^2} - {k^2}} \right)2w - 2{\omega ^2}}}{{\left( {{\omega ^2} - {k^2}} \right) + \left( {{\omega ^2} - {k^2}} \right)\left( {{w^2}} \right) - 2{\omega ^2}\left( w \right)}}dw} \right)\notag\end{equation}
+
+This produces a very messy and uninformative result.  A little trial and error, however, reveals a much-simplified solution with the following dispersion relation assumed from the beginning: 
+
+\begin{equation}{\omega ^2} = \frac{1}{2}{k^2}\end{equation}
+
+yielding
+\begin{equation}{v_{ww}} + 2\frac{1}{{w + 1}}{v_w}\;\; = 0\notag\end{equation}
+Integration yields
+\begin{equation}v = \frac{A}{{\left( {w + 1} \right)}} = A\frac{h}{{\left( {g + h} \right)}}\notag\end{equation}
+
+Recall $g$ and $h$ are invariants, so the solution is indeed invariant on the joint symmetry “orbit.” Now
+\begin{equation}g = kx - \omega t =  \pm \sqrt 2 \omega x - \omega t\notag\end{equation}
+
+\begin{equation}h = ky - \omega t =  \pm \sqrt 2 \omega y - \omega t\notag\end{equation}
+so
+
+\begin{equation}v = A\frac{{ \pm 2y - \sqrt 2 t}}{{\left( { \pm 2x \pm 2y - 2\sqrt 2 t} \right)}}\;\notag\end{equation}
+
+We form the solution (restoring the wave speed $c$):
+ 
+\begin{equation}u = A\frac{{y - ct/\sqrt 2 }}{{\left( {x + y - \sqrt 2 ct} \right)}} + A\frac{{y + ct/\sqrt 2 }}{{\left( {x + y + \sqrt 2 ct} \right)}}\notag\end{equation}
+
+You can readily test that this unusual solution satisfies the original PDE.
+
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.6</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
