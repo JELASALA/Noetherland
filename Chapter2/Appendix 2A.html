@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appendix 2A</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 0; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+	//						tagformat:
+	//						{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+                                                                                     <style>
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>Appendix 2A</strong></p>
+
+<p align="center"><strong>Invariants Vector Generators of the 2D Wave Equation</strong></p>
+
+The EOM is given with full dimensionality:
+
+\begin{equation}\Delta \left( {t,x,{u^{\left( 2 \right)}}} \right) = {u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right) = 0\notag\end{equation}
+
+The invariance condition requires: 
+
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left[ {\Delta \left( {t,x,{u^{\left( 2 \right)}}} \right)} \right] = {\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left[ {{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)} \right] = 0\notag\end{equation}with
+\begin{equation}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi \left( {x,u} \right)\frac{\partial }{{\partial u}}\tag{2A.1}\label{1}\end{equation}
+
+fully expanded to:
+\begin{equation}\pmb{v} = \tau \left( {t,x,y,u} \right)\frac{\partial }{{\partial t}} + \zeta \left( {t,x,y,u} \right)\frac{\partial }{{\partial x}} + \eta \left( {t,x,y,u} \right)\frac{\partial }{{\partial y}} + \phi \left( {t,x,y,u} \right)\frac{\partial }{{\partial u}}\notag\end{equation}and
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = \pmb{v} + {\phi ^{J\left( 1 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 1 \right)}}}} + {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\tag{2A.2}\label{2}\end{equation}
+where
+
+\begin{equation}{\phi ^{J\left( k \right)}}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( k \right)}}\left( {\phi  - {\xi ^i}{u_i}} \right) + {\xi ^i}{u_{J\left( k \right),i}}\tag{2A.3}\label{3}\end{equation}
+from <strong>Olver (2.39)</strong> for a single dependent variable, and where $i = 1, \ldots 3$. When applied to this PDE only the thrid term in \eqref{2} survives as none of the independent variables, $u$ itself or its first derivatives appear explicitly in the PDE.  Thus
+   
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\notag\end{equation}
+
+Expanding 
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}} + {\phi ^{tx}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{ty}}\frac{\partial }{{\partial {u_{yt}}}} + {\phi ^{xy}}\frac{\partial }{{\partial {u_{xy}}}}\notag\end{equation}
+
+Dropping the mixed terms which also do not contribute we finally have
+
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left( \Delta  \right) = \left[ {{\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}}} \right]\left( {{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)} \right) = 0\notag\end{equation}
+Thus
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left( \Delta  \right) = \left( {{\phi ^{tt}} - {c^2}{\phi ^{xx}} - {c^2}{\phi ^{yy}}} \right) = 0\tag{2A.4}\label{4}\end{equation}
+
+
+
+Applying \eqref{3}:
+
+\begin{equation}{\phi ^{jj}}\left( {x,{u^{\left( 2 \right)}}} \right) = {D_{jj}}\left( {\phi  - {\xi ^i}{u_i}} \right) + {\xi ^i}{u_{jj,i}}\tag{2A.5}\label{5}\end{equation}
+
+with no sum over $j$ implied.  Taking them one at a time:
+\begin{equation}{\phi ^{xx}}\left( {x,{u^{\left( 2 \right)}}} \right) = {D_{xx}}\left( {\phi  - {\xi ^i}{u_i}} \right) + {\xi ^i}{u_{xx,i}}\notag\end{equation}
+where ${D_{xx}} = {D_x}{D_x}$.  The first term is simply:
+
+\begin{equation}{D_{xx}}\phi  = {D_x}\left( {{\phi _x} + {\phi _u}{u_x}} \right) = {\phi _{xx}} + 2{\phi _{ux}}{u_x} + {\phi _{uu}}{u_x}{u_x} + {\phi _u}{u_{xx}}\notag\end{equation}
+
+The second term in ${\phi ^{xx}}$ expands enormously:
+
+\begin{equation}\;\;\;\;{D_{xx}}\left( {{\xi ^i}{u_i}} \right) = {D_{xx}}\left( {\zeta {u_x} + \eta {u_y} + \tau {u_t}} \right)\hspace{100em}\notag\end{equation}
+
+\begin{multline*}{D_{xx}}\left( {{\xi ^i}{u_i}} \right) = {D_x}\left( {{\zeta _x}{u_x} + {\zeta _u}{u_x}{u_x} + \zeta {u_{xx}} + {\eta _x}{u_y} + {\eta _u}{u_x}{u_y} + \eta {u_{xy}} + {\tau _x}{u_t} + {\tau _u}{u_x}{u_t} + \tau {u_{xt}}} \right)\\ = {\zeta _{xx}}{u_x} + {\zeta _{ux}}{u_x}{u_x} + {\zeta _x}{u_{xx}} + {\zeta _{ux}}{u_x}{u_x} + {\zeta _{uu}}{u_x}{u_x}{u_x} + 2{\zeta _u}{u_{xx}}{u_x} + {\zeta _x}{u_{xx}} + {\zeta _u}{u_x}{u_{xx}} + \zeta {u_{xxx}}\\ + {\eta _{xx}}{u_y} + {\eta _{ux}}{u_x}{u_y} + {\eta _x}{u_{xy}} + {\eta _{ux}}{u_x}{u_y} + {\eta _{uu}}{u_x}{u_x}{u_y} + {\eta _u}{u_{xx}}{u_y} + {\eta _u}{u_x}{u_{xy}} + {\eta _x}{u_{xy}} + {\eta _u}{u_x}{u_{xy}} + \eta {u_{xxy}} \\+ {\tau _{xx}}{u_t} + {\tau _{xu}}{u_x}{u_t} + {\tau _x}{u_{xt}} + {\tau _{ux}}{u_x}{u_t} + {\tau _{uu}}{u_x}{u_x}{u_t} + {\tau _u}{u_{xx}}{u_t} + {\tau _u}{u_x}{u_{xt}} + {\tau _x}{u_{xt}} + {\tau _u}{u_x}{u_{xt}} + \tau {u_{xxt}}\notag\end{multline*}
+
+\begin{multline*}{D_{xx}}\left( {{\xi ^i}{u_i}} \right) = {\zeta _{xx}}{u_x} + 2{\zeta _{ux}}{u_x}{u_x} + {\zeta _x}{u_{xx}} + {\zeta _{uu}}{u_x}{u_x}{u_x} + 3{\zeta _u}{u_{xx}}{u_x} + {\zeta _x}{u_{xx}} + \zeta {u_{xxx}}\\ + {\eta _{xx}}{u_y}+ 2{\eta _{ux}}{u_x}{u_y} + {\eta _x}{u_{xy}} + {\eta _{uu}}{u_x}{u_x}{u_y} + {\eta _u}{u_{xx}}{u_y} + 2{\eta _u}{u_x}{u_{xy}} + {\eta _x}{u_{xy}} + \eta {u_{xxy}}\\ + {\tau _{xx}}{u_t} + 2{\tau _{xu}}{u_x}{u_t} + {\tau _x}{u_{xt}} + {\tau _{uu}}{u_x}{u_x}{u_t} + {\tau _u}{u_{xx}}{u_t} + 2{\tau _u}{u_x}{u_{xt}} + {\tau _x}{u_{xt}} + \tau {u_{xxt}}\notag\end{multline*}
+
+The third term in ${\phi ^{xx}}$ is simply:
+\begin{equation}{\xi ^i}{u_{xx,i}} = \zeta {u_{xxx}} + \eta {u_{xxy}} + \tau {u_{xxt}}\notag\end{equation}
+
+Putting all three terms together:
+
+\begin{multline*}{\phi ^{xx}} = {\phi _{xx}} + 2{\phi _{ux}}{u_x} + {\phi _{uu}}{u_x}{u_x} + {\phi _u}{u_{xx}} \\- \left( {\zeta _{xx}}{u_x} + 2{\zeta _{ux}}{u_x}{u_x} + {\zeta _x}{u_{xx}} + {\zeta _{uu}}{u_x}{u_x}{u_x} + 3{\zeta _u}{u_{xx}}{u_x} + {\zeta _x}{u_{xx}} + \color{red}\zeta {u_{xxx}}\color{black}\right)\\ - \left( {\eta _{xx}}{u_y} + 2{\eta _{ux}}{u_x}{u_y} + {\eta _x}{u_{xy}} + {\eta _{uu}}{u_x}{u_x}{u_y} + {\eta _u}{u_{xx}}{u_y} + 2{\eta _u}{u_x}{u_{xy}} + {\eta _x}{u_{xy}} +\color{red}\eta {u_{xxy}}\color{black}\right)\\ - \left( {\tau _{xx}}{u_t} + 2{\tau _{xu}}{u_x}{u_t} + {\tau _x}{u_{xt}} + {\tau _{uu}}{u_x}{u_x}{u_t} + {\tau _u}{u_{xx}}{u_t} + 2{\tau _u}{u_x}{u_{xt}} + {\tau _x}{u_{xt}} +\color{red}\tau {u_{xxt}}\color{black}\right)\\ +\color{red}\zeta {u_{xxx}} + \eta {u_{xxy}} + \tau {u_{xxt}}\notag\end{multline*}
+
+Finally, with the third order derivatives cancelling as they should:
+
+\begin{multline*}{\phi ^{xx}}  = {\phi _{xx}} + 2{\phi _{ux}}{u_x} + {\phi _{uu}}{u_x}{u_x} + {\phi _u}{u_{xx}}\\ -\left({\zeta _{xx}}{u_x} + 2{\zeta _{ux}}{u_x}{u_x} + {\zeta _x}{u_{xx}} + {\zeta _{uu}}{u_x}{u_x}{u_x} + 3{\zeta _u}{u_{xx}}{u_x} + {\zeta _x}{u_{xx}}\right)\\ -\left( {\eta _{xx}}{u_y} + 2{\eta _{ux}}{u_x}{u_y} + {\eta _x}{u_{xy}}+ {\eta _{uu}}{u_x}{u_x}{u_y} + {\eta _u}{u_{xx}}{u_y} + 2{\eta _u}{u_x}{u_{xy}} + {\eta _x}{u_{xy}}\right)\\ -\left( {\tau _{xx}}{u_t} + 2{\tau _{xu}}{u_x}{u_t} + {\tau _x}{u_{xt}} + {\tau _{uu}}{u_x}{u_x}{u_t} + {\tau _u}{u_{xx}}{u_t}+ 2{\tau _u}{u_x}{u_{xt}} + {\tau _x}{u_{xt}}\right)\notag\end{multline*}
+
+The other terms in \eqref{5} are
+\begin{multline*}{\phi ^{yy}} = {\phi _{yy}} + 2{\phi _{uy}}{u_y} + {\phi _{uu}}{u_y}{u_y} + {\phi _u}{u_{yy}}\\ - \left( {\zeta _{yy}}{u_x} + 2{\zeta _{uy}}{u_y}{u_x} + {\zeta _y}{u_{xy}} + {\zeta _{uu}}{u_y}{u_y}{u_x} + {\zeta _u}{u_{yy}}{u_x} + 2{\zeta _u}{u_y}{u_{xy}} + {\zeta _y}{u_{xy}}\right)\\ - \left( {\eta _{yy}}{u_y} + 2{\eta _{uy}}{u_y}{u_y} + {\eta _y}{u_{yy}} + {\eta _{uu}}{u_y}{u_y}{u_y} + 3{\eta _u}{u_{yy}}{u_y} + {\eta _y}{u_{yy}}\right) \\- \left( {\tau _{yy}}{u_t} + 2{\tau _{yu}}{u_y}{u_t} + {\tau _y}{u_{yt}} + {\tau _{uu}}{u_y}{u_y}{u_t} + {\tau _u}{u_{yy}}{u_t} + 2{\tau _u}{u_y}{u_{yt}} + {\tau _y}{u_{yt}}\right)\notag\end{multline*}
+
+\begin{multline*}{\phi ^{tt}} = {\phi _{tt}} + 2{\phi _{ut}}{u_t} + {\phi _{uu}}{u_t}{u_t} + {\phi _u}{u_{tt}} \\- \left( {\zeta _{tt}}{u_x} + 2{\zeta _{ut}}{u_t}{u_x} + {\zeta _t}{u_{xt}} + {\zeta _{uu}}{u_t}{u_t}{u_x} + {\zeta _u}\color{blue}{u_{tt}}\color{black}{u_x} + 2{\zeta _u}{u_t}{u_{xt}} + {\zeta _t}{u_{xt}}\right)\\- \left( {\eta _{tt}}{u_y} + 2{\eta _{ut}}{u_t}{u_y} + {\eta _t}{u_{ty}} + {\eta _{uu}}{u_t}{u_t}{u_y} + {\eta _u}\color{blue}{u_{tt}}\color{black}{u_y}\color{black} + 2{\eta _u}{u_t}{u_{ty}} + {\eta _t}{u_{ty}}\right) \\- \left( {\tau _{tt}}{u_t} + 2{\tau _{tu}}{u_t}{u_t} + {\tau _t}{u_{tt}} + {\tau _{uu}}{u_t}{u_t}{u_t} + 3{\tau _u}\color{blue}{u_{tt}}\color{black}{u_t} + {\tau _t}{u_{tt}} \right)\notag\end{multline*}
+
+We use the above to solve \eqref{4}, but we first need to insert the PDE that connects certain “dimensions” in jet space to each other defining the solution space before identifying monomials. The simplest is to substitute is
+
+\begin{equation}{u_{tt}} = {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)\notag\end{equation}
+
+which only impacts the $\color{blue}blue\color{black}$ terms in ${\phi ^{tt}}$.  Collecting our results so far and re-organizing into "monomials" we will (mentally) insert them into \eqref{4}: 
+
+\begin{multline*}{\phi ^{xx}} = {\phi _{xx}}{u^0} + 2{\phi _{ux}}{u_x} + {\phi _{uu}}u_x^2 + {\phi _u}{u_{xx}}\\ -  {\zeta _{xx}}{u_x} - 2{\zeta _{ux}}u_x^2 - 2{\zeta _x}{u_{xx}} - {\zeta _{uu}}u_x^3 - 3{\zeta _u}{u_{xx}}{u_x}  \\- {\eta _{xx}}{u_y} - 2{\eta _{ux}}{u_x}{u_y} - 2{\eta _x}{u_{xy}} - {\eta _{uu}}u_x^2{u_y} - {\eta _u}{u_{xx}}{u_y} - 2{\eta _u}{u_x}{u_{xy}} \\ - {\tau _{xx}}{u_t} - 2{\tau _{xu}}{u_x}{u_t} -2 {\tau _x}{u_{xt}} - {\tau _{uu}}u_x^2{u_t} - {\tau _u}{u_{xx}}{u_t} - 2{\tau _u}{u_x}{u_{xt}} \notag\end{multline*}
+
+\begin{multline*}{\phi ^{yy}} = {\phi _{yy}}{u^0} + 2{\phi _{uy}}{u_y} + {\phi _{uu}}u_y^2 + {\phi _u}{u_{yy}}\\ - {\zeta _{yy}}{u_x} - 2{\zeta _{uy}}{u_y}{u_x} - 2{\zeta _y}{u_{xy}} - {\zeta _{uu}}u_y^2{u_x} - {\zeta _u}{u_{yy}}{u_x} - 2{\zeta _u}{u_y}{u_{xy}}  \\- {\eta _{yy}}{u_y} - 2{\eta _{uy}}u_y^2 - 2{\eta _y}{u_{yy}} - {\eta _{uu}}u_y^3 - 3{\eta _u}{u_{yy}}{u_y} \\ - {\tau _{yy}}{u_t} - 2{\tau _{yu}}{u_y}{u_t} - 2{\tau _y}{u_{yt}} - {\tau _{uu}}u_y^2{u_t} - {\tau _u}{u_{yy}}{u_t} - 2{\tau _u}{u_y}{u_{yt}} \notag\end{multline*}
+
+\begin{multline*}{\phi ^{tt}} = {\phi _{tt}}{u^0} + 2{\phi _{ut}}{u_t} + {\phi _{uu}}u_t^2 + {\phi _u}{c^2}\left( \color{blue}{{u_{xx}}}\color{black} \right) + {\phi _u}{c^2}\left( \color{blue}{{u_{yy}}}\color{black} \right) \\-  {\zeta _{tt}}{u_x} - 2{\zeta _{ut}}{u_t}{u_x} - 2{\zeta _t}{u_{xt}} - {\zeta _{uu}}u_t^2{u_x} - {\zeta _u}{u_{tt}}{u_x} - 2{\zeta _u}{u_t}{u_{xt}}  \\ - {\eta _{tt}}{u_y} - 2{\eta _{ut}}{u_t}{u_y} - {\eta _{uu}}u_t^2{u_y} - 2{\eta _t}{u_{ty}} - {\eta _u}{c^2}\left( \color{blue}{{u_{xx}}}\color{black} \right){u_y} - {\eta _u}{c^2}\left( \color{blue}{{u_{yy}}}\color{black} \right){u_y} - 2{\eta _u}{u_t}{u_{ty}} \\ - {\tau _{tt}}{u_t} - 2{\tau _{tu}}u_t^2- 2{\tau _t}{c^2}\left( \color{blue}{{u_{xx}}}\color{black} \right) - 2{\tau _t}{c^2}\left( \color{blue}{{u_{yy}}}\color{black} \right) - {\tau _{uu}}u_t^3 - 3{\tau _u}{c^2}\left( \color{blue}{{u_{xx}}}\color{black} \right){u_t} - 3{\tau _u}{c^2}\left( \color{blue}{{u_{yy}}}\color{black} \right){u_t} \notag\end{multline*}
+
+Rather than putting this all into one equation, we will parse it based on “monomials,”  being cognizant of inserting powers of ${c^2}$ when necessary.  The ${u^0}$coefficients must sum to zero, meaning $\phi $ solves the EOM.  Note this does not require $\phi $ to be $u$–independent. 
+
+\begin{equation}{\phi _{tt}} - {c^2}{\phi _{xx}} - {c^2}{\phi _{yy}} = 0\tag{2A.6}\label{6}\end{equation}
+Coninuing with powers of first derivatives:
+<br><br>
+$u_x^3$:
+\begin{equation}{\zeta _{uu}} = 0\notag\end{equation}
+$u_y^3$:
+\begin{equation}{\eta _{uu}} = 0\notag\end{equation}
+$u_t^3$:
+\begin{equation}{\tau _{uu}} = 0\notag\end{equation}
+
+Thus the generators may depend at most on the first power of $u$. The monomials of first spatial derivatives times second derivatives wrt the same independent variable declare
+
+${u_{xx}}{u_x}$:
+\begin{equation}3{\zeta _u} = 0\notag\end{equation}
+${u_{yy}}{u_y}$:
+\begin{equation}3{\eta _u} = 0\notag\end{equation}
+
+and we also identify
+<br><br>
+${u_{xx}}{u_t}$:
+\begin{equation}3{\tau _u}{c^2} + {c^2}{\tau _u} = 0\notag\end{equation}
+${u_{yy}}{u_t}$:
+\begin{equation}3{\tau _u}{c^2} + {c^2}{\tau _u} = 0\notag\end{equation}
+
+from which we can conclude all of the coefficients for the independent variables are $u$–independent. Let’s bank this knowledge and rewrite the DEs:
+
+\begin{equation}
+\begin{split}
+{\phi ^{xx}} &=  2{\phi _{ux}}{u_x} + {\phi _{uu}}u_x^2 + \color{red}{\phi _u}{u_{xx}}\color{black} -  {\zeta _{xx}}{u_x}  - 2{\zeta _x}{u_{xx}} - {\eta _{xx}}{u_y} - 2{\eta _x}{u_{xy}} - {\tau _{xx}}{u_t}  -2 {\tau _x}{u_{xt}}\\
+{\phi ^{yy}} &=  2{\phi _{uy}}{u_y} + {\phi _{uu}}u_y^2 + \color{red}{\phi _u}{u_{yy}}\color{black} - {\zeta _{yy}}{u_x}  - 2{\zeta _y}{u_{xy}} - {\eta _{yy}}{u_y} - 2{\eta _y}{u_{yy}}  - {\tau _{yy}}{u_t}  - 2{\tau _y}{u_{yt}}\\
+{\phi ^{tt}} &= 2{\phi _{ut}}{u_t} + {\phi _{uu}}u_t^2 +\color{red} {\phi _u}{c^2}{{u_{xx}}} +\color{red} {\phi _u}{c^2}{{u_{yy}}}\color{black} -  {\zeta _{tt}}{u_x} - 2{\zeta _t}{u_{xt}} - {\eta _{tt}}{u_y} - 2{\eta _t}{u_{ty}} - {\tau _{tt}}{u_t} - 2{\tau _t}{c^2}{{u_{xx}}} - 2{\tau _t}{c^2}{{u_{yy}}} 
+\end{split}
+\notag\end{equation}
+
+Notice the red terms above when combined (including appropriate factors of $c^2$) vanish, placing no constraint on ${\phi _u}$.  Also the monomials in squared first derivatives vanish individualy, redundantly requiring
+
+\begin{equation}{\phi _{uu}} = 0\notag\end{equation}
+
+enabling us to write a formal functional solution for $\phi $:
+
+\begin{equation}\phi  = \beta \left( {x,y,t} \right)u + \alpha \left( {x,y,t} \right)\notag\end{equation}
+
+Let us extract mixed derivatives from the above DEs:
+<br><br>
+${u_{xt}}$:
+\begin{equation} - {\zeta _t} + {c^2}{\tau _x} = 0\notag\end{equation}
+${u_{xy}}$:
+\begin{equation} - {\eta _x} - {\zeta _y} = 0\notag\end{equation}
+${u_{yt}}$:
+\begin{equation} - {\eta _t} + {c^2}{\tau _y} = 0\notag\end{equation}
+
+Let’s further bank this knowledge and recast the DEs:
+\begin{equation}
+\begin{split}
+{\phi ^{xx}}& = 2{\phi _{ux}}{u_x}  -{{\zeta _{xx}}{u_x} - 2{\zeta _x}{u_{xx}} - {\eta _{xx}}{u_y} - {\tau _{xx}}{u_t}} \\
+{\phi ^{yy}}& = 2{\phi _{uy}}{u_y} - {{\zeta _{yy}}{u_x} - {\eta _{yy}}{u_y} - 2{\eta _y}{u_{yy}} - {\tau _{yy}}{u_t}} \\
+{\phi ^{tt}}& = 2{\phi _{ut}}{u_t} -  {{\zeta _{tt}}{u_x} - {\eta _{tt}}{u_y} - {\tau _{tt}}{u_t} - 2{\tau _t}{c^2} {{u_{xx}}} - 2{\tau _t}{c^2} {{u_{yy}}} } 
+\end{split}
+\notag\end{equation}
+
+Extracting the remaining monomials:
+<br><br>
+${u_t}$:
+\begin{equation}2{\phi _{ut}} - {\tau _{tt}} + {c^2}{\tau _{xx}} + {c^2}{\tau _{yy}} = 0\notag\end{equation}
+${u_x}$:
+\begin{equation} - {\zeta _{tt}} + {c^2}{\zeta _{yy}} + {c^2}{\zeta _{xx}} - 2{c^2}{\phi _{ux}} = 0\notag\end{equation}
+${u_y}$:
+\begin{equation} - {\eta _{tt}} + {c^2}{\eta _{xx}} + {c^2}{\eta _{yy}} - 2{c^2}{\phi _{uy}} = 0\notag\end{equation}
+${u_{xx}}$:
+\begin{equation} - {\tau _t} + {\zeta _x} = 0\notag\end{equation}
+${u_{yy}}$:
+\begin{equation} - {\tau _t} + {\eta _y} = 0\notag\end{equation}
+Subtracting these we obtain:
+\begin{equation}{\zeta _x} = {\eta _y}\notag\end{equation}
+So
+\begin{equation}{\tau _t} = {\zeta _x} = {\eta _y}\tag{Olver (2.64)}\end{equation}
+
+
+Collecting the rest:
+
+\begin{equation}
+\begin{split}
+{c^2}{\tau _x} - {\zeta _t} = 0\\
+{c^2}{\tau _y} - {\eta _t} = 0\\
+{\eta _x} + {\zeta _y} = 0
+\end{split}
+\tag{Olver (2.63)}\end{equation}
+
+
+\begin{equation}
+\begin{split}
+{\zeta _{tt}} + {c^2}\left( {2{\phi _{ux}} - {\zeta _{xx}} - {\zeta _{yy}}} \right) = 0\\
+{\eta _{tt}} + {c^2}\left( { - {\eta _{xx}} + 2{\phi _{uy}} - {\eta _{yy}}} \right) = 0\\
+2{\phi _{ut}} - {\tau _{tt}} + {c^2}\left( {{\tau _{xx}} + {\tau _{yy}}} \right) = 0
+\end{split}
+\tag{2A.7}\label{7}\end{equation}
+
+
+
+
+Before tackling $\phi $ let’s develop functional forms for the coefficients for independent variables above.  It turns out that if we take derivatives of these equations up to third order, we can show all third order derivatives vanish.  As an intermediate step, consider
+
+\begin{equation}{\zeta _{xx}} = {\eta _{yx}} =  - {\zeta _{yy}}\notag\end{equation}
+\begin{equation}{\zeta _{tt}} = {c^2}{\tau _{xt}} = {c^2}{\zeta _{xx}}\notag\end{equation}
+So
+\begin{equation}{c^2}{\zeta _{xx}} =  - {c^2}{\zeta _{yy}} = {\zeta_{tt}}\tag{2A.8a}\label{8a}\end{equation}
+
+Similarly
+\begin{equation}{c^2}{\eta _{xx}} =  - {c^2}{\eta _{yy}} = -{\eta_{tt}}\tag{2A.8b}\label{8b}\end{equation}
+\begin{equation}{c^2}{\tau _{xx}} = {c^2}{\tau _{yy}} = {\tau_{tt}}\tag{2A.8c}\label{8c}\end{equation}
+
+
+Taking third derivatives and playing games like that above, we can show all three coefficients depend at most on the squares (or bilinear combinations) of the independent variables.
+
+\begin{equation}
+\begin{split}
+\zeta  &= {c_1} + {c_4}x - {c_5}y + {c_6}t + {c_8}\left( {{x^2} - {y^2} + {c^2}{t^2}} \right) + 2{c_9}xy + 2{c_{10}}xt\\
+\eta  &= {c_2} + {c_5}x + {c_4}y + {c_7}t + {c_9}\left( { - {x^2} + {y^2} + {c^2}{t^2}} \right) + 2{c_8}xy + 2{c_{10}}yt\\
+\tau  &= {c_3} + \frac{{{c_6}x}}{{{c^2}}} + \frac{{{c_7}y}}{{{c^2}}} + {c_4}t + \frac{{{c_{10}}}}{{{c^2}}}\left( {{x^2} + {y^2} + {c^2}{t^2}} \right) + 2{c_9}yt + 2{c_8}xt
+\end{split}
+\tag{2A.9}\label{9}\end{equation}
+
+
+Let us address the dependent variable coefficient.  Having established earlier$\;\phi $ depends at most linearly on $u$, we employ the form $\phi  = \beta \left( {x,y,t} \right)u + \alpha \left( {x,y,t} \right)$, noting after taking the $u$-derivative we have only $\beta$ remaining.  Substituted into \eqref{7} we obtain Olver’s equations on page 124 with proper dimensions:
+
+\begin{equation}{c^2}2{\beta _x} = {c^2}\left( {{\zeta _{xx}} + {\zeta _{yy}}} \right) - {\zeta _{tt}}\notag\end{equation}
+\begin{equation}{c^2}2{\beta _y} = {c^2}\left( {{\eta _{xx}} + {\eta _{yy}}} \right) - {\eta _{tt}}\notag\end{equation}
+\begin{equation}2{\beta _t} =  - {c^2}\left( {{\tau _{xx}} + {\tau _{yy}}} \right) + {\tau _{tt}}\notag\end{equation}
+
+Using \eqref{8a} in the first we have:
+
+\begin{equation}{c^2}2{\beta _x} = {\zeta _{tt}} + {c^2}{\zeta _{yy}} - {\zeta _{tt}} = {c^2}{\zeta _{yy}}\notag\end{equation}
+so
+\begin{equation}2{\beta _x} = {\zeta _{yy}} \notag\end{equation}
+
+Similarly using \eqref{8b} and \eqref{8b} in the others:
+
+\begin{equation}2{\beta _y} = {\eta _{xx}} =  - {\eta _{yy}}\notag\end{equation}
+\begin{equation}2{\beta _t} =  - {c^2}{\tau _{xx}} =  - {\tau _{tt}}\notag\end{equation}
+
+Employing our functional forms found in \eqref{9} above:
+
+\begin{equation}2{\beta _x} = {\zeta _{yy}} =  - 2{c_8} \to \notag\end{equation}
+\begin{equation}\beta  =  - {c_8}x + f\left( {t,y} \right)\notag\end{equation}
+Similarly
+\begin{equation}\beta  =  - {c_9}y + g\left( {t,x} \right)\notag\end{equation}
+\begin{equation}\beta  =  - {c_{10}}t + y\left( {x,y} \right)\notag\end{equation}
+
+Combining:
+\begin{equation}\beta  = {c_{11}} - {c_8}x - {c_9}y - {c_{10}}t\notag\end{equation}
+
+For $\alpha $ we insert our functional form for $\phi$
+
+\begin{equation}\phi  = \beta \left( {x,y,t} \right)u + \alpha \left( {x,y,t} \right)\notag\end{equation}
+ into \eqref{6}:
+\begin{equation}{\phi _{tt}} - {c^2}\left( {{\phi _{xx}} + {\phi _{yy}}} \right) = 0\notag\end{equation}
+
+leaving
+\begin{equation}{\alpha _{tt}} - {c^2}\left( {{\alpha _{xx}} + \phi {\alpha _{yy}}} \right) = 0\notag\end{equation}
+showing $\alpha$ satisfies the PDE.  Summarizing:
+
+
+\begin{equation}
+\begin{split}
+\zeta  &= {c_1} + {c_4}x - {c_5}y + {c_6}t + {c_8}\left( {{x^2} - {y^2} + {c^2}{t^2}} \right) + 2{c_9}xy + 2{c_{10}}xt\\
+\eta  &= {c_2} + {c_5}x + {c_4}y + {c_7}t + {c_9}\left( { - {x^2} + {y^2} + {c^2}{t^2}} \right) + 2{c_8}xy + 2{c_{10}}yt\\
+\tau  &= {c_3} + \frac{{{c_6}x}}{{{c^2}}} + \frac{{{c_7}y}}{{{c^2}}} + {c_4}t + \frac{{{c_{10}}}}{{{c^2}}}\left( {{x^2} + {y^2} + {c^2}{t^2}} \right) + 2{c_9}yt + 2{c_8}xt
+\end{split}
+\notag\end{equation}
+
+\begin{equation}\phi  = \beta \left( {x,y,t} \right)u + \alpha \left( {x,y,t} \right)\notag\end{equation}
+with
+\begin{equation}\beta  = {c_{11}} - {c_8}x - {c_9}y - {c_{10}}t\notag\end{equation}
+and
+\begin{equation}\alpha  = {\alpha _{2DWE}}\notag\end{equation}
+is any solution to the 2D Wave Equation.
+
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.6</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
