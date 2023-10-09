@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appendix 2B</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 6; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<style>
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>Appendix 2B</strong></p>
+
+<p align="center"><strong>Selected 2D Wave Equation Symmetry Vector Commutation Relations</strong></p>
+
+
+In this appendix we compute selected commutation relations for the symmetry vector generators for the 2D Wave Equation and draw some conclusions about their applicability in finding G-invariant solutions by combining two of them.
+
+<p><strong>Translation and Dilation:</strong></p>
+
+\begin{equation}{\pmb{v}_{xyt}} = a{\partial _x} + b{\partial _y} + c{\partial _t}\notag\end{equation}
+and
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+Employing a dummy function upon which the vectors operate:
+
+
+\begin{equation}\left[ {\pmb{d},{\pmb{v}_{xyt}}} \right]f = \left( {x{\partial _x} + y{\partial _y} + t{\partial _t}} \right)\left( {a{\partial _x}f + b{\partial _y}f + c{\partial _t}f} \right) - \left( {a{\partial _x} + b{\partial _y} + c{\partial _t}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right)\hspace{100em}\notag\end{equation}
+
+\begin{multline*} = \left( {x{\partial _x}} \right)\left( {a{\partial _x}f + b{\partial _y}f + c{\partial _t}f} \right) + \left( {y{\partial _y}} \right)\left( {a{\partial _x}f + b{\partial _y}f + c{\partial _t}f} \right) + \left( {t{\partial _t}} \right)\left( {a{\partial _x}f + b{\partial _y}f + c{\partial _t}f} \right) \\
+
+	- \left( {a{\partial _x}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right) - \left( {b{\partial _y}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right) - \left( {c{\partial _t}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right)\notag\end{multline*}
+
+\begin{multline*} = \left( {ax{\partial _{xx}}f + bx{\partial _{xy}}f + cx{\partial _{xt}}f} \right) + \left( {ay{\partial _{xy}}f + by{\partial _{yy}}f + cy{\partial _{ty}}f} \right) + \left( {at{\partial _{xt}}f + bt{\partial _{yt}}f + ct{\partial _{tt}}f} \right) \\
+
+	- \left( {a{\partial _x}} \right)\left( {{\partial _x}f + ax{\partial _{xx}}f + ay{\partial _{xy}}f + at{\partial _{xt}}f} \right) - \left( {bx{\partial _{xy}}f + b{\partial _y}f + by{\partial _{yy}}f + bt{\partial _{ty}}f} \right) \\
+
+	- \left( {c{\partial _t}} \right)\left( {cx{\partial _{xt}}f + cy{\partial _{yt}}f + c{\partial _t}f + ct{\partial _{tt}}f} \right)\notag\end{multline*}
+
+\begin{multline*} = \left( {ax{\partial _{xx}}f + bx{\partial _{xy}}f + cx{\partial _{xt}}f} \right) + \left( {ay{\partial _{xy}}f + by{\partial _{yy}}f + cy{\partial _{ty}}f} \right) + \left( {at{\partial _{xt}}f + bt{\partial _{yt}}f + ct{\partial _{tt}}f} \right)\\
+
+	 - \left( {a{\partial _x}f + ax{\partial _{xx}}f + ay{\partial _{xy}}f + at{\partial _{xt}}f} \right) - \left( {bx{\partial _{xy}}f + b{\partial _y}f + by{\partial _{yy}}f + bt{\partial _{ty}}f} \right) \\
+ 
+ 	- \left( {cx{\partial _{xt}}f + cy{\partial _{yt}}f + c{\partial _t}f + ct{\partial _{tt}}f} \right)\notag\end{multline*}
+
+\begin{multline*} = \left( {bx{\partial _{xy}}f + cx{\partial _{xt}}f} \right) + \left( {ay{\partial _{xy}}f + cy{\partial _{ty}}f} \right) + \left( {at{\partial _{xt}}f + bt{\partial _{yt}}f} \right) - \left( {a{\partial _x}f + ay{\partial _{xy}}f + at{\partial _{xt}}f} \right) \\
+
+	- \left( {bx{\partial _{xy}}f + b{\partial _y}f + bt{\partial _{ty}}f} \right) - \left( {cx{\partial _{xt}}f + cy{\partial _{yt}}f + c{\partial _t}f} \right)\notag\end{multline*}
+
+Then
+\begin{equation}\left[ {\pmb{d},{\pmb{v}_{xyt}}} \right] =  - a{\partial _x} - b{\partial _y} - c{\partial _t} =  - {v_{xyt}}\notag\end{equation}
+
+A subset of this case is  
+\begin{equation}{\pmb{v}_{xy}} = a{\partial _x} + b{\partial _y}\notag\end{equation}
+
+with
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+whose commutator is obviously:
+
+\begin{equation}\left[ {\pmb{d},{\pmb{v}_{xy}}} \right] =  - a{\partial _x} - b{\partial _y} - c{\partial _t} =  - {v_{xy}}\notag\end{equation}
+
+
+<strong>Rotation and Dilation</strong>
+
+\begin{equation}{\pmb{r}_{xy}} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+
+\begin{equation}\pmb{d} = x{\partial _x} + y{\partial _y} + t{\partial _t}\notag\end{equation}
+
+\begin{equation}\left[ {{\pmb{r}_{xy}},\pmb{d}} \right]f = \left( { - y{\partial _x} + x{\partial _y}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right) - \left( {x{\partial _x} + y{\partial _y} + t{\partial _t}} \right)\left( { - y{\partial _x}f + x{\partial _y}f} \right)\hspace{100em}\notag\end{equation}
+
+\begin{multline*} = \left( { - y{\partial _x}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right) + \left( {x{\partial _y}} \right)\left( {x{\partial _x}f + y{\partial _y}f + t{\partial _t}f} \right) - \left( {x{\partial _x} + y{\partial _y} + t{\partial _t}} \right)\left( { - y{\partial _x}f} \right) - \left( {x{\partial _x} + y{\partial _y} + t{\partial _t}} \right)\left( {x{\partial _y}f} \right)\notag\end{multline*}
+
+\begin{multline*} =  - \left( {y{\partial _x}f + yx{\partial _{xx}}f + yy{\partial _{yx}}f + yt{\partial _{tx}}f} \right) + \left( {xx{\partial _{xy}}f + x{\partial _y}f + xy{\partial _{yy}}f + xt{\partial _{ty}}f} \right) \\
+	- \left( { - xy{\partial _{xx}}f - y{\partial _x}f - yy{\partial _{xy}}f - yt{\partial _{xt}}f} \right) - \left( {x{\partial _y}f + xx{\partial _{yx}}f + xy{\partial _{yy}}f + xt{\partial _{yt}}f} \right)\notag\end{multline*}
+
+\begin{equation}\left[ {{\pmb{r}_{xy}},\pmb{d}} \right] =  - \left( {y{\partial _x}} \right) + \left( {x{\partial _y}} \right) - \left( { - y{\partial _x}} \right) - \left( {x{\partial _y}} \right)\notag\end{equation}
+
+So
+
+\begin{equation}\left[ {{\pmb{r}_{xy}},\pmb{d}} \right] = 0\notag\end{equation}
+
+<strong>Rotation and Translation</strong>
+
+\begin{equation}{\pmb{r}_{xy}} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+
+\begin{equation}\pmb{v} = a{\partial _x} + b{\partial _y} + c{\partial _t}\;\notag\end{equation}
+
+\begin{equation}\left[ {{\pmb{r}_{xy}},\pmb{v}} \right]f = \left( { - y{\partial _x} + x{\partial _y}} \right)\left( {a{\partial _x}f + b{\partial _y}f + c{\partial _t}f} \right) - \left( {a{\partial _x} + b{\partial _y} + c{\partial _t}} \right)\left( { - y{\partial _x}f + x{\partial _y}f} \right)\hspace{100em}\notag\end{equation}
+
+\begin{multline*} =  - \left( {ay{\partial _{xx}}f + by{\partial _{yx}}f + cy{\partial _{tx}}f} \right) + \left( {ax{\partial _{xy}}f + bx{\partial _{yy}}f + cx{\partial _{ty}}f} \right) \\
+	- \left( { - ay{\partial _{xx}}f - b{\partial _x}f - by{\partial _{xy}}f - cy{\partial _{xt}}f} \right) - \left( {a{\partial _y}f + ax{\partial _{yx}}f + xb{\partial _{yy}}f + cx{\partial _{yt}}f} \right)\notag\end{multline*}
+
+So
+\begin{equation}\left[ {{\pmb{r}_{xy}},\pmb{v}} \right] = b{\partial _x} - a{\partial _y}\notag\end{equation}
+
+These do not commute nor do they yield a common vector.  Even a single dimension translation, say 
+
+\begin{equation}{\pmb{v}_x} = a{\partial _x}\notag\end{equation}
+yields
+\begin{equation}\left[ {{\pmb{r}_{xy}},{\pmb{v}_x}} \right] =  - a{\partial _y} \propto {\pmb{v}_y}\notag\end{equation}
+
+\begin{equation}{\pmb{v}_y} = b{\partial _y}\notag\end{equation}
+
+This is why attempts (not exhibited in the main body of <strong>Section 2.7</strong>) to employ Rotation (${\pmb{r}_{xy}}$) with Translation (${\pmb{v}_x},{\pmb{v}_y},{\pmb{v}_t})$ yielded null results.
+<br><br>
+<strong>Commutator Table: </strong>We collect results as follows:
+<br><br>
+
+
+<table style="width:60%"; align="center">
+  <tr>
+    <th style="width:10%"></th>
+    <th style="width:20%">$\pmb{d}$</th> 
+    <th style="width:20%">${\pmb{r}_{xy}}$</th>
+    <th style="width:20%">${\pmb{v}_{xy}}$</th>
+
+  </tr>
+  <tr >
+    <td align="center">$\pmb{d}$</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">$ - {\pmb{v}_{xy}}$</td>
+
+  </tr>
+  <tr>
+    <td align="center">${\pmb{r}_{xy}}$</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+        <td align="center">$b{\pmb{v}_x} - a{\pmb{v}_y}$</td>
+
+  </tr>
+  <tr>
+    <td align="center">${\pmb{v}_{xy}}$</td>
+    <td align="center">${\pmb{v}_{xy}}$</td>
+    <td align="center">$ - b{\pmb{v}_x} + a{\pmb{v}_y}$</td>
+        <td align="center">0</td>
+</table>
+<br>
+We see the dilation vector behaves well with the other two, but the rotation vector does not behave “normally” with the translation vector, producing a result that cannot be constructed from either of the vectors involved. 
+
+
+
+<br><br>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->
+  
+  
+    </div> 														<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 2.6</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
