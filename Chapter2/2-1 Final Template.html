@@ -112,9 +112,9 @@ MathJax = 	{
   which is associated with the symmetry vector:
   \begin{equation}\pmb{v} = \frac{\partial }{{\partial x}}\notag\end{equation}
   Though this is a trivial example, we want to demonstrate the full meaning of such a transformation and the means to test it.  We need to compute the action of this transform on a "known" solution $u = f\left( {x,t} \right)$ to the PDE.  If $f\left( {x,t} \right)$ is such a solution then
-  \begin{equation}g\circ f \equiv \bar f\notag\end{equation}
+  \begin{equation}g\cdot f \equiv \bar f\notag\end{equation}
   is also supposed to be a solution, where the operation $g$ accomplishes
-  \begin{equation}g\circ \left( {x,t,\;u} \right) = \left( {\bar x,\bar t,\bar u} \right)\notag\end{equation}
+  \begin{equation}g\cdot \left( {x,t,\;u} \right) = \left( {\bar x,\bar t,\bar u} \right)\notag\end{equation}
   where $\bar u = \bar f\left( {\bar x,\bar t} \right)$.  This is a set of equations:
   \begin{equation}\bar x = x + \varepsilon \notag\end{equation}
   \begin{equation}\bar t = t\notag\end{equation}
@@ -139,9 +139,9 @@ MathJax = 	{
   \begin{equation}{\bar u_{\bar t}} = {u_s} = {u_t}\notag\end{equation}
   
   so the transformed solution also obeys the heat equation if the original solution did.  In more complicated cases, where for example $u$ itself is transformed, the "inversion" is more challenging.  A general formula (really a procedure) is given by:
-  \begin{equation}g\circ f = \left[ {{\Phi _g} \circ \left( {\mathbb{1} \times f} \right)} \right] \circ {\left[ {{\Xi _g} \circ \left( {\mathbb{1} \times f} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\end{equation}
+  \begin{equation}g\cdot f = \left[ {{\Phi _g} \circ \left( {\mathbb{1} \times f} \right)} \right] \circ {\left[ {{\Xi _g} \circ \left( {\mathbb{1} \times f} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\end{equation}
   where the new symbols are defined by:
-  \begin{equation}g\circ \left( {x,u} \right) = \left( {\bar x,\bar u} \right) \equiv \left( {{\Xi _g}\left( {x,u} \right),{\Phi _g}\left( {x,u} \right)} \right)\notag\end{equation}
+  \begin{equation}g\cdot \left( {x,u} \right) = \left( {\bar x,\bar u} \right) \equiv \left( {{\Xi _g}\left( {x,u} \right),{\Phi _g}\left( {x,u} \right)} \right)\notag\end{equation}
   so:
   \begin{equation}\bar x \equiv {\Xi _g}\left( {x,f\left( x \right)} \right) = {\Xi _g} \circ \left( {\mathbb{1} \times f} \right)\left( x \right)\notag\end{equation}
   \begin{equation}\bar u \equiv {\Phi _g}\left( {x,f\left( x \right)} \right) = {\Phi _g} \circ \left( {\mathbb{1} \times f} \right)\left( x \right)\notag\end{equation}
@@ -154,15 +154,15 @@ MathJax = 	{
   \begin{equation}{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right) = t \equiv \bar t\notag\end{equation}
   \begin{equation}{\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) = f\left( {x,t} \right)\circ {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \equiv \bar u\notag\end{equation}
   Our job is now to compute the transformed "solution" using
-  \begin{equation}g\circ f = {\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) \circ {\left[ {{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right),{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\notag\end{equation}
+  \begin{equation}g\cdot f = {\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) \circ {\left[ {{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right),{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\notag\end{equation}
   Note the inverse superscript simply means to invert each of the elements.
     
   \begin{equation}t = \bar t\notag\end{equation}
   \begin{equation}x = \bar x - 2\varepsilon t = \bar x - 2\varepsilon \bar t\notag\end{equation}
   So
-  \begin{equation}g\circ f = {\Phi _g} \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right] = f\left( {x,t} \right)\circ {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right]\notag\end{equation}
+  \begin{equation}g\cdot f = {\Phi _g} \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right] = f\left( {x,t} \right)\circ {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right]\notag\end{equation}
   Composition means everywhere there is an $x\;{\text{or}}\;t$ in the first function replace it with the respective positional function in square brackets on the right of the composition symbol.
-  \begin{equation}g\circ f = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \left( {\bar x - 2\varepsilon \bar t} \right) - {\varepsilon ^2}\bar t} \right) = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv \bar f\notag\end{equation}
+  \begin{equation}g\cdot f = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \left( {\bar x - 2\varepsilon \bar t} \right) - {\varepsilon ^2}\bar t} \right) = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv \bar f\notag\end{equation}
   Compare this to the previous example:
   \begin{equation}\bar u = \bar u\left( {\bar x,\bar t} \right) = u\left( {\bar x - \varepsilon ,\bar t} \right)\notag\end{equation}
   Aside from the symbolic substitution of $f$ with $u$ these have the same form, with the original "solution" function taking modified "$x$" and "$t$" variables.  Let's replace $f$ with $u$ in our current example and also make a useful symbolic replacement for the arguments in $f$:
