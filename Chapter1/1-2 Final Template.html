@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 1.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 6; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+                                                                                     <style>
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 1 - The Model</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>Section 1.2 </strong></p>
+<p align="center"><strong>The Manifold</strong></p>
+<p>We start with a 2D representation of a manifold:</p>
+
+  <img src="Fig 1.2A-manifold.jpg" alt="Manifol" class="imgcenter" width="25%">
+  <figcaption>Fig 1.2a. The Manifold</figcaption>
+
+
+<p>The dots are there just to indicate the idea of &quot;points.&quot;  The manifold includes all of the points in a continuous manner inside those blue boundaries.  Note that those boundaries might be at infinity.  And the reason we curved them was to suggest that this set might be &quot;curved&quot; - think of a small patch of the surface of a sphere, for instance like this:</p>
+
+  <img src="Fig 1.2B-manifold-surface.jpg" alt="Manifold Surface" class="imgcenter" width="35%">
+  <figcaption>Fig 1.2b. Manifold Patch</figcaption>
+
+<p>Now the fun begins and hopefully this will show the flexibility of a manifold.  We get to pick and choose what kind of &quot;structure&quot; to add to OUR manifold.  Our first structure will be to add &quot;<strong>lines</strong>&quot; that are continuous sets of adjacent points that connect any point in the manifold with any other point:</p>
+
+  <img src="Fig 1.2C-manifold-lines.jpg" alt="Manifold Curves" class="imgcenter" width="25%">
+  <figcaption>Fig 1.2c. Manifold Curves</figcaption>
+
+<p>The lines certainly do not have to be &quot;straight,&quot; just continuous.  Now this might be unsettling.  We are NOT going to make any assumptions about distance and angle (which entails a metric) -- just lines.  This will be hard to do after having years and years (thousands actually) of Euclidean geometry pounded into our heads.  The basic reason we want to emphasize lines instead of distance and angle is that we want some of the possible lines one could imagine to be special, as you'll see in a moment.</p>
+<p>The first set of special lines will come directly from Cartesian-Euclidean geometry -- coordinate axes.  All of our points are going to have coordinates and it's a bit hard to see how to do that without some coordinate axes.  However, we demand that each coordinate axis be defined as a <strong>map</strong> from the real numbers to the manifold coordinates, $x|\;\mathbb{R}\mapsto M\;{\text{as}}\;s\mapsto x\left( s \right)$, as parametric equations.  Here's a sequence from left to right depicting these constructions:</p>
+
+  <img src="Fig 1.2D-manifold-mappings.jpg" alt="Manifold Mappings" class="imgcenter" width="55%">
+  <figcaption>Fig 1.2d. Manifold Mappings</figcaption>
+
+<p>Here's a &quot;side&quot; view of the mapping process:</p>
+
+  <img src="Fig 1.2E-manifold-mappings-3D.jpg" alt="Manifold Mappings 3D" class="imgcenter" width="50%">
+  <figcaption>Fig 1.2e. Manifold Mappings 3D</figcaption>
+
+<p>just to emphasize that the domains of those maps are not in the manifold.  Now we'll reveal a secret:  if we &quot;go small enough&quot; we can approximate that the manifold is Euclidean:</p>
+
+  <img src="Fig 1.2F-manifold-mappings-local.jpg" alt="Manifold Mappings Local" class="imgcenter" width="40%">
+  <figcaption>Fig 1.2f. Manifold Euclidean Patch</figcaption>
+
+<p>But don't get too excited about this revelation.  It only works &quot;locally near a set of points&quot; which means if we move up to say the upper left corner of that grid above and then go &quot;local&quot; the Euclidean grid we observe might be tilted with respect to the one pictured above.  All of this is imaginable in three dimensions - much harder in four or more.</p>
+<p>The second type of special line is the orange line and its map pictured below:</p>
+
+  <img src="Fig 1.2G-curve-path mapping.jpg" alt="Curve-Path" class="imgcenter" width="40%">
+  <figcaption>Fig 1.2g. Curve-Path</figcaption>
+
+<p>That orange line is a <em>path</em>, sometimes called a <em>trajectory</em>, or maybe a <em>worldline</em>.   These are <em>single</em> continuous lines that mathematicians usually call <em>curves</em>, so we are going to call them <strong><em>curve-paths</em></strong>.  Our <em>curve-paths </em>will usually be labeled with a lower-case gamma.  The one depicted above is a map <strong>from</strong> the real numbers <strong>to</strong> the coordinates: $\gamma |\;\mathbb{R}\mapsto M\;{\text{as}}\;\gamma \left( s \right)\mapsto \left\{ {x\left( s \right),y\left( s \right)} \right\}$.  Here are the parametric equations for that parabola we added to our picture:<br>
+\begin{equation}</a>x\left( s \right) = s + {x_o}\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation} 
+
+<p>Notice that ${x_o}$ and ${y_o}$ are the values of the coordinates for the parameter value $s = 0$.  In the image we have set ${x_o} = 1$ and ${y_o} = 1$, so $s = 0$ is not the origin of our coordinate system.</p>
+<p>The third type of special line is the set of black circles and one of their maps pictured below:</p>
+
+
+  <img src="Fig 1.2H-field-function mapping.jpg" alt="Field Function" class="imgcenter" width="35%">
+  <figcaption>Fig 1.2h. Field-Function Contours</figcaption>
+
+<p>The black, concentric circles are <strong>contours of</strong> what we call <strong>function-fields</strong>.<strong> </strong> These are families of lines that connect the points in the manifold whose coordinates produce that same value for the function. A function is map <strong>from</strong> the manifold <strong>to</strong> the real numbers, for instance $f|\;M\mapsto \mathbb{R}\;{\text{as}}\;f\left( {x,y} \right) = r\text{;  }r \in \mathbb{R}$.  Pick an $r$ then find all the points $\left( {x,y} \right)$ whose coordinates when inserted into $f\left( {x,y} \right)$ produce the value $r$ and connect them with a line.  Pick another $r$, draw its line, and you'll create a <em>contour system</em> for the function-field. </p>
+<p>If we put superimpose the curve-path and function-field in the same manifold we get something like:</p>
+
+  <img src="Fig 1.2I-combined curve and function contours.jpg" alt="Combined Curve and Function" class="imgcenter" width="35%">
+  <figcaption>Fig 1.2i. Combined Curve and Function</figcaption>
+  
+<p>In the next sections we explore the interactions of a curve and a function, using these examples.</p>
+
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->    </p>
+</div> 														
+	<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 1.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
