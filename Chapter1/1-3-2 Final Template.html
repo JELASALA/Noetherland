@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 1.3.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 1; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 1 - The Model</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>Section 1.3.2</strong></p>
+<p align="center"><strong>Path to Invariance</strong></p>
+<p>We may ask for our Inchie translation example if there an invariance involved and/or is something conserved?  That depends on what's going on around (under?) Inchie as it moves/translates.  To realize a potential invariance we've inserted the process of movement, the most basic form of change one can imagine to discover if <em>something</em> varies or stays constant.</p>
+<p>The other big takeaway here is directly from Sophus Lie — we can almost always create change looking for invariance and conservation by using <em>infinitesimal approximations</em> — we can stay down at the Inchie level as long as we are willing to employ that &ldquo;trick&rdquo; of putting an operator next to our infinitesimal. By inserting that partial derivative operator into our &quot;motion creator&quot; or &quot;change generator&quot; we can think of that partial derivative as <em>generating</em> Inchie's curve-path, or the <em>flow induced</em>, by the operator.  Indeed, Lie recommended people think about the &quot;flow&quot; pictures of hydrodynamics that fluids engineers (with a little help from local applied mathematicians) had developed.</p>
+<p>To truly appreciate invariance we move to two dimensions.  We start the simplest geometrical object we can think of besides a single point: a straight line.</p>
+
+
+  <img src="Fig 1.3C-straight line.png" alt="Line" class="imgcenter" width="35%">
+  <figcaption>Fig 1.3c. Straight Line Curve</figcaption>
+  
+<p>Now we propose a set of continuous, infinitesimal transformation equations that take us from $\left( {x,y} \right)$ to $\left( {x',y'} \right)$:</p>
+<p>\begin{equation}x' = x - \varepsilon y\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y' = y + \varepsilon x\notag\end{equation}</p>
+<p>Notice these can be written in matrix form:<br>
+  \begin{equation}\left( {\begin{array}{*{20}{c}}<br>
+    {x'} \\ <br>
+    {y'} <br>
+  \end{array}} \right) = \left( {\begin{array}{*{20}{c}}<br>
+    1&amp;{ - \varepsilon } \\ <br>
+    \varepsilon &amp;1 <br>
+  \end{array}} \right) \cdot \left( {\begin{array}{*{20}{c}}<br>
+    x \\ <br>
+    y <br>
+  \end{array}} \right)\notag\end{equation}</p>
+<p>And let's remember that quote from Bill Burke cited above: <em>A <strong>symmetry</strong> is a <strong>transformation</strong> that leaves <strong>the structure</strong> essentially <strong>unchanged</strong>.</em></p>
+<p>Is the proposed transformation a symmetry operation? Since we started with a straight line the operation should produce another straight line if it is some kind of symmetry operation.  Let us examine this operation on the straight line in the figure above:<br>
+  \begin{equation}\left( {\begin{array}{*{20}{c}}<br>
+    {{x_2}} \\ <br>
+    {{y_2}} <br>
+  \end{array}} \right) = \left( {\begin{array}{*{20}{c}}<br>
+    1&amp;{ - \varepsilon } \\ <br>
+    \varepsilon &amp;1 <br>
+  \end{array}} \right)\cdot \left( {\begin{array}{*{20}{c}}<br>
+    {{x_1}} \\ <br>
+    {{y_1}} <br>
+  \end{array}} \right)\;\notag\end{equation}
+  where
+  \begin{equation}{y_1} = {m_1}{x_1} + {b_1}\notag\end{equation}
+  so
+  \begin{equation}{x_2} = {x_1} - \varepsilon \left( {{m_1}{x_1} + {b_1}} \right) \to {x_1} = \frac{{{x_2} + \varepsilon {b_1}}}{{1 - \varepsilon {m_1}}}\notag\end{equation}</p>
+<p> Then
+  \begin{equation}{y_2} = \varepsilon {x_1} + {y_1} = \varepsilon \frac{{{x_2} + \varepsilon {b_1}}}{{1 - \varepsilon {m_1}}} + {m_1}\frac{{{x_2} + \varepsilon {b_1}}}{{1 - \varepsilon {m_1}}} + {b_1}\notag\end{equation}</p>
+<p>\begin{equation}{y_2} = \frac{{\left( {{m_1} + \varepsilon } \right)}}{{1 - \varepsilon {m_1}}}{x_2} + \left( {\frac{{\left( {{m_1} + \varepsilon } \right)\varepsilon }}{{1 - \varepsilon {m_1}}} + 1} \right){b_1}\notag\end{equation}</p>
+<p>\begin{equation}{y_2} = \frac{{\left( {{m_1} + \varepsilon } \right)}}{{1 - \varepsilon {m_1}}}{x_2} + \left( {\frac{{{\varepsilon ^2} + 1}}{{1 - \varepsilon {m_1}}}} \right){b_1} \equiv {m_2}x + {b_2}\notag\end{equation}</p>
+<p>Treating $\varepsilon $ as infinitesimal keep the lowest order &ldquo;correction&rdquo; terms:</p>
+<p>\begin{equation}{y_2} = \left[ {{m_1} + \varepsilon \left( {{m_1}^2 + 1} \right)} \right]{x_2} + \left( {1 + \varepsilon {m_1}} \right){b_1} \equiv {m_2}x + {b_2}\notag\end{equation}</p>
+<p>To first order we have tilted the line a bit and slightly changed the intercept. Therefore, the &quot;structure&quot; is left &quot;essentially unchanged&quot;.  We have a set of continuous transformation equations that left a straight line straight.  The straight line is <em>invariant </em>in its shape when changed by the <em>symmetry group</em> of the transformation equations (rotation in this case).  This statement implies the transformation is an element of a group, and intuitively you can see that it might qualify.  We can take this further.</p>
+<p>In the spirit of Inchie&rsquo;s translation let us apply the infinitesimal transformation</p>
+<p>\begin{equation}\left( {\begin{array}{*{20}{c}}
+    {x'} \\ 
+    {y'} 
+  \end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+    1&amp;{ - \varepsilon } \\ 
+    \varepsilon &amp;1 
+  \end{array}} \right)\cdot \left( {\begin{array}{*{20}{c}}
+    x \\ 
+    y 
+  \end{array}} \right)\notag\end{equation}
+  repeatedly, mathematically:
+  \begin{equation}\mathop {\lim }\limits_{n \to \infty } {\left( {\begin{array}{*{20}{c}}<br>
+    1&amp;{ - \varepsilon } \\ 
+    \varepsilon &amp;1 
+  \end{array}} \right)^n}\notag\end{equation}</p>
+<p>But we have to be prepared to implement that &quot;interior&quot; limit of $n\varepsilon $ being finite.  So let's modify the above expression to read:
+  \begin{equation}\mathop {\lim }\limits_{\varepsilon  \to 0;\;n \to \infty } {\left( {\begin{array}{*{20}{c}}
+    1&amp;{ - \frac{{n\varepsilon }}{n}} \\ 
+    {\frac{{n\varepsilon }}{n}}&amp;1 
+  \end{array}} \right)^n}\notag\end{equation}</p>
+<p>Well in the limit we assume $n\varepsilon  \equiv \theta $ becomes a finite quantity:</p>
+<p>\begin{equation}\mathop {\lim }\limits_{n \to \infty } {\left( {\begin{array}{*{20}{c}}
+    1&amp;{ - \frac{\theta }{n}} \\ 
+    {\frac{\theta }{n}}&amp;1 
+  \end{array}} \right)^n} = \mathop {\lim }\limits_{n \to \infty } {\left[ {\left( {\begin{array}{*{20}{c}}
+    1&amp;0 \\ 
+    0&amp;1 
+  \end{array}} \right) + \frac{\theta }{n}\left( {\begin{array}{*{20}{c}}<br>
+    0&amp;{ - 1} \\ 
+    1&amp;0 
+  \end{array}} \right)} \right]^n} \equiv \mathop {\lim }\limits_{n \to \infty } {\left[ {\mathbb{I} + \frac{{\theta \;J}}{n}} \right]^n}\notag\end{equation}
+  with
+  \begin{equation}\mathbb{I} \equiv \left( {\begin{array}{*{20}{c}}<br>
+    1&amp;0 \\ <br>
+    0&amp;1 <br>
+  \end{array}} \right)\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;J \equiv \left( {\begin{array}{*{20}{c}}<br>
+    0&amp;{ - 1} \\ <br>
+    1&amp;0 <br>
+  \end{array}} \right)\notag\end{equation}</p>
+<p>Now the limit can be expanded suggestively:</p>
+<p>\begin{equation}{\left[ {\mathbb{I} + \frac{{\theta \;J}}{n}} \right]^n} = \left( {\mathbb{I} + \frac{{\theta \;J}}{1}} \right)\left( {\mathbb{I} + \frac{{\theta \;J}}{2}} \right)\left( {\mathbb{I} + \frac{{\theta \;J}}{3}} \right) \ldots \left( {\mathbb{I} + \frac{{\theta \;J}}{n}} \right) = \mathbb{I} + \frac{{\theta \;J}}{1} + \frac{{\theta \;J}}{1}\frac{{\theta \;J}}{2} +  + \frac{{\theta \;J}}{1}\frac{{\theta \;J}}{2}\frac{{\theta \;J}}{3} +  \ldots \notag\end{equation}</p>
+\begin{equation}{\left[ {\mathbb{I} + \frac{{\theta \;J}}{n}} \right]^n} = \mathbb{I} + \frac{{\theta \;J}}{1} + \frac{{{{\left( {\theta \;J} \right)}^2}}}{{2!}} + \frac{{{{\left( {\theta \;J} \right)}^3}}}{{3!}} +  \ldots  + \frac{{{{\left( {\theta \;J} \right)}^n}}}{{n!}}\notag\end{equation}
+  In the limit:
+  \begin{equation}\mathop {\lim }\limits_{n \to \infty } {\left( {\mathbb{I} + \frac{{\theta J}}{n}} \right)^n} = \mathbb{I} + \mathop \sum \limits_{n = 1}^\infty  \frac{{{{\left( {\theta J} \right)}^n}}}{{n!}} = {e^{\theta J}}\notag\end{equation}
+
+<button class="accordion"><strong>Perform the infinite sum of increasing powers of the J-matrix to demonstrate the conclusion below.</strong></button>
+<div class="panel"> 									<!-- BEGIN accordion panel--> 
+	<p style="padding: 10px; border: 1px solid black;">		<!-- BEGIN panel paragraph styling -->
+Computing increasing powers of the J-matrix produces a repeating pattern at every fourth power:
+\begin{equation}n = 1:\;\;\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right)\notag\end{equation}
+\begin{equation}n = 2:\;\;\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right)\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+  { - 1}&0 \\ 
+  0&{ - 1} 
+\end{array}} \right)\notag\end{equation}
+\begin{equation}n = 3:\;\;\left( {\begin{array}{*{20}{c}}
+  { - 1}&0 \\ 
+  0&{ - 1} 
+\end{array}} \right)\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+  0&1 \\ 
+  { - 1}&0 
+\end{array}} \right)\notag\end{equation}
+\begin{equation}n = 4:\;\;\left( {\begin{array}{*{20}{c}}
+  0&1 \\ 
+  { - 1}&0 
+\end{array}} \right)\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+  1&0 \\ 
+  0&1 
+\end{array}} \right)\notag\end{equation}
+\begin{equation}n = 5:\;\;\left( {\begin{array}{*{20}{c}}
+  1&0 \\ 
+  0&1 
+\end{array}} \right)\left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right)\notag\end{equation}
+So
+\begin{equation}\mathbb{I} + \mathop \sum \limits_{n = 1}^\infty  \frac{{{{\left( {\theta J} \right)}^n}}}{{n!}} = \mathbb{I} + \theta \left( {\begin{array}{*{20}{c}}
+  0&{ - 1} \\ 
+  1&0 
+\end{array}} \right) + \frac{{{\theta ^2}}}{{2!}}\left( {\begin{array}{*{20}{c}}
+  { - 1}&0 \\ 
+  0&{ - 1} 
+\end{array}} \right) + \frac{{{\theta ^3}}}{{3!}}\left( {\begin{array}{*{20}{c}}
+  0&1 \\ 
+  { - 1}&0 
+\end{array}} \right) +  + \frac{{{\theta ^4}}}{{4!}}\left( {\begin{array}{*{20}{c}}
+  1&0 \\ 
+  0&1 
+\end{array}} \right) + \left[ {repeat\;pattern} \right]\notag\end{equation}
+
+Look at the upper left matrix element:
+
+\begin{equation}1 + 0\theta  - 1\frac{{{\theta ^2}}}{{2!}} + 0\frac{{{\theta ^3}}}{{3!}} + 1\frac{{{\theta ^4}}}{{4!}} + \left[ {repeat\;pattern} \right] = 1 - \frac{{{\theta ^2}}}{{2!}} + \frac{{{\theta ^4}}}{{4!}} - \frac{{{\theta ^6}}}{{6!}} + \frac{{{\theta ^8}}}{{8!}} +  \ldots \notag\end{equation}
+
+The upper right looks like:
+\begin{equation}0 - \theta  + \frac{{{\theta ^3}}}{{3!}} - \frac{{{\theta ^5}}}{{5!}} + \frac{{{\theta ^7}}}{{7!}} +  \ldots \notag\end{equation}
+In the limit:
+\begin{equation}1 - \frac{{{\theta ^2}}}{{2!}} + \frac{{{\theta ^4}}}{{4!}} - \frac{{{\theta ^6}}}{{6!}} + \frac{{{\theta ^8}}}{{8!}} +  \ldots  = \cos \left( \theta  \right)\notag\end{equation}
+\begin{equation}0 - \theta  + \frac{{{\theta ^3}}}{{3!}} - \frac{{{\theta ^5}}}{{5!}} + \frac{{{\theta ^7}}}{{7!}} +  \ldots  =  - \sin \left( \theta  \right)\notag\end{equation}
+Altogether we obtain:
+
+\begin{equation}{e^{\theta J}} = \mathbb{I} + \mathop \sum \limits_{n = 1}^\infty  \frac{{{{\left( {\theta J} \right)}^n}}}{{n!}} = \left( {\begin{array}{*{20}{c}}
+  {\cos \theta }&{ - \sin \theta } \\ 
+  {\sin \theta }&{\cos \theta } 
+\end{array}} \right)\notag\end{equation}
+</p>
+</div>
+     														<!-- END panel paragraph styling -->
+									 						<!-- END ACCORDION panel--> 
+<br><br>
+The sum expressed in matrix form is:
+
+<p>\begin{equation}{e^{\theta J}} = \mathbb{I} + \mathop \sum \limits_{n = 1}^\infty  \frac{{{{\left( {\theta J} \right)}^n}}}{{n!}} = \left( {\begin{array}{*{20}{c}}<br>
+    {\cos \theta }&amp;{ - \sin \theta } \\ <br>
+    {\sin \theta }&amp;{\cos \theta } <br>
+  \end{array}} \right)\notag\end{equation}</p>
+<p>This is the SO(2) rotation matrix, one representation of the rotation <em>group</em>.  You are welcome to test its compliance with the requirements of a group. </p>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->    </p>
+</div> 														
+	<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 1.3.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
