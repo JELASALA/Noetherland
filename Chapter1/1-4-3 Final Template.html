@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 1.4.3</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 1; const S = 4; const SS = 3;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Section 1.4 - Geometrizing the Directional Derivative</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>1.4.3 LLA to the Curve-Path</strong></p>
+
+<p>Consider again the quadratic curve $\gamma \left( s \right)$ that passes through $\left( {{x_o},{y_o}} \right)$ shown in the figure below from the previous section.  <strong> </strong></p>
+
+  <img src="Fig 1.4C-combined mappings.jpg" alt="Combined" class="imgcenter" width="35%">
+  <br>
+  <figcaption>Fig 1.4c. Combined Mappings</figcaption>
+
+<p>This orange arc is one of an infinite number of parabolas that cover the entire <em>x</em>-<em>y</em> plane, open towards +<em>y</em>, and symmetric about the <em>y</em>-axis.  Here are the parametric equations for the specific parabola that passes through $\left( {{x_o},{y_o}} \right)$:</p>
+
+\begin{equation}x\left( s \right) = s + {x_o}\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation}
+
+<p>As $s \to 0$ these equations produce the point $\left( {{x_o},{y_o}} \right)$, which we are free to set to whatever we'd like.  We will use $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$.   Eliminating the parameter between variables exhibits the parabola passing through the point of interest and the origin:</p>
+
+\begin{equation}y\left( x \right) = {x^2} - x_o^2 + {y_o}\notag\end{equation}
+
+<p>Graphically we have:</p>
+
+  <img src="Fig 1.4D-parabola.png" alt="Parabola" class="imgcenter" width="30%">
+  <br>
+  <figcaption>Fig 1.4d. Parabolic Curve</figcaption>
+
+<p>The LLA to this curve at the point of interest can be developed from a Taylor series expansion:</p>
+
+\begin{equation}x\left( s \right) \cong {x_o} + s{\left( {\frac{{dx}}{{ds}}} \right)_o}\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y\left( s \right) \cong {y_o} + s{\left( {\frac{{dy}}{{ds}}} \right)_o}\notag\end{equation}
+
+<p>A rather unique way of looking at this is based on Burke (1980; p. 85ff), where he rewrites these equations in terms of magnified coordinates for the local neighborhood of the point $P$ at $s = 0$.:</p>
+
+\begin{equation}x = {x_o} + \varepsilon X\;\;\;\;{\text{and}}\;\;\;\;y = {y_o} + \varepsilon Y\;\;{\text{with}}\;\;\;s\left( \varepsilon  \right) = {s_o} + \varepsilon S\label{A}\end{equation}
+
+  <img src="Fig 1.4E-Mag Coords.png" alt="Mag Coords" class="imgcenter" width="30%">
+  <br>
+  <figcaption>Fig 1.4e. Magnified Coordinates</figcaption>
+
+<p>Note we now use $\varepsilon $ to express (ultimately) infinitesimal progress away from the starting point.  The new variables $\left( {X,Y} \right)$ act as <em>magnified</em> coordinates in the following sense.  Rearranging \eqref{A}:</p>
+
+\begin{equation}X = \frac{{x - {x_o}}}{\varepsilon }\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;Y = \frac{{y - {y_o}}}{\varepsilon }\notag\end{equation}
+
+<p>As we go from $\varepsilon  = 1$ to $\varepsilon  = 1/2$ to $\varepsilon  = 1/4$ and beyond with small <u>fixed</u> distances $\Delta x = x - {x_o} = \varepsilon X$ and $\Delta y = y - {y_o} = \varepsilon Y$ (say, one grid block) from $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ the grid expands, doubling with each reduction in $\varepsilon $.  The first couple of expansions are shown below</p>
+
+  <img src="Fig 1.4F-Zoom In.jpg" alt="Zoom In" class="imgcenter" width="55%">
+  <br>
+  <figcaption>Fig 1.4f. Zoom in Sequence</figcaption>
+
+<p>In the limit $\varepsilon  \to 0$ we are have only the single <em>P </em>at$\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ or $s = 0$ in our magnified view, suggested by the large red dot in the figures.   To connect to the essence of the curve at that point we can think of </p>
+
+\begin{equation}x = {x_o} + \varepsilon X\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y = {y_o} + \varepsilon Y\notag\end{equation}
+
+as arising from coordinate transformation groups from $\left( {{x_o},{y_o}} \right)$ to $\left( {x\left( \varepsilon  \right),y\left( \varepsilon  \right)} \right)$ given by <em>analytic</em> functions:
+  \begin{equation}x\left( \varepsilon  \right) = \chi \left( {x,{x_o},\varepsilon } \right)\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;\;y\left( \varepsilon  \right) = \zeta \left( {y,{y_o},\varepsilon } \right)\notag\end{equation}
+  
+We now expand $\chi \left( {x,{x_o},\varepsilon } \right)$ and $\zeta \left( {y,{y_o},\varepsilon } \right)$ in Taylor's series about $\varepsilon  = 0$:
+
+\begin{equation}x\left( \varepsilon  \right) = {x_o} + \varepsilon {\left( {\frac{d}{{d\varepsilon }}\chi } \right)_{\varepsilon  = 0}} + O\left( {{\varepsilon ^2}} \right)..\;.\;\notag\end{equation}
+  and
+  \begin{equation}y\left( \varepsilon  \right) = {y_o} + \varepsilon {\left( {\frac{d}{{d\varepsilon }}\zeta } \right)_{\varepsilon  = 0}} + O\left( {{\varepsilon ^2}} \right)..\;.\notag\end{equation}
+
+generating <em>infinitesimal</em> transformations by ignoring second and higher order terms in$\;\varepsilon $.  These expansions explicitly make the coordinate transformation maps $\chi \left( {x,{x_o},\varepsilon } \right)$ and $\zeta \left( {y,{y_o},\varepsilon } \right)$ depend on $\varepsilon $ in such a way that as $\varepsilon  \to 0$ the maps return to &quot;no map&quot;, i.e. no change from $\left( {{x_o},{y_o}} \right)$  If we compare these expansions to the magnification equations at the top of the page we extract:
+
+\begin{equation}X = {\left( {\frac{d}{{d\varepsilon }}\chi } \right)_{\varepsilon  = 0}}\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;Y = {\left( {\frac{d}{{d\varepsilon }}\zeta } \right)_{\varepsilon  = 0}}\notag\end{equation}
+
+We are still missing the connection to our parameter s.  This is accomplished by expanding the $\varepsilon $-dependent form of our parameter $s\left( \varepsilon  \right)$ 
+  \begin{equation}s\left( \varepsilon  \right) = {s_o} + \varepsilon S\;\;\notag\end{equation}
+  
+<p>analogously to those done for the coordinates:</p>
+
+\begin{equation}s\left( \varepsilon  \right) = {s_o} + \varepsilon {\left( {\frac{d}{{d\varepsilon }}\Sigma } \right)_{\varepsilon  = 0}} + O\left( {{\varepsilon ^2}} \right)..\;.\notag\end{equation}
+  We then take
+  \begin{equation}{s_o} = 0\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;S \equiv {\left( {\frac{d}{{d\varepsilon }}\Sigma } \right)_{\varepsilon  = 0}} = S\left( {x,{x_o},y,{y_o}} \right)\notag\end{equation}
+  for an effective
+  \begin{equation}s\left( \varepsilon  \right) = \varepsilon S\notag\end{equation}
+  
+<p>so &ldquo;macroscopic&rdquo; paremeter $s$ and the &ldquo;infinitesimal&rdquo; parameter $\varepsilon $ are &quot;scaled&quot; by </p>
+
+\begin{equation}S \equiv {\left( {\frac{d}{{d\varepsilon }}\Sigma } \right)_{\varepsilon  = 0}}\notag\end{equation}
+
+<p>If we rearrange our expansion equations into these forms:</p>
+
+\begin{equation}\frac{{x\left( \varepsilon  \right) - {x_o}}}{\varepsilon } = X\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;\frac{{y\left( \varepsilon  \right) - {y_o}}}{\varepsilon } = Y\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;\frac{{s\left( \varepsilon  \right) - {s_o}}}{\varepsilon } = S\notag\end{equation}
+
+We can still take the limits as $\varepsilon  \to 0$ on all three LHSs and be assured that through our construction, those limits will be finite as the RHS are independent of $\varepsilon $.  In the limit all three LHSs become derivatives, yielding: 
+
+  \begin{equation}\frac{{dx}}{{d\varepsilon }} = X\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;\frac{{dy}}{{d\varepsilon }} = Y\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;\frac{{ds}}{{d\varepsilon }} = S\notag\end{equation}
+  
+<p>As these are total derivatives we can take ratios:</p>
+
+\begin{equation}\frac{{dx}}{{ds}} = \frac{X}{S} = {\left( {\frac{{dx}}{{ds}}} \right)_o}\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\frac{{dy}}{{ds}} = \frac{Y}{S} = {\left( {\frac{{dy}}{{ds}}} \right)_o}\label{B}\end{equation}
+
+as well as 
+  \begin{equation}\frac{{dy}}{{dx}} = \frac{Y}{X}\notag\end{equation}
+
+<p>so the &quot;coordinates&quot; <em>aka</em> &ldquo;rate variables&rdquo; $\left\{ {X,Y} \right\}$ are objects<strong>attached </strong>to the manifold point $\left( {{x_o},{y_o}} \right)$ where $s = s\left( \varepsilon  \right) = \varepsilon S = 0$ as $\varepsilon  \to 0$.  That is, they survive the limit, yielding by their ratio the LLA of the curve-path passing through this point.  Thus the LLA to the curve $\gamma \left( s \right):\;\left\{ {x\left( s \right),y\left( s \right)} \right\}$ is given by:</p>
+
+\begin{equation}\vec V = \dot \gamma \left( s \right):\;\left\{ {\frac{{dx}}{{ds}},\frac{{dy}}{{ds}}} \right\}\notag\end{equation}
+<p>This means that ratios of these &quot;rate variables&quot; $\left\{ {X,Y,S} \right\}$ that are <strong> attached</strong> to the manifold at $\left( {{x_o},{y_o}} \right)$ provide what we are looking for -- the LLA to the curve -- a tangent vector.  </p>
+
+In review:  we found &ldquo;magnification&rdquo; variables that persist at the point $\left( {{x_o},{y_o}} \right)$ in the limit $\varepsilon  \to 0$, and whose ratio provides the LLA or tangent vector to the curve at that point.  We may apply our result to the example at hand with these parametrized equations for the curve $y\left( x \right) = {x^2} - x_o^2 + {y_o}$:
+
+  \begin{equation}x\left( s \right) = s + {x_o}\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation}
+  
+  On the LHSs we substitute
+
+\begin{equation}x = {x_o} + \varepsilon X\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y = {y_o} + \varepsilon Y\notag\end{equation}
+
+  On the RHSs we substitute
+  \begin{equation}s = \varepsilon S\notag\end{equation}
+  We obtain:
+  \begin{equation}{x_o} + \varepsilon X = \varepsilon S + {x_o}\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;{y_o} + \varepsilon Y = \varepsilon S\left( {\varepsilon S + 2{x_o}} \right) + {y_o}\notag\end{equation}</p>
+
+<p>Now we differentiate these expressions with respect to $\varepsilon $ and obtain:</p>
+
+\begin{equation}X = S\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;Y = S\left( {\varepsilon S + 2{x_o}} \right) + \varepsilon S\left( S \right)\notag\end{equation}
+
+<p>And finally take the limit of both expressions as $\varepsilon  \to 0$:</p>
+
+\begin{equation}X = S\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;Y = 2{x_o}S\notag\end{equation}
+
+We now employ expressions \eqref{B}:
+
+
+\begin{equation}{\left( {\frac{{dx}}{{ds}}} \right)_o} = \frac{X}{S} = \frac{S}{S} = 1\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;{\left( {\frac{{dy}}{{ds}}} \right)_o} = \frac{Y}{S} = \frac{{2{x_o}S}}{S} = 2{x_o}\notag\end{equation}
+
+The LLA to a curve $\gamma \left( s \right):\;\left\{ {x\left( s \right),y\left( s \right)} \right\}$ at $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ is given by:
+
+\begin{equation}\vec V = {\left\{ {\frac{{dx}}{{ds}},\frac{{dy}}{{ds}}} \right\}_o} = \left\{ {1,2{x_o}} \right\} = \left\{ {1,2} \right\}\notag\end{equation}
+
+<p>When everything is plotted on a single Euclidean grid it would look like this:</p>
+
+
+  <img src="Fig 1.4G-Tangent Vector on Parabola.png" alt="Tangent Vector on Parabola" class="imgcenter" width="30%">
+  <br>
+  <figcaption>Fig 1.4g. Tangent Vector for Parabolic Curve</figcaption>
+
+<p>While $\vec V$ is evidently tangent to the curve-path at point P, it is not properly &quot;in&quot; the manifold space of $\left( {x,y} \right)$.  Rather it is in a new attached space $\left( {X,Y} \right)$ called the <em>tangent space</em> which we have given the new coordinate labels in the figure below.</p>
+
+  <img src="Fig 1.4H-Separated Manifold and Tangent Spaces.jpg" alt="Separated" class="imgcenter" width="45%">
+  <br>
+  <figcaption>Fig 1.4h. Separated Spaces</figcaption>
+
+<p> You may imagine tangent space &ldquo;hovering&rdquo; over the base manifold or distinct yet attached at the point of interest.</p>
+
+  <img src="Fig 1.4I-Hovering Tangent Space.jpg" alt="Hovering" class="imgcenter" width="30%">
+  <br>
+  <figcaption>Fig 1.4i. Tangent Space over Manifold</figcaption>
+
+<p>Insisting the tangent vector and base manifold are distinct spaces, though &ldquo;attached&rdquo; at the point of interest, is quite important.  The quadratic curve may be a plot of position as a function of time and the tangent vector of velocity with different units than the position plot; these could simply not occupy the same space.  In mechanics problems we get away with it since the base manifold and tangent vector space are often both Euclidean   But in differential geometry we will find that only the space with the velocity vector is guaranteed Euclidean (by construction).  The base space may be a curved surface in a higher dimensional Euclidean space, with the tangent space attached at only one point, as in the figure below.</p>
+
+  <img src="Fig 1.4J-Vector in Tangent plane Attached .jpg" alt="Combined" class="imgcenter" width="35%">
+  <br>
+  <figcaption>Fig 1.4j. Tangent Vector Plane</figcaption>
+
+<p>The mathematical object $\vec V$ has two <em>representations</em> in this new geometry.  One is a tangent vector to a curve-path and the other is a vector operator as sum of partial differential operators. It all depends on whether we want to talk about that curve-path in the manifold whose coordinates are $\left( {x,y} \right)$ or the manifold whose coordinates are $\left( {X,Y} \right)$.  As long as we stay infinitesimal both the manifold and its tangent space are (at least locally) Euclidean so we can casually ignore the difference in coordinates. A good analogy is to think of the manifold coordinates as say <em>lengths</em> and the tangent space coordinates as <em>rates</em>. </p>
+
+
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->    </p>
+</div> 														
+	<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 1.4.3</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

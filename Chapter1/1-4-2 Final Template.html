@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 1.4.2</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 1; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Section 1.4 - Geometrizing the Directional Derivative</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>1.4.2  Composition of Curves and Functions</strong></p>
+<p>The diagram below shows our example - an orange parabola for the curve-path and a black circle for the function-field intersecting at $\left( {1,1} \right)$:</p>
+
+  <img src="Fig 1.4B-combined curve and function contours.jpg" alt="Combined" class="imgcenter" width="35%">
+  <br>
+  <figcaption>Fig 1.4b. Curve and Function</figcaption>
+  
+<p>You may envision an observer walking along that curve-path and &quot;observing&quot; or &quot;sampling&quot; the function-field he passes through.</p>
+<p>We begin by assuming all of the mathematical objects we deal with are <em>analytic</em> – which means they can be expressed as a power series and specifically for our purpose a Taylor series.  So coordinates, curve-paths, and paths through function-fields as polynomials using a Taylor series.  We have already assumed such analyticity in Section 3 when we employed Taylor expansions and power series in conjunction with our analysis of the rotation transformation group.</p>
+<p>In Section 1.2 we noted that curve-paths are maps from the real numbers (symbolized by the parameter $s$) to the manifold coordinates, such as</p>
+\begin{equation}\gamma |\;\mathbb{R}\cdot M\;{\text{as}}\;\gamma \left( s \right)\cdot \left\{ {x\left( s \right),y\left( s \right)} \right\}\notag\end{equation} 
+  The parametric equations for the orange parabola in the figure above are:
+\begin{equation}x\left( s \right) = s +{x_o}\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation} 
+
+<p>where we take notice that ${x_o}$ and ${y_o}$ are the values of the coordinates for the parameter value $s = 0$.</p>
+
+  <img src="Fig 1.4C-combined mappings.jpg" alt="Combined" class="imgcenter" width="35%">
+  <br>
+  <figcaption>Fig 1.4c. Combined Mappings</figcaption>
+
+<p>For a curve-path to &ldquo;sample&rdquo; a field-function we perform a <em>composition</em> of the two.  Symbolically this is represented by:</p>
+
+  \begin{equation}\left( {f \circ \gamma } \right)\left( s \right) = f\left( {x\left( s \right),y\left( s \right)} \right)\notag\end{equation} 
+  
+  The function-field starts out as a function of the variables $x$ and $y$ and after composing it with a curve it is expressible as a function of the parameter used by the curve.  The result is that the function &ldquo;reports&rdquo; its value along the parameter-driven curve, which is what we want.  Technically we should not use the same symbol $f$ for the composition as its functionality has changed thanks to the curve parameterization.
+
+For our ongoing example 
+
+\begin{equation}x\left( s \right) = s + {x_o};\;\;\;\;\;\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation} 
+
+\begin{equation}f\left( {x,y} \right) = {x^2} + {y^2}\notag\end{equation} 
+
+we can directly calculate the composition as follows:
+  
+\begin{equation}f\left( {x\left( s \right),y\left( s \right)} \right) = {\left( {s + {x_o}} \right)^2} + {\left( {s\left( {s + 2{x_o}} \right) + {y_o}} \right)^2}\notag\end{equation} 
+
+  \begin{equation}\tilde f\left( s \right) = {s^4} + 4{x_o}{s^3} + \left( {1 + 4{x_o}^2 + 2{y_o}} \right){s^2} + \left( {2{x_o} + 4{x_o}{y_o}} \right)s + \left( {{x_o}^2 + {y_o}^2} \right)\notag\end{equation} 
+  
+  This macroscopic/global result is very messy yet provides the value of our function-field all along the parabolic path.  Clearly its value is not constant as it would be if we followed one of the invariants (contours) of the function.  
+
+Let us instead sample the function incrementally/microscopically/locally along the curve starting at the point $\left( {{x_o},{y_o}} \right)$, which suggests we employ a Taylor series to find first order information from the outset.  Let us first expand the function to first order: 
+  \begin{equation}f\left( {x,y} \right) \cong f\left( {{x_o},{y_o}} \right) + {\left( {\frac{{\partial f}}{{\partial x}}} \right)_o}\left( {x - {x_o}} \right) + {\left( {\frac{{\partial f}}{{\partial y}}} \right)_o}\left( {y - {y_o}} \right) +  \ldots \notag\end{equation} 
+  
+  We can now express the independent variables in terms of the parameter $s$ to compute the composition and expand them as well using a Taylor series to first order.
+  
+\begin{equation}\left( {f \circ \gamma } \right)\left( s \right) = f\left( {x\left( s \right),y\left( s \right)} \right) \cong f\left( {x\left( 0 \right),y\left( 0 \right)} \right) + {\left( {\frac{{\partial f}}{{\partial x}}} \right)_{s = o}}\left( {x\left( s \right) - {x_o}} \right) + {\left( {\frac{{\partial f}}{{\partial y}}} \right)_{s = o}}\left( {y\left( s \right) - {y_o}} \right) \notag\end{equation}
+
+\begin{equation}\cong f\left( {x\left( 0 \right),y\left( 0 \right)} \right) + {\left( {\frac{{\partial f}}{{\partial x}}} \right)_{s = o}}\left[ {\left( {{x_o} + {{\left( {\frac{{dx}}{{ds}}} \right)}_{s = o}}s +  \ldots } \right) - {x_o}} \right] + {\left( {\frac{{\partial f}}{{\partial y}}} \right)_{s = o}}\left[ {\left( {{y_o} + {{\left( {\frac{{dy}}{{ds}}} \right)}_{s = o}}s +  \ldots } \right) - {y_o}} \right] \notag\end{equation}
+
+\begin{equation}= f\left( {x\left( 0 \right),y\left( 0 \right)} \right) + s{\left( {\frac{{\partial f}}{{\partial x}}} \right)_{s = o}}{\left( {\frac{{dx}}{{ds}}} \right)_{s = o}} + s{\left( {\frac{{\partial f}}{{\partial y}}} \right)_{s = o}}{\left( {\frac{{dy}}{{ds}}} \right)_{s = o}}\notag\end{equation}
+
+\begin{equation}f\left( {x\left( s \right),y\left( s \right)} \right) \cong f\left( {{x_o},{y_o}} \right) + s{\left( {\frac{{\partial f}}{{\partial x}}\frac{{dx}}{{ds}} + \frac{{\partial f}}{{\partial y}}\frac{{dy}}{{ds}}} \right)_{s = o}}\notag\end{equation}
+
+
+  Let us employ the function and curve used earlier to calculate the LLA for this composition.</p>
+\begin{equation}x\left( s \right) = s + {x_o}; \;\;\;\; y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}\notag\end{equation} 
+  \begin{equation}f\left( {x,y} \right) = {x^2} + {y^2}\notag\end{equation}
+Then
+  \begin{equation}f\left( {x\left( s \right),y\left( s \right)} \right) \cong f\left( {{x_o},{y_o}} \right) + s{\left( {2x1 + 2y\left( {2s + 2{x_o}} \right)} \right)_{s = o}}\notag\end{equation}
+  
+  \begin{equation}\left( {f \circ \gamma } \right)\left( s \right) = f\left( {x\left( s \right),y\left( s \right)} \right) \cong f\left( {{x_o},{y_o}} \right) + s\left( {2{x_o} + 4{x_o}{y_o}} \right)\notag\end{equation} 
+  
+  This <em>local linear approximation</em> (LLA) to the composition agrees with the full expression above in the limit of infinitesimal $s$.  Now focusing on the infinitesimal interaction may seem severely limiting, yet Lie&rsquo;s work tells us we can learn <strong>almost???</strong> everything we need to know by examining the LLA behavior.
+  
+<p>Reflecting on the above image one more time, the orange-colored curve is the curve-path $\gamma \left( s \right)$ that takes a real number $s$ and produces a set of continuous points whose coordinates are $x\left( s \right) = s + {x_o}\;{\text{and}}\;y\left( s \right) = s\left( {s + 2{x_o}} \right) + {y_o}$. The function-field map <em>f</em>$\left( {x,y} \right) = {x^2} + {y^2}$ takes a set of coordinates and produces a real number and one of its invariant-value contours is the black circle.  The curve-path and the function-field contour intersect at the point $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ where $s = 0$.   Our algebraic depiction of the composition of the function-field with the curve-path at the <em>local linear approximation</em> level is:</p>
+
+\begin{equation}\left( {f \circ \gamma } \right)\left( s \right) = f\left( {x\left( s \right),y\left( s \right)} \right) \cong f\left( {{x_o},{y_o}} \right) + s{\left( {\frac{{\partial f}}{{\partial x}}\frac{{dx}}{{ds}} + \frac{{\partial f}}{{\partial y}}\frac{{dy}}{{ds}}} \right)_o}\notag\end{equation} 
+  The rightmost term in parentheses is the <em>LLA to the composition</em> and contains the infinitesimal approximation to the <em>interaction</em> between the curve-path and the function-field at the point $\left( {{x_o},{y_o}} \right)$.  Let's examine that term in a bit more detail:
+\begin{equation}\frac{{\partial f}}{{\partial x}}\frac{{dx}}{{ds}} + \frac{{\partial f}}{{\partial y}}\frac{{dy}}{{ds}} = \frac{{dx}}{{ds}}\frac{{\partial f}}{{\partial x}} + \frac{{dy}}{{ds}}\frac{{\partial f}}{{\partial y}} = \left( {\frac{{dx}}{{ds}},\frac{{dy}}{{ds}}} \right)\cdot \left( {\frac{{\partial f}}{{\partial x}},\frac{{\partial f}}{{\partial y}}} \right) \to \vec V\cdot \vec \nabla f\notag\end{equation} 
+  This is the <em>directional derivative</em> in &quot;normal&quot; Euclidean 2-space and the two &quot;vectors&quot; have well-known geometrical representations.   Notionally, since the gradient of a function points in the direction of maximum increase, dotting it with another vector gives the increase of the function in the direction of the vector.  As we move forward in developing the mathematics for this tutorial these &ldquo;elements&rdquo; will take on new and more powerful representations.  As constructed, both of these elements are LLAs, one of the curve-path map and the other of the function-field map.  <strong>[MAP?]</strong> These LLAs are &quot;dotted&quot; together to produce a scalar result in Euclidean 2-space. 
+<p>The next conceptual leap is integral to a deep understanding of the methodologies to be used in future chapters of our e-tutorial.</p>
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->    </p>
+</div> 														
+	<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 1.4.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

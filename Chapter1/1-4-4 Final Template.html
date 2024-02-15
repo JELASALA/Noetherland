@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 1.4.4</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 1; const S = 4; const SS = 3;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+							tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//							tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Section 1.4 - Geometrizing the Directional Derivative</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+<p align="center"><strong>Section 1.4.4 LLA to the Function-Field</strong></p>
+<p>We are going to examine the following function in ${\mathbb{R}^2}$</p>
+<p>\begin{equation}f\left( {x,y} \right) = {x^2} + {y^2}\notag\end{equation}</p>
+and find its local linear approximation near the point $P:\left( {{x_o},{y_o}} \right)$.  In this example we will still use $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ as that is the same point considered in the curve map we just finished.  The circle that goes through $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ is a circle with its center at the origin and with a radius given by 
+\begin{equation}r = \sqrt {\left[ {{{\left( {{x_o}} \right)}^2} + {{\left( {{y_o}} \right)}^2}} \right]}  = \sqrt 2 \notag\end{equation}
+ and the function a value of 2.
+ 
+  <img src="Fig 1.4K-Circle.jpg" alt="Circle" class="imgcenter" width="35%">
+  <br>
+  <figcaption>Fig 1.4k. Circular Contour</figcaption>
+
+<p>One of the fundamental differences between $\gamma \left( s \right)$, a curve map, and $f\left( {x,y} \right)$, a function map, is that $f\left( {x,y} \right)$ is defined over a &quot;region&quot; of <em>M</em> whereas $\gamma \left( s \right)$ is defined only along a continuous set of points in <em>M</em>, known as &quot;the curve&quot;.  We need some way to visualize <em>f</em>'s local, linear behavior over a region, and in the limit in the vicinity of a point.  We may represent a function-field graphically with a series of contour lines at fixed &ldquo;heights.&rdquo;  Here is an example of the elevation map of the island of Hawaii.  Typically contour lines are shown for fixed valued of elevation, here shown in feet above sea level.</p>
+
+  <img src="Fig 1.4L-Hawaii.png" alt="Hawaii" class="imgcenter" width="25%">
+  <br>
+  <figcaption>Fig 1.4l. Hawaii Contours</figcaption>
+  
+<p>Our ongoing example function </p>
+<p>\begin{equation}f\left( {x,y} \right) = {x^2} + {y^2}\notag\end{equation}</p>
+<p>when set to a real number constant will give us a contour line.  A reasonable way to represent the field associated with our function in terms of contour lines is to set the function equal to integers.  Each integer will produce a circle.  Note the circles will not be equally spaced in the manifold.  We set</p>
+<p>\begin{equation}f\left( {x,y} \right) = {x^2} + {y^2} = n\notag\end{equation}</p>
+<p>with $n$  an integer and then a moment's thought reveals that $n$ is the square of the radius $r$ of the circular contour line and the square root of $n$ is the radius $r$ .  So going from $n$  to $n + 1$ is not going to produce a sequence of radii that is equally spaced.  This motivates zooming in on the local behavior of the function where this function (and any well behaved function) will behave linearly.  This is facilitated by our magnified/expanded coordinates utilized in the last section.  Define</p>
+<p>\begin{equation}x = {x_o} + \varepsilon {X^*}\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;y = {y_o} + \varepsilon {Y^*}\;\;\;\;\;\;\;\;\;\;\;{\text{and}}\;\;\;\;\;\;\;\;\;\;n = {n_o} + \varepsilon N\notag\end{equation}</p>
+<p>Notice that we've performed the analogous infinitesimal approximation to the parameter $n$ that we did for the parameter $s$.  We have also distinguished the magnified coordinates used here with an asterisk.  And just like $S$ became a rate in a new space attached at the remaining manifold point, $N$ will become a rate/variable of contours in a new space attached at the same manifold point.  In the manifold, the contours are given by</p>
+<p>\begin{equation}f\left( {x,y} \right) = {x^2} + {y^2} = n\notag\end{equation}<strong> </strong></p>
+<p>Substituting our infinitesimal approximations, we find the contours given by</p>
+<p>\begin{equation}{\left( {{x_o} + \varepsilon {X^*}} \right)^2} + {\left( {{y_o} + \varepsilon {Y^*}} \right)^2} = {n_o} + \varepsilon N\notag\end{equation}<strong> </strong></p>
+<p>Differentiating with respect to $\varepsilon $ we have</p>
+<p>\begin{equation}2\left( {{x_o} + \varepsilon {X^*}} \right){X^*} + 2\left( {{y_o} + \varepsilon {Y^*}} \right){Y^*} = N\notag\end{equation}<strong> </strong></p>
+<p>We take the limit as $\varepsilon  \to 0$ to get to the tangent space and obtain the equation for the LLAs to our function</p>
+<p>\begin{equation}2{x_o}{X^*} + 2{y_o}{Y^*} = N\notag\end{equation}<strong> </strong></p>
+<p>This demonstrates that regardless of the specific geometry of the base manifold, the geometry of the tangent space is Euclidean.  That equation in the magnified variables $\left( {X,Y} \right)$ is a Euclidean straight line, period.  There are no hidden curvature effects.  The tangent space is flat, to use a relativity term.</p>
+<p>So let's solve that equation as a line:</p>
+<p>\begin{equation}{Y^*} =  - \left( {\frac{{{x_o}}}{{{y_o}}}} \right){X^*} + \frac{N}{{2{y_o}}}\notag\end{equation}<strong> </strong></p>
+<p>At our common point of interest $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ we have:</p>
+<p>\begin{equation}{Y^*} =  - {X^*} + \frac{N}{2}\notag\end{equation}<strong> </strong><br>
+  At the manifold coordinates $\left( {{x_o},{y_o}} \right) = \left( {1,1} \right)$ the slope of this line is -1, and as we vary <em>N</em> we vary the ${Y^*}$-intercept and produce an infinite set of parallel lines all of slope -1.  If we set <em>N</em> equal to successive integers we will create a set of equally spaced lines and that could represent the LLA in some sort of graphical way.  The$\Delta {Y^*} - {\text{intercept}}$s <em>differ</em> by a constant amount if we use integers for <em>N</em>:</p>
+<p>\begin{equation}\Delta {Y^*} - {\text{intercept}} = \frac{{N + 1}}{2} - \frac{N}{2} = \frac{1}{2} = 0.5\notag\end{equation}<strong> </strong></p>
+<p>These parallel, straight lines (the geometric representation of the LLA to function map contours) are depicted below:</p>
+
+  <img src="Fig 1.4M-Function LLA.jpg" alt="Function LLA" class="imgcenter" width="30%">
+  <br>
+  <figcaption>Fig 1.4m. Function LLA</figcaption>
+
+<p>We have plotted the geometrical representation of the field-function LLA using coordinates $\left( {{X^*},{Y^*}} \right)$.  This representation is certainly a different looking object than the old-fashioned gradient vector from vector calculus.  The next step is to evaluate the interaction of the vector and covector LLAs via the &ldquo;inner product.&rdquo;</p>
+
+<!--
+
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+
+Content goes here. 
+
+	</p>
+</div>
+-->    </p>
+</div> 														
+	<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 1.4.4</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
