@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 3.5</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 5; const SS = 0; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//					tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+						tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css"> <!--Use this link if working globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3 - Exterior Differential Systems for Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+	<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>3.5 Similarity Solutions</strong>  </p>
+
+  <p>Having shown how to find isovectors for a given PDE (system) using EDS techniques we now utilize this information to find so-called <em>similarity solutions</em>, equivalent to Olver&rsquo;s <em>G-invariant solutions</em>.  Suhubi&rsquo;s process is based on his equation (9.5.3) – symbolically modified to conform to our conventions:</p>
+\begin{equation}{\phi ^*}\left\langle {V,{\sigma ^\alpha }} \right\rangle  = 0\label{A}\end{equation} 
+  <p> where ${\sigma ^\alpha }$ is the &ldquo;zeroeth order&rdquo; contact form for the PDE (in this section we assume $N = 1$ so drop the Greek index in what follows).  Here $\phi $ is a mapping from the <em>Graph</em> space to the <em>contact manifold</em> in <em>Kinematic</em> space so ${\phi ^*}$ pulls back to the <em>Graph</em> space. The origin of this condition is explained in the dropdown below.</p>
+
+    <button class="accordion"><strong>Demonstration of \eqref{A}</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+We suppose $\phi \left( x \right) = u$ corresponds to a solution to a PDE under consideration that remains invariant along the flow produced by an isovector $V$ of that PDE.  Form the function $f = \phi \left( x \right) - u = 0$ and demand its Lie derivative with respect to $V$ be invariant.  That is, the difference between $\phi $ and $u$ that starts out at zero remains zero while the functions are transported by $V$ in Kinematic space.  Thus ${\mathcal{L}_V}\left( f \right) = V\left( f \right) = 0$.  Let the vector be represented as:
+\begin{equation}V = {X^i}\left( {x,\phi \left( x \right),{\phi _j}\left( x \right)} \right){\partial _{{x^i}}} + U\left( {x,\phi \left( x \right),{\phi _j}\left( x \right)} \right){\partial _u}\notag\end{equation}Then the condition is
+      \begin{equation}V\left( f \right) = \left( {{X^i}{\partial _{{x^i}}} + U{\partial _u}} \right)\left( {\phi \left( x \right) - u} \right) = {X^i}\frac{{\partial \phi \left( x \right)}}{{\partial {x^i}}} - U = 0\notag\end{equation} 
+      Recall the zeroeth order contact form has the structure (for $N = 1$) in Kinematic space:
+\begin{equation}\sigma  = du - {v_i}d{x^i}\notag\end{equation} 
+      Thus the condition above can be represented as
+\begin{equation}\left\langle {V,\sigma } \right\rangle  = \left\langle {{X^i}{\partial _{{x^i}}} + U{\partial _u},du - {v_i}d{x^i}} \right\rangle  = U - {X^i}{v_i}\notag\end{equation}so
+\begin{equation}{\phi ^*}\left\langle {V,\sigma } \right\rangle  = U - {X^i}{u_i} = 0\notag\end{equation} 
+</p>
+  </div>  <!-- end of dropdown. -->
+  
+  
+  <p>Let us apply this to our canonical example the <strong>1D heat equation</strong>:</p>
+\begin{equation}{u_{xx}} - {u_t} = 0\notag\end{equation}we have
+    \begin{equation}\sigma  = du - {v_1}dx - {v_2}dt\notag\end{equation} 
+    where
+    \begin{equation}{\phi ^*}{v_1} = {u_x}\notag\end{equation}\begin{equation}{\phi ^*}{v_2} = {u_t}\notag\end{equation} 
+    Let us find the similarity solution under the <strong>Galilean Boost </strong>vector used at the end of Section 2.6: 
+\begin{equation}V = 2t{\partial _x} - xu{\partial _u}\notag\end{equation}The condition 
+    \begin{equation}\left\langle {V,{\sigma ^\alpha }} \right\rangle  = 0\notag\end{equation}leads to
+    \begin{equation}\left\langle {V,\sigma } \right\rangle  = \left\langle {2t{\partial _x} - xu{\partial _u},du - {v_1}dx - {v_2}dt} \right\rangle  =  - 2t{v_1} - xu = 0\notag\end{equation} 
+    Applying ${\phi ^*}\;$turns ${v_1}$ into ${\partial _x}u$:<br>
+    \begin{equation}2t\frac{{\partial u}}{{\partial x}} + xu = 0\notag\end{equation}We may integrate this directly: 
+    \begin{equation} - \frac{{xdx}}{{2t}} = \frac{{du}}{u} \to - \frac{{{x^2}}}{{4t}} = \ln \left( u \right) - \ln \left( {{g_1}} \right)\notag\end{equation}
+where we allow 
+    \begin{equation}{g_1} = {g_1}\left( t \right)\;{\text{at most}}\notag\end{equation} 
+treating $t$ as a parameter on the invariant surface.
+    
+\begin{equation} \to \exp \left( { - \frac{{{x^2}}}{{4t}}} \right) = \frac{u}{{{g_1}}}\notag\end{equation}so our first (and only) invariant is:
+    \begin{equation}{g_1} = u\exp \left( {\frac{{{x^2}}}{{4t}}} \right)\notag\end{equation}and our provisional solution is:
+    \begin{equation}u = {g_1}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right)\notag\end{equation}What must ${g_1}$ look like to satisfy the heat equation?  
+    
+\begin{equation}{u_t} = {u_{xx}}\notag\end{equation} 
+    \begin{equation}{u_t} = \exp \left( { - \frac{{{x^2}}}{{4t}}} \right){\partial _t}{g_1} + {g_1}{\partial _t}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right) = \left[ {{\partial _t}{g_1} + {g_1}\left( {\frac{{{x^2}}}{{4{t^2}}}} \right)} \right]\exp \left( { - \frac{{{x^2}}}{{4t}}} \right)\notag\end{equation} 
+    \begin{equation}{u_x} = {g_1}{\partial _x}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right) =  - {g_1}\left( {\frac{x}{{2t}}} \right)\exp \left( { - \frac{{{x^2}}}{{4t}}} \right)\notag\end{equation} 
+    \begin{equation}{u_{xx}} = \left[ { - {g_1}\left( {\frac{1}{{2t}}} \right) + {g_1}\left( {\frac{x}{{2t}}} \right)\left( {\frac{x}{{2t}}} \right)} \right]\exp \left( { - \frac{{{x^2}}}{{4t}}} \right)\notag\end{equation} 
+    Combining and dropping common factors:
+    
+\begin{equation}{\partial _t}{g_1} + {g_1}\left( {\frac{{{x^2}}}{{4{t^2}}}} \right) =  - {g_1}\left( {\frac{1}{{2t}}} \right) + {g_1}\left( {\frac{x}{{2t}}} \right)\left( {\frac{x}{{2t}}} \right)\notag\end{equation} 
+    \begin{equation}{\partial _t}{g_1} + \frac{1}{{2t}}{g_1} = 0\notag\end{equation} 
+    We can integrate this directly.  I will replace the partial derivative by a total derivative given the presumed dependency of ${g_1}$ on $t$ alone:
+    
+\begin{equation}\frac{{d{g_1}}}{{{g_1}}} =  - \frac{{dt}}{{2t}} \to \ln \left( {{g_1}} \right) =  - \frac{1}{2}\ln \left( t \right) + \ln \left( k \right)\notag\end{equation}so
+    \begin{equation}{g_1}\sqrt t  = k\notag\end{equation}yielding:
+    \begin{equation}u = \frac{k}{{\sqrt t }}\exp \left( { - \frac{{{x^2}}}{{4t}}} \right) \;\color{blue}\blacksquare \notag\end{equation} 
+    in agreement with the vector-based G-invariant solution for this isovector found in <strong>Section 2.6</strong> but with far less computation.
+   
+  <p><strong>Note</strong>:  in the above example we had only one invariant function, found with a straightforward integration.  For PDEs with $n &gt; 2$ we will find it useful to employ the <em>Method of Characteristics</em> to discover the invariant functions, a highly useful technique elaborated upon in <strong>Appendix 1.9A</strong>.  </p>
+
+  <p>In appendices to this chapter we demonstrate the EDS similarity solution process on some other PDEs of relevance to physics students.</p>
+
+	<!-- END MJ-rendering--> 
+      
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Section 3.4.2</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
