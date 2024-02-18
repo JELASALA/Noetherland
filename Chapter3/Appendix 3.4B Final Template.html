@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appendix 3.4B</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 4; const SS = 0; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+					tagformat:
+						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+//						tagformat:
+//							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css"> <!--Use this link if working globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3 - Exterior Differential Systems for Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>Appendix 3.4B</strong></p>
+  <p align="center"><strong>Heat Equation Non-balance Form</strong></p>
+  
+    <!-- useful examples
+\begin{equation} \begin{split}
+    dx \wedge dt:& + {\partial _t}U - {\partial _x}W =  - Aw\\
+    du \wedge dt:& - {\partial _t}X - {\partial _u}W = A\\
+    dw \wedge dt:& - {\partial _t}T - {\partial _w}W =  - B\\
+    du \wedge dx:& - {\partial _x}X - {\partial _u}U =  - B\\
+    dw \wedge dx:& - {\partial _x}T - {\partial _w}U = 0\\
+    dw \wedge du:& - {\partial _u}T + {\partial _w}X = 0
+    \end{split}
+\notag\end{equation}
+
+\begin{equation} 0= 0\tag{\ref{deA}}\end{equation} -->
+    
+    The objective of this Appendix is to demonstrate use of Suhubi&rsquo;s <em>fundamental ideal</em> to solve for isovectors of a PDE without first casting it into balance form, which is the subject of Section 3.4.4.  For simplicity we will treat the 1D heat equation (again):
+    \begin{equation}{u_{xx}} - {u_t} = 0\notag\end{equation}
+    as we already know its isovectors from multiple approaches.  In contact space we formulate it as
+    \begin{equation}{F_{(PDE)}}\left( {x,t,u,w,v,{w_x}} \right) = {w_x} - v = 0\notag\end{equation}
+    or
+    \begin{equation}{F_{(PDE)}}\left( {x,t,u,{v_1},{v_2},{v_{11}}} \right) = {v_{11}} - {v_2} = 0\notag\end{equation}
+    where we have defined
+    \begin{equation}{u_x} \equiv w \equiv {v_1}\notag\end{equation}
+    \begin{equation}{u_t} \equiv v \equiv {v_2}\notag\end{equation}
+    \begin{equation}{u_{xx}} = {w_x} \equiv {v_{11}}\notag\end{equation}
+    Note the somewhat more symbolically simpler $w$ and $v$ will be used below.  Our goal is to solve for the &ldquo;universal&rdquo; function $F\left( {{x^i},u,{v_j}} \right)$ for this $N = 1$ case which enables computing the isovector components 
+    \begin{equation}V = {X^i}\frac{\partial }{{\partial {x^i}}} + U\frac{\partial }{{\partial u}} + {V^i}\frac{\partial }{{\partial {v_i}}}\notag\end{equation}
+    via (3.4.3.6) and (3.4.3.7), labeled locally as \eqref{UF}:
+    
+\begin{equation} 
+\begin{gathered}   
+    {X^i} =  - \frac{{\partial F}}{{\partial {v_i}}}\\
+    U = F - {v_i}\frac{{\partial F}}{{\partial {v_i}}} \\
+    {V^i} = \frac{{\partial F}}{{\partial {x^i}}} + {v_i}\frac{{\partial F}}{{\partial u}}
+\end{gathered}
+\tag{UF}\label{UF}\end{equation}
+
+<strong>Theorem 5.12.5</strong> <strong>(restated)</strong> requires ${\mathcal{L}_V}{\omega ^a}$ $\in$ $\bar {\mathcal{I}}\left( {{\sigma ^\alpha },{\omega ^a}} \right)$, or 
+    \begin{equation}{\mathcal{L}_V}{\omega ^a} = \mathop \sum \limits_{r = 0}^{m - 1} \Gamma _\alpha ^{a\;{i_1} \ldots {i_r}} \wedge \sigma _{{i_1} \ldots {i_r}}^\alpha  + \Lambda _\alpha ^{a\;{i_1} \ldots {i_{m - 1}}} \wedge d\sigma _{{i_1} \ldots {i_{m - 1}}}^\alpha  + \lambda _b^a{\omega ^b}\notag\end{equation}
+    Where do we cut off the sum on the <em>RHS</em>?  There is a subtle shift in the meaning of &ldquo;<em>m</em>&rdquo; by Suhubi which tells us that for the second order heat equation we are to treat it as $m = 1$, presumably because one order has been knocked down via the order reduction achieved in going from base space to kinematic space, though this is not elaborated upon by Suhubi until his section on the balance form of PDEs.  Experience tells us this is the case, however.  Then (removing the $a$ and $\alpha $ as we have only one PDE to solve and only one dependent variable):
+    \begin{equation}{\mathcal{L}_V}\omega  = \mathop \sum \limits_{r = 0}^{m - 1} {\Gamma ^{{i_1} \ldots {i_r}}} \wedge {\sigma _{{i_1} \ldots {i_r}}} + {\Lambda ^{{i_1} \ldots {i_{m - 1}}}} \wedge d{\sigma _{{i_1} \ldots {i_{m - 1}}}} + \lambda \omega \notag\end{equation}
+    In the case of $m = 1$ we have
+    \begin{equation}{\mathcal{L}_V}{\omega ^a} = \Gamma  \wedge \sigma  + \Lambda  \wedge d\sigma  + \lambda \omega \tag{LVI}\label{LVI}\end{equation}
+    For $m = 2$ we would have
+    \begin{equation}{\mathcal{L}_V}{\omega ^a} = \Gamma  \wedge \sigma  + {\Gamma ^1} \wedge {\sigma _1} +  + {\Gamma ^2} \wedge {\sigma _2} + {\Lambda ^1} \wedge d{\sigma _1} + {\Lambda ^2} \wedge d{\sigma _2} + \lambda \omega \notag\end{equation}
+    where by Suhubi (9.2.5) 
+    \begin{equation}{\sigma _0} \equiv \sigma  = du - {v_i}d{x^i} = du - {v_1}dx - {v_2}dt = du - wdx - vdt\notag\end{equation}
+    \begin{equation}{\sigma _1} \equiv d{v_1} - {v_{11}}dx - {v_{12}}dt = dw - {v_{11}}dx - {v_{12}}dt\notag\end{equation}
+    \begin{equation}{\sigma _2} \equiv d{v_2} - {v_{21}}dx - {v_{22}}dt = dv - {v_{21}}dx - {v_{22}}dt\notag\end{equation}
+    We will proceed with the $m = 1$ case. Expand the $RHS$ of \eqref{LVI} 
+    \begin{equation}RHS = \Gamma  \wedge \sigma  + \Lambda d\left( {du - wdx - vdt} \right) + \lambda \left( {{w_x} - {u_t}} \right)dx \wedge dt\notag\end{equation}
+    \begin{equation} = \Gamma  \wedge \sigma  + \Lambda \left( { - dw \wedge dx - dv \wedge dt} \right) + \lambda \left( {dw \wedge dt + du \wedge dx} \right)\notag\end{equation}
+    Now the last term requires some explanation.  We have
+    \begin{equation}\omega  \equiv {F_{(PDE)}}\mu  = \left( {{w_x} - {u_t}} \right)dx \wedge dt = dw \wedge dt + du \wedge dx\notag\end{equation}
+
+since$\;dw = {w_x}dx + {w_t}dt$ and $du = {u_t}dt + {u_x}dx$, effectively integrating. Recall $\mu=dx \wedge dt$ is the volume form for this 2D case. The goal is to always reduce the order of the variables whenever possible <u>as long as it does not trivialize the term</u>.  This might be comparable to knowing, when using the Vector approach, when to replace derivatives using the PDE itself.   There is a further &ldquo;simplification&rdquo; that is not necessary but is useful:
+    \begin{equation}\lambda \left( {dw \wedge dt + du \wedge dx} \right) = \lambda dw \wedge dt + \lambda vdt \wedge dx = \lambda dw \wedge dt - \lambda v\mu \notag\end{equation}
+    where we used another trick:
+    \begin{equation}du \wedge dx = \left( {{u_x}dx + {u_t}dt} \right) \wedge dx = vdt \wedge dx\notag\end{equation}
+
+Then
+    \begin{equation}RHS = \Gamma  \wedge \sigma  - \Lambda dw \wedge dx - \Lambda dv \wedge dt + \lambda dw \wedge dt - \lambda v\mu \notag\end{equation}
+
+The $LHS$ of \eqref{LVI} is evaluated thusly.  Note that $\omega $ is a &ldquo;pure&rdquo; 2-form, so its exterior derivative vanishes:
+    \begin{equation}LHS = {\mathcal{L}_V}\left( \omega  \right) = \left\langle {V,d\omega } \right\rangle  + d\left\langle {V,\omega } \right\rangle \; = d\left\langle {V,\omega } \right\rangle \;\notag\end{equation}
+    \begin{equation} =  - d\left( {{X^1}du} \right) - d\left( {{X^2}dw} \right) + d\left( {{V^1}dt} \right) + d\left( {Udx} \right)\notag\end{equation}
+
+Expanding:
+    \begin{equation} - d\left( {{X^1}du} \right) =  - d{X^1} \wedge du =  - {\partial _x}{X^1}dx \wedge du - {\partial _t}{X^1}dt \wedge du - {\partial _v}{X^1}dv \wedge du - {\partial _w}{X^1}dw \wedge du\notag\end{equation}
+    \begin{equation} - d\left( {{X^2}dw} \right) =  - d{X^2} \wedge dw =  - {\partial _x}{X^2}dx \wedge dw - {\partial _t}{X^2}dt \wedge dw - {\partial _u}{X^2}du \wedge dw - {\partial _v}{X^2}dv \wedge dw\notag\end{equation}
+    \begin{equation}\;\;\;d\left( {{V^1}dt} \right) = d{V^1} \wedge dt = {\partial _x}{V^1}dx \wedge dt + {\partial _u}{V^1}du \wedge dt + {\partial _w}{V^1}dw \wedge dt + {\partial _v}{V^1}dv \wedge dt\notag\end{equation}
+    \begin{equation}\;\;\;d\left( {Udx} \right) = dU \wedge dx = {\partial _t}Udt \wedge dx + {\partial _u}Udu \wedge dx + {\partial _w}Udw \wedge dx + {\partial _v}Udv \wedge dx\notag\end{equation}
+
+Then
+    \begin{equation} LHS =  - {\partial _x}{X^1}dx \wedge du - {\partial _t}{X^1}dt \wedge du - {\partial _v}{X^1}dv \wedge du - {\partial _w}{X^1}dw \wedge du - {\partial _x}{X^2}dx \wedge dw - {\partial _t}{X^2}dt \wedge dw\notag\end{equation}
+    \begin{equation} - {\partial _u}{X^2}du \wedge dw - {\partial _v}{X^2}dv \wedge dw + {\partial _x}{V^1}dx \wedge dt + {\partial _u}{V^1}du \wedge dt + {\partial _w}{V^1}dw \wedge dt\notag\end{equation}
+    \begin{equation} + {\partial _v}{V^1}dv \wedge dt + {\partial _t}Udt \wedge dx + {\partial _u}Udu \wedge dx + {\partial _w}Udw \wedge dx + {\partial _v}Udv \wedge dx\notag\end{equation}
+
+Reorganize
+    \begin{equation} LHS =  + {\partial _x}{X^1}du \wedge dx + {\partial _u}Udu \wedge dx + {\partial _t}{X^1}du \wedge dt + {\partial _u}{V^1}du \wedge dt + {\partial _v}{X^1}du \wedge dv + {\partial _w}{X^1}du \wedge dw\notag\end{equation}
+    \begin{equation} - {\partial _u}{X^2}du \wedge dw - {\partial _x}{X^2}dx \wedge dw - {\partial _t}{X^2}dt \wedge dw + {\partial _v}{X^2}dw \wedge dv + {\partial _x}{V^1}dx \wedge dt\notag\end{equation}
+    \begin{equation} - {\partial _w}{V^1}dt \wedge dw - {\partial _v}{V^1}dt \wedge dv - {\partial _t}Udx \wedge dt - {\partial _w}Udx \wedge dw - {\partial _v}Udx \wedge dv\notag\end{equation}
+
+We need to enable matching of form coefficients on both the left and right hand sides of the expanded equation \eqref{LVI}. On the $RHS$ we have the form $\sigma $ that so far does not appear on the <em>LHS</em>.  It would seem we could substitute $\sigma  = du - wdx - vdt$ on the $RHS$ or $du = \sigma  + wdx + vdt$ on the $LHS$.  Suhubi drives us to the latter without comment.  The student may wish to try the former, but we will go with Suhubi here.
+
+Substitute into the $LHS$ everywhere $du = \sigma  + wdx + vdt\;$and collect like terms
+    \begin{equation}LHS = \left( {{\partial _x}{X^1} + {\partial _u}U} \right)\left( {\sigma  + wdx + vdt\;} \right) \wedge dx + \left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right)\left( {\sigma  + wdx + vdt\;} \right) \wedge dt\notag\end{equation}
+    \begin{equation} + {\partial _v}{X^1}\left( {\sigma  + wdx + vdt\;} \right) \wedge dv + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)\left( {\sigma  + wdx + vdt\;} \right) \wedge dw - {\partial _x}{X^2}dx \wedge dw\notag\end{equation}
+    \begin{equation} - {\partial _t}{X^2}dt \wedge dw + {\partial _v}{X^2}dw \wedge dv + {\partial _x}{V^1}dx \wedge dt - {\partial _w}{V^1}dt \wedge dw - {\partial _v}{V^1}dt \wedge dv\notag\end{equation}
+    \begin{equation} - {\partial _t}Udx \wedge dt - {\partial _w}Udx \wedge dw - {\partial _v}Udx \wedge dv\notag\end{equation}
+
+First match terms on the $LHS$ with those on the $RHS$ containing 
+    $\sigma  \wedge $:
+    \begin{equation}\left( {{\partial _x}{X^1} + {\partial _u}U} \right)dx + \left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right)dt + {\partial _v}{X^1}dv + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)dw =  - \Gamma \tag{a}\label{a}\end{equation}
+
+This leaves:
+    \begin{equation}LHS = \left( {{\partial _x}{X^1} + {\partial _u}U} \right)\left( {vdt\;} \right) \wedge dx + \left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right)\left( {wdx} \right) \wedge dt + {\partial _v}{X^1}\left( {wdx + vdt\;} \right) \wedge dv\notag\end{equation}
+    \begin{equation} + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)\left( {wdx + vdt\;} \right) \wedge dw - {\partial _x}{X^2}dx \wedge dw - {\partial _t}{X^2}dt \wedge dw + {\partial _v}{X^2}dw \wedge dv\notag\end{equation}
+    \begin{equation} + {\partial _x}{V^1}dx \wedge dt - {\partial _w}{V^1}dt \wedge dw - {\partial _v}{V^1}dt \wedge dv - {\partial _t}Udx \wedge dt - {\partial _w}Udx \wedge dw - {\partial _v}Udx \wedge dv\notag\end{equation}
+    \begin{equation}RHS =  - \lambda v\mu  - \Lambda dw \wedge dx + \lambda dw \wedge dt - \Lambda dv \wedge dt\notag\end{equation}
+    
+Carry on the matching process with the other 2-forms on both sides to find the remaining determining equations (DEs).
+
+<br><br>
+<!-- Accordian -->
+  <button class="accordion"><strong>Matching Process</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+
+$\mu  = dx \wedge dt$:
+    \begin{equation} - v\left( {{\partial _x}{X^1} + {\partial _u}U} \right) + w\left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right) + \left( {{\partial _x}{V^1} - {\partial _t}U} \right) =  - \lambda v\tag{b}\label{b}\end{equation}
+
+This leaves:
+
+\begin{equation}LHS = {\partial _v}{X^1}\left( {wdx + vdt\;} \right) \wedge dv + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)\left( {wdx + vdt\;} \right) \wedge dw - {\partial _x}{X^2}dx \wedge dw - {\partial _t}{X^2}dt \wedge dw\notag\end{equation}
+
+\begin{equation} + {\partial _v}{X^2}dw \wedge dv - {\partial _w}{V^1}dt \wedge dw - {\partial _v}{V^1}dt \wedge dv - {\partial _w}Udx \wedge dw - {\partial _v}Udx \wedge dv\notag\end{equation}
+
+\begin{equation}RHS = \Lambda dx \wedge dw - \lambda dt \wedge dw + \Lambda dt \wedge dv\notag\end{equation}
+    
+$dx \wedge dw$:
+\begin{equation}w\left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right) - {\partial _x}{X^2} - {\partial _w}U = \Lambda \tag{c}\label{c}\end{equation}
+    
+\begin{equation}LHS = {\partial _v}{X^1}\left( {wdx + vdt\;} \right) \wedge dv + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)\left( {vdt\;} \right) \wedge dw - {\partial _t}{X^2}dt \wedge dw + {\partial _v}{X^2}dw \wedge dv\notag\end{equation}
+
+\begin{equation} - {\partial _w}{V^1}dt \wedge dw - {\partial _v}{V^1}dt \wedge dv - {\partial _v}Udx \wedge dv\notag\end{equation}
+
+\begin{equation}RHS =  - \lambda dt \wedge dw + \Lambda dt \wedge dv\notag\end{equation}
+
+$dt \wedge dw$:
+\begin{equation}v\left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right) - {\partial _t}{X^2} - {\partial _w}{V^1} =  - \lambda \tag{d}\label{d}\end{equation}
+
+\begin{equation}LHS = {\partial _v}{X^1}\left( {wdx + vdt\;} \right) \wedge dv + {\partial _v}{X^2}dw \wedge dv - {\partial _v}{V^1}dt \wedge dv - {\partial _v}Udx \wedge dv\notag\end{equation}
+\begin{equation}RHS = \Lambda dt \wedge dv\notag\end{equation}
+
+$dt \wedge dv$:
+\begin{equation}v{\partial _v}{X^1} - {\partial _v}{V^1} = \Lambda \tag{e}\label{e}\end{equation}
+
+\begin{equation}LHS = {\partial _v}{X^1}\left( {wdx} \right) \wedge dv + {\partial _v}{X^2}dw \wedge dv - {\partial _v}Udx \wedge dv\notag\end{equation}
+
+\begin{equation}RHS = 0\notag\end{equation}
+
+$dx \wedge dv$:
+\begin{equation}w{\partial _v}{X^1} - {\partial _v}U = 0\tag{f}\label{f}\end{equation}
+
+$dw \wedge dv$:
+    \begin{equation}{\partial _v}{X^2} = 0\tag{g}\label{g}\end{equation}
+
+  </p>
+  </div> 
+<!--end accordian -->
+<br><br>
+Here are the resulting DEs:
+
+\begin{equation}\left( {{\partial _x}{X^1} + {\partial _u}U} \right)dx + \left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right)dt + {\partial _v}{X^1}dv + \left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right)dw =  - \Gamma \tag{\ref{a}}\end{equation}
+
+\begin{equation} - v\left( {{\partial _x}{X^1} + {\partial _u}U} \right) + w\left( {{\partial _t}{X^1} + {\partial _u}{V^1}} \right) + \left( {{\partial _x}{V^1} - {\partial _t}U} \right) =  - \lambda v\tag{\ref{b}}\end{equation}
+
+\begin{equation}w\left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right) - {\partial _x}{X^2} - {\partial _w}U = \Lambda \tag{\ref{c}}\end{equation}
+
+\begin{equation}v\left( {{\partial _w}{X^1} - {\partial _u}{X^2}} \right) - {\partial _t}{X^2} - {\partial _w}{V^1} =  - \lambda \tag{\ref{d}}\end{equation}
+
+\begin{equation}v{\partial _v}{X^1} - {\partial _v}{V^1} = \Lambda \tag{\ref{e}}\end{equation}
+
+\begin{equation}w{\partial _v}{X^1} - {\partial _v}U = 0\tag{\ref{f}}\end{equation}
+
+\begin{equation}{\partial _v}{X^2} = 0\tag{\ref{g}}\end{equation}
+
+The $\Gamma$ equation is not useful. Let's replace all the isovector coefficients with their representations in terms of the universal function using \eqref{UF}.
+
+    The relevant DEs become:
+    \begin{equation} - v\left( { - {F_{xw}} + {F_u} - w{F_{uw}} - v{F_{vu}}} \right) + w\left( { - {F_{tw}} + {F_{xu}} + w{F_{uu}}} \right) + \left( {{F_{xx}} + w{F_{xu}} - {F_t} + w{F_{tw}} + v{F_{tv}}} \right) =  - \lambda v\notag\end{equation}
+    \begin{equation}w\left( { - {F_{ww}} + {F_{uv}}} \right) + {F_{xv}} - {\partial _w}\left( {F - w{F_w} - v{F_v}} \right) = \Lambda \notag\end{equation}
+    \begin{equation}v\left( { - {F_{ww}} + {F_{uv}}} \right) + {F_{tv}} - {\partial _w}\left( {{F_x} + w{F_u}} \right) =  - \lambda \notag\end{equation}
+    \begin{equation} - v{F_{vw}} - {\partial _v}\left( {{F_x} + w{F_u}} \right) = \Lambda \notag\end{equation}
+    \begin{equation} - w{F_{vw}} - {\partial _v}\left( {F - w{F_w} - v{F_v}} \right) = 0\notag\end{equation}
+    \begin{equation} - {F_{vv}} = 0\notag\end{equation}
+    Reducing further:
+    \begin{equation} - v\left( { - {F_{xw}} + {F_u} - w{F_{uw}} - v{F_{vu}}} \right) + w\left( { - {F_{tw}} + {F_{xu}} + w{F_{uu}}} \right) + \left( {{F_{xx}} + w{F_{xu}} - {F_t} + w{F_{tw}} + v{F_{tv}}} \right) =  - \lambda v\notag\end{equation}
+    \begin{equation}w\left( { - {F_{ww}} + {F_{uv}}} \right) + {F_{xv}} - \left( {{F_w} - {F_w} - w{F_{ww}} - v{F_{wv}}} \right) = \Lambda \notag\end{equation}
+    \begin{equation}v\left( { - {F_{ww}} + {F_{uv}}} \right) + {F_{tv}} - \left( {{F_{xw}} + {F_u} + w{F_{uw}}} \right) =  - \lambda \notag\end{equation}
+    \begin{equation} - v{F_{vw}} - \left( {{F_{xv}} + w{F_{uv}}} \right) = \Lambda \notag\end{equation}
+    \begin{equation} - w{F_{vw}} - \left( {{F_v} - w{F_{vw}} - {F_v} - v{F_{vv}}} \right) = 0\notag\end{equation}
+    \begin{equation} - {F_{vv}} = 0\notag\end{equation}
+
+We obtain (rearranging):
+    \begin{equation}{F_{xx}} - {F_t} + 2w{F_{xu}} + {w^2}{F_{uu}} + wv{F_{uw}} + {v^2}{F_{vu}} + v{F_{tv}} + v{F_{xw}} - v{F_u} =  - \lambda v\tag{b'}\label{b'}\end{equation}
+    \begin{equation}{F_{tv}} - {F_{xw}} - {F_u} - w{F_{uw}} - v{F_{ww}} + v{F_{uv}} =  - \lambda \tag{c'}\label{c'}\end{equation}
+    \begin{equation}{F_{xv}} + w{F_{uv}} + v{F_{wv}} = \Lambda \tag{d'}\label{d'}\end{equation}
+    \begin{equation}v{F_{vw}} + {F_{xv}} + w{F_{uv}} =  - \Lambda \tag{e'}\label{e'}\end{equation}
+    \begin{equation}v{F_{vv}} = 0\tag{f'}\label{f'}\end{equation}
+    \begin{equation}{F_{vv}} = 0\tag{g'}\label{g'}\end{equation}
+
+We can ignore \eqref{g'} which is redundant to \eqref{f'}, which tell us $F$ is at most linear in $v$:  
+    \begin{equation}F = vf\left( {x,t,u,w} \right) + g\left( {x,t,u,w} \right)\notag\end{equation}
+
+Next combine \eqref{d'} and \eqref{e'}, yielding
+    \begin{equation}2w{F_{uv}} + 2v{F_{wv}} + 2{F_{xv}} = 0\notag\end{equation}
+    so
+    \begin{equation}w{f_u} + v{f_w} + {f_x} = 0\notag\end{equation}
+    Now all $v$ dependencies are exhibited, so we have a monomial in $v$, driving $\partial f/\partial w = 0$.  The other terms then also must vanish individually.
+    \begin{equation}{f_w} = {f_u} = {f_x} = 0\notag\end{equation}
+    Thus
+    \begin{equation}f\left( {x,t,u,{v_1}} \right) = f\left( t \right)\notag\end{equation}
+    so
+    \begin{equation}F = vf\left( t \right) + g\left( {x,t,u,w} \right)\notag\end{equation}
+
+Next combine \eqref{b'} and \eqref{c'}, eliminating $\lambda$:
+
+    \begin{equation}{F_{xx}} - {F_t} + 2w{F_{xu}} + {w^2}{F_{uu}} + 2wv{F_{uw}} + 2v{F_{xw}} + {v^2}{F_{ww}} = 0\notag\end{equation}
+    Substitute the form of $F$:
+    \begin{equation}{g_{xx}} - v{f_t} - {g_t} + 2w{g_{xu}} + {w^2}{g_{uu}} + 2wv{g_{uw}} + 2v{g_{xw}} + {v^2}{g_{ww}} = 0\notag\end{equation}
+    All $v$-dependence is exhibited.  Pull out monomials in powers of $v$:
+    <br><br>
+    ${v^2}$:
+    \begin{equation}{g_{ww}} = 0\notag\end{equation}
+    ${v^1}$:
+    \begin{equation}2{g_{xw}} - {f_t} = 0\notag\end{equation}
+    ${v^0}$:
+    \begin{equation}{g_{xx}} - {g_t} + 2w{g_{xu}} + {w^2}{g_{uu}} = 0\notag\end{equation}
+    This leaves
+    \begin{equation}2wv{g_{uw}} = 0\notag\end{equation}
+    The first tells us $g$ is linear in $w$:
+    \begin{equation}\;g = \alpha \left( {x,t,u} \right)w + \beta \left( {x,t,u} \right)\notag\end{equation}
+    Then the last yields:
+    \begin{equation}{g_{uw}} = 0 = {\alpha _u} \to \alpha  = \alpha \left( {x,t} \right)\notag\end{equation}
+    Updating the form of $g$:
+    \begin{equation}g = \alpha \left( {x,t} \right)w + \beta \left( {x,t,u} \right)\notag\end{equation}
+    Insert this into the third:
+    \begin{equation}w{\alpha _{xx}} + {\beta _{xx}} - w{\alpha _t} - {\beta _t} + 2w{\beta _{xu}} + {w^2}{\beta _{uu}} = 0\notag\end{equation}
+    All $w$-dependence is explicit, so
+    <br><br>
+    ${w^2}$:
+    \begin{equation}{\beta _{uu}} = 0 \to \beta \left( {x,t,u} \right) = \lambda \left( {x,t} \right)u + \mu \left( {x,t} \right)\notag\end{equation}
+    ${w^0}$:
+    \begin{equation}{\beta _{xx}} - {\beta _t} = 0\notag\end{equation}
+    which requires
+    \begin{equation}{\lambda _{xx}} - {\lambda _t} = 0\notag\end{equation}
+    and
+    \begin{equation}{\mu _{xx}} - {\mu _t} = 0\notag\end{equation}
+    ${w^1}$:
+    \begin{equation}{\alpha _{xx}} - {\alpha _t} + 2{\beta _{xu}} = 0\notag\end{equation}
+    so
+    \begin{equation}{\alpha _{xx}} - {\alpha _t} + 2{\lambda _x} = 0\notag\end{equation}
+    We still have not used the linear <em>v</em>-monomial from above:
+    \begin{equation}2{g_{xw}} - {f_t} = 0\notag\end{equation}
+    Inserting the updated form of $g$:
+    \begin{equation}2{\alpha _x} - {f_t} = 0\notag\end{equation}
+    meaning $\alpha $ is linear in $x$:
+    \begin{equation}\alpha  = A\left( t \right)x + \gamma \left( t \right)\notag\end{equation}
+    where
+    \begin{equation}2A\left( t \right) = f'\notag\end{equation}
+    Our ${w^1}$ monomial becomes
+    \begin{equation}0 - xA' - \gamma ' + 2{\lambda _x} = 0\notag\end{equation}
+    \begin{equation} - \frac{1}{2}xf'' - \gamma ' + 2\frac{{\partial \lambda }}{{\partial x}} = 0\notag\end{equation}
+    Integrate wrt $x$:
+    \begin{equation} - \frac{1}{4}{x^2}f'' - \gamma 'x + 2\lambda \left( {x,t} \right) - 2\delta \left( t \right) = 0\notag\end{equation}
+    where the integration &ldquo;constant&rdquo; is defined knowing where we are heading.  So
+    \begin{equation}\lambda  = \frac{1}{8}f''\left( t \right){x^2} + \;\frac{1}{2}\gamma '\left( t \right)x + \delta \left( t \right)\notag\end{equation}
+
+Suhubi suggests inserting this into
+    \begin{equation}{\lambda _{xx}} - {\lambda _t} = 0\notag\end{equation}
+    \begin{equation}\frac{1}{4}f''\left( t \right) - \frac{1}{8}f'''\left( t \right){x^2} - \frac{1}{2}\gamma ''\left( t \right)x - \delta '\left( t \right) = 0\notag\end{equation}
+
+Now all $x$-dependence is exhibited, so we can set up three more monomials:
+<br><br>
+${x^2}$:
+    \begin{equation}f'''\left( t \right) = 0 \to f = 4{c_1}{t^2} + 2{c_2}t + {c_3}\notag\end{equation}
+${x^1}$:
+    \begin{equation}\gamma ''\left( t \right) = 0 \to \gamma  = 2{c_4}t + {c_5}\notag\end{equation}
+${x^0}$:
+    \begin{equation}\delta '\left( t \right) - \frac{1}{4}f''\left( t \right) = \delta '\left( t \right) - 2{c_1} = 0 \to \delta \left( t \right) = 2{c_1}t + {c_6}\notag\end{equation}
+
+using Suhubi's constants and associated prefactors.  Collecting everything we can write:
+    \begin{equation}F = fv + g = fv + \alpha w + \beta \notag\end{equation}
+    \begin{equation}f = 4{c_1}{t^2} + 2{c_2}t + {c_3}\notag\end{equation}
+    \begin{equation}\alpha  = \frac{1}{2}f'\left( t \right)x + \gamma \left( t \right) = 4{c_1}tx + 2{c_2} + 2{c_4}t + {c_5}\notag\end{equation}
+    \begin{equation}\lambda  = \frac{1}{8}f''\left( t \right){x^2} + \;\frac{1}{2}\gamma '\left( t \right)x + \delta \left( t \right) = {c_1}{x^2} + {c_4}x + 2{c_1}t + {c_6} \equiv {\lambda _H}\notag\end{equation}
+    \begin{equation}\beta \left( {x,t,u} \right) = {\lambda _H}u + {\mu _H}\notag\end{equation}
+
+Finally
+    \begin{equation}F = \left( {4{c_1}{t^2} + 2{c_2}t + {c_3}} \right)v + \left( {4{c_1}tx + {c_2}x + 2{c_4}t + {c_5}} \right)w + \left( {{c_1}{x^2} + {c_4}x + 2{c_1}t + {c_6}} \right)u + {\mu _H}\notag\end{equation}
+
+We then arriving at the familiar isovectors by applying \eqref{UF}:
+    \begin{equation}{X^1} =  - \left( {4{c_1}tx + {c_2}x + 2{c_4}t + {c_5}} \right)\notag\end{equation}
+    \begin{equation}{X^2} =  - \left( {4{c_1}{t^2} + 2{c_2}t + {c_3}} \right)\notag\end{equation}
+    \begin{equation}U = \left( {{c_1}{x^2} + {c_4}x + 2{c_1}t + {c_6}} \right)u + {\mu _H}\notag\end{equation}
+    \begin{equation}{V^1} = \frac{{\partial {\mu _H}}}{{\partial x}} + \left( {2{c_1}x + {c_4}} \right)u + {v_1}\left( {{c_1}{x^2} + {c_4}x + 6{c_1}t + {c_6} + {c_2}} \right)\notag\end{equation}
+    \begin{equation}{V^2} = \frac{{\partial {\mu _H}}}{{\partial t}} + 2{c_1}u + {v_1}\left( {4{c_1}x + 2{c_4}} \right) + {v_2}\left( {{c_1}{x^2} + {c_4}x + 10{c_1}t + 2{c_2} + {c_6}} \right)\notag\end{equation}
+
+Upon reflection, it seems then that one needs to express as much of the $LHS$ of \eqref{LVI} explicitly in terms of forms that will appear on the $RHS$ to insure stability of the <em>fundamental ideal</em> under transport by the isovector we seek.
+<br><br>
+
+<!-- Accordian 
+
+  <button class="accordion"><strong>Solution</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+
+  </p>
+  </div> 
+
+end accordian -->
+
+</div> 														<!-- END MJ-rendering--> 
+      
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Appendix 3.4B</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 

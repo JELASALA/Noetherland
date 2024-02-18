@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appendix 3.4A</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 3; const S = 0; const SS = 0; 
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//					tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+						tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css"> <!--Use this link if working globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 3 - Exterior Differential Systems for Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+
+<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+
+  <p align="center"><strong>Appendix 3.4A</strong></p>
+  <p align="center"><strong>Heat Equation Isovectors via Harrison, et. al., Proces</strong></p>
+  <p>From Section 3. 4.1, we have for the $LHS\left(A\right)= RHS\left( A \right)$ equation:</p>
+
+\begin{equation}LHS\left( A \right) =  - wdX \wedge dt - dT \wedge du + wdT \wedge dx + dU \wedge dt - Wdx \wedge dt\notag\end{equation}
+    \begin{equation}RHS\left( A \right) = \Lambda _1^1du \wedge dt - \Lambda _1^1wdx \wedge dt + \Lambda _2^1dx \wedge du + \Lambda _2^1dt \wedge dw\notag\end{equation}
+
+where the coefficients appearing in the <em>RHS</em> must be zero-forms (functions) to match the degree from the LHS.  For simplicity let&rsquo;s identify $\Lambda _1^1 = a\left( {x,t} \right)$ and $\Lambda _2^1 = b\left( {x,t} \right)$.
+
+\begin{equation}LHS\left( A \right) =  - wdX \wedge dt - dT \wedge du + wdT \wedge dx + dU \wedge dt - Wdx \wedge dt\notag\end{equation}
+
+\begin{equation}RHS\left( A \right) = {\text{a}}du \wedge dt - {\text{a}}wdx \wedge dt + {\text{b}}dx \wedge du + bdt \wedge dw\notag\end{equation}
+
+Repeating with the $LHS\left(B\right)= RHS\left( B \right)$  we find:
+
+\begin{equation}LHS\left( B \right) = dT \wedge dw + dX \wedge du - dU \wedge dx - dW \wedge dt\notag\end{equation}
+
+\begin{equation}RHS\left( B \right) = \Lambda _1^2du \wedge dt - \Lambda _1^2wdx \wedge dt + \Lambda _2^2dx \wedge du + \Lambda _2^2dt \wedge dw\notag\end{equation}
+
+We can identify and define $\Lambda _1^2 = A\left( {x,t} \right)$ and $\Lambda _2^2 = B\left( {x,t} \right)$ as they must be zero-forms:
+
+\begin{equation}LHS\left( B \right) = dT \wedge dw + dX \wedge du - dU \wedge dx - dW \wedge dt\notag\end{equation}
+
+\begin{equation}RHS\left( B \right) = {\text{A}}du \wedge dt - Awdx \wedge dt + {\text{B}}dx \wedge du + Bdt \wedge dw\notag\end{equation}
+    
+Beginning with $LHS(A)$we need to insert the full differentials of the unknown isovector coefficients, except for terms that wedge out to zero:.
+
+\begin{equation}\begin{split}LHS\left( A \right) = & - w\left( {{\partial _x}Xdx + {\partial _u}Xdu + {\partial _w}Xdw} \right) \wedge dt - \left( {{\partial _x}Tdx + {\partial _t}Tdt + {\partial _w}Tdw} \right) \wedge du \\ 
+ & + w\left( {{\partial _t}Tdt + {\partial _u}Tdu + {\partial _w}Tdw} \right) \wedge dx \left( {{\partial _x}Udx + {\partial _u}Udu + {\partial _w}Udw} \right) \wedge dt - Wdx \wedge dt\end{split}\notag\end{equation}
+    
+  
+Equating this to the $RHS(A)$ we can match coefficients of each (independent) 2-form elements we obtain some determining equations:
+
+\begin{equation} \begin{split}
+    dx\wedge dt:&  - w{\partial _x}X - w{\partial _t}T + {\partial _x}U - W = - aw\\
+    du \wedge dt:& - w{\partial _u}X + {\partial _t}T + {\partial _u}U = a\\
+    dw \wedge dt:& - w{\partial _w}X + {\partial _w}U = - b\\ 
+    du \wedge dx:& + {\partial _x}T + w{\partial _u}T = - b\\ 
+    dw \wedge dx:& + w{\partial _w}T = 0\\
+    dw \wedge du:& - {\partial _w}T = 0
+    \end{split}
+    \notag\end{equation}
+    
+<p>One conclusion we can immediately draw is that at most $T = T\left( {x,t,u} \right)$.  Moving to the second equation:</p>
+  <p> \begin{equation}LHS\left( B \right) = dT \wedge dw + dX \wedge du - dU \wedge dx - dW \wedge dt\notag\end{equation}</p>
+  <p>Expanding as above:</p>
+
+
+\begin{equation}\begin{split}LHS\left( B \right) = & \text{ }\text{ }\left( {{\partial _x}Tdx + {\partial _t}Tdt + {\partial _u}Tdu} \right) \wedge dw + \left( {{\partial _x}Xdx + {\partial _t}Xdt + {\partial _w}Xdw} \right) \wedge du\\
+	& - \left( {{\partial _t}Udt + {\partial _u}Udu + {\partial _w}Udw} \right) \wedge dx - \left( {{\partial _x}Wdx + {\partial _u}Wdu + {\partial _w}Wdw} \right) \wedge dt\end{split}\notag\end{equation}
+
+
+Matching coefficients with the $RHS(B)$ as above we obtain:
+  
+
+\begin{equation} \begin{split}
+    dx \wedge dt:& + {\partial _t}U - {\partial _x}W =  - Aw\\
+    du \wedge dt:& - {\partial _t}X - {\partial _u}W = A\\
+    dw \wedge dt:& - {\partial _t}T - {\partial _w}W =  - B\\
+    du \wedge dx:& - {\partial _x}X - {\partial _u}U =  - B\\
+    dw \wedge dx:& - {\partial _x}T - {\partial _w}U = 0\\
+    dw \wedge du:& - {\partial _u}T + {\partial _w}X = 0
+    \end{split}
+\notag\end{equation}
+
+  <p>Working down from the first set and eliminating the functions $a,b,A\;{\text{and}}\;B$ as we go along, we can combine them pairwise to produce the following set of determining equations:</p>
+\begin{equation}W - {\partial _x}U + w\left( {{\partial _x}X - {\partial _u}U} \right) + {w^2}{\partial _u}X = 0 \tag{a}\label{deA}\end{equation}
+\begin{equation}{\partial _x}T - {\partial _w}U + w\left( {{\partial _w}X + {\partial _u}T} \right) = 0 \tag{b}\label{deB}\end{equation}
+\begin{equation}{\partial _w}T = 0 \tag{c}\label{deC}\end{equation}
+ \begin{equation}{\partial _t}U - {\partial _x}W - w\left( {{\partial _t}X + {\partial _u}W} \right) = 0 \tag{d}\label{deD}\end{equation}
+\begin{equation}{\partial _x}X - {\partial _t}T + {\partial _u}U - {\partial _w}W = 0 \tag{e}\label{deE}\end{equation}
+\begin{equation}{\partial _x}T + {\partial _w}U = 0 \tag{f}\label{deF}\end{equation}
+\begin{equation}{\partial _u}T - {\partial _w}X = 0 \tag{g}\label{deG}\end{equation}
+
+
+  <p>Begin based loosely on general guidance by Harrison.  Take ${\partial _w}$ of \eqref{deF} and \eqref{deG} equations and apply \eqref{deC}:</p>
+  <p> \begin{equation}{\partial _{xw}}T + {\partial _{ww}}U = 0 \to U = {c_1}\left( {x,t,u} \right) + w{c_2}\left( {x,t,u} \right)\notag\end{equation}
+    \begin{equation}{\partial _{uw}}T - {\partial _{ww}}X = 0 \to X = {b_1}\left( {x,t,u} \right) + w{b_2}\left( {x,t,u} \right)\notag\end{equation}
+    
+    Look at \eqref{deB}:
+    \begin{equation} - {\partial _x}T + {\partial _w}U - w\left( {{\partial _w}X + {\partial _u}T} \right) = 0\notag\end{equation}
+    
+    Take$\;{\partial _w}$:
+    \begin{equation} - {\partial _{xw}}T + {\partial _{ww}}U - \left( {{\partial _w}X + {\partial _u}T} \right) - w\left( {{\partial _{ww}}X + {\partial _{uw}}T} \right) = 0\notag\end{equation}
+    \begin{equation} - {\partial _{xw}}T + {\partial _{ww}}U - \left( {{\partial _w}X + {\partial _u}T} \right) - w\left( {{\partial _{ww}}X + {\partial _{uw}}T} \right) = 0{\text{\;}}\notag\end{equation}
+    We obtain
+                          \begin{equation}{\partial _w}X + {\partial _u}T = 0\notag\end{equation}
+    But \eqref{deG} tells us
+                         \begin{equation} - {\partial _u}T + {\partial _w}X = 0\notag\end{equation}
+    so summing:
+                             \begin{equation}{\partial _w}X = 0 \to {b_2} = 0\notag\end{equation}
+    differencing:
+                 \begin{equation}{\partial _u}T = 0 \to T = T\left( {x,t} \right)\notag\end{equation}
+    Apply these to \eqref{deB}:
+    \begin{equation} - {\partial _x}T + {\partial _w}U - w\left( {{\partial _w}X + {\partial _u}T} \right) = 0\notag\end{equation}
+    producing
+                         \begin{equation} - {\partial _x}T + {\partial _w}U = 0\notag\end{equation}
+    But also \eqref{deF}:
+                          \begin{equation}{\partial _x}T + {\partial _w}U = 0\notag\end{equation}
+    so we also find    </p>
+\begin{equation}{\partial _w}U = 0 \to {c_2} = 0\notag\end{equation}
+and
+\begin{equation}{\partial _x}T = 0 \to T = T\left( t \right)\notag\end{equation}
+
+Collecting our learnings:
+\begin{equation}T = T\left( t \right)\notag\end{equation}
+\begin{equation}X = {b_1}\left( {x,t,u} \right)\notag\end{equation}
+\begin{equation}U = {c_1}\left( {x,t,u} \right)\notag\end{equation}
+
+Applying learnings into our DEs leaves only three:
+
+\begin{equation} - W + {\partial _x}U - w\left( {{\partial _x}X - {\partial _u}U} \right) - {w^2}{\partial _u}X = 0\tag{\ref{deA}}\end{equation}
+
+\begin{equation} - {\partial _t}U + {\partial _x}W + w\left( {{\partial _t}X + {\partial _u}W} \right) = 0\tag{\ref{deD}}\end{equation}
+
+\begin{equation}{\partial _x}X - {\partial _t}T + {\partial _u}U - {\partial _w}W = 0\tag{\ref{deE}}\end{equation}
+
+<p>Inserting our functional knowledge of the vector coefficients yields</p>
+
+\begin{equation} - W + {\partial _x}{c_1} - w\left( {{\partial _x}{b_1} - {\partial _u}{c_1}} \right) - {w^2}{\partial _u}{b_1} = 0\tag{\ref{deA}}\end{equation}
+
+    \begin{equation} - {\partial _t}{c_1} + {\partial _x}W + w\left( {{\partial _t}{b_1} + {\partial _u}W} \right) = 0\tag{\ref{deD}}\end{equation}
+    
+    \begin{equation}{\partial _x}{b_1} - {\partial _t}T + {\partial _u}{c_1} - {\partial _w}W = 0\tag{\ref{deE}}\end{equation}
+    
+  Now \eqref{deE} tells us $W$ must be at most linear in $w$, since all other terms are independent of $w$.  Let
+  \begin{equation}W = {d_1}\left( {x,t,u} \right) + w{d_2}\left( {x,t,u} \right)\notag\end{equation}
+Insert in \eqref{deA}
+    \begin{equation} - {d_1} - w{d_2} + {\partial _x}{c_1} - w\left( {{\partial _x}{b_1} - {\partial _u}{c_1}} \right) - {w^2}{\partial _u}{b_1} = 0\tag{\ref{deA}}\end{equation}
+    
+  We can identify &ldquo;monomials&rdquo; in powers of <em>w</em>:
+    \begin{equation} - {d_1} + {\partial _x}{c_1} = 0\notag\end{equation}
+    \begin{equation} - {d_2} - \left( {{\partial _x}{b_1} - {\partial _u}{c_1}} \right) = 0\notag\end{equation}
+    \begin{equation}{\partial _u}{b_1} = 0 \to {b_1} = {b_1}\left( {x,t} \right)\notag\end{equation}
+    
+    Look at \eqref{deD} 
+    \begin{equation} - {\partial _t}{c_1} + {\partial _x}\left( {{d_1} + w{d_2}} \right) + w\left( {{\partial _t}{b_1} + {\partial _u}\left( {{d_1} + w{d_2}} \right)} \right) = 0\notag\end{equation}
+    
+  We can identify more monomials in powers of <em>w</em>:
+   \begin{equation} - {\partial _t}{c_1} + {\partial _x}{d_1} = 0\notag\end{equation}
+   \begin{equation}{\partial _x}{d_2} + {\partial _t}{b_1} + {\partial _u}{d_1} = 0\notag\end{equation}
+   \begin{equation}{\partial _u}{d_2} = 0 \to {d_2} = {d_2}\left( {x,t} \right)\notag\end{equation}
+   
+  <p>Relook at \eqref{deE} with the functional form of <em>W</em> inserted:</p>
+  \begin{equation}{\partial _x}{b_1} - {\partial _t}{A_1} + {\partial _u}{c_1} - {d_2} = 0\notag\end{equation}
+  
+  <p>We now collect &ldquo;second generation&rdquo; DEs, of which there are five now, having exploited linear independence of coefficients of various powers of &ldquo;independent&rdquo; variables (<em>w</em> used so far), a common practice for determining equations but far less ambiguous than prolongations in the Vector Approach which give us <em>derivatives</em> of the dependent variable to rely on.  Here derivatives are considered independent (<em>w</em> in this case).</p>
+  
+    \begin{equation} - {d_1} + {\partial _x}{c_1} = 0 \tag{i}\label{de1}\end{equation}
+    \begin{equation} - {d_2} - \left( {{\partial _x}{b_1} - {\partial _u}{c_1}} \right) = 0\tag{ii}\label{de2}\end{equation}
+    \begin{equation} - {\partial _t}{c_1} + {\partial _x}{d_1} = 0\tag{iii}\label{de3}\end{equation} 
+    \begin{equation}{\partial _x}{d_2} + {\partial _t}{b_1} + {\partial _u}{d_1} = 0\tag{iv}\label{de4}\end{equation} 
+    \begin{equation}{\partial _x}{b_1} - {\partial _t}T + {\partial _u}{c_1} - {d_2} = 0\tag{v}\label{de5}\end{equation} 
+    
+and we have
+    \begin{equation}T = T\left( t \right)\notag\end{equation}
+    \begin{equation}X = {b_1}\left( {x,t} \right)\notag\end{equation}
+    \begin{equation}U = {c_1}\left( {x,t,u} \right)\notag\end{equation}
+    \begin{equation}W = {d_1}\left( {x,t,u} \right) + w{d_2}\left( {x,t} \right)\notag\end{equation}
+    
+  Note \eqref{de5} contains only dependencies on $\left( {x,t} \right)$ except for the third term, requiring ${c_1}$ to have this functional form:
+  
+    \begin{equation}{c_1}\left( {x,t,u} \right) = {c_{11}}\left( {x,t} \right) + u{c_{12}}\left( {x,t} \right)\notag\end{equation}
+    
+    giving
+    
+    \begin{equation}{\partial _x}{b_1} - {\partial _t}T + {c_{12}} - {d_2} = 0\tag{\ref{de5}}\end{equation}
+    
+    
+A similar reasoning applies to \eqref{de4}, enabling:
+\begin{equation}{d_1}\left( {x,t,u} \right) = {d_{11}}\left( {x,t} \right) + u{d_{12}}\left( {x,t} \right)\notag\end{equation}
+
+giving
+
+\begin{equation}{\partial _x}{d_2} + {\partial _t}{b_1} + {d_{12}} = 0\tag{\ref{de4}}\end{equation}
+
+Insert our new form for ${c_1}$ and ${d_1}$ into our DEs:
+
+\begin{equation}{d_{11}}\left( {x,t} \right) - u{d_{12}}\left( {x,t} \right) + {\partial _x}{c_{11}} + u{\partial _x}{c_{12}} = 0\tag{\ref{de1}}\end{equation}
+\begin{equation} - {d_2} - \left( {{\partial _x}{b_1} - {c_{12}}} \right) = 0\tag{\ref{de2}}\end{equation}
+\begin{equation} - {\partial _t}{c_{11}} - u{\partial _t}{c_{12}} + {\partial _x}{d_{11}} + u{\partial _x}{d_{12}} = 0\tag{\ref{de3}}\end{equation} 
+\begin{equation}{\partial _x}{d_2} + {\partial _t}{b_1} + {d_{12}} = 0\tag{\ref{de4}}\end{equation} 
+\begin{equation}{\partial _x}{b_1} - {\partial _t}T + {\partial _u}{c_1} - {d_2} = 0\tag{\ref{de5}}\end{equation} 
+    
+    
+Operate on \eqref{de1} with ${\partial _x}$:
+
+\begin{equation} - {\partial _x}{d_{11}}\left( {x,t} \right) - u{\partial _x}{d_{12}}\left( {x,t} \right) + {\partial _{xx}}{c_{11}} + u{\partial _{xx}}{c_{12}} = 0\notag\end{equation}
+
+    Add this to \eqref{de3}:
+    
+ \begin{equation} - {\partial _x}{d_{11}}\left( {x,t} \right) - u{\partial _x}{d_{12}}\left( {x,t} \right) + {\partial _{xx}}{c_{11}} + u{\partial _{xx}}{c_{12}} - {\partial _t}{c_{11}} - u{\partial _t}{c_{12}} + {\partial _x}{d_{11}} + u{\partial _x}{d_{12}} = 0\notag\end{equation}
+yielding:
+    \begin{equation} - {\partial _t}{c_{11}} + {\partial _{xx}}{c_{11}} - u\left( {{\partial _t}{c_{12}} - {\partial _{xx}}{c_{12}}} \right) = 0\notag\end{equation}
+
+We may conclude that individually ${c_{11}}$ and ${c_{12}}$ obey the heat equation (but ${c_1}\left( {x,t,u} \right)$ as a whole does not necessarily).
+
+Notice in operating on \eqref{de1} with ${\partial _{\text{x}}}$ <em>we do not include a term </em>${u_x}{\partial _x}{c_{12}}$ since in jet space <em>u</em> and <em>x</em> are treated independent of each other, unlike in the Olver style prolongation process, where there is ambiguity.  Rewrite <em>U</em> now making explicit the functional forms:
+  \begin{equation}T = T\left( t \right)\notag\end{equation}
+  \begin{equation}X = {b_1}\left( {x,t} \right)\notag\end{equation}
+  \begin{equation}U = {g_H}\left( {x,t} \right) + u{h_H}\left( {x,t} \right)\notag\end{equation}
+  \begin{equation}W = {d_{11}}\left( {x,t} \right) + u{d_{12}}\left( {x,t} \right) + w{d_2}\left( {x,t} \right)\notag\end{equation}
+  
+in which the subscripts <em>H</em> remind us they obey the heat equation. Our determining equations now look like:
+
+\begin{equation} - {d_{11}} - u{d_{12}} + {\partial _x}{g_H} + u{\partial _x}{h_H} = 0\tag{\ref{de1}}\end{equation}
+\begin{equation} - {d_2} - \left( {{\partial _x}{b_1} - {h_H}} \right) = 0\tag{\ref{de2}}\end{equation}
+\begin{equation} - {\partial _t}{g_H} - u{\partial _t}{h_H} + {\partial _x}{d_{11}} + u{\partial _x}{d_{12}} = 0\tag{\ref{de3}}\end{equation} 
+\begin{equation}{\partial _x}{d_2} + {\partial _t}{b_1} + {{\text{d}}_{12}} = 0\tag{\ref{de5}}\end{equation} 
+\begin{equation}{\partial _x}{b_1} - {\partial _t}T + {h_H} - {d_2} = 0\tag{\ref{de5}}\end{equation} 
+    
+  <p>Notice the in \eqref{de1} and \eqref{de3} that contain factors of <em>u</em> must independently vanish since the other terms are explicitly independent of $u$.  So \eqref{de1} breaks into two equations:</p>
+  <p> \begin{equation} - {d_{11}} + {\partial _x}{g_H} = 0 \to {d_{11}} = {\partial _x}{g_H}\notag\end{equation}
+    \begin{equation} - {d_{12}} + {\partial _x}{h_H} = 0 \to {d_{12}} = {\partial _x}{h_H}\notag\end{equation}
+    as does \eqref{de3}:
+    \begin{equation} - {\partial _t}{g_H} + {\partial _x}{d_{11}} = 0 \to {\partial _x}{d_{11}} = {\partial _t}{g_H}\notag\end{equation}
+    \begin{equation} - {\partial _t}{h_H} + {\partial _x}{d_{12}} = 0 \to {\partial _x}{d_{12}} = {\partial _t}{h_H}\notag\end{equation}</p>
+  <p>These four relations are consistent with the definitions of ${g_H}$ and ${h_H}$.  For example, take ${\partial _x}$of the first and combine with the third:
+    \begin{equation}{\partial _x}{d_{11}} = {\partial _{xx}}{g_H} = {\partial _t}{g_H}\notag\end{equation}
+
+Recapping
+\begin{equation}T = T\left( t \right)\notag\end{equation}
+\begin{equation}X = {b_1}\left( {x,t} \right)\notag\end{equation}
+\begin{equation}U = {g_H}\left( {x,t} \right) + u{h_H}\left( {x,t} \right)\notag\end{equation}
+\begin{equation}W = {\partial _x}{g_H} + u{\partial _x}{h_H} + w{d_2}\left( {x,t} \right)\notag\end{equation}
+
+So we still have untapped these determining equations:
+\begin{equation} - {d_2} - \left( {{\partial _x}{b_1} - {h_H}} \right) = 0\tag{\ref{de2}}\end{equation}
+\begin{equation}{\partial _x}{d_2} + {\partial_t}{b_1} + {\partial_x}{h_H} = 0\tag{\ref{de4}}\end{equation}
+\begin{equation}{\partial _x}{b_1} - {\partial_t}T + {h_H} - {d_2} = 0\tag{\ref{de5}}\end{equation} 
+
+Look at some combinations.  Take ${\partial_x}$ of \eqref{de2} and use it to eliminate ${\partial_x}{h_H}$ by combining with the updated \eqref{de4}:
+\begin{equation}2{\partial _{\text{x}}}{d_2} + {\partial _{xx}}{b_1} + {\partial_t}{b_1} = 0\notag \end{equation} 
+
+Now take $\partial_x$ of \eqref{de5} and use it to eliminate ${\partial_x}{h_H}$ in \eqref{de4}:
+    \begin{equation}2{\partial _x}{d_2} + {\partial _t}{b_1} - {\partial _{xx}}{b_1} = 0\notag\end{equation}
+Subtracting these two equations yields:
+     \begin{equation}{\partial _{xx}}{b_1} = 0\notag\end{equation}
+    so
+     \begin{equation}{b_1} = xf\left( t \right) + g\left( t \right)\notag\end{equation}
+Finally, let us add \eqref{de5} to \eqref{de2}
+\begin{equation} - 2{\partial _x}{b_1} + {\partial _t}T = 0 \to {\partial _t}T = 2{\partial _x}{b_1} = 2f\left( t \right)\notag\end{equation}
+    Recapping
+     \begin{equation}T = T\left( t \right)\notag\end{equation}
+     \begin{equation}X = \frac{1}{2}x{\partial _t}T + g\left( t \right)\notag\end{equation}
+     \begin{equation}U = {g_H}\left( {x,t} \right) + u{h_H}\left( {x,t} \right)\notag\end{equation}
+    \begin{equation}W = {\partial _x}{g_H} + u{\partial _x}{h_H} + w{d_2}\left( {x,t} \right)\notag\end{equation}
+
+Our &ldquo;untapped&rdquo; three equations from above now look like
+
+\begin{equation} - {d_2} - f + {h_H} = 0\tag{\ref{de2}}\end{equation}
+\begin{equation}{\partial _x}{d_2} + x{\partial _t}f + {\partial _t}g\left( t \right) + {\partial _x}{h_H} = 0\tag{\ref{de4}}\end{equation}
+\begin{equation} - {\partial _t}T + {h_H} - {d_2} = 0\tag{\ref{de5}}\end{equation}
+
+Combining \eqref{de2}  and \eqref{de5} we find
+
+\begin{equation} {\partial _t}T=2f\notag\end{equation}
+
+Then we can finally write
+
+\begin{equation}T = T\left( t \right)\notag\end{equation}
+\begin{equation}X = xf\left( t \right) + g\left( t \right);\;f\left( t \right) = \frac{1}{2}{\partial _t}T\notag\end{equation}
+\begin{equation}U = {g_H}\left( {x,t} \right) + u{h_H}\left( {x,t} \right)\notag\end{equation}
+\begin{equation}W = {\partial _x}{g_H} + u{\partial _x}{h_H} + w\left( {{h_H} - f\left( t \right)} \right)\notag\end{equation}
+
+  <p>To make further progress we look for self-consistent solutions to our DEs using power series expansions.  Let:
+ \begin{equation}T = {a_i}{t^i}\notag\end{equation}
+ \begin{equation}f\left( t \right) = b_j^1{t^j}\notag\end{equation}
+ \begin{equation}g\left( t \right) = b_k^2{t^k}\notag\end{equation}
+ \begin{equation}{h_H} = {h_{jk}}{x^j}{t^k}\notag\end{equation}</p>
+  <p>where we let the indices run from $0 \to 3$, unless we find we need higher powers of $x\;{\text{and}}\;t$.  Let ${g_H}$ ride for now, as it does not appear in the DEs. Let us employ these expansions in an equation formed by combining \eqref{de4} and \eqref{de5}, eliminating $d_2$ and eliminating/combining surviving terms:
+    \begin{equation}x{\partial _t}f + {\partial _t}g + 2{\partial _x}{h_H} = 0\notag\end{equation}
+    Now insert the expansions:
+\begin{equation}2{\partial _x}{h_{jk}}{x^j}{t^k} + x{\partial _t}b_j^1{t^j} + {\partial _t}b_k^2{t^k} = 0\notag\end{equation}</p>
+ \begin{equation}2j{h_{jk}}{x^{j - 1}}{t^k} + xjb_j^1{t^{j - 1}} + kb_k^2{t^{k - 1}} = 0\notag\end{equation}
+Partially expanding:
+ \begin{equation}0 + 2{h_{1k}}{x^0}{t^k} + 4{h_{2k}}{x^1}{t^k} + 6{h_{3k}}{x^2}{t^k} + 0 + x1b_1^1{t^0} + x2b_2^1{t^1} + x3b_3^1{t^2} + 0 + 1b_1^2{t^0} + 2b_2^2{t^1} + 3b_3^2{t^2} = 0{\text{\;\;}}\notag\end{equation}
+ \begin{equation}2{h_{1k}}{x^0}{t^k} + 4{h_{2k}}{x^1}{t^k} + 6{h_{3k}}{x^2}{t^k} + x1b_1^1{t^0} + x2b_2^1{t^1} + x3b_3^1{t^2} + 1b_1^2{t^0} + 2b_2^2{t^1} + 3b_3^2{t^2} = 0{\text{\;\;}}\notag\end{equation}
+ 
+Let's work on the $t$-variable first.  Equate powers of $t$:
+<p>${t^0}$:</p>
+\begin{equation}2{h_{10}}{x^0}{t^0} + 4{h_{20}}{x^1}{t^0} + 6{h_{30}}{x^2}{t^0} + x1b_1^1{t^0} + 1b_1^2{t^0} = 0\notag\end{equation}
+\begin{equation}2{h_{10}} + 4{h_{20}}{x^1} + 6{h_{30}}{x^2} + xb_1^1 + b_1^2 = 0\notag\end{equation}
+
+<p>Employing monomials in $x$:</p>
+\begin{equation}2{h_{10}} + b_1^2 = 0\notag\end{equation}
+\begin{equation}4{h_{20}} + b_1^1 = 0\notag\end{equation}
+\begin{equation}6{h_{30}} = 0\notag\end{equation}
+
+<p>${t^1}$:</p>
+\begin{equation}2{h_{11}}{x^0}{t^1} + 4{h_{21}}{x^1}{t^1} + 6{h_{31}}{x^2}{t^1} + x2b_2^1{t^1} + 2b_2^2{t^1} = 0\notag\end{equation}
+\begin{equation}2{h_{11}} + 4{h_{21}}{x^1} + 6{h_{31}}{x^2} + x2b_2^1 + 2b_2^2 = 0\notag\end{equation}
+
+<p>Employing monomials in $x$:
+\begin{equation}2{h_{11}} + 2b_2^2 = 0\notag\end{equation}
+\begin{equation}4{h_{21}} + x2b_2^1 = 0\notag\end{equation}
+\begin{equation}6{h_{31}} = 0\notag\end{equation}
+
+${t^2}$:
+\begin{equation}2{h_{12}}{x^0}{t^2} + 4{h_{22}}{x^1}{t^2} + 6{h_{32}}{x^2}{t^2} + x3b_3^1{t^2} + 3b_3^2{t^2} = 0\notag\end{equation}</p>
+\begin{equation}2{h_{12}}{x^0} + 4{h_{22}}{x^1} + 6{h_{32}}{x^2} + x3b_3^1 + 3b_3^2 = 0\notag\end{equation}
+
+Employing monomials in $x$:
+\begin{equation}2{h_{12}} + 3b_3^2 = 0\notag\end{equation}
+\begin{equation}4{h_{22}} + 3b_3^1 = 0\notag\end{equation}
+\begin{equation}6{h_{32}} = 0\notag\end{equation}
+
+${t^3}$:
+\begin{equation}2{h_{13}}{x^0}{t^3} + 4{h_{23}}{x^1}{t^3} + 6{h_{33}}{x^2}{t^3} = 0\notag\end{equation}
+\begin{equation}2{h_{13}}{x^0} + 4{h_{23}}{x^1} + 6{h_{33}}{x^2} = 0{\text{\;\;}}\notag\end{equation}
+
+Employing monomials in x: 
+\begin{equation}2{h_{13}} = 0\notag\end{equation}
+\begin{equation}4{h_{23}} = 0\notag\end{equation}
+\begin{equation}6{h_{33}} = 0\notag\end{equation}
+
+Reassemble ${h_H}$ with the non-zero coefficients. Note we learned nothing about the ${h_{0k}}$ so we retain it for now:
+\begin{equation}{h_{jk}}{x^j}{t^k} = {h_{0k}}{t^k} + {h_{10}}x + {h_{11}}xt + {h_{12}}x{t^2} + {h_{20}}{x^2} + {h_{21}}{x^2}t + {h_{22}}{x^2}{t^2}\notag\end{equation}
+
+Now we know from (way) above that ${h_H}$ must satisfy the Heat equation:
+
+\begin{equation}{\partial _t}{h_H}\left( {x,t} \right) = {\partial _{xx}}{h_H}\left( {x,t} \right)\notag\end{equation}
+\begin{equation}{\partial _t}\left[ {{h_{0k}}{t^k} + {h_{10}}x + {h_{11}}xt + {h_{12}}x{t^2} + {h_{20}}{x^2} + {h_{21}}{x^2}t + {h_{22}}{x^2}{t^2}} \right] = {\partial _{xx}}\left[ {{h_{0k}}{t^k} + {h_{10}}x + {h_{11}}xt + {h_{12}}x{t^2} + {h_{20}}{x^2} + {h_{21}}{x^2}t + {h_{22}}{x^2}{t^2}} \right]\notag\end{equation}
+
+\begin{equation}\left[ {k{h_{0k}}{t^{k - 1}} + 0 + {h_{11}}x + 2{h_{12}}xt + 0 + {h_{21}}{x^2} + 2{h_{22}}{x^2}t} \right] = \left[ {0 + 0 + 0 + 0 + 2{h_{20}} + 2{h_{21}}t + 2{h_{22}}{t^2}} \right]\notag\end{equation}
+\begin{equation}1{h_{01}} + 2{h_{02}}t + 3{h_{03}}{t^2} + {h_{11}}x + 2{h_{12}}xt + {h_{21}}{x^2} + 2{h_{22}}{x^2}t = 2{h_{20}} + 2{h_{21}}t + 2{h_{22}}{t^2}\notag\end{equation}
+
+Monomials in ${x^i}{t^j}$:
+\begin{equation}{h_{01}} = 2{h_{20}}\notag\end{equation}
+\begin{equation}2{h_{02}} = 2{h_{21}}\notag\end{equation}
+\begin{equation}3{h_{03}} = 2{h_{22}}\notag\end{equation}
+\begin{equation}{h_{11}} = 0\notag\end{equation}
+\begin{equation}2{h_{12}} = 0\notag\end{equation}
+\begin{equation}{h_{21}} = 0 = {h_{02}}\notag\end{equation}
+\begin{equation}2{h_{22}} = 0 = {h_{03}}\notag\end{equation}
+
+The remaining finite terms from this list are
+\begin{equation}{h_{01}} = 2{h_{20}}\notag\end{equation}
+
+and from earlier (culling terms that vanish):
+\begin{equation}2{h_{10}} + b_1^2 = 0\notag\end{equation}
+\begin{equation}4{h_{20}} + b_1^1 = 0\notag\end{equation}
+\begin{equation}2b_2^2 = 0\notag\end{equation}
+\begin{equation}2b_2^1 = 0\notag\end{equation}
+\begin{equation}3b_3^2 = 0\notag\end{equation}
+\begin{equation}3b_3^1 = 0\notag\end{equation}
+
+Reassembling:
+\begin{equation}{h_H} = {h_{00}} + {h_{01}}t + {h_{10}}x + \frac{1}{2}{h_{01}}{x^2}\notag\end{equation}
+
+Let's address the $b$-coefficients, which are used to expand $f\left( t \right)$ and $g\left( t \right)$:
+\begin{equation}f\left( t \right) = b_j^1{t^j}\notag\end{equation}
+\begin{equation}g\left( t \right) = b_k^2{t^k}\notag\end{equation}
+
+The only non-vanishing coefficients are
+\begin{equation}b_1^2 =  - 2{h_{10}}\notag\end{equation}
+\begin{equation}b_1^1 =  - 4{h_{20}} =  - 2{h_{01}}\notag\end{equation}</p>
+
+so (adding in the unknown zero-terms)
+\begin{equation}X = xb_0^1 + xb_1^1{t^1} + b_0^2 + b_1^2{t^1} = x\left( {b_0^1 - 2{h_{01}}t} \right) + \left( {b_0^2 - 2{h_{10}}t} \right)\notag\end{equation}
+
+What about $T\left( t \right)$?  Recall
+\begin{equation}T = T\left( t \right)\notag\end{equation}
+\begin{equation}f\left( t \right) = \frac{1}{2}{\partial _t}T\notag\end{equation}
+
+Expanding both sides
+\begin{equation}T = {a_i}{t^i}\notag\end{equation}
+\begin{equation}f\left( t \right) = b_j^1{t^j} = \frac{1}{2}{\partial _t}T = \frac{1}{2}i{a_i}{t^{i - 1}}\notag\end{equation}
+
+where we need to add a possible constant to the $f$ –expansion:
+\begin{equation}b_0^1 + b_1^1{t^1} = \frac{1}{2}i{a_i}{t^{i - 1}} = \frac{1}{2}1{a_1}{t^0} + \frac{1}{2}2{a_2}{t^{i1}} + \frac{1}{2}3{a_3}{t^2}\notag\end{equation}
+
+Employing monomials:
+\begin{equation}b_0^1 = \frac{1}{2}{a_1}\notag\end{equation}
+\begin{equation}b_1^1 = {a_2}\notag\end{equation}
+
+with the rest vanishing, except for a possible ${a_o}$ term, so  
+\begin{equation}T = {a_0} + 2b_0^1t + b_1^1{t^2}\notag\end{equation}
+
+We now have all we need to express the full isovector solution(s).  Let's redefine the surviving constants to make it easier to compare with our solution from Chapter 2:</p>
+\begin{equation}{h_{00}} = {c_3}\notag\end{equation}
+\begin{equation}{h_{01}} =  - 2{c_6}\notag\end{equation}
+\begin{equation}{h_{10}} =  - {c_5}\notag\end{equation}
+\begin{equation}{a_0} = {c_2}\notag\end{equation}
+\begin{equation}b_0^1 = {c_4}\notag\end{equation}
+\begin{equation}b_0^2 = {c_1}\notag\end{equation}
+\begin{equation}b_1^2 =  - 2{h_{10}} = 2{c_5}\notag\end{equation}
+\begin{equation}b_1^1 =  - 2{h_{01}} = 4{c_6}\notag\end{equation}
+\begin{equation}{g_H} = {\beta _{heat}}\left( {x,t} \right)\notag\end{equation}
+
+This gives
+\begin{equation}f\left( t \right) = b_j^1{t^j} = b_0^1 + b_1^1t = {c_4} + 4{c_6}t\notag\end{equation}
+\begin{equation}g\left( t \right) = b_k^2{t^k} = b_0^2 + b_1^2t = {c_1} + 2{c_5}t\notag\end{equation}
+\begin{equation}{h_H} = {c_3} - 2{c_6}t - {c_5}x - {c_6}{x^2}\notag\end{equation}</p>
+
+The isovectors are then:
+\begin{equation}T = {c_2} + 2{c_4}t + 4{c_6}{t^2} \equiv \tau \notag\end{equation}
+\begin{equation}X = x\left( {{c_4} + 4{c_6}t} \right) + {c_1} + 2{c_5}t \equiv \xi \notag\end{equation}
+\begin{equation}U = {g_H}\left( {x,t} \right) + u\left( {{c_3} - 2{c_6}t - {c_5}x - {c_6}{x^2}} \right) \equiv \phi \notag\end{equation}
+\begin{equation}W = {\partial _x}{g_H} + u\left( { - {c_5} - 2{c_6}x} \right) + w\left( { - {c_6}{x^2} - {c_5}x - 6{c_6}t + {c_3} - {c_4}} \right)\notag\end{equation}
+
+We can generate the isovectors by choosing one constant at a time to be non-zero (say, 1).  The results compare favorably with Olver's (2.55), though Olver does not have jet space components. 
+<br><br>
+Set ${c_1} = 1$, rest zero:
+\begin{equation}{v_1} = {\partial _x}\notag\end{equation}
+Set ${c_2} = 1$, rest zero:
+\begin{equation}{v_2} = {\partial _t}\notag\end{equation}
+Set ${c_3} = 1$, rest zero:
+\begin{equation}{v_3} = u{\partial _u} + w{\partial _w}\notag\end{equation}
+Set ${c_4} = 1$, rest zero: 
+\begin{equation}{v_4} = 2t{\partial _t} + x{\partial _x} - w{\partial _w}\notag\end{equation}
+Set ${c_5} = 1$, rest zero:
+\begin{equation}{v_5} = 2t{\partial _x} - xu{\partial _u} - \left( {u + wx} \right){\partial _w}\notag\end{equation}
+Set ${c_6} = 1$, rest zero:
+\begin{equation}{v_6} = 4{t^2}{\partial _t} + 4xt{\partial _x} - u\left( {{x^2} + 2t} \right){\partial _u} - \left( {2xu + {x^2}w + 6tw} \right){\partial _w}\notag\end{equation}
+Set all ${k_i} = 0$, keep ${g_H}$:
+\begin{equation}{v_{{g_H}}} = {g_H}\left( {x,t} \right){\partial _u} + {\partial _x}{g_H}{\partial _w} \leftrightarrow \;{v_\alpha }\notag\end{equation} 
+
+We can also create combinations, for example set ${c_4} = 1 = {c_3}$, rest zero: </p>
+\begin{equation}{v_7} = 2t{\partial _t} + x{\partial _x} + u{\partial _u}\;\notag\end{equation} </p>
+
+<!--
+  <button class="accordion"><strong>Solution</strong></button>
+  <div class="panel">
+  <p style="padding: 10px; border: 1px solid black;">
+CONTENT
+  </p>
+  </div> 
+<!-- end panel -->
+
+
+
+
+</div> 														<!-- END MJ-rendering--> 
+      
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+				<li><a href="Previous test.html"><button> PREVIOUS </button></a></li>
+				<li style="float: right;">
+					<a href="Next test.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Appendix 3.4A</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
