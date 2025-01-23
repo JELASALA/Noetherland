@@ -152,7 +152,7 @@ Please note that in this page (and in the entirety of Olver Chapter 2) $\varepsi
   Since this involves the dependent variable $u$ we need to be more careful, and refer to <strong>Olver (2.14)</strong>, to which he points when interpreting group solutions.  So 
   \begin{equation}{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right) = x + 2\varepsilon t \equiv \bar x\notag\end{equation}
   \begin{equation}{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right) = t \equiv \bar t\notag\end{equation}
-  \begin{equation}{\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) = f\left( {x,t} \right)\circ {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \equiv \bar u\notag\end{equation}
+  \begin{equation}{\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) = f\left( {x,t} \right)\cdot {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \equiv \bar u\notag\end{equation}
   Our job is now to compute the transformed "solution" using
   \begin{equation}g\cdot f = {\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) \circ {\left[ {{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right),{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\notag\end{equation}
   Note the inverse superscript simply means to invert each of the elements.
@@ -160,13 +160,13 @@ Please note that in this page (and in the entirety of Olver Chapter 2) $\varepsi
   \begin{equation}t = \bar t\notag\end{equation}
   \begin{equation}x = \bar x - 2\varepsilon t = \bar x - 2\varepsilon \bar t\notag\end{equation}
   So
-  \begin{equation}g\cdot f = {\Phi _g} \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right] = f\left( {x,t} \right)\circ {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right]\notag\end{equation}
+  \begin{equation}g\cdot f = {\Phi _g} \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right] = f\left( {x,t} \right)\cdot {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \circ \left[ {\bar x - 2\varepsilon \bar t,\bar t} \right]\notag\end{equation}
   Composition means everywhere there is an $x\;{\text{or}}\;t$ in the first function replace it with the respective positional function in square brackets on the right of the composition symbol.
-  \begin{equation}g\cdot f = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \left( {\bar x - 2\varepsilon \bar t} \right) - {\varepsilon ^2}\bar t} \right) = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv \bar f\notag\end{equation}
+  \begin{equation}g\cdot f = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\cdot {\text{exp}}\left( { - \varepsilon \left( {\bar x - 2\varepsilon \bar t} \right) - {\varepsilon ^2}\bar t} \right) = f\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\cdot {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv \bar f\notag\end{equation}
   Compare this to the previous example:
   \begin{equation}\bar u = \bar u\left( {\bar x,\bar t} \right) = u\left( {\bar x - \varepsilon ,\bar t} \right)\notag\end{equation}
   Aside from the symbolic substitution of $f$ with $u$ these have the same form, with the original "solution" function taking modified "$x$" and "$t$" variables.  Let's replace $f$ with $u$ in our current example and also make a useful symbolic replacement for the arguments in $f$:
-  \begin{equation}\bar u = \bar u\left( {\bar x,\bar t} \right) = u\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\circ {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv u\left( {r\left( {\bar x,\bar t} \right),s\left( {\bar x,\bar t} \right)} \right)\circ {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right)\notag\end{equation}
+  \begin{equation}\bar u = \bar u\left( {\bar x,\bar t} \right) = u\left( {\bar x - 2\varepsilon \bar t,\bar t} \right)\cdot {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right) \equiv u\left( {r\left( {\bar x,\bar t} \right),s\left( {\bar x,\bar t} \right)} \right)\cdot {\text{exp}}\left( { - \varepsilon \bar x + {\varepsilon ^2}\bar t} \right)\notag\end{equation}
   where we again define auxiliary variables $r \equiv \bar x - 2\varepsilon \bar t\;{\text{and}}\;s \equiv \bar t$ to avoid confusion. Computing:
   \begin{equation}{\bar u_{\bar x}} = \left[ {\frac{{\partial u\left( {r,s} \right)}}{{\partial r}}\frac{{\partial r}}{{\partial \bar x}} + \frac{{\partial u\left( {r,s} \right)}}{{\partial s}}\frac{{\partial s}}{{\partial \bar x}}} \right]{e^{ - \varepsilon \bar x + {\varepsilon ^2}\bar t}} - \varepsilon u\left( {r,s} \right){e^{ - \varepsilon \bar x + {\varepsilon ^2}\bar t}}\notag\end{equation}
   \begin{equation}{\bar u_{\bar x}} = {u_r}{e^{ - \varepsilon \bar x + {\varepsilon ^2}\bar t}} - \varepsilon u\left( {r,s} \right){e^{ - \varepsilon \bar x + {\varepsilon ^2}\bar t}}\notag\end{equation}
