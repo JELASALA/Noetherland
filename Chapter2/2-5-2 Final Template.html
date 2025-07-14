@@ -105,7 +105,7 @@ MathJax = 	{
 
 Let us return to the venerable 1D heat equation to demonstrate this procedure, pointing out some of the challenges along the way.
 
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\;v\left[ {\Delta \left( {x,t,{u^{\left( 2 \right)}}} \right)} \right] = 0\notag\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\;V\left[ {\Delta \left( {x,t,{u^{\left( 2 \right)}}} \right)} \right] = 0\notag\end{equation}
 
 for
 
@@ -113,7 +113,7 @@ for
 
 Note the explicit replacement of $\left( {x,t} \right) = \left( {{x^1},{x^2}} \right)$ and $\left( {\xi ,\tau } \right) = \left( {{\xi ^1},{\xi ^2}} \right)$ in the forgoing equations for this example. Proceeding:
 
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}v\left[ {{u_t} - {u_{xx}}} \right] = \left( {\xi \frac{\partial }{{\partial x}} + \tau \frac{\partial }{{\partial t}} + \phi \frac{\partial }{{\partial u}} + {\phi ^x}\frac{\partial }{{\partial {u_x}}} + {\phi ^t}\frac{\partial }{{\partial {u_t}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{xt}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}}} \right)\left[ {{u_t} - {u_{xx}}} \right] = 0\notag\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V\left[ {{u_t} - {u_{xx}}} \right] = \left( {\xi \frac{\partial }{{\partial x}} + \tau \frac{\partial }{{\partial t}} + \phi \frac{\partial }{{\partial u}} + {\phi ^x}\frac{\partial }{{\partial {u_x}}} + {\phi ^t}\frac{\partial }{{\partial {u_t}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{xt}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}}} \right)\left[ {{u_t} - {u_{xx}}} \right] = 0\notag\end{equation}
 
 Most of these terms vanish after operating on the PDE, leaving:
 
@@ -235,9 +235,9 @@ So our symmetry vector coefficients are:
 
 Notice the $ϕ$ coefficient depends on $u$, reinforcing the restriction on monomial identifications above.  By setting all but one constant to zero at a time we can generate all the vectors in (Olver 2.55) – though Olver chose $\alpha \left( {x,t} \right)$ to represent the heat equation solution ${\beta _{heat}}$.  I particular, related to our ongoing example from the original teaser in section 2.1:
 
-\begin{equation}\pmb{v_1} = {\partial _x}\text{ (setting all but }{c_1}\text{ to zero)}\notag\end{equation}
+\begin{equation}V_1 = {\partial _x}\text{ (setting all but }{c_1}\text{ to zero)}\notag\end{equation}
 and
-\begin{equation}\pmb{v_5} = 2t{\partial _x} - xu{\partial _u}\text{ (setting all but }{c_5}\text{ to zero)}\notag\end{equation}
+\begin{equation}V_5 = 2t{\partial _x} - xu{\partial _u}\text{ (setting all but }{c_5}\text{ to zero)}\notag\end{equation}
 
 Recapping the procedure, we applied the prolonged vector operation to the PDE, generating a single, long equation of coefficients multiplying various derivatives of the dependent variable u, here standing for the “independent variables” of the appropriately sized jet space. The coefficients contained various derivatives of our unknown symmetry vector components.  We then implemented the PDE “algebraic” connection between the “independent variables” of jet space by choosing to express one in terms of another (we replaced all instances of ${u_t}$ with ${u_{xx}}$ based on the heat equation).  This needs to be done carefully and thoroughly.  Note one should not replace, for example ${u_{tx}}$ with ${u_{xxx}}$, as ${u_t}$ and ${u_{tx}}$ are different “independent coordinates” in jet space.  There is also an arbitrariness here in that we could have reversed the replacement and ultimately gotten the same result but with different combinations of terms in our DEs.  Finally, we identified “monomials” as factors of the various $u$-derivatives (but not $u$ itself which may be implicitly contained in the vector coefficient functions) and demanded they vanish individually, generating a set of DEs, which we solve using “creative” techniques.
 <br><br>
