@@ -106,22 +106,22 @@ MathJax = 	{
   
 The final step is generation of the group transforms, some samples of which we demonstrated in Examples above.  This employs the exponentiation process, as the vectors derived above are the infinitesimal generators of the symmetries.  For a two-component
   
-\begin{equation}\Psi \left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon \pmb{v}} \right)\left( {x,t,u} \right) = \left( {1 + \varepsilon \pmb{v} + \frac{1}{2}{{\left( {\varepsilon \pmb{v}} \right)}^2} +  \ldots } \right)\left( {x,t,u} \right)\notag\end{equation}
+\begin{equation}\Psi \left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon V} \right)\left( {x,t,u} \right) = \left( {1 + \varepsilon V + \frac{1}{2}{{\left( {\varepsilon V} \right)}^2} +  \ldots } \right)\left( {x,t,u} \right)\notag\end{equation}
 
 Let's try
-\begin{equation}\pmb{v_5} = 2t{\partial _x} - xu{\partial _u}\notag\end{equation}<br>
+\begin{equation}V_5 = 2t{\partial _x} - xu{\partial _u}\notag\end{equation}<br>
 
 Do it by components
 
-\begin{equation}{\Psi ^x}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon \pmb{v_5}} \right)\left( x \right) = \left( {1 + \varepsilon \pmb{v_5} + \frac{1}{2}{{\left( {\varepsilon \pmb{v_5}} \right)}^2} +  \ldots } \right)\left( x \right) = x + \varepsilon \pmb{v_5}x + \frac{1}{2}{\varepsilon ^2}\pmb{v_5}\left( {\pmb{v_5}x} \right) +  \ldots \notag\end{equation}
+\begin{equation}{\Psi ^x}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon V_5} \right)\left( x \right) = \left( {1 + \varepsilon V_5 + \frac{1}{2}{{\left( {\varepsilon V_5} \right)}^2} +  \ldots } \right)\left( x \right) = x + \varepsilon V_5x + \frac{1}{2}{\varepsilon ^2}V_5\left( {V_5x} \right) +  \ldots \notag\end{equation}
 
-\begin{equation}{\Psi ^x}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = x + \varepsilon 2t + \frac{1}{2}{\varepsilon ^2}\pmb{v_5}\left( {2t} \right) +  \ldots  = x + 2\varepsilon t \equiv \bar x\notag\end{equation}
+\begin{equation}{\Psi ^x}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = x + \varepsilon 2t + \frac{1}{2}{\varepsilon ^2}V_5\left( {2t} \right) +  \ldots  = x + 2\varepsilon t \equiv \bar x\notag\end{equation}
 
-\begin{equation}{\Psi ^t}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon \pmb{v_5}} \right)\left( t \right) = \left( {1 + \varepsilon \pmb{v_5} + \frac{1}{2}{{\left( {\varepsilon \pmb{v_5}} \right)}^2} +  \ldots } \right)\left( t \right) = t + \varepsilon \pmb{v_5}t + \frac{1}{2}{\varepsilon ^2}\pmb{v_5}\left( {\pmb{v_5}t} \right) +  \ldots \notag\end{equation}
+\begin{equation}{\Psi ^t}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon V_5} \right)\left( t \right) = \left( {1 + \varepsilon V_5 + \frac{1}{2}{{\left( {\varepsilon V_5} \right)}^2} +  \ldots } \right)\left( t \right) = t + \varepsilon V_5t + \frac{1}{2}{\varepsilon ^2}V_5\left( {V_5t} \right) +  \ldots \notag\end{equation}
 
 \begin{equation}{\Psi ^t}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = t \equiv \bar t\notag\end{equation}
 
-\begin{equation}{\Psi ^u}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon \pmb{v_5}} \right)\left( u \right) = \left( {1 + \varepsilon \pmb{v_5} + \frac{1}{2}{{\left( {\varepsilon \pmb{v_5}} \right)}^2} +  \ldots } \right)\left( u \right) = u + \varepsilon \pmb{v_5}u + \frac{1}{2}{\varepsilon ^2}\pmb{v_5}\left( {\pmb{v_5}u} \right) +  \ldots \notag\end{equation}
+\begin{equation}{\Psi ^u}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = {\text{exp}}\left( {\varepsilon V_5} \right)\left( u \right) = \left( {1 + \varepsilon V_5 + \frac{1}{2}{{\left( {\varepsilon V_5} \right)}^2} +  \ldots } \right)\left( u \right) = u + \varepsilon V_5u + \frac{1}{2}{\varepsilon ^2}V_5\left( {V_5u} \right) +  \ldots \notag\end{equation}
 
 \begin{equation}{\Psi ^u}\left( {\varepsilon ,\left( {x,t,u} \right)} \right) = u - x\varepsilon u + \frac{1}{2}{\varepsilon ^2}\left( {2t{\partial _x} - xu{\partial _u}} \right)\left( { - xu} \right) +  \ldots  = u\left[ { - x\varepsilon  + \frac{1}{2}{\varepsilon ^2}\left( { - 2t + {x^2}} \right) +  \ldots } \right]\notag\end{equation}
 
