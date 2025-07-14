@@ -108,35 +108,35 @@ So far we have sought algebraic transforms on polynomial functions to find their
 
 <p style="padding: 15px; border: 2px solid black;">
 <strong>Proposition 2.6 </strong>Let $G$ be a connected group of transformations acting on the manifold $M$. A smooth, real-valued function $\zeta :M \mapsto \mathbb{R}$ <strong>is an invariant</strong> <strong>function</strong> <strong>for $G$</strong> <em>if and only if</em>
-\begin{equation}\pmb{v}\left( \zeta  \right) = 0 \text{ for all } x\; \in \;M\tag{Olver (2.1)}\label{O21}\end{equation}
-and every infinitesimal generator $\pmb{v}$ of $G$.
+\begin{equation}V\left( \zeta  \right) = 0 \text{ for all } x\; \in \;M\tag{Olver (2.1)}\label{O21}\end{equation}
+and every infinitesimal generator $V$ of $G$.
 </p>
 
-You may recall from <strong>Chapter 1</strong> this is also a special case of a Lie derivative.  Let's unpack this.  We posit (multiple) generators $\pmb{v}$ of a group of transformations <em>G</em> and the existence of a function $\zeta $ that vanishes when operated on by the generators $\pmb{v}$.  What does this have to do with the integral curve?  Spoiler alert:  the function $\zeta $ is found by requiring its composition with the integral curve to be independent of the parameter $\varepsilon $ that parameterizes that integral curve!  That is, $\zeta $ is invariant along the curve.
+You may recall from <strong>Chapter 1</strong> this is also a special case of a Lie derivative.  Let's unpack this.  We posit (multiple) generators $V$ of a group of transformations <em>G</em> and the existence of a function $\zeta $ that vanishes when operated on by the generators $V$.  What does this have to do with the integral curve?  Spoiler alert:  the function $\zeta $ is found by requiring its composition with the integral curve to be independent of the parameter $\varepsilon $ that parameterizes that integral curve!  That is, $\zeta $ is invariant along the curve.
 <br><br>
 We actually explored this property in our introduction with examples of straight lines and the SO(2) rotation group, where we found the latter &ldquo;discovered&rdquo; circles.  We now unleash the exponentiation process to enable a proof of this proposition.
 
 Recall \eqref{O11'}, which we have exhaustively tested in our examples:
 
-\begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] = \pmb{v}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] \equiv \pmb{v}{|_{\Psi \left( {\varepsilon ,x} \right)}}\label{O11'}\tag{Olver (1.11')}\end{equation}
+\begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\left[ {{\text{exp}}\left( {\varepsilon V} \right)x} \right] = V\left[ {{\text{exp}}\left( {\varepsilon V} \right)x} \right] \equiv V{|_{\Psi \left( {\varepsilon ,x} \right)}}\label{O11'}\tag{Olver (1.11')}\end{equation}
 
-\begin{equation}{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x \equiv \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
+\begin{equation}{\text{exp}}\left( {\varepsilon V} \right)x \equiv \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
 
-Olver now constructs a <em>function of the flow:</em> $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$, which is the composition of the integral curve $\Psi \left( {\varepsilon ,x} \right)$ with the purported invariant function.  Symbolically we propose a function $\zeta $ exists which we compose with the integral curve $\Psi \left( {\varepsilon ,x} \right)$:
+Olver now constructs a <em>function of the flow:</em> $\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right)$, which is the composition of the integral curve $\Psi \left( {\varepsilon ,x} \right)$ with the purported invariant function.  Symbolically we propose a function $\zeta $ exists which we compose with the integral curve $\Psi \left( {\varepsilon ,x} \right)$:
 
-\begin{equation}\zeta  \circ \Psi \left( {\varepsilon ,x} \right) = \zeta \left( {\Psi \left( {\varepsilon ,x} \right)} \right) = \zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \zeta \left( {{x^1}\left( \varepsilon  \right),{x^2}\left( \varepsilon  \right), \ldots } \right) \equiv \zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\label{A}\end{equation}
+\begin{equation}\zeta  \circ \Psi \left( {\varepsilon ,x} \right) = \zeta \left( {\Psi \left( {\varepsilon ,x} \right)} \right) = \zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right) = \zeta \left( {{x^1}\left( \varepsilon  \right),{x^2}\left( \varepsilon  \right), \ldots } \right) \equiv \zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\label{A}\end{equation}
 
 where we have elaborated the meaning in the last expression, with the ${x^i}\left( \varepsilon  \right)$ describing the integral curve in local coordinates.  So we are defining a function $\zeta $ along the flow and will demand its variation with respect to the generating vector vanish.  We compute the variation of the function with respect to the $\varepsilon $ parameter along the curve symbolically:
 
-\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = v\left( \zeta  \right)\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] \equiv \pmb{v}\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x}} = 0\tag{Olver (1.17)}\label{B}\end{equation}
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right) = v\left( \zeta  \right)\left[ {{\text{exp}}\left( {\varepsilon V} \right)x} \right] \equiv V\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon V} \right)x}} = 0\tag{Olver (1.17)}\label{B}\end{equation}
 
 We can demonstrate \eqref{B} quite easily using the chain rule.  First we express the LHS using \eqref{A}:
 
-\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\notag\end{equation}
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right) = \frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right)\notag\end{equation}
 
 whose derivative is given by:
 
-\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right) = \frac{{\partial \zeta }}{{\partial {x^i}\left( \varepsilon  \right)}}\frac{{d{x^i}\left( \varepsilon  \right)}}{{d\varepsilon }} = {\xi ^i}\left( x \right)\frac{{\partial \zeta \left( {x\left( \varepsilon  \right)} \right)}}{{\partial {x^i}\left( \varepsilon  \right)}} = \left[ {{\xi ^i}\left( x \right)\frac{\partial }{{\partial {x^i}\left( \varepsilon  \right)}}} \right]\zeta \left( {x\left( \varepsilon  \right)} \right) = \pmb{v}\left( {\zeta \left( {x\left( \varepsilon  \right)} \right)} \right)\notag\end{equation}
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{x^i}\left( \varepsilon  \right)} \right) = \frac{{\partial \zeta }}{{\partial {x^i}\left( \varepsilon  \right)}}\frac{{d{x^i}\left( \varepsilon  \right)}}{{d\varepsilon }} = {\xi ^i}\left( x \right)\frac{{\partial \zeta \left( {x\left( \varepsilon  \right)} \right)}}{{\partial {x^i}\left( \varepsilon  \right)}} = \left[ {{\xi ^i}\left( x \right)\frac{\partial }{{\partial {x^i}\left( \varepsilon  \right)}}} \right]\zeta \left( {x\left( \varepsilon  \right)} \right) = V\left( {\zeta \left( {x\left( \varepsilon  \right)} \right)} \right)\notag\end{equation}
 
 where we have used \eqref{O17}:
 
@@ -144,17 +144,17 @@ where we have used \eqref{O17}:
 
 and
 
-\begin{equation}\pmb{v}{|_x} = {\xi ^i}\left( x \right){\partial _{{x^i}}} \equiv \xi \left( x \right){\partial _x}\notag\end{equation}
+\begin{equation}V{|_x} = {\xi ^i}\left( x \right){\partial _{{x^i}}} \equiv \xi \left( x \right){\partial _x}\notag\end{equation}
 
 So
 
-\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right) = \pmb{v}\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x}}\;\color{blue}\blacksquare\notag\end{equation}
+\begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right) = V\left( \zeta  \right){|_{{\text{exp}}\left( {\varepsilon V} \right)x}}\;\color{blue}\blacksquare\notag\end{equation}
 
 [Caution, don't confuse $\zeta $ (the invariant function) with the ${\xi ^i}$ (vector coefficient functions).]<br><br>
 
-Applying \eqref{O21}, vanishing of the RHS of the above means the ostensible invariant function $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$ must be independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes.<br><br>
+Applying \eqref{O21}, vanishing of the RHS of the above means the ostensible invariant function $\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right)$ must be independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes.<br><br>
 
-In words, we claim that if the operation of $\pmb{v}$ on a function vanishes for all values of the parameter, at least in some neighborhood, that function must be an invariant function on <em>G</em>.  Insertion of ${\text{exp}}\left( {\varepsilon \pmb{v}} \right)x$ in the argument $x\left( \varepsilon  \right)$ of $\zeta $ makes it a function of the flow generated by the generator $\pmb{v}$ of the group operation $G$, so vanishing of the RHS means the function $\zeta \left( {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right)$ is independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes. 
+In words, we claim that if the operation of $V$ on a function vanishes for all values of the parameter, at least in some neighborhood, that function must be an invariant function on <em>G</em>.  Insertion of ${\text{exp}}\left( {\varepsilon V} \right)x$ in the argument $x\left( \varepsilon  \right)$ of $\zeta $ makes it a function of the flow generated by the generator $V$ of the group operation $G$, so vanishing of the RHS means the function $\zeta \left( {{\text{exp}}\left( {\varepsilon V} \right)x} \right)$ is independent of the parameter $\varepsilon $, so its derivative wrt that parameter vanishes. 
 
 
 <p style="padding: 15px; border: 2px solid black;">
@@ -171,7 +171,7 @@ certainly satisfies the requirement:
 \begin{equation}\frac{d}{{d\varepsilon }}\zeta \left( {\varepsilon ,\left( {x,y} \right)} \right) = 0\notag\end{equation}
 </p>
 
-In <strong>Section 2.3</strong> we also demonstrated that $\pmb{v}\left( {{x^2} + {y^2}} \right) = 0$, closing the loop.  That is, we found the flow "curve" in Example 4 and we have shown here that a function of that curve <strong></strong> is an invariant function under that group of transforms. 
+In <strong>Section 2.3</strong> we also demonstrated that $V\left( {{x^2} + {y^2}} \right) = 0$, closing the loop.  That is, we found the flow "curve" in Example 4 and we have shown here that a function of that curve <strong></strong> is an invariant function under that group of transforms. 
 <br>
 <br>
 <strong>Summarizing where we stand</strong>: if we are given a vector representing a symmetry (like SO(2)) we can use <strong>Prop 2.6</strong> to find invariant functions (like ${x^2} + {y^2} = f = const$) whose orbits are invariant curves.  The tangent vectors to those curves are the very symmetry vectors that generated them.  We have not yet found a way to go the other way:  given a curve (trajectory) defined algebraically (like ${x^2} + {y^2} = const$) <u>what are the symmetry vectors that generate it</u>?  Let's take our SO(2) again to explore this question.
@@ -186,15 +186,15 @@ or better,
 
 find the vector that satisfies
 
-\begin{equation}\pmb{v}\left( \zeta  \right) = 0\notag\end{equation}
+\begin{equation}V\left( \zeta  \right) = 0\notag\end{equation}
 
 We start with generic coefficients that are to be determined: 
 
-\begin{equation}\pmb{v} = {\xi ^1}\left( {x,y} \right){\partial _x} + {\xi ^2}\left( {x,y} \right){\partial _y}\notag\end{equation}
+\begin{equation}V = {\xi ^1}\left( {x,y} \right){\partial _x} + {\xi ^2}\left( {x,y} \right){\partial _y}\notag\end{equation}
 
 Operate
 
-\begin{equation}\pmb{v}\left( \zeta  \right) = 0 = 2x{\xi ^1}\left( {x,y} \right) + 2y{\xi ^2}\left( {x,y} \right)\notag\end{equation}
+\begin{equation}V\left( \zeta  \right) = 0 = 2x{\xi ^1}\left( {x,y} \right) + 2y{\xi ^2}\left( {x,y} \right)\notag\end{equation}
 
 so
 
@@ -204,11 +204,11 @@ We have one equation and two unknown functions, but we can at least find their r
 \begin{equation}{\xi ^1}/{\xi ^2} =  - y/x\notag\end{equation}
 
 Apart from an overall scale factor we can declare:$\;{\xi ^1} =  - y$ and ${\xi ^2} = x$, yielding
-\begin{equation}\pmb{v} =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
+\begin{equation}V =  - y{\partial _x} + x{\partial _y}\notag\end{equation}
 
 Overall scale factors are irrelevant, so we may declare victory here.  We have just demonstrated the use of elementary form of <strong><em>determining equations</em></strong>. That is, the equation (where $\zeta $ may represent a set of coupled equations):
 
-\begin{equation}\pmb{v}\left( \zeta  \right) = 0\notag\end{equation}
+\begin{equation}V\left( \zeta  \right) = 0\notag\end{equation}
 
 yielding in this case
 
