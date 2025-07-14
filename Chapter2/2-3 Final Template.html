@@ -116,14 +116,14 @@ now looks like
   \begin{equation}\phi \left( \varepsilon  \right) = \left( {{\phi ^1}\left( \varepsilon  \right),{\phi ^2}\left( \varepsilon  \right)} \right) = \left( {r\cos \varepsilon ,r\sin \varepsilon } \right)\notag\end{equation}
 We now use $x \equiv \left\{ {{x^i}} \right\}$ to represent the $m$ local coordinates, and we focus on the specific point $x$ that the curve passes through.   At that point the curve has a tangent vector $\dot \phi \left( \varepsilon  \right)$, where the dot indicates the derivative wrt $\varepsilon $.  With a coordinate system defined, Olver often uses ${x^i}\left( \varepsilon  \right)$ (instead of the ${\phi ^i}\left( \varepsilon  \right)$) to represent the (components of the) curve (aka trajectory).  Next he identifies the object 
 
-\begin{equation}\pmb{v}{|_x} = {\xi ^1}\left( x \right){\partial _{{x^1}}} + {\xi ^2}\left( x \right){\partial _{{x^2}}} +  \ldots  + {\xi ^m}\left( x \right){\partial _{{x^m}}} \equiv \xi \left( x \right){\partial _x}\label{231}\end{equation}
+\begin{equation}V{|_x} = {\xi ^1}\left( x \right){\partial _{{x^1}}} + {\xi ^2}\left( x \right){\partial _{{x^2}}} +  \ldots  + {\xi ^m}\left( x \right){\partial _{{x^m}}} \equiv \xi \left( x \right){\partial _x}\label{231}\end{equation}
 
 called the <strong>vector field</strong> at point <em>x</em>, as the tangent vector of $\phi $.  Symbolically he writes this relation two ways, one (unlabeled) using $\phi $ (most generic, coordinate free) and another in local coordinates:
-\begin{equation}\dot \phi \left( \varepsilon  \right) = \pmb{v}{|_{\phi \left( \varepsilon  \right)}}\label{232}\end{equation}
+\begin{equation}\dot \phi \left( \varepsilon  \right) = V{|_{\phi \left( \varepsilon  \right)}}\label{232}\end{equation}
 
   \begin{equation}\frac{{d{x^i}\left( \varepsilon  \right)}}{{d\varepsilon }}{|_{\varepsilon = 0}} = {\xi ^i}\left( x \right)\label{O17}\tag{Olver (1.7)}\end{equation}
 
-Relation \eqref{232} implies $\phi $ is the <strong>integral curve</strong> or <strong>flow</strong> of the vector $\pmb{v}$ at all points $\varepsilon $ along its trajectory. That is, $\pmb{v}$ <em>generates</em> the curve $\phi $ with a process we will see below (this was demonstrated earlier with the rotation curve).  So far Olver is using the subscripts ${|_x}$ and ${|_{\phi \left( \varepsilon  \right)}}$ to indicate the equality applies either at some specific point (in a coordinate system) or at a generic point on the trajectory, respectively.
+Relation \eqref{232} implies $\phi $ is the <strong>integral curve</strong> or <strong>flow</strong> of the vector $V$ at all points $\varepsilon $ along its trajectory. That is, $V$ <em>generates</em> the curve $\phi $ with a process we will see below (this was demonstrated earlier with the rotation curve).  So far Olver is using the subscripts ${|_x}$ and ${|_{\phi \left( \varepsilon  \right)}}$ to indicate the equality applies either at some specific point (in a coordinate system) or at a generic point on the trajectory, respectively.
 <br><br>
 Note \eqref{O17} will turn out to be most useful in determining curve parameterization for various forms of the vector field functions ${\xi ^i}\left( x \right)$.  Note that we have inserted the condition ${|_{\varepsilon  = 0}}$ on the LHS which Olver leaves out.<strong>  </strong>We do this because the RHS is to be understood at a specific point in the coordinate system, where we presume $\varepsilon  = 0$ applies.  Also we do not find it logical to have a "free" $\varepsilon $ on the LHS without one on the RHS of the equation.
 <br><br>
@@ -132,50 +132,50 @@ Next Olver grants $\phi $ a special symbol when it is the <strong>maximal integr
 \begin{equation}\phi \left( \varepsilon  \right) \to \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
 which is really still another name for $x\left( \varepsilon  \right)$.  Olver points out that $\Psi \left( {0,x} \right) = x$.  Then
    
-  \begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \pmb{v}{|_{\Psi \left( {\varepsilon ,x} \right)}}\label{O111}\tag{Olver (1.11)}\end{equation}
+  \begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = V{|_{\Psi \left( {\varepsilon ,x} \right)}}\label{O111}\tag{Olver (1.11)}\end{equation}
 
 
-which he says means "$\pmb{v}$ is the tangent vector to the curve $\Psi \left( {\varepsilon ,x} \right)$ for fixed $x$." The curve has the (unsurprising) property
+which he says means "$V$ is the tangent vector to the curve $\Psi \left( {\varepsilon ,x} \right)$ for fixed $x$." The curve has the (unsurprising) property
   \begin{equation}\Psi \left( {\delta ,\Psi \left( {\varepsilon ,x} \right)} \right) = \Psi \left( {\delta  + \varepsilon ,x} \right)\notag\end{equation}
-which in words says we are simply inching our way along the curve's parameter values to explore further curve values along this maximal path.  Olver calls $\Psi $ the <strong>flow</strong> generated by $\pmb{v}$, defined in Chapter 1 as the "<strong>parameterized maximal integral curve</strong> passing through $x$ in $M$." 
+which in words says we are simply inching our way along the curve's parameter values to explore further curve values along this maximal path.  Olver calls $\Psi $ the <strong>flow</strong> generated by $V$, defined in Chapter 1 as the "<strong>parameterized maximal integral curve</strong> passing through $x$ in $M$." 
 The flow (curve) and the vector field that generates it are connected by this remarkable relation (not even given a number by Olver):
-  \begin{equation}{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x \equiv \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
+  \begin{equation}{\text{exp}}\left( {\varepsilon V} \right)x \equiv \Psi \left( {\varepsilon ,x} \right)\notag\end{equation}
 where we note Olver employs a rarely used <em>definition</em> symbol.  This is consistent with the properties of the flow under the group-like behaviors:
 
-\begin{equation}\Psi \left( {\delta ,\Psi \left( {\varepsilon ,x} \right)} \right) = {\text{exp}}\left( {\delta \pmb{v}} \right)\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\delta \pmb{v}} \right){\text{exp}}\left( {\varepsilon \pmb{v}} \right)x = {\text{exp}}\left( {\left( {\delta  + \varepsilon } \right)\pmb{v}} \right)x = \Psi \left( {\delta  + \varepsilon ,x} \right)\notag\end{equation}
+\begin{equation}\Psi \left( {\delta ,\Psi \left( {\varepsilon ,x} \right)} \right) = {\text{exp}}\left( {\delta V} \right)\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\delta V} \right){\text{exp}}\left( {\varepsilon V} \right)x = {\text{exp}}\left( {\left( {\delta  + \varepsilon } \right)V} \right)x = \Psi \left( {\delta  + \varepsilon ,x} \right)\notag\end{equation}
 
-\begin{equation}\Psi \left( {0,x} \right) = {\text{exp}}\left( {0\pmb{v}} \right)x = x\notag\end{equation}
+\begin{equation}\Psi \left( {0,x} \right) = {\text{exp}}\left( {0V} \right)x = x\notag\end{equation}
 
 and 
 
-\begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] = \pmb{v}\left[ {{\text{exp}}\left( {\varepsilon \pmb{v}} \right)x} \right] \equiv \pmb{v}{|_{\Psi \left( {\varepsilon ,x} \right)}}\tag{Olver (1.11')}\label{O111'}\end{equation}
+\begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\Psi \left( {\varepsilon ,x} \right) = \frac{d}{{d\varepsilon }}\left[ {{\text{exp}}\left( {\varepsilon V} \right)x} \right] = V\left[ {{\text{exp}}\left( {\varepsilon V} \right)x} \right] \equiv V{|_{\Psi \left( {\varepsilon ,x} \right)}}\tag{Olver (1.11')}\label{O111'}\end{equation}
 
 That is, the derivative of the "flow" or "curve" or "trajectory" along its parameter is equivalent to the action of the generating vector on that curve.  This can be validated easily and will prove useful.  
 
 <p align="center"><strong>Aside</strong></p>
 <p style="padding: 10px; border: 2px solid black;">
 
-Confusion may accompany the meaning of the symbol ${|_{\Psi \left( {\varepsilon ,x} \right)}}$.  In the step before the final expression above we see $\pmb{v}$ actually <em>operates</em> on the subscripted variable, a conclusion validated in the examples below.  Looking back, say at \eqref{231}
+Confusion may accompany the meaning of the symbol ${|_{\Psi \left( {\varepsilon ,x} \right)}}$.  In the step before the final expression above we see $V$ actually <em>operates</em> on the subscripted variable, a conclusion validated in the examples below.  Looking back, say at \eqref{231}
 
-\begin{equation}\pmb{v}{|_x} = {\xi ^1}\left( x \right){\partial _{{x^1}}} + {\xi ^2}\left( x \right){\partial _{{x^2}}} +  \ldots  + {\xi ^m}\left( x \right){\partial _{{x^m}}} \equiv \xi \left( x \right){\partial _x}\notag\end{equation}
+\begin{equation}V{|_x} = {\xi ^1}\left( x \right){\partial _{{x^1}}} + {\xi ^2}\left( x \right){\partial _{{x^2}}} +  \ldots  + {\xi ^m}\left( x \right){\partial _{{x^m}}} \equiv \xi \left( x \right){\partial _x}\notag\end{equation}
 
   we must scratch our heads. However, if one did interpret the subscript as being operated on, then
 
-\begin{equation}\pmb{v}{|_{{x^j}}} = {\xi ^i}\left( x \right){\partial _{{x^i}}}{x^j} = {\xi ^i}\left( x \right)\delta _i^j = {\xi ^j}\left( x \right)\notag\end{equation}
+\begin{equation}V{|_{{x^j}}} = {\xi ^i}\left( x \right){\partial _{{x^i}}}{x^j} = {\xi ^i}\left( x \right)\delta _i^j = {\xi ^j}\left( x \right)\notag\end{equation}
 
   meaning it "plucks out" the indicated coefficient without its associated basis vector.  Olver likely meant for this to mean "at the point $x$" rather than operating to generate the coefficients, but that cannot be the correct interpretation of its use in \eqref{O111} since operation is <em>required</em>. Indeed, at the far left we start with a function, so must end with a function (not an operator) at the far right.  So we conclude that proper interpretation must be the student's burden.
 
 </p>
 
 <p align="center"><strong>EXAMPLES</strong>:</p>
-<strong>1.</strong>  Take $\xi \left( x \right) = 1 \to \pmb{v} = {\partial _x}$, so
-  \begin{equation}\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon \pmb{v}} \right)x = \left( {1 + \varepsilon \pmb{v} + \frac{1}{2}{{\left( {\varepsilon \pmb{v}} \right)}^2} +  \ldots } \right)x = x + \varepsilon {\partial _x}x + \frac{1}{2}{\varepsilon ^2}{\partial _x}{\partial _x}x +  \ldots  = x + \varepsilon \notag\end{equation}
+<strong>1.</strong>  Take $\xi \left( x \right) = 1 \to V = {\partial _x}$, so
+  \begin{equation}\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon V} \right)x = \left( {1 + \varepsilon V + \frac{1}{2}{{\left( {\varepsilon V} \right)}^2} +  \ldots } \right)x = x + \varepsilon {\partial _x}x + \frac{1}{2}{\varepsilon ^2}{\partial _x}{\partial _x}x +  \ldots  = x + \varepsilon \notag\end{equation}
 which Olver points out is <em>globally defined</em> (i.e., no singularities through the range of the coordinate system).  Note there is no requirement for $\varepsilon $ to be infinitesimal.  We may call this a simple "displacement" transformation.  That is, such a vector produces a linear trajectory in $\varepsilon $ along the x-axis.  Let's check the interpretation of \eqref{O111'}:
 
 \begin{equation}\dot \Psi \left( {\varepsilon ,x} \right) = 1 = ? = v{|_{\Psi \left( {\varepsilon ,x} \right)}} = {\partial _x}\left( {x + \varepsilon } \right) = 1 = \xi \;\;\emptyset \notag\end{equation}
-<strong>2.</strong>  Take $\xi \left( x \right) = x \to \pmb{v} = x{\partial _x}$<em>, </em>so
+<strong>2.</strong>  Take $\xi \left( x \right) = x \to V = x{\partial _x}$<em>, </em>so
 
-\begin{equation}\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon \pmb{v}} \right)x = \left( {1 + \varepsilon \pmb{v} + \frac{1}{2}{{\left( {\varepsilon \pmb{v}} \right)}^2} +  \ldots } \right)x\notag\end{equation}
+\begin{equation}\Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon V} \right)x = \left( {1 + \varepsilon V + \frac{1}{2}{{\left( {\varepsilon V} \right)}^2} +  \ldots } \right)x\notag\end{equation}
 
 \begin{equation} = x + \varepsilon x{\partial _x}x + \frac{1}{2}{\varepsilon ^2}x{\partial _x}\left( {x{\partial _x}} \right)x = x + \varepsilon x + \frac{1}{2}{\varepsilon ^2}x +  \ldots  = \;x{e^\varepsilon }\notag\end{equation}
 
@@ -198,7 +198,7 @@ We can also test \eqref{O111}:
 	<p style="padding: 10px; border: 2px solid black;">
 
 Proceeding:
-\begin{equation}\pmb{v} = {x^2}{\partial _x} \to \Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon \pmb{v}} \right)x = \left( {1 + \varepsilon \pmb{v} + \frac{1}{2}{{\left( {\varepsilon \pmb{v}} \right)}^2} +  \ldots } \right)x\notag\end{equation}
+\begin{equation}V = {x^2}{\partial _x} \to \Psi \left( {\varepsilon ,x} \right) = {\text{exp}}\left( {\varepsilon V} \right)x = \left( {1 + \varepsilon V + \frac{1}{2}{{\left( {\varepsilon V} \right)}^2} +  \ldots } \right)x\notag\end{equation}
 
 \begin{equation} = x + \varepsilon {x^2}{\partial _x}x + \frac{1}{2}{\varepsilon ^2}{x^2}{\partial _x}\left( {{x^2}{\partial _x}} \right)x +  \ldots  = x + \varepsilon {x^2} + \frac{1}{2}{\varepsilon ^2}2{x^3} +  \ldots \notag\end{equation}
 
@@ -229,7 +229,7 @@ In the limit $\varepsilon \to $ we have
 
 Proceeding:
 
-\begin{equation}\pmb{v} =  - y{\partial _x} + x{\partial _y} \to \Psi \left( {\varepsilon ,\left( {x,y} \right)} \right) = {\text{exp}}\left( {\varepsilon \pmb{v}} \right)\left( {x,y} \right) = \left( {1 + \varepsilon \pmb{v} + \frac{1}{2}{{\left( {\varepsilon \pmb{v}} \right)}^2} + \frac{1}{{3!}}{{\left( {\varepsilon \pmb{v}} \right)}^3} +  \ldots } \right)\left( {x,y} \right)\notag\end{equation}
+\begin{equation}V =  - y{\partial _x} + x{\partial _y} \to \Psi \left( {\varepsilon ,\left( {x,y} \right)} \right) = {\text{exp}}\left( {\varepsilon V} \right)\left( {x,y} \right) = \left( {1 + \varepsilon V + \frac{1}{2}{{\left( {\varepsilon V} \right)}^2} + \frac{1}{{3!}}{{\left( {\varepsilon V} \right)}^3} +  \ldots } \right)\left( {x,y} \right)\notag\end{equation}
 
 \begin{equation} = \left( {1 + \varepsilon \left( { - y{\partial _x} + x{\partial _y}} \right) + \frac{1}{2}{\varepsilon ^2}{{\left( { - y{\partial _x} + x{\partial _y}} \right)}^2} + \frac{1}{{3!}}{\varepsilon ^3}{{\left( { - y{\partial _x} + x{\partial _y}} \right)}^3} +  \ldots } \right)\left( {x,y} \right)\notag\end{equation}
 
