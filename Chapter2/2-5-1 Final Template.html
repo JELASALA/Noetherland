@@ -110,11 +110,11 @@ MathJax = 	{
   
   We start with the base vector represented as 
   
-  \begin{equation}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\label{1}\end{equation}
+  \begin{equation}V = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\label{1}\end{equation}
   
   We then extend it symbolically
   
-  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}\pmb{v}\left[ {{\Delta _\nu }\left( {x,{u^{\left( n \right)}}} \right)} \right] = 0\label{2}\end{equation}
+  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}V\left[ {{\Delta _\nu }\left( {x,{u^{\left( n \right)}}} \right)} \right] = 0\label{2}\end{equation}
   
   with the PDE represented as
   
@@ -123,7 +123,7 @@ MathJax = 	{
 
 Note that Latin indices run over independent variables and Greek indices run over dependent variables.  Here is the formal expression for the prolongation:
   
-  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( k \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( k \right)}^\alpha }}\label{3}\end{equation}
+  \begin{equation}{\text{p}}{{\text{r}}^{\left( n \right)}}V = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( k \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( k \right)}^\alpha }}\label{3}\end{equation}
   where
   \begin{equation}\phi _\alpha ^{J\left( k \right)}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( k \right)}}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{J\left( k \right),i}^\alpha \tag{Olver(2.39)}\label{O239}\end{equation}
   
@@ -142,7 +142,7 @@ Note that Latin indices run over independent variables and Greek indices run ove
 Then
     \begin{equation}\phi _\alpha ^{J\left( 0 \right)}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( 0 \right)}}\left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_{J\left( 0 \right),i}^\alpha  = \left( {{\phi _\alpha } - {\xi ^i}u_i^\alpha } \right) + {\xi ^i}u_i^\alpha  = {\phi _\alpha }\notag\end{equation}
     
-    \begin{equation}{\text{p}}{{\text{r}}^{\left( 0 \right)}}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( 0 \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( 0 \right)}^\alpha }} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\notag\end{equation}
+    \begin{equation}{\text{p}}{{\text{r}}^{\left( 0 \right)}}V = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi _\alpha ^{J\left( 0 \right)}\left( {x,{u^{\left( k \right)}}} \right)\frac{\partial }{{\partial u_{J\left( 0 \right)}^\alpha }} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + {\phi _\alpha }\left( {x,u} \right)\frac{\partial }{{\partial {u^\alpha }}}\notag\end{equation}
     
 <strong>Note</strong> also we allow the coefficients to depend on both the independent and dependent variables.  Recall two of the symmetries explored in our teaser introduction in <strong>Section 2.1</strong> with the heat equation:
   
@@ -155,9 +155,9 @@ Then
 
   The vectors inducing these transforms are:
   
-  \begin{equation}\pmb{v_1} = {\partial _x} \to {\xi ^1} = 1,{\xi ^2} = 0,\;\phi  = 0\notag\end{equation}
+  \begin{equation}V_1 = {\partial _x} \to {\xi ^1} = 1,{\xi ^2} = 0,\;\phi  = 0\notag\end{equation}
   and
-  \begin{equation}\pmb{v_5} = 2t{\partial _x} - xu{\partial _u} \to {\xi ^1} = 2t,{\xi ^2} = 0,\;\phi  =  - xu\notag\end{equation}
+  \begin{equation}V_5 = 2t{\partial _x} - xu{\partial _u} \to {\xi ^1} = 2t,{\xi ^2} = 0,\;\phi  =  - xu\notag\end{equation}
   
 </p>
 <p>
