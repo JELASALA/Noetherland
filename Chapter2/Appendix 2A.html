@@ -118,26 +118,26 @@ The EOM is given with full dimensionality:
 The invariance condition requires: 
 
 \begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V\left[ {\Delta \left( {t,x,{u^{\left( 2 \right)}}} \right)} \right] = {\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left[ {{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)} \right] = 0\notag\end{equation}with
-\begin{equation}\pmb{v} = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi \left( {x,u} \right)\frac{\partial }{{\partial u}}\tag{2A.1}\label{1}\end{equation}
+\begin{equation}V = {\xi ^i}\left( {x,u} \right)\frac{\partial }{{\partial {x^i}}} + \phi \left( {x,u} \right)\frac{\partial }{{\partial u}}\tag{2A.1}\label{1}\end{equation}
 
 fully expanded to:
-\begin{equation}\pmb{v} = \tau \left( {t,x,y,u} \right)\frac{\partial }{{\partial t}} + \zeta \left( {t,x,y,u} \right)\frac{\partial }{{\partial x}} + \eta \left( {t,x,y,u} \right)\frac{\partial }{{\partial y}} + \phi \left( {t,x,y,u} \right)\frac{\partial }{{\partial u}}\notag\end{equation}and
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = \pmb{v} + {\phi ^{J\left( 1 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 1 \right)}}}} + {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\tag{2A.2}\label{2}\end{equation}
+\begin{equation}V = \tau \left( {t,x,y,u} \right)\frac{\partial }{{\partial t}} + \zeta \left( {t,x,y,u} \right)\frac{\partial }{{\partial x}} + \eta \left( {t,x,y,u} \right)\frac{\partial }{{\partial y}} + \phi \left( {t,x,y,u} \right)\frac{\partial }{{\partial u}}\notag\end{equation}and
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V = V + {\phi ^{J\left( 1 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 1 \right)}}}} + {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\tag{2A.2}\label{2}\end{equation}
 where
 
 \begin{equation}{\phi ^{J\left( k \right)}}\left( {x,{u^{\left( n \right)}}} \right) = {D_{J\left( k \right)}}\left( {\phi  - {\xi ^i}{u_i}} \right) + {\xi ^i}{u_{J\left( k \right),i}}\tag{2A.3}\label{3}\end{equation}
 from <strong>Olver (2.39)</strong> for a single dependent variable, and where $i = 1, \ldots 3$. When applied to this PDE only the thrid term in \eqref{2} survives as none of the independent variables, $u$ itself or its first derivatives appear explicitly in the PDE.  Thus
    
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\notag\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V = {\phi ^{J\left( 2 \right)}}\left( {x,{u^{\left( 2 \right)}}} \right)\frac{\partial }{{\partial {u_{J\left( 2 \right)}}}}\notag\end{equation}
 
 Expanding 
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v} = {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}} + {\phi ^{tx}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{ty}}\frac{\partial }{{\partial {u_{yt}}}} + {\phi ^{xy}}\frac{\partial }{{\partial {u_{xy}}}}\notag\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V = {\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}} + {\phi ^{tx}}\frac{\partial }{{\partial {u_{xt}}}} + {\phi ^{ty}}\frac{\partial }{{\partial {u_{yt}}}} + {\phi ^{xy}}\frac{\partial }{{\partial {u_{xy}}}}\notag\end{equation}
 
 Dropping the mixed terms which also do not contribute we finally have
 
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left( \Delta  \right) = \left[ {{\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}}} \right]\left( {{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)} \right) = 0\notag\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V\left( \Delta  \right) = \left[ {{\phi ^{tt}}\frac{\partial }{{\partial {u_{tt}}}} + {\phi ^{xx}}\frac{\partial }{{\partial {u_{xx}}}} + {\phi ^{yy}}\frac{\partial }{{\partial {u_{yy}}}}} \right]\left( {{u_{tt}} - {c^2}\left( {{u_{xx}} + {u_{yy}}} \right)} \right) = 0\notag\end{equation}
 Thus
-\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}\pmb{v}\left( \Delta  \right) = \left( {{\phi ^{tt}} - {c^2}{\phi ^{xx}} - {c^2}{\phi ^{yy}}} \right) = 0\tag{2A.4}\label{4}\end{equation}
+\begin{equation}{\text{p}}{{\text{r}}^{\left( 2 \right)}}V\left( \Delta  \right) = \left( {{\phi ^{tt}} - {c^2}{\phi ^{xx}} - {c^2}{\phi ^{yy}}} \right) = 0\tag{2A.4}\label{4}\end{equation}
 
 
 
