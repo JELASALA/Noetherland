@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Section 2.1</title>
+
+<!--*************************************************************************************-->
+<!-- BEGIN scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<script>
+// The following constants must be set for each new webpage: Ch=chapter, S=section, SS=sub-section
+const Ch = 2; const S = 1; const SS = 0;
+// The configuration declarations consist of two parts -- loader and startup
+MathJax = 	{
+// The loader "loads" the physics, tagformat, and color extension packages onto the LaTex converter
+// and specifies inline math delimiter substitutions and the AMS tag system for equation numbering
+			loader: {load: [ '[tex]/physics','[tex]/tagformat','[tex]/color' ] },
+					tex: { packages:
+							{ '[+]': ['physics','tagformat','color'] },
+							inlineMath: [ [ '$' , '$' ], [ '\ \(', '\ \)' ] ],
+							tags: 'ams',
+//Use the following tagformat for a page containing a "sub-section"
+//							tagformat:
+//						{ number: function (n) { return MathJax.config.section + '.' + SS + '.' + n; } }
+//Use Use the following tagformat for a page containing only a "section"
+							tagformat:
+							{ number: function (n) { return MathJax.config.section + '.' + n; } }
+					},
+// The startup configs set the equation counters to zero and order implementation when #MJ-rendering division
+// is compiled. This division prevents conflicts with the Top and Bottom Titlebars and Footer of the Content
+			startup: {typeset: false, pageReady()
+						{MathJax.config.section = Ch + '.' + S
+						 MathJax.startup.input[0].parseOptions.tags.counter = 0;
+						 MathJax.startup.input[0].parseOptions.tags.allCounter = 0;
+						 MathJax.typeset( [ '#MJ-rendering' ] );
+						 }
+					 }
+			};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript"id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- END scripting configurations and linkings for the MathJaX implementation of AMSLaTeX and Equation Numbering -->
+<!--*************************************************************************************-->
+<!-- BEGIN styling links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="CSS_13.css">			 Use this link if working locally -->
+
+<link rel="stylesheet" href="https://noetherland.org/CSS_13.css">	 <!--Use this link if working
+																					 globally -->
+<!-- END styling links -->
+
+<!-- BEGIN EJSW calls to stored JS write files at GitHub -->
+<script type="text/javascript" src="https://noetherland.org/menu_chap0.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap1.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap2.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap3.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap4.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap5.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap6.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap7.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap8.js"></script>
+<script type="text/javascript" src="https://noetherland.org/menu_chap9.js"></script>
+<!-- END EJSW calls to stored JS write files at GitHub -->
+
+</head>
+
+<body>
+
+<div class="sidenav"> 												<!-- BEGIN .sidenav -->
+	<p style="font-family: Cambria; font-size: 22px; color: black; text-align: center;">CONTENTS</p>
+	<script type="text/javascript">show(chap0);</script>
+	<script type="text/javascript">show(chap1);</script>
+	<script type="text/javascript">show(chap2);</script>
+	<script type="text/javascript">show(chap3);</script>
+	<script type="text/javascript">show(chap4);</script>
+	<script type="text/javascript">show(chap5);</script>
+	<script type="text/javascript">show(chap6);</script>
+	<script type="text/javascript">show(chap7);</script>
+	<script type="text/javascript">show(chap8);</script>
+	<script type="text/javascript">show(chap9);</script>
+</div>																<!-- END .sidenav -->
+
+<div class="container"> 											<!-- BEGIN .container -->
+	<div class="header">											<!-- BEGIN .header -->
+			<h1><em> NoetherLand</em></h1>
+			<ul>
+				<li style="float: right">
+					<a href="#EINSTEIN" style="color: yellow;  text-decoration: none;">
+						<em>"Make it as simple as possible, but not simpler." - A. Einstein</em>
+					</a>
+				</li>
+			</ul>
+	</div>															<!-- END .header -->
+
+	<div class="content"> 											<!-- BEGIN .content--> 
+		<div class="titlebar">										<!-- BEGIN TOP titlebar -->
+			<ul>
+				<li><a href="https://noetherland.org/Home test.html""><button> PREVIOUS </button></a></li>
+				<li style="float: right;"><a href="https://noetherland.org/Chapter2/2-2 Final Template.html"><button> NEXT </button></a></li>
+				<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>Chapter 2 - The Vector Approach to Finding Symmetries</strong></p>
+			</ul>
+		</div>														<!-- END TOP titlebar -->
+
+		<div id="MJ-rendering"> 									<!-- BEGIN MathJaX rendering -->
+        
+
+<p>In this chapter we provide the development and applications of what we are calling the &ldquo;vector&rdquo; approach to finding symmetries of physical systems describable by PDEs, largely drawing on material from <em>Olver-86</em>.  In the sections that follow we lead the student through the process for discovering symmetry transform vector generators called &ldquo;isovectors&rdquo; of PDEs through to their use in finding &ldquo;orbits&rdquo; of special solutions obeying each symmetry. 
+<p>The idea is that requiring the PDE function, symbolized with $\Delta $, to vanish defines a sub-manifold (aka <em>sub</em>-<em>variety</em>) Olver calls ${\mathcal{S}_\Delta }$ in the appropriate jet space.  A symmetry of the system of differential equations $\Delta $ is a <em>transformation</em> which maps solutions to solutions; that is, application of the transformation keeps you in the submanifold of solutions (think of a partial rotation around the surface of a sphere). The most basic type of symmetry is a group of point transformations on the space of independent and dependent variables.  We often restrict attention to <em>fiber-preserving</em> <em>transformations</em>, in which group action on <u>independent</u> variables does not depend on <u>dependent</u> variables (aka <em>projectable</em> transformations, per<strong> </strong><em>Olver-86,</em> p.93). Other categories of transformations include somewhat more general <em>point transformations</em> (all actions may depend on both independent and dependent variables), and <em>contact transformations</em> (actions may depend on up to first derivatives of the dependent variable).  Later we even consider <em>general transformations</em> in which dependency on higher order derivatives is allowed.</p>
+
+  <strong>Teaser</strong>:  Let us consider the 1-D (dimensionless) diffusion (heat) equation as a simple example to introduce the concept of symmetry transform.
+  \begin{equation}\Delta \left( {x,t,{u^{\left( 2 \right)}}} \right) = {u_t} - {u_{xx}} = 0\notag\end{equation}
+  Here ${u^{\left( 2 \right)}}$ refers to the highest order partial derivatives of <em>u</em> in our jet space.  The vast machinery to be employed later will give us the set of transformations that "span" the symmetries of the heat equation.  Here is the simplest:
+  \begin{equation}{G_1}:\;\;\;\left( {x,t,u} \right)\mapsto\left( {\tilde x = x + \varepsilon ,\tilde t = t,\tilde u = u} \right)\notag\end{equation}
+  which is associated with the symmetry vector:
+  \begin{equation}V = \frac{\partial }{{\partial x}}\notag\end{equation}
+  Please note that in this page (and in the entirety of Olver Chapter 2) $\varepsilon$ is <strong>not</strong> to be treated as an infinitesimal.  Though this is a trivial example, we want to demonstrate the full meaning of such a transformation and the means to test it.  We need to compute the action of this transform on a "known" solution $u = f\left( {x,t} \right)$ to the PDE.  If $f\left( {x,t} \right)$ is such a solution then
+  \begin{equation}g\cdot f \equiv \tilde f\notag\end{equation}
+  is also supposed to be a solution, where the operation $g$ accomplishes
+  \begin{equation}g\cdot \left( {x,t,\;u} \right) = \left( {\tilde x,\tilde t,\tilde u} \right)\notag\end{equation}
+  where $\tilde u = \tilde f\left( {\tilde x,\tilde t} \right)$.  This is a set of equations:
+  \begin{equation}\tilde x = x + \varepsilon \notag\end{equation}
+  \begin{equation}\tilde t = t\notag\end{equation}
+  \begin{equation}\tilde u = \tilde u\left( {\tilde x,\tilde t} \right)\notag\end{equation}
+  We need to eliminate the original independent variables in favor of the transformed variables, simply accomplished in this case:
+  \begin{equation}\tilde u = \tilde u\left( {\tilde x,\tilde t} \right) = u\left( {\tilde x - \varepsilon ,\tilde t} \right)\notag\end{equation}
+  Does this transformed "solution" still satisfy the original PDE (heat equation)?  That is, if 
+  \begin{equation}{u_t} - {u_{xx}} = 0\notag\end{equation}
+  does
+  \begin{equation}{\tilde u_{\tilde t}} - {\tilde u_{\tilde x\tilde x}} = ? = 0\notag\end{equation}
+  We define auxiliary variables $r \equiv \tilde x - \varepsilon $ and $s = \tilde t$ which makes application of the chain rule a little more transparent
+  \begin{equation}{\tilde u_{\tilde x}} = \frac{{\partial \tilde u}}{{\partial \tilde x}} = \frac{{\partial u\left( {r,s} \right)}}{{\partial \tilde x}} = \frac{{\partial u}}{{\partial r}}\frac{{\partial r}}{{\partial \tilde x}} + \frac{{\partial u}}{{\partial s}}\frac{{\partial s}}{{\partial \tilde x}}\;\notag\end{equation}
+  The last term is zero as $s = \tilde t$ is independent of $\tilde x$ as they are both independent variables in the transformed chart. 
+  \begin{equation}{\tilde u_{\tilde x}} = {u_r}\left( 1 \right)+0\notag\end{equation}
+  Similarly:
+  \begin{equation}{\tilde u_{\tilde x\tilde x}} = {u_{rr}}\notag\end{equation}
+  and trivially:
+  \begin{equation}{\tilde u_{\tilde t}} = \frac{{\partial u\left( {r,s} \right)}}{{\partial \tilde t}} = \frac{{\partial u}}{{\partial r}}\frac{{\partial r}}{{\partial \tilde t}} + \frac{{\partial u}}{{\partial s}}\frac{{\partial s}}{{\partial \tilde t}} = 0 + {u_s}\left( 1 \right)\notag\end{equation}
+  Referring back to our variable transform relations $r = \tilde x - \varepsilon  = x$ and $s = \tilde t = t$ so
+  \begin{equation}{\tilde u_{\tilde x\tilde x}} = {u_{rr}} = {u_{xx}}\;\notag\end{equation}
+  and
+  \begin{equation}{\tilde u_{\tilde t}} = {u_s} = {u_t}\notag\end{equation}
+  
+  so the transformed solution also obeys the heat equation if the original solution did.  In more complicated cases, where for example $u$ itself is transformed, the "inversion" is more challenging.  A general formula (really a procedure) is given by:
+  \begin{equation}g\cdot f = \left[ {{\Phi _g} \circ \left( {\mathbb{1} \times f} \right)} \right] \circ {\left[ {{\Xi _g} \circ \left( {\mathbb{1} \times f} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\end{equation}
+  where the new symbols are defined by:
+  \begin{equation}g\cdot \left( {x,u} \right) = \left( {\tilde x,\tilde u} \right) \equiv \left( {{\Xi _g}\left( {x,u} \right),{\Phi _g}\left( {x,u} \right)} \right)\notag\end{equation}
+  so:
+  \begin{equation}\tilde x \equiv {\Xi _g}\left( {x,f\left( x \right)} \right) = {\Xi _g} \circ \left( {\mathbb{1} \times f} \right)\left( x \right)\notag\end{equation}
+  \begin{equation}\tilde u \equiv {\Phi _g}\left( {x,f\left( x \right)} \right) = {\Phi _g} \circ \left( {\mathbb{1} \times f} \right)\left( x \right)\notag\end{equation}
+  and the inverse symbol on the last square bracket simply means invert the transformed coordinates before composing with the transformed dependent variable(s).  Note we are employing Olver&rsquo;s condensed notation in which, for example, ${\Xi _g}$ will represent all the transformed independent variables $\tilde x$, appropriately indexed.  Another example will illuminate the process.
+  <br><br>  
+  <strong>Advanced Teaser</strong>  Let's try another more complex symmetry transform of the 1D heat equation (obtained later in <strong>Section 2.5</strong>):
+  \begin{equation}{G_5}:\;\;\;\left( {x,t,u} \right)\mapsto \left( {\tilde x = x + 2\varepsilon t,\tilde t = t,\tilde u = u\cdot exp\left( { - \varepsilon x - {\varepsilon ^2}t} \right)} \right)\notag\end{equation}
+  Since this involves the dependent variable $u$ we need to be more careful, and refer to <strong>Olver (2.14)</strong>, to which he points when interpreting group solutions.  So 
+  \begin{equation}{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right) = x + 2\varepsilon t \equiv \tilde x\notag\end{equation}
+  \begin{equation}{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right) = t \equiv \tilde t\notag\end{equation}
+  \begin{equation}{\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) = f\left( {x,t} \right)\cdot {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \equiv \tilde u\notag\end{equation}
+  Our job is now to compute the transformed "solution" using
+  \begin{equation}g\cdot f = {\Phi _g}\left( {x,t,f\left( {x,t} \right)} \right) \circ {\left[ {{\Xi ^1}_g\left( {x,t,f\left( {x,t} \right)} \right),{\Xi ^2}_g\left( {x,t,f\left( {x,t} \right)} \right)} \right]^{ - 1}}\tag{Olver(2.14)}\notag\end{equation}
+  Note the inverse superscript simply means to invert each of the elements.
+    
+  \begin{equation}t = \tilde t\notag\end{equation}
+  \begin{equation}x = \tilde x - 2\varepsilon t = \tilde x - 2\varepsilon \tilde t\notag\end{equation}
+  So
+  \begin{equation}g\cdot f = {\Phi _g} \circ \left[ {\tilde x - 2\varepsilon \tilde t,\tilde t} \right] = f\left( {x,t} \right)\cdot {\text{exp}}\left( { - \varepsilon x - {\varepsilon ^2}t} \right) \circ \left[ {\tilde x - 2\varepsilon \tilde t,\tilde t} \right]\notag\end{equation}
+  Composition means everywhere there is an $x\;{\text{or}}\;t$ in the first function replace it with the respective positional function in square brackets on the right of the composition symbol.
+  \begin{equation}g\cdot f = f\left( {\tilde x - 2\varepsilon \tilde t,\tilde t} \right)\cdot {\text{exp}}\left( { - \varepsilon \left( {\tilde x - 2\varepsilon \tilde t} \right) - {\varepsilon ^2}\tilde t} \right) = f\left( {\tilde x - 2\varepsilon \tilde t,\tilde t} \right)\cdot {\text{exp}}\left( { - \varepsilon \tilde x + {\varepsilon ^2}\tilde t} \right) \equiv \tilde f\notag\end{equation}
+  Compare this to the previous example:
+  \begin{equation}\tilde u = \tilde u\left( {\tilde x,\tilde t} \right) = u\left( {\tilde x - \varepsilon ,\tilde t} \right)\notag\end{equation}
+  Aside from the symbolic substitution of $f$ with $u$ these have the same form, with the original "solution" function taking modified "$x$" and "$t$" variables.  Let's replace $f$ with $u$ in our current example and also make a useful symbolic replacement for the arguments in $f$:
+  \begin{equation}\tilde u = \tilde u\left( {\tilde x,\tilde t} \right) = u\left( {\tilde x - 2\varepsilon \tilde t,\tilde t} \right)\cdot {\text{exp}}\left( { - \varepsilon \tilde x + {\varepsilon ^2}\tilde t} \right) \equiv u\left( {r\left( {\tilde x,\tilde t} \right),s\left( {\tilde x,\tilde t} \right)} \right)\cdot {\text{exp}}\left( { - \varepsilon \tilde x + {\varepsilon ^2}\tilde t} \right)\notag\end{equation}
+  where we again define auxiliary variables $r \equiv \tilde x - 2\varepsilon \tilde t\;{\text{and}}\;s \equiv \tilde t$ to avoid confusion. Computing:
+  \begin{equation}{\tilde u_{\tilde x}} = \left[ {\frac{{\partial u\left( {r,s} \right)}}{{\partial r}}\frac{{\partial r}}{{\partial \tilde x}} + \frac{{\partial u\left( {r,s} \right)}}{{\partial s}}\frac{{\partial s}}{{\partial \tilde x}}} \right]{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} - \varepsilon u\left( {r,s} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  \begin{equation}{\tilde u_{\tilde x}} = {u_r}{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} - \varepsilon u\left( {r,s} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  Similarly,
+  \begin{equation}{\tilde u_{\tilde x\tilde x}} = {u_{rr}}{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} - 2\varepsilon {u_r}{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} + {\varepsilon ^2}u{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  and
+  \begin{equation}{\tilde u_{\tilde t}} = \left[ {{u_r}\frac{{\partial r}}{{\partial \tilde t}} + {u_s}\frac{{\partial s}}{{\partial \tilde t}}} \right]{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} + {\varepsilon ^2}u{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  \begin{equation}{\tilde u_{\tilde t}} = \left( { - 2\varepsilon {u_r} + {u_s}} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} + {\varepsilon ^2}u{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  Combining
+  \begin{equation}{\tilde u_{\tilde t}} - {\tilde u_{\tilde x\tilde x}} = \left( { - 2\varepsilon {u_r} + {u_s}} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} + {\varepsilon ^2}u{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} - {u_{rr}}{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} + 2\varepsilon {u_r}{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} - {\varepsilon ^2}u{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  \begin{equation}{\tilde u_{\tilde t}} - {\tilde u_{\tilde x\tilde x}} = \left( {{u_s} - {u_{rr}}} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  Now as in the first example, we recognize 
+  \begin{equation}r = \tilde x - 2\varepsilon \tilde t = x\;\;{\text{and}}\;s\; = \tilde t = t\notag\end{equation}
+  so
+  \begin{equation}{\tilde u_{\tilde t}} - {\tilde u_{\tilde x\tilde x}} = \left( {{u_t} - {u_{xx}}} \right){e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}} = 0\notag\end{equation}
+  verifying the transformed solution satisfies the heat equation.  Notice now that we generate actual solutions to the heat equation once we have even a trivial solution to start with.  For example, the substitution 
+  \begin{equation}u = A = constant\notag\end{equation}
+  certainly satisfies the heat equation, so 
+  \begin{equation}\tilde u = A{e^{ - \varepsilon \tilde x + {\varepsilon ^2}\tilde t}}\notag\end{equation}
+  is also a solution of the heat equation.  Hopefully these "teasers" have stimulated your interest in how to find these symmetry groups from the original PDE system.  In effect, without explicitly solving the PDE, we can find "orbitals" within the solution surface that satisfy the PDE.  To accomplish this from scratch we go back a bit in Olver to the concept of <em>infinitesimal vector generators</em> and apply them to algebraic equations first.
+<br><br>
+
+<!--
+<button class="accordion"><strong>What about even-degree forms?</strong></button>
+<div class="panel">
+	<p style="padding: 10px; border: 1px solid black;">
+Content goes here. 
+	</p>
+</div>
+-->
+        </div> 		<!-- END MJ-rendering--> 
+
+	<div class="titlebar">										<!-- BEGIN BOTTOM titlebar-->
+		<ul>
+			<li><a href="https://noetherland.org/Previous test.html"><button> PREVIOUS </button></a></li>
+			<li style="float: right;"><a href="https://noetherland.org/Chapter2/2-2 Final Template.html"><button> NEXT </button></a></li>
+			<p style="font-family: Times; color: firebrick; font-size: 20px; margin: 5px; padding: 0px;"><strong>End of Chapter 2 Introduction</strong></p>
+		</ul>
+	</div>														<!-- END BOTTOM titlebar -->
+
+
+	<div class="footer">										<!-- BEGIN .footer -->
+			<h1 style="color: #ffffff00; text-align: center;"><em>Spacer</em></h1><!--Transparent spacer -->
+			<ul>
+				<li>
+					<a href="#Copyright" style="color: yellow; text-decoration: none;">
+						&copy;  John E. LaSala and Bruce G. Oldaker
+					</a>
+				</li>
+			</ul>
+	</div>														<!-- END .footer -->
+
+	</div> 														<!-- END .content--> 
+</div>															<!-- END .container -->
+
+<!-- ************************************BEGIN JavaScripts***************************************** -->
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content 
+   This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+<script>
+// BEGIN JavaScript for accordion open and close //
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // Toggle between adding and removing the "active" class, to highlight the button that controls the panel //
+    this.classList.toggle("active");
+    // Toggle between hiding and showing the active panel //
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+// END JavaScript for accordion open and close //
+</script>
+<!-- ************************************END JavaScripts***************************************** -->
+</body>
+</html> 
