@@ -36,6 +36,7 @@
 	.content		{flex: 1; overflow: scroll;
 					 padding: 10px 10px;
 					 font-size: 20px;
+					 line-height: 1.5em;
 					 border: 3px inset #194a8d;}				/* #194a8d is a dark blue */
 	.footer			{background-image: url(FooterBackgroundFaded.png); 
 					 border: 3px inset #194a8d;}				/* #194a8d is a dark blue */
